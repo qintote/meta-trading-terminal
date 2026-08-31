@@ -2076,70 +2076,6 @@ tbody tr:hover td{background:var(--route-bg)}
 [data-theme="dark"] .q-btns button[aria-pressed="true"][data-a="no"]{background:var(--card-2);color:var(--ink);border-color:var(--ink-3)}
 [data-theme="dark"] .btn.ghost{background:transparent;color:var(--ink-2);border-color:var(--rule)}
 [data-theme="dark"] tbody tr:hover td{background:var(--card-2)}
-
-/* ---------------------------------------------------------------
-   A completed step collapses — but never while you are still typing
-   inside it. The auto-collapse is suppressed for any step that holds
-   focus, and while a field within it is dirty.
-   --------------------------------------------------------------- */
-.fstep.done:focus-within .fs-b,.fstep.done.ux-editing .fs-b{display:block!important}
-.fstep.done:focus-within .fs-h,.fstep.done.ux-editing .fs-h{border-bottom:1px solid var(--rule-2);cursor:pointer}
-.fstep.done:focus-within .fs-h::after,.fstep.done.ux-editing .fs-h::after{content:"Editing"!important;color:var(--caution)!important}
-.fstep.done:focus-within,.fstep.done.ux-editing{background:var(--card);box-shadow:var(--shadow);border-color:var(--rule)}
-.fstep.done:focus-within .fs-h,.fstep.done.ux-editing .fs-h{min-height:52px;padding:12px 15px}
-.fstep.done:focus-within .fs-sub,.fstep.done.ux-editing .fs-sub{display:block}
-
-/* ---------- plan board ---------- */
-.planboard{margin-top:16px;border-top:1px solid var(--rule-2);padding-top:14px}
-.pb-head{display:flex;align-items:baseline;gap:10px;margin-bottom:4px}
-.pb-head .hint{margin-left:auto;font-family:var(--mono);font-size:10px;color:var(--ink-3)}
-.planadd{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
-.planadd input{flex:1;min-width:190px;font-size:13px;padding:8px 10px;border:1px solid var(--rule);
-  border-radius:2px;background:var(--card-2);color:var(--ink)}
-.planadd select{font-size:13px;padding:8px 10px;border:1px solid var(--rule);border-radius:2px;
-  background:var(--card-2);color:var(--ink)}
-.planmini{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
-.pm-k{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
-.pmchip{font-family:var(--sans);font-size:12.4px;padding:6px 10px;border:1px solid var(--rule);border-radius:2px;
-  background:var(--card-2);color:var(--ink-2);cursor:pointer}
-.pmchip small{font-family:var(--mono);font-size:10px;color:var(--ink-3);margin-left:5px}
-.pmchip:hover{border-color:var(--route);color:var(--ink)}
-.pmchip.fit{border-color:var(--route);color:var(--route)}
-
-/* ---------- strategy library ---------- */
-.stratpick{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:4px}
-.stratpick label{display:flex;gap:6px;align-items:center;font-size:12.4px;color:var(--ink-3)}
-.stratpick select{font-size:12.6px;padding:6px 9px;border:1px solid var(--rule);border-radius:2px;
-  background:var(--card);color:var(--ink);max-width:280px}
-.stratread{margin-top:8px;font-size:12.5px;line-height:1.5;color:var(--ink-2)}
-.stratread b{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--route)}
-.stratread .mut{color:var(--ink-3)}
-.stratlib{margin-top:14px;border:1px solid var(--rule);border-radius:3px;background:var(--card-2)}
-.sl-h{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:11px 13px;border-bottom:1px solid var(--rule-2)}
-.sl-k{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
-.sl-h select{font-size:12.4px;padding:6px 8px;border:1px solid var(--rule);border-radius:2px;background:var(--card);color:var(--ink)}
-.sl-h .coach-x{margin-left:auto}
-.sl-b{padding:12px 13px;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px}
-.slcard{border:1px solid var(--rule-2);border-radius:2px;padding:11px 12px;background:var(--card)}
-.sl-ch{display:flex;gap:8px;align-items:baseline;margin-bottom:7px}
-.sl-ch b{font-family:var(--cond);font-size:15px;font-weight:600}
-.sl-pb{font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin-right:auto}
-.sl-steps,.sl-branch{margin:0;padding-left:17px;font-size:12.4px;line-height:1.5;color:var(--ink-2)}
-.sl-branch{list-style:none;padding-left:0}
-.sl-branch li{padding:3px 0;border-bottom:1px dashed var(--rule-2)}
-.sl-branch li:last-child{border-bottom:none}
-.sl-branch i{font-style:normal;font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--route)}
-.sl-edit{padding:12px 13px;border-top:1px solid var(--rule-2)}
-
-/* ---------- reward engine ---------- */
-.rwbar{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
-.rwbar .field{margin-bottom:0}
-.rwsplit{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:18px;margin-top:16px}
-@media (max-width:900px){.rwsplit{grid-template-columns:1fr}}
-.rwlegend{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
-.rwlegend span{font-family:var(--mono);font-size:10px;color:var(--ink-3)}
-.rwlegend span.on{color:var(--go);font-weight:600}
-#rwTable td{vertical-align:top}
 </style>
 
 </head>
@@ -2340,44 +2276,8 @@ window.CFG=function(k){return isFinite(C[k])?C[k]:D[k];};
             </div>
             <div class="tfield"><span>Liquidity map — the pools you will trade toward</span>
               <textarea id="nPools" style="min-height:44px" placeholder="PDH 3372, PDL 3341, equal lows 3346, Asia 3352–3361."></textarea></div>
-            <div class="tfield"><span>Expected path — what should happen, in one sentence</span>
+            <div class="tfield" style="margin-bottom:0"><span>Expected path — what should happen, in one sentence</span>
               <textarea id="nPath" style="min-height:44px" placeholder="Sweep the Asia low into London, reclaim, then run the PDH through the New York open."></textarea></div>
-            <div class="tfield" style="margin-bottom:0">
-              <span>How you will get in and out today</span>
-              <div class="stratpick">
-                <label>Entry<select id="selEntry"></select></label>
-                <label>Exit<select id="selExit"></select></label>
-                <button type="button" class="btn ghost" id="stratOpen">Open the library</button>
-              </div>
-              <div class="stratread" id="stratRead"></div>
-            </div>
-          </div>
-
-          <div class="stratlib" id="stratLib" hidden>
-            <div class="sl-h">
-              <span class="sl-k">Strategy library</span>
-              <div class="seg" id="slKind" role="group" aria-label="Kind">
-                <button type="button" data-k="entry" aria-pressed="true">Entries</button>
-                <button type="button" data-k="exit" aria-pressed="false">Exits</button>
-                <button type="button" data-k="branch" aria-pressed="false">If / then</button>
-              </div>
-              <select id="slPb" aria-label="Playbook filter"></select>
-              <button type="button" class="btn ghost" id="slNew">New</button>
-              <button type="button" class="coach-x" id="slClose" aria-label="Close the library">✕</button>
-            </div>
-            <div class="sl-b" id="slBody"></div>
-            <div class="sl-edit" id="slEdit" hidden>
-              <div class="planadd">
-                <input id="slName" type="text" placeholder="Name — e.g. FVG retest entry">
-                <select id="slFor" aria-label="Applies to"></select>
-              </div>
-              <textarea id="slSteps" class="bktx" rows="5" placeholder="One step per line, in order.&#10;For If / then, write:  if price does X | then do Y"></textarea>
-              <div class="dataops" style="margin-top:8px">
-                <button class="btn" id="slSave">Save</button>
-                <button class="btn ghost" id="slCancel">Cancel</button>
-                <span class="note" id="slNote"></span>
-              </div>
-            </div>
           </div>
           <p class="fs-note">Levels go in the <button class="jump" data-go="tools|#t-levels">level board</button>. Session windows and the news protocol are in <button class="jump" data-go="reference|#r-instrument">Reference → the instrument</button>.</p>
         </div>
@@ -2439,7 +2339,6 @@ window.CFG=function(k){return isFinite(C[k])?C[k]:D[k];};
           </div>
           <div class="gate" id="calcGate"></div>
           <p class="fs-note" style="margin-bottom:14px">Numbers come from the <button class="jump" data-go="tools|#t-calc">position calculator</button>. Add the live spread to your stop distance before you size.</p>
-          <div id="planMini"></div>
           <ul class="checks" id="gateList">
             <li><label class="check"><input type="checkbox" data-gate><b>Direction agrees with the HTF bias<small>The trade and the 4H story point the same way.</small></b></label></li>
             <li><label class="check"><input type="checkbox" data-gate><b>Stop and target sit on real levels<small>Structure and liquidity, not round numbers or a fixed dollar amount.</small></b></label></li>
@@ -3469,52 +3368,14 @@ window.CFG=function(k){return isFinite(C[k])?C[k]:D[k];};
           </div>
           <div class="gate" id="calcGateTool" style="margin-top:12px"></div>
           <p class="fs-note" id="calcExtra"></p>
-
-          <div class="planboard">
-            <div class="pb-head">
-              <p class="legend" style="margin:0">Planned setups</p>
-              <span class="hint" id="planHint">none</span>
-            </div>
-            <p class="fs-note" style="margin-top:0">Size several setups before the session and keep them side by side. Nothing here is live until you arm it, and each one carries the playbook you planned it under.</p>
-            <div class="planadd">
-              <input id="planTag" type="text" placeholder="Label — e.g. London PDL sweep" aria-label="Setup label">
-              <select id="planPb" aria-label="Playbook"></select>
-              <button class="btn" id="planSave">Save the current numbers</button>
-            </div>
-            <div id="planList"></div>
-          </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="tool" id="t-reward">
-    <div class="eyebrow"><span class="tab green">C</span><h2>Reward engine</h2><span class="line"></span><span class="hint" id="rwHint">—</span></div>
-    <div class="card pad">
-      <p class="fs-note" style="margin-top:0">The same setup, managed eight ways. Risk is one R in every plan — what changes is how you take the profit. Probabilities come from your own journal: how often your trades actually reached each multiple.</p>
-      <div class="rwbar">
-        <div class="field"><label for="rwTarget">Target (R)</label><input id="rwTarget" type="number" step="0.1" value="3"></div>
-        <div class="field"><label for="rwSample">Trades sampled</label><input id="rwSample" type="number" step="10" value="60"></div>
-        <label class="check" style="flex:none"><input type="checkbox" id="rwFromCalc" checked><b>Take the target from the calculator</b></label>
-      </div>
-      <div class="gate" id="rwCurve" style="margin-bottom:12px"></div>
-      <div class="matrix-scroll">
-        <table class="mini-t" id="rwTable"><thead><tr>
-          <th>Management plan</th><th style="text-align:right">Expected</th><th style="text-align:right">Green</th>
-          <th style="text-align:right">If it stalls</th><th style="text-align:right">Best</th><th style="text-align:right">Worst</th><th>What it costs you</th><th></th>
-        </tr></thead><tbody id="rwBody"></tbody></table>
-      </div>
-      <div class="rwsplit">
-        <div><p class="legend">The trade-off</p><div id="rwPlot"></div>
-          <p class="fs-note">Up is more expected R. Right is a higher chance of ending green. Nothing is on both extremes — the plans on the outer edge are the ones worth choosing between.</p></div>
-        <div><p class="legend">Reading it</p><div class="gate" id="rwRead"></div></div>
       </div>
     </div>
   </section>
 
   <!-- RISK ENGINE -->
   <section class="tool" id="t-price">
-    <div class="eyebrow"><span class="tab blue">D</span><h2>Price feed</h2><span class="line"></span><span class="hint" id="pxHint">manual</span></div>
+    <div class="eyebrow"><span class="tab blue">C</span><h2>Price feed</h2><span class="line"></span><span class="hint" id="pxHint">manual</span></div>
     <div class="card pad">
       <p class="fs-note" style="margin-top:0">Optional. With a price the flow can show distance to your stop and target, R in flight on every open position, and warn you when price approaches a level you marked. Without one, type it in when it matters — nothing else changes.</p>
       <div class="insopts">
@@ -3538,7 +3399,7 @@ window.CFG=function(k){return isFinite(C[k])?C[k]:D[k];};
 
   <!-- EVENT CALENDAR -->
   <section class="tool" id="t-events">
-    <div class="eyebrow"><span class="tab red">E</span><h2>Event calendar</h2><span class="line"></span><span class="hint">times in GST</span></div>
+    <div class="eyebrow"><span class="tab red">D</span><h2>Event calendar</h2><span class="line"></span><span class="hint">times in GST</span></div>
     <div class="card">
       <div class="levels">
         <div class="levels-l">
@@ -3574,7 +3435,7 @@ window.CFG=function(k){return isFinite(C[k])?C[k]:D[k];};
   </section>
 
   <section class="tool" id="t-risk">
-    <div class="eyebrow"><span class="tab red">F</span><h2>Risk engine</h2><span class="line"></span><span class="hint">what this risk does over time</span></div>
+    <div class="eyebrow"><span class="tab red">E</span><h2>Risk engine</h2><span class="line"></span><span class="hint">what this risk does over time</span></div>
     <div class="hintstrip" data-tip="engine">
       <span class="ico">TIP</span>
       <span>Set your real numbers here, not hopeful ones. Take the win rate and average R from the log after fifty trades — before that, model 40% and 2R and see whether you can sit through the drawdown it implies.</span>
@@ -5296,7 +5157,6 @@ function openPosition(){
     e:parseFloat($("#entry").value),sl:parseFloat($("#stop").value),tp:parseFloat($("#target").value),
     tp1:c.tp1,a1:c.a1,lots:c.lots,risk:c.riskUSD,rr:c.rr,rr1:c.rr1,
     at:Date.now(),ph:{be:false,tp1:false},legs:[],closed:0,
-    exit:(typeof SEL!=="undefined"?SEL.exit:"")||"",entry:(typeof SEL!=="undefined"?SEL.entry:"")||"",stepIdx:0,
     why:($("#jThesis")?$("#jThesis").value.trim():""),
     inval:($("#jInval")?$("#jInval").value.trim():""),
     assume:($("#jAssume")?$("#jAssume").value.trim():"")});
@@ -5334,31 +5194,8 @@ function posEvent(id,k){
     p.legs.push({part:part,r:p.rr1!=null?p.rr1:1,how:"partial"});
     p.closed=(p.closed||0)+part/100;
   }
-  else if(k==="nextstep"){
-    var rec2=p.exit?byId(p.exit):null,n2=(p.stepIdx||0)+1;
-    if(rec2&&n2>=rec2.steps.length){closePosition(id,"target");return;}
-    p.stepIdx=n2;p.ph.struct=true;
-  }
-  else if(k.indexOf("scale")===0){
-    var pct=parseInt(k.replace("scale",""),10)||50;
-    var left=100-Math.round((p.closed||0)*100);
-    pct=Math.min(pct,left);
-    if(pct<=0){if(window.MTSToast)window.MTSToast("Nothing left to scale out of.");return;}
-    var lr=liveRFor(p);
-    p.legs.push({part:pct,r:Math.round((lr!=null?lr:(p.rr1!=null?p.rr1:1))*100)/100,how:"scaled "+pct+"%"});
-    p.closed=(p.closed||0)+pct/100;p.ph.tp1=true;p.ph.struct=true;
-    if(p.closed>=0.999){closePosition(id,"target");return;}
-    if(window.MTSToast)window.MTSToast(pct+"% out at "+(lr!=null?((lr>0?"+":"")+lr.toFixed(2)+"R"):"the planned level")+".");
-  }
   else if(k==="target"||k==="stopped"||k==="trail"||k==="flat"){closePosition(id,k==="flat"?"trail":k);return;}
   savePos();render();
-}
-function liveRFor(p){
-  var px=(window.MTSPrice&&window.MTSPrice())||null;
-  if(!px||!isFinite(p.e)||!isFinite(p.sl))return null;
-  var d=Math.abs(p.e-p.sl);
-  if(!d)return null;
-  return ((px-p.e)*((isFinite(p.tp)&&p.tp<p.e)?-1:1))/d;
 }
 function posAction(p){
   var mins=(Date.now()-p.at)/60000,lim=TS()[p.pb]||0,ns=newsState();
@@ -5370,19 +5207,6 @@ function posAction(p){
     return {t:"Close it — "+Math.round(mins)+" minutes, past the "+lim+"-minute stop",
       w:"It has not done what it was supposed to do in the time it had.",
       b:[["flat","Closed","danger"],["stopped","Stopped out","danger"]],hot:true};
-  var rec=p.exit?byId(p.exit):null;
-  if(rec&&rec.steps.length){
-    var idx=Math.min(p.stepIdx||0,rec.steps.length-1);
-    var last=idx>=rec.steps.length-1;
-    var btns=[["nextstep",last?"Done — close it":"Done — next step","primary"]];
-    if(!last)btns.push(["scale50","Scale 50%"],["scale33","Scale 33%"]);
-    btns.push(["trail","Trailed out"],["stopped","Stopped out","danger"]);
-    return {t:rec.steps[idx],
-      w:rec.name+" · step "+(idx+1)+" of "+rec.steps.length+
-        (p.legs.length?" · banked "+realisedR(p).toFixed(2)+"R":"")+
-        ". Your own written plan, not a suggestion.",
-      b:btns};
-  }
   if(!p.ph.struct)
     return {t:"Wait. Nothing until structure clears.",
       w:"Breakeven only once "+(p.pb==="range"?"price clears a quarter of the range":"the last opposing swing is taken")+".",
@@ -5395,449 +5219,6 @@ function posAction(p){
     w:"Trail behind structure. "+(p.legs.length?"Banked so far: "+realisedR(p).toFixed(2)+"R.":""),
     b:[["target","Target hit","primary"],["trail","Trailed out"],["stopped","Stopped","danger"]]};
 }
-/* ---------- strategy library: how you get in, how you get out, and the branches ---------- */
-var STRAT_DEFAULTS=[
- {id:"e1",kind:"entry",pb:"trend",name:"Pullback into value",
-  steps:["Wait for price to reach the 20–50 EMA zone with the trend intact.",
-         "Take a rejection candle off the zone as the first confirmation.",
-         "Take the 5M structure shift back with the trend as the second.",
-         "Enter on the close of the shift candle, stop behind the pullback swing."]},
- {id:"e2",kind:"entry",pb:"trend",name:"Break and retest",
-  steps:["Mark the level the impulse broke.",
-         "Wait for price to return and hold it from the other side.",
-         "Enter on the hold, stop beyond the retest wick."]},
- {id:"e3",kind:"entry",pb:"sweep",name:"FVG retest after displacement",
-  steps:["Mark the pool. Wait for the wick through it and the close back inside.",
-         "Require the structure shift on the entry timeframe.",
-         "Require a displacement leg that leaves a gap.",
-         "Enter on the retrace into the gap, stop beyond the sweep wick."]},
- {id:"e4",kind:"entry",pb:"sweep",name:"Order block entry",
-  steps:["Find the last opposing candle before the displacement.",
-         "Use its body as the zone, not the wick.",
-         "Enter on the first touch, stop beyond the block."]},
- {id:"e5",kind:"entry",pb:"range",name:"Edge rejection fade",
-  steps:["Require two respected touches on each side before trading the range.",
-         "Wait for price at the boundary, not the middle.",
-         "Take a rejection or a sweep of the edge as the trigger.",
-         "Enter on the close back inside, stop beyond the boundary wick."]},
- {id:"x1",kind:"exit",pb:"trend",name:"Structure trail",
-  steps:["Do nothing until the last opposing swing is taken out.",
-         "Move the stop to breakeven once it is.",
-         "Take the planned partial at the first target.",
-         "Trail the rest behind each new higher low.",
-         "Close what remains at the session end or the final target."]},
- {id:"x2",kind:"exit",pb:"sweep",name:"Two-leg scale",
-  steps:["Stop stays where it is until displacement confirms.",
-         "Half off at the first pool, stop to breakeven at the same time.",
-         "Second half runs to the opposing pool.",
-         "If the runner stalls for thirty minutes, close it at market."]},
- {id:"x3",kind:"exit",pb:"range",name:"Midpoint and boundary",
-  steps:["Stop stays beyond the boundary wick.",
-         "Half off at the midpoint of the range.",
-         "Move to breakeven once the midpoint is cleared.",
-         "Rest to the far boundary. Never hold through a close outside the range."]},
- {id:"x4",kind:"exit",pb:"any",name:"One target, no management",
-  steps:["Set the stop and target before entry.",
-         "Do nothing until one of them is hit.",
-         "This is the correct exit when you cannot watch the screen."]},
- {id:"b1",kind:"branch",pb:"any",name:"When it does not go your way",
-  steps:["if price stalls at the entry for 15 minutes | then halve the position and let the rest prove itself",
-         "if a tier-1 print lands within 30 minutes | then flatten or halve before it, never after",
-         "if price closes back through the entry level | then close at market rather than waiting for the stop",
-         "if the setup reaches 1R then gives it all back | then close the trade and log a rule break"]},
- {id:"b2",kind:"branch",pb:"sweep",name:"Sweep branches",
-  steps:["if the sweep happens without displacement | then stand down, no entry",
-         "if both sides get purged | then wait for one side to be reclaimed before anything",
-         "if the FVG fills completely and closes through | then the premise is void, exit"]}
-];
-var STRATS=[];
-try{var sj=JSON.parse(store.get("strats")||"null");if(Array.isArray(sj))STRATS=sj;}catch(e){}
-if(!STRATS.length)STRATS=JSON.parse(JSON.stringify(STRAT_DEFAULTS));
-var SEL={entry:store.get("selEntry")||"",exit:store.get("selExit")||""};
-function stratsSave(){store.set("strats",JSON.stringify(STRATS));}
-function byId(id){return STRATS.filter(function(x){return x.id===id;})[0];}
-function forPb(kind,pb){
-  return STRATS.filter(function(x){return x.kind===kind&&(x.pb===pb||x.pb==="any"||!pb);});
-}
-function fillSelects(){
-  var pb=S.active||S.routed||"";
-  [["selEntry","entry"],["selExit","exit"]].forEach(function(p){
-    var el=$("#"+p[0]);
-    if(!el)return;
-    var list=forPb(p[1],pb),cur=SEL[p[1]];
-    el.innerHTML='<option value="">— none chosen —</option>'+list.map(function(x){
-      return '<option value="'+x.id+'"'+(cur===x.id?" selected":"")+'>'+pesc(x.name)+
-        (x.pb!=="any"?" · "+(PB[x.pb]?PB[x.pb].name:x.pb):"")+'</option>';}).join("");
-    if(cur&&!byId(cur))el.value="";
-  });
-  var r=$("#stratRead"),en=byId(SEL.entry),ex=byId(SEL.exit);
-  if(r){
-    r.innerHTML=(en||ex)
-      ? ((en?'<div><b>In:</b> '+pesc(en.name)+' — '+pesc(en.steps[0]||"")+'</div>':"")+
-         (ex?'<div><b>Out:</b> '+pesc(ex.name)+' — '+ex.steps.length+' steps, and it drives the live card in step 5.</div>':""))
-      : '<div class="mut">Nothing chosen. The trade will still work; you just manage it from memory instead of a written plan.</div>';
-  }
-}
-function renderLib(){
-  var host=$("#slBody");
-  if(!host)return;
-  var kind=($("#slKind button[aria-pressed=\"true\"]")||{dataset:{k:"entry"}}).dataset.k;
-  var pbf=$("#slPb").value;
-  var list=STRATS.filter(function(x){return x.kind===kind&&(pbf==="all"||x.pb===pbf||x.pb==="any");});
-  host.innerHTML=list.length?list.map(function(x){
-    var i=STRATS.indexOf(x);
-    return '<div class="slcard"><div class="sl-ch"><b>'+pesc(x.name)+'</b>'+
-      '<span class="sl-pb">'+(x.pb==="any"?"any playbook":(PB[x.pb]?PB[x.pb].name:x.pb))+'</span>'+
-      '<button class="iconbtn" data-sl-edit="'+i+'">edit</button>'+
-      '<button class="iconbtn danger" data-sl-del="'+i+'">remove</button></div>'+
-      (x.kind==="branch"
-        ? '<ul class="sl-branch">'+x.steps.map(function(st){
-            var p=st.split("|");
-            return '<li><i>if</i> '+pesc((p[0]||"").trim().replace(/^if\s+/i,""))+
-                   ' <i>then</i> '+pesc((p[1]||"").trim().replace(/^then\s+/i,""))+'</li>';}).join("")+'</ul>'
-        : '<ol class="sl-steps">'+x.steps.map(function(st){return "<li>"+pesc(st)+"</li>";}).join("")+'</ol>')+
-      '</div>';
-  }).join(""):'<p class="fs-note">Nothing here yet for that filter.</p>';
-  $$("#slBody [data-sl-edit]").forEach(function(b){
-    b.addEventListener("click",function(){editStrat(+b.dataset.slEdit);});});
-  $$("#slBody [data-sl-del]").forEach(function(b){
-    b.addEventListener("click",function(){
-      var i=+b.dataset.slDel;
-      if(!window.confirm('Remove "'+STRATS[i].name+'"?'))return;
-      STRATS.splice(i,1);stratsSave();renderLib();fillSelects();});});
-}
-var EDIT=-1;
-function editStrat(i){
-  EDIT=i;
-  var x=i>-1?STRATS[i]:{name:"",pb:"any",steps:[],kind:($("#slKind button[aria-pressed=\"true\"]")||{dataset:{k:"entry"}}).dataset.k};
-  $("#slEdit").hidden=false;
-  $("#slName").value=x.name;
-  $("#slFor").innerHTML='<option value="any">Any playbook</option>'+Object.keys(PB).map(function(k){
-    return '<option value="'+k+'"'+(x.pb===k?" selected":"")+'>'+PB[k].name+'</option>';}).join("");
-  $("#slFor").value=x.pb;
-  $("#slSteps").value=x.steps.join("\n");
-  $("#slNote").textContent=x.kind==="branch"?"One branch per line: if … | then …":"One step per line, in the order you do them.";
-}
-if($("#stratOpen"))$("#stratOpen").addEventListener("click",function(){
-  var lib=$("#stratLib");
-  lib.hidden=!lib.hidden;
-  if(!lib.hidden){
-    if(!$("#slPb").dataset.filled){
-      $("#slPb").innerHTML='<option value="all">All playbooks</option>'+Object.keys(PB).map(function(k){
-        return '<option value="'+k+'">'+PB[k].name+'</option>';}).join("");
-      $("#slPb").dataset.filled="1";
-    }
-    renderLib();
-  }
-});
-if($("#slClose"))$("#slClose").addEventListener("click",function(){$("#stratLib").hidden=true;});
-$$("#slKind button").forEach(function(b){
-  b.addEventListener("click",function(){
-    $$("#slKind button").forEach(function(x){x.setAttribute("aria-pressed",String(x===b));});
-    $("#slEdit").hidden=true;renderLib();});});
-if($("#slPb"))$("#slPb").addEventListener("change",renderLib);
-if($("#slNew"))$("#slNew").addEventListener("click",function(){editStrat(-1);});
-if($("#slCancel"))$("#slCancel").addEventListener("click",function(){$("#slEdit").hidden=true;EDIT=-1;});
-if($("#slSave"))$("#slSave").addEventListener("click",function(){
-  var name=$("#slName").value.trim();
-  if(!name){$("#slNote").textContent="It needs a name.";return;}
-  var kind=($("#slKind button[aria-pressed=\"true\"]")||{dataset:{k:"entry"}}).dataset.k;
-  var steps=$("#slSteps").value.split("\n").map(function(x){return x.trim();}).filter(Boolean);
-  if(!steps.length){$("#slNote").textContent="Write at least one step.";return;}
-  var rec={id:(EDIT>-1?STRATS[EDIT].id:"s"+Date.now()),kind:kind,pb:$("#slFor").value,name:name,steps:steps};
-  if(EDIT>-1)STRATS[EDIT]=rec;else STRATS.push(rec);
-  stratsSave();$("#slEdit").hidden=true;EDIT=-1;renderLib();fillSelects();
-  if(window.MTSToast)window.MTSToast("Strategy saved.");
-});
-[["selEntry","entry"],["selExit","exit"]].forEach(function(p){
-  var el=$("#"+p[0]);
-  if(el)el.addEventListener("change",function(){
-    SEL[p[1]]=el.value;store.set(p[0],el.value);fillSelects();render();});
-});
-
-/* ---------- reward engine: one R of risk, eight ways to take the profit ---------- */
-function reachOf(t){
-  var r=+t.r||0,mx=r;
-  (t.legs||[]).forEach(function(l){if(+l.r>mx)mx=+l.r;});
-  return mx;
-}
-function rewardCurve(n){
-  var H=HIST.slice(-(n||60)).filter(function(t){return isFinite(t.r);});
-  var reach=H.map(reachOf);
-  var grid=[],step=0.25,max=6;
-  for(var x=0;x<=max+0.001;x+=step)grid.push(+x.toFixed(2));
-  var p={},src="journal",note="";
-  if(reach.length>=10){
-    grid.forEach(function(x){
-      p[x]=reach.filter(function(v){return v>=x;}).length/reach.length;
-    });
-    note=reach.length+" trades. Each trade counts the furthest R it is recorded as reaching, so a winner you closed early counts only to where you closed it — the real reach is a little better than this.";
-  } else {
-    src="default";
-    grid.forEach(function(x){p[x]=Math.max(0.02,Math.exp(-0.55*x));});
-    note="Only "+reach.length+" trades on record, so this uses a generic decay curve. It becomes yours once you have logged a few dozen.";
-  }
-  return {grid:grid,p:p,step:step,n:reach.length,src:src,note:note};
-}
-function pAt(c,x){
-  if(x<=0)return 1;
-  var keys=c.grid,last=keys[keys.length-1];
-  if(x>=last)return c.p[last];
-  var lo=Math.floor(x/c.step)*c.step,hi=lo+c.step;
-  var a=c.p[+lo.toFixed(2)],b=c.p[+hi.toFixed(2)];
-  if(a==null)return c.p[last];
-  if(b==null)b=a;
-  return a+(b-a)*((x-lo)/c.step);
-}
-/* A plan is a list of events at R levels. exit takes a share off; add buys more,
-   funded by the stop trailing so total exposure never exceeds the original 1R. */
-function rewardPlans(T){
-  var t=Math.max(0.5,T);
-  return [
-   {n:"All out at target",d:"One exit, no management.",
-    ev:[],note:"Simplest. Everything rides on reaching "+t.toFixed(1)+"R."},
-   {n:"Breakeven, then run",d:"Nothing off; stop to entry at 1R.",
-    ev:[{at:1,stop:0}],note:"Removes the loss once it works, keeps the whole tail."},
-   {n:"Half at 1R",d:"50% off at 1R, stop to entry, rest to target.",
-    ev:[{at:1,exit:0.5,stop:0}],note:"The default two-leg plan."},
-   {n:"Half at half-target",d:"50% off at "+(t/2).toFixed(1)+"R, stop to entry.",
-    ev:[{at:t/2,exit:0.5,stop:0}],note:"Later partial, more tail kept."},
-   {n:"Thirds",d:"A third at 1R, a third at 2R, the rest at target.",
-    ev:[{at:1,exit:0.34,stop:0},{at:2,exit:0.33,stop:1}],note:"Smooths the curve, trims the tail."},
-   {n:"Quarter ladder",d:"25% at 1R, 2R, 3R, the rest at target.",
-    ev:[{at:1,exit:0.25,stop:0},{at:2,exit:0.25,stop:1},{at:3,exit:0.25,stop:2}],
-    note:"Highest chance of green, lowest expected R. Good on days you are shaky."},
-   {n:"Pyramid at 1R",d:"Add 50% of the original size at 1R, stop trails to +0.25R.",
-    ev:[{at:1,add:0.5,stop:0.25}],note:"Risk stays inside 1R because the stop is above entry before the add is on."},
-   {n:"Pyramid and scale",d:"Add 50% at 1R, take half off at 2R, stop trails behind.",
-    ev:[{at:1,add:0.5,stop:0.25},{at:2,exit:0.5,stop:1}],note:"The compromise: bigger when it runs, banked when it stalls."}
-  ];
-}
-/* Simulate a plan against a maximum-reach outcome m (in R). */
-function runPlan(plan,T,m){
-  var size=1,stop=-1,banked=0,exposure=1;
-  for(var i=0;i<plan.ev.length;i++){
-    var e=plan.ev[i];
-    if(m<e.at)break;
-    if(e.exit){var off=size*e.exit;banked+=off*e.at;size-=off;}
-    if(e.add)size+=e.add;
-    if(e.stop!=null)stop=e.stop;
-  }
-  if(m>=T)return banked+size*T;
-  return banked+size*stop;
-}
-function evalPlan(plan,T,c){
-  var ev=0,green=0,best=runPlan(plan,T,T+0.001),worst=null;
-  var firstAt=(plan.ev&&plan.ev.length)?plan.ev[0].at:1;
-  var stall=runPlan(plan,T,firstAt+0.001);
-  for(var x=0;x<=6;x+=c.step){
-    var lo=x,hi=x+c.step;
-    var prob=Math.max(0,pAt(c,lo)-pAt(c,hi));
-    if(prob<=0)continue;
-    var m=lo+c.step/2;
-    var out=runPlan(plan,T,m);
-    ev+=prob*out;
-    if(out>0.001)green+=prob;
-    if(worst===null||out<worst)worst=out;
-  }
-  var tail=pAt(c,6);
-  if(tail>0){var o2=runPlan(plan,T,6.5);ev+=tail*o2;if(o2>0.001)green+=tail;}
-  return {ev:ev,green:green,best:best,stall:stall,worst:worst===null?-1:worst};
-}
-function renderReward(){
-  if(!$("#rwBody"))return;
-  var c=rewardCurve(parseInt($("#rwSample").value,10)||60);
-  var T=parseFloat($("#rwTarget").value)||3;
-  if($("#rwFromCalc").checked){
-    var k=calc();
-    if(k&&k.ok&&k.dirOK&&isFinite(k.rr)){T=Math.round(k.rr*10)/10;$("#rwTarget").value=T;}
-  }
-  $("#rwHint").textContent=c.src==="journal"?(c.n+" trades · target "+T.toFixed(1)+"R"):("generic curve · target "+T.toFixed(1)+"R");
-  $("#rwCurve").className="gate"+(c.src==="journal"?" ok":"");
-  $("#rwCurve").innerHTML="<b>How far your trades run.</b> "+
-    [1,2,3,4].map(function(x){return x+"R: "+Math.round(pAt(c,x)*100)+"%";}).join(" · ")+
-    " reached. "+c.note;
-  var plans=rewardPlans(T).map(function(p){
-    var r=evalPlan(p,T,c);
-    return {p:p,r:r};
-  });
-  var bestEV=Math.max.apply(null,plans.map(function(x){return x.r.ev;}));
-  var bestGreen=Math.max.apply(null,plans.map(function(x){return x.r.green;}));
-  $("#rwBody").innerHTML=plans.map(function(x,i){
-    var evTop=Math.abs(x.r.ev-bestEV)<0.001,grTop=Math.abs(x.r.green-bestGreen)<0.001;
-    return "<tr><td><b>"+x.p.n+"</b><br><span style='color:var(--ink-3);font-size:11.5px'>"+x.p.d+"</span></td>"+
-      "<td class='n'"+(evTop?" style='color:var(--go);font-weight:600'":"")+">"+(x.r.ev>0?"+":"")+x.r.ev.toFixed(2)+"R</td>"+
-      "<td class='n'"+(grTop?" style='color:var(--go);font-weight:600'":"")+">"+Math.round(x.r.green*100)+"%</td>"+
-      "<td class='n' style='color:"+(x.r.stall>0?"var(--go)":"var(--ink-3)")+"'>"+(x.r.stall>0?"+":"")+x.r.stall.toFixed(2)+"R</td>"+
-      "<td class='n'>"+x.r.best.toFixed(2)+"R</td>"+
-      "<td class='n' style='color:var(--abort)'>"+x.r.worst.toFixed(2)+"R</td>"+
-      "<td style='font-size:11.8px;color:var(--ink-3)'>"+x.p.note+"</td>"+
-      "<td class='rowops'><button class='iconbtn' data-rw-apply='"+i+"'>use it</button></td></tr>";
-  }).join("");
-  $$("#rwBody [data-rw-apply]").forEach(function(b){
-    b.addEventListener("click",function(){applyRewardPlan(plans[+b.dataset.rwApply].p,T);});
-  });
-  /* trade-off plot */
-  var W=460,H=250,P=34;
-  var evs=plans.map(function(x){return x.r.ev;}),grs=plans.map(function(x){return x.r.green;});
-  var evLo=Math.min.apply(null,evs),evHi=Math.max.apply(null,evs),gLo=Math.min.apply(null,grs),gHi=Math.max.apply(null,grs);
-  var X=function(g){return (P+((g-gLo)/((gHi-gLo)||1))*(W-P-14)).toFixed(1);};
-  var Y=function(e){return (H-P-((e-evLo)/((evHi-evLo)||1))*(H-P-16)).toFixed(1);};
-  /* the frontier: no other plan beats it on both axes */
-  var front=plans.filter(function(a){
-    return !plans.some(function(b2){return b2!==a&&b2.r.ev>=a.r.ev&&b2.r.green>=a.r.green&&(b2.r.ev>a.r.ev||b2.r.green>a.r.green);});
-  });
-  $("#rwPlot").innerHTML='<svg viewBox="0 0 '+W+' '+H+'" class="ins-svg" role="img" aria-label="Expected R against chance of a green trade">'+
-    '<line x1="'+P+'" y1="'+(H-P)+'" x2="'+(W-10)+'" y2="'+(H-P)+'" stroke="var(--rule)"/>'+
-    '<line x1="'+P+'" y1="14" x2="'+P+'" y2="'+(H-P)+'" stroke="var(--rule)"/>'+
-    '<text x="'+P+'" y="'+(H-10)+'" class="lv-lbl" fill="var(--ink-3)">'+Math.round(gLo*100)+'% green</text>'+
-    '<text x="'+(W-90)+'" y="'+(H-10)+'" class="lv-lbl" fill="var(--ink-3)">'+Math.round(gHi*100)+'%</text>'+
-    '<text x="4" y="20" class="lv-lbl" fill="var(--ink-3)">'+evHi.toFixed(1)+'R</text>'+
-    '<text x="4" y="'+(H-P)+'" class="lv-lbl" fill="var(--ink-3)">'+evLo.toFixed(1)+'R</text>'+
-    plans.map(function(x,i){
-      var on=front.indexOf(x)>-1;
-      return '<circle cx="'+X(x.r.green)+'" cy="'+Y(x.r.ev)+'" r="'+(on?6:4.5)+'" fill="'+(on?"var(--go)":"var(--ink-3)")+
-        '" opacity="'+(on?1:.55)+'"><title>'+x.p.n+' — '+x.r.ev.toFixed(2)+'R, '+Math.round(x.r.green*100)+'% green</title></circle>'+
-        '<text x="'+(+X(x.r.green)+9)+'" y="'+(+Y(x.r.ev)+4)+'" class="lv-lbl" fill="'+(on?"var(--ink)":"var(--ink-3)")+
-        '" font-size="10">'+(i+1)+'</text>';
-    }).join("")+'</svg>'+
-    '<div class="rwlegend">'+plans.map(function(x,i){
-      return '<span'+(front.indexOf(x)>-1?' class="on"':'')+'>'+(i+1)+' '+x.p.n+'</span>';}).join("")+'</div>';
-  var top=plans.slice().sort(function(a,b2){return b2.r.ev-a.r.ev;})[0];
-  var safe=plans.slice().sort(function(a,b2){return b2.r.green-a.r.green;})[0];
-  $("#rwRead").innerHTML="<b>"+top.p.n+"</b> has the highest expected value at "+top.r.ev.toFixed(2)+
-    "R, ending green "+Math.round(top.r.green*100)+"% of the time. <b>"+safe.p.n+"</b> is green "+
-    Math.round(safe.r.green*100)+"% of the time but expects "+safe.r.ev.toFixed(2)+
-    "R. The difference between them is "+Math.abs(top.r.ev-safe.r.ev).toFixed(2)+
-    "R per trade — across a hundred trades that is "+Math.abs((top.r.ev-safe.r.ev)*100).toFixed(0)+
-    "R, which is the real price of comfort. The <b>if it stalls</b> column is the one to read on a choppy day: it is what you keep when the trade triggers and then gives it back. "+
-    "Plans on the green frontier are the only ones worth choosing between; the rest are beaten on both counts.";
-}
-function applyRewardPlan(p,T){
-  var k=calc(),e=parseFloat($("#entry").value),sl=parseFloat($("#stop").value);
-  var firstExit=(p.ev||[]).filter(function(x){return x.exit;})[0];
-  if(firstExit&&isFinite(e)&&isFinite(sl)){
-    var dist=Math.abs(e-sl)+(parseFloat($("#spread").value)||0);
-    var dir=(parseFloat($("#target").value)<e)?-1:1;
-    $("#tp1").value=(e+dir*dist*firstExit.at).toFixed(2);
-    $("#alloc1").value=Math.round(firstExit.exit*100);
-    ["tp1","alloc1"].forEach(function(id){$("#"+id).dispatchEvent(new Event("input",{bubbles:true}));});
-  }
-  var steps=[];
-  steps.push("Stop stays at the invalidation until the first event.");
-  (p.ev||[]).forEach(function(x){
-    var bits=[];
-    if(x.exit)bits.push("take "+Math.round(x.exit*100)+"% off");
-    if(x.add)bits.push("add "+Math.round(x.add*100)+"% of the original size");
-    if(x.stop!=null)bits.push("stop to "+(x.stop===0?"breakeven":"+"+x.stop+"R"));
-    steps.push("At "+x.at+"R: "+bits.join(", ")+".");
-  });
-  steps.push("Everything that remains exits at "+T.toFixed(1)+"R or the stop in force.");
-  var rec={id:"rw"+Date.now(),kind:"exit",pb:S.active||"any",name:p.n+" ("+T.toFixed(1)+"R)",steps:steps};
-  STRATS.push(rec);stratsSave();
-  SEL.exit=rec.id;store.set("selExit",rec.id);
-  fillSelects();renderLib&&renderLib();render();
-  if(window.MTSToast)window.MTSToast('"'+rec.name+'" saved as an exit plan and selected for today.');
-}
-["rwTarget","rwSample"].forEach(function(id){
-  var el=$("#"+id);
-  if(el)el.addEventListener("input",renderReward);
-});
-if($("#rwFromCalc"))$("#rwFromCalc").addEventListener("change",renderReward);
-
-/* ---------- planned setups: size several before the session ---------- */
-var PLANS=[];
-try{var pl=JSON.parse(store.get("plans")||"null");if(Array.isArray(pl))PLANS=pl;}catch(e){}
-function plansSave(){store.set("plans",JSON.stringify(PLANS.slice(-20)));}
-function pesc(t){return String(t==null?"":t).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/"/g,"&quot;");}
-function planMath(p){
-  var bal=parseFloat($("#bal").value),rp=parseFloat($("#risk").value),sp=parseFloat($("#spread").value)||0;
-  var CT=CFG("contract");
-  if(!isFinite(bal)||!isFinite(rp)||!isFinite(p.e)||!isFinite(p.sl))return null;
-  var dist=Math.abs(p.e-p.sl)+sp;
-  if(!dist)return null;
-  var riskUSD=bal*rp/100,lots=riskUSD/(dist*CT);
-  var rr=isFinite(p.tp)?Math.abs(p.tp-p.e)/dist:null;
-  var rr1=isFinite(p.tp1)?Math.abs(p.tp1-p.e)/dist:null;
-  var a1=isFinite(p.a1)?p.a1:null;
-  var blend=(rr!=null&&rr1!=null&&a1)?((a1/100)*rr1+(1-a1/100)*rr):rr;
-  return {lots:lots,riskUSD:riskUSD,dist:dist,rr:rr,rr1:rr1,blend:blend,
-          side:(isFinite(p.tp)&&p.tp<p.e)?"sell":"buy"};
-}
-function renderPlans(){
-  var host=$("#planList"),mini=$("#planMini");
-  if(!host)return;
-  var sel=$("#planPb");
-  if(sel&&!sel.dataset.filled){
-    sel.innerHTML=Object.keys(PB).map(function(k){return '<option value="'+k+'">'+PB[k].name+'</option>';}).join("");
-    sel.dataset.filled="1";
-    if(S.active)sel.value=S.active;
-  }
-  $("#planHint").textContent=PLANS.length?(PLANS.length+" planned"):"none";
-  if(!PLANS.length){
-    host.innerHTML='<p class="fs-note">Nothing planned yet. Fill the calculator above, label it, and save — then do the same for the next idea.</p>';
-    if(mini)mini.innerHTML="";
-    return;
-  }
-  host.innerHTML='<div class="matrix-scroll"><table class="mini-t"><thead><tr><th>Setup</th><th>Playbook</th><th>Side</th>'+
-    '<th style="text-align:right">Entry</th><th style="text-align:right">Stop</th><th style="text-align:right">Targets</th>'+
-    '<th style="text-align:right">Lots</th><th style="text-align:right">R</th><th></th></tr></thead><tbody>'+
-    PLANS.map(function(p,i){
-      var m=planMath(p);
-      var rtxt=(m&&m.rr!=null)?(m.rr.toFixed(2)+((m.blend!=null&&m.rr1!=null)?' <small>bl '+m.blend.toFixed(2)+'</small>':"")):"—";
-      var warn=m&&m.rr!=null&&m.rr<CFG("rrFloor");
-      return '<tr'+(warn?' style="opacity:.72"':'')+'><td><b>'+pesc(p.tag||("Setup "+(i+1)))+'</b></td>'+
-        '<td style="color:var(--ink-3)">'+pesc(PB[p.pb]?PB[p.pb].name:(p.pb||"—"))+'</td>'+
-        '<td>'+(m?m.side:"—")+'</td>'+
-        '<td class="n">'+p.e+'</td><td class="n">'+p.sl+'</td>'+
-        '<td class="n">'+(isFinite(p.tp1)?p.tp1+" / ":"")+(isFinite(p.tp)?p.tp:"—")+'</td>'+
-        '<td class="n">'+(m?m.lots.toFixed(2):"—")+'</td>'+
-        '<td class="n"'+(warn?' style="color:var(--abort)"':'')+'>'+rtxt+'</td>'+
-        '<td class="rowops"><button class="iconbtn" data-plan-load="'+i+'">load</button>'+
-        '<button class="iconbtn" data-plan-arm="'+i+'">arm</button>'+
-        '<button class="iconbtn danger" data-plan-del="'+i+'">remove</button></td></tr>';
-    }).join("")+'</tbody></table></div>'+
-    '<p class="fs-note">'+PLANS.length+' planned · open positions are capped at '+CFG("maxOpenR")+'R however many of these you arm.</p>';
-  $$("#planList [data-plan-load]").forEach(function(b){
-    b.addEventListener("click",function(){loadPlan(+b.dataset.planLoad,false);});});
-  $$("#planList [data-plan-arm]").forEach(function(b){
-    b.addEventListener("click",function(){loadPlan(+b.dataset.planArm,true);});});
-  $$("#planList [data-plan-del]").forEach(function(b){
-    b.addEventListener("click",function(){
-      var i=+b.dataset.planDel;
-      if(!window.confirm('Remove "'+(PLANS[i].tag||"this setup")+'"?'))return;
-      PLANS.splice(i,1);plansSave();renderPlans();});});
-  if(mini){
-    mini.innerHTML='<div class="planmini"><span class="pm-k">Planned</span>'+PLANS.map(function(p,i){
-      var m=planMath(p);
-      return '<button type="button" class="pmchip'+((S.active&&p.pb===S.active)?" fit":"")+'" data-plan-load="'+i+'">'+
-        pesc(p.tag||("Setup "+(i+1)))+' <small>'+(m?m.lots.toFixed(2)+" lots":"—")+'</small></button>';
-    }).join("")+'</div>';
-    $$("#planMini [data-plan-load]").forEach(function(b){
-      b.addEventListener("click",function(){loadPlan(+b.dataset.planLoad,false);});});
-  }
-}
-function loadPlan(i,arm){
-  var p=PLANS[i];
-  if(!p)return;
-  [["entry",p.e],["stop",p.sl],["target",p.tp],["tp1",p.tp1],["alloc1",p.a1]].forEach(function(f){
-    var el=$("#"+f[0]);
-    if(el&&isFinite(f[1])){el.value=f[1];el.dispatchEvent(new Event("input",{bubbles:true}));}
-  });
-  if(p.why&&$("#jThesis")&&!$("#jThesis").value)$("#jThesis").value=p.why;
-  render();
-  if(!arm){if(window.MTSToast)window.MTSToast('"'+(p.tag||"Setup")+'" loaded into the calculator.');return;}
-  if(S.active&&p.pb&&p.pb!==S.active&&window.MTSToast)
-    window.MTSToast("Planned as "+(PB[p.pb]?PB[p.pb].name:p.pb)+", but the router says "+PB[S.active].name+".");
-  var btn=$("#armBtn");
-  if(btn&&!btn.disabled)btn.click();
-  else{
-    setView("flow");
-    var f=$("#f4");if(f)f.scrollIntoView({behavior:reduced()?"auto":"smooth",block:"start"});
-    if(window.MTSToast)window.MTSToast("Loaded — the entry gate is still open, so it cannot be armed yet.");
-  }
-}
-
 function renderPositions(){
   var host=$("#posList"),bar=$("#posBar");
   if(!host)return;
@@ -5862,7 +5243,7 @@ function renderPositions(){
         ' <small>stop $'+dSl.toFixed(2)+' · target $'+dTp.toFixed(2)+'</small></span>';
     }
     return '<div class="poscard'+(a.hot?" hot":"")+'" data-pid="'+p.id+'">'+
-      '<div class="pc-h"><b>'+p.name+'</b><span class="pc-m">'+((p.exit&&byId(p.exit))?byId(p.exit).name+' · ':'')+p.lots.toFixed(2)+' lots · stop '+p.sl+' · target '+p.tp+
+      '<div class="pc-h"><b>'+p.name+'</b><span class="pc-m">'+p.lots.toFixed(2)+' lots · stop '+p.sl+' · target '+p.tp+
       (p.legs.length?' · banked '+realisedR(p).toFixed(2)+'R':'')+'</span>'+live+
       '<span class="pc-t">'+(function(){
         var lr=(PX.v&&isFinite(p.e)&&isFinite(p.sl)&&Math.abs(p.e-p.sl)>0)
@@ -5880,15 +5261,6 @@ function renderPositions(){
   });
 }
 setInterval(function(){if(POS.length)renderPositions();},1000);
-if($("#planSave"))$("#planSave").addEventListener("click",function(){
-  var e=parseFloat($("#entry").value),sl=parseFloat($("#stop").value);
-  if(!isFinite(e)||!isFinite(sl)){if(window.MTSToast)window.MTSToast("Fill the entry and stop first.");return;}
-  PLANS.push({tag:$("#planTag").value.trim(),pb:$("#planPb").value||S.active||"",
-    e:e,sl:sl,tp:parseFloat($("#target").value),tp1:parseFloat($("#tp1").value),
-    a1:parseFloat($("#alloc1").value),why:($("#jThesis")?$("#jThesis").value.trim():""),at:Date.now()});
-  plansSave();$("#planTag").value="";renderPlans();
-  if(window.MTSToast)window.MTSToast("Setup saved to the plan board.");
-});
 
 /* ---------- master render ---------- */
 var STEPNAMES=["Prepare","Route","Confirm","Size & arm","Manage","Debrief","Close the day"];
@@ -6021,7 +5393,7 @@ function render(){
   if($("#socState")){$("#socState").textContent=sc7+" / 3";$("#socState").className="soc-s"+(sc7===3?" ok":"");}
   S.armed=POS.length>0;
   S.armedAt=POS.length?Math.min.apply(null,POS.map(function(p){return p.at;})):0;
-  renderCtx(c);fillSelects();renderPositions();renderPlans();renderReward();renderPrice();paintDay();
+  renderCtx(c);renderPositions();renderPrice();paintDay();
   var stepNow=7;for(var sN=0;sN<7;sN++){if(!done[sN]){stepNow=sN+1;break;}}
   renderHUD({calc:c,routed:S.routed,active:S.active,confirmOK:confirmOK,armed:S.armed,traded:S.traded,ready:ready,
     tripped:tripped,newsBlock:newsBlock,step:stepNow,armNote:$("#armNote").textContent,
@@ -10700,27 +10072,6 @@ window.MTSPaintAI=function(){
   if(b)b.addEventListener("click",function(){window[a[1]]&&window[a[1]]();});
 });
 MTSPaintAI();
-})();
-</script>
-<script>
-/* A step that has just been edited stays open until focus has been gone for a while. */
-(function(){
-  var timer=null;
-  document.addEventListener("focusin",function(e){
-    var st=e.target.closest&&e.target.closest(".fstep");
-    if(!st)return;
-    clearTimeout(timer);
-    document.querySelectorAll(".fstep.ux-editing").forEach(function(x){if(x!==st)x.classList.remove("ux-editing");});
-    st.classList.add("ux-editing");
-  });
-  document.addEventListener("focusout",function(e){
-    var st=e.target.closest&&e.target.closest(".fstep");
-    if(!st)return;
-    clearTimeout(timer);
-    timer=setTimeout(function(){
-      if(!st.contains(document.activeElement))st.classList.remove("ux-editing");
-    },2500);
-  });
 })();
 </script>
 </body>
