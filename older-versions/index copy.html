@@ -2168,12 +2168,6 @@ C.set=function(k,v){
   subs.forEach(function(f){try{f(k);}catch(e){}});
   return true;
 };
-C.reload=function(){
-  try{var raw2=localStorage.getItem("mts.v3.cfg");
-    if(raw2){var o2=JSON.parse(raw2);Object.keys(D).forEach(function(k){if(typeof o2[k]==="number"&&isFinite(o2[k]))C[k]=o2[k];});}
-  }catch(e){}
-  subs.forEach(function(f){try{f("*");}catch(e){}});
-};
 C.reset=function(){Object.keys(D).forEach(function(k){C[k]=D[k];});
   try{localStorage.removeItem("mts.v3.cfg");}catch(e){}subs.forEach(function(f){try{f("*");}catch(e){}});};
 C.on=function(f){subs.push(f);};
@@ -4498,12 +4492,8 @@ var $=function(q){return document.querySelector(q);},
 
 /* ---------- storage (degrades to memory if blocked) ---------- */
 var mem={}, K="mts.v3.";
-var QUIET=false;
-/* While a change from another tab is being applied, this tab must not write its
-   own (now stale) state back — that is how an idle tab clobbers the active one. */
-window.MTSQuiet=function(fn){QUIET=true;try{return fn();}finally{QUIET=false;}};
 var store={get:function(k){try{var v=localStorage.getItem(K+k);return v===null?mem[k]:v;}catch(e){return mem[k];}},
-           set:function(k,v){mem[k]=v;if(QUIET)return;try{localStorage.setItem(K+k,v);}catch(e){}}};
+           set:function(k,v){mem[k]=v;try{localStorage.setItem(K+k,v);}catch(e){}}};
 
 /* ---------- playbook data ---------- */
 var PB={
@@ -6900,7 +6890,7 @@ function wireWeek(sel,gateId,doneMsg,openMsg){
 wireWeek("[data-week]","weekBackGate","Week measured. Now set up the next one.","Nothing changes until the week is measured.");
 wireWeek("[data-weekf]","weekFwdGate","Week prepared. Monday starts with a plan.","Prepare the week before it prepares you.");
 
-function restoreSession(){
+(function restoreSession(){
   try{
     var st=JSON.parse(store.get("state")||"{}");
     if(!st||st.d!==today)return;
@@ -6911,56 +6901,7 @@ function restoreSession(){
     $$("[data-gate]").forEach(function(c,i){c.checked=!!(st.gate&&st.gate[i]);c.closest(".check").classList.toggle("done",c.checked);});
     $$(".grade").forEach(function(g){g.setAttribute("aria-pressed",String(g.dataset.grade===S.grade));});
   }catch(e){}
-}
-restoreSession();
-
-/* ---------- reload one slice of state from storage (used by cross-tab sync) ---------- */
-window.MTSReload=function(key){
-  function j(k,d){try{var v=JSON.parse(store.get(k)||"null");return v==null?d:v;}catch(e){return d;}}
-  var touched=[];
-  function slice(fn){try{fn();}catch(e){}}
-  if(!key||key==="hist"){
-    var h=j("hist",[]);
-    if(Array.isArray(h)){HIST=h;touched.push("journal");}
-  }
-  if(!key||key==="pos"){
-    var pj=j("pos",null);
-    POS=(pj&&pj.d===today&&Array.isArray(pj.rows))?pj.rows:[];
-    touched.push("open positions");
-  }
-  if(!key||key==="state"){restoreSession();touched.push("today's flow");}
-  if(!key||key==="armedAt"){S.armedAt=parseInt(store.get("armedAt")||"0",10)||S.armedAt;}
-  if(!key||key==="narr"){
-    var nr=j("narr",null);
-    if(nr&&nr.d===today&&nr.v){
-      NARR=nr.v;
-      [["nWk","wk"],["nDy","dy"],["nInval","inval"],["nPools","pools"],["nPath","path"]].forEach(function(p){
-        var el=$("#"+p[0]);
-        if(el&&el!==document.activeElement)el.value=NARR[p[1]]||"";
-      });
-      touched.push("narrative");
-    }
-  }
-  if(!key||key==="plans"){var pl=j("plans",null);if(Array.isArray(pl)){PLANS=pl;touched.push("planned setups");}}
-  if(!key||key==="strats"){var sj2=j("strats",null);if(Array.isArray(sj2)){STRATS=sj2;touched.push("strategy library");}}
-  if(!key||key==="selEntry"||key==="selExit"){
-    SEL.entry=store.get("selEntry")||"";SEL.exit=store.get("selExit")||"";touched.push("today's entry and exit plan");
-  }
-  slice(function(){
-    if(!key||key==="events"){
-      var ev=j("events",null);
-      if(ev&&ev.d===today&&Array.isArray(ev.rows)&&typeof EV!=="undefined"){
-        EV=ev.rows;if(typeof renderEV==="function")renderEV();touched.push("event calendar");
-      }
-    }
-  });
-  if(!key||key==="reviews"){var rv=j("reviews",null);if(rv&&typeof rv==="object"){REVS=rv;touched.push("day reviews");}}
-  if(!key||key==="drills"){var dr=j("drills",null);if(dr&&Array.isArray(dr.items)){DRILLS=dr;touched.push("drills");}}
-  slice(function(){if(typeof renderLog==="function")renderLog();});
-  slice(function(){if(typeof renderLib==="function"&&$("#stratLib")&&!$("#stratLib").hidden)renderLib();});
-  slice(function(){render();});
-  return touched;
-};
+})();
 window.MTSAddTrades=function(rows){
   var before=HIST.length;
   rows.forEach(function(r){HIST.push(r);});
@@ -8319,7 +8260,6 @@ $("#acExport").addEventListener("click",function(){
   }catch(e){if(navigator.clipboard)navigator.clipboard.writeText(txt);$("#acNote").textContent="Copied to the clipboard.";}
 });
 accPaint();
-window.MTSAccountReload=function(){try{var aj2=JSON.parse(accGet()||"null");if(aj2&&Array.isArray(aj2.rows))ACC=aj2;}catch(e){}accPaint();};
 
 $("#insToJournal").addEventListener("click",function(){
   if(!L.length){$("#insNote").textContent="Load an export first.";return;}
@@ -9370,12 +9310,6 @@ function paintData(){
    '<div class="out"><div class="k">Day reviews</div><div class="v">'+(function(){try{return Object.keys(JSON.parse(get("reviews")||"{}")).length;}catch(e){return 0;}})()+'</div></div>'+
    '<div class="out"><div class="k">Storage used</div><div class="v">'+human(bytes())+'</div></div>'+
    '<div class="out"><div class="k">Keys stored</div><div class="v">'+keys().length+'</div></div></div>'+
-   (function(){
-     var st=window.MTSSyncStatus?window.MTSSyncStatus():null;
-     if(!st)return "";
-     return '<div class="gate'+(st.ok?" ok":"")+'" style="margin-bottom:14px"><b>Cross-tab sync — '+
-       (st.ok?"live":"not available here")+'.</b> '+st.note+'</div>';
-   })()+
    '<div class="set-grp"><h4>Today\'s session</h4><div class="set-row"><label>Saved flow state<small>'+
    (st?("routed: "+(st.routed||"none")+" · armed: "+(!!st.armed)+" · grade: "+(st.grade||"—")):"nothing saved")+
    '</small></label><button class="btn ghost" id="setClrState">Clear session</button></div>'+
@@ -10787,109 +10721,6 @@ MTSPaintAI();
       if(!st.contains(document.activeElement))st.classList.remove("ux-editing");
     },2500);
   });
-})();
-</script>
-<script>
-/* ===== cross-tab sync — one write, every tab in step ===== */
-(function(){
-"use strict";
-var P="mts.v3.",TAB=Math.random().toString(36).slice(2,8),applying=false,queue={},timer=null;
-/* The current view is deliberately not synced: each tab keeps its own place. */
-var SKIP={view:1,backupAt:1,backupCount:1,alertFeed:1,alertsOff:1,tips:1,coachHidden:1};
-var LABEL={
-  hist:"Journal",pos:"Open positions",state:"Today's flow",armedAt:"Trade timer",narr:"Narrative",
-  plans:"Planned setups",strats:"Strategy library",selEntry:"Entry plan",selExit:"Exit plan",
-  events:"Event calendar",reviews:"Day reviews",drills:"Drills",cfg:"Formula constants",
-  playbooks:"Playbooks",theme:"Theme",account:"Account history",hudOpen:"Header panel",patAnim:"Pattern animation"
-};
-var bc=null;
-try{if(window.BroadcastChannel)bc=new BroadcastChannel("mts-sync");}catch(e){}
-
-/* Broadcast our own writes so tabs that miss the storage event still hear it. */
-try{
-  var setItem=Storage.prototype.setItem,removeItem=Storage.prototype.removeItem;
-  Storage.prototype.setItem=function(k,v){
-    setItem.apply(this,arguments);
-    if(!applying&&typeof k==="string"&&k.indexOf(P)===0&&bc){
-      try{bc.postMessage({key:k.slice(P.length),tab:TAB});}catch(e){}
-    }
-  };
-  Storage.prototype.removeItem=function(k){
-    removeItem.apply(this,arguments);
-    if(!applying&&typeof k==="string"&&k.indexOf(P)===0&&bc){
-      try{bc.postMessage({key:k.slice(P.length),tab:TAB});}catch(e){}
-    }
-  };
-}catch(e){}
-
-window.addEventListener("storage",function(e){
-  if(!e.key||e.key.indexOf(P)!==0)return;
-  take(e.key.slice(P.length));
-});
-if(bc)bc.onmessage=function(e){
-  if(!e.data||e.data.tab===TAB)return;
-  take(e.data.key);
-};
-function take(k){
-  if(!k||SKIP[k])return;
-  queue[k]=1;
-  clearTimeout(timer);
-  timer=setTimeout(flush,120);
-}
-function flush(){
-  var keys=Object.keys(queue);
-  queue={};
-  if(!keys.length)return;
-  applying=true;
-  var named=[];
-  try{
-    var reloadKeys=["hist","pos","state","armedAt","narr","plans","strats","selEntry","selExit","events","reviews","drills"];
-    var wantsReload=false;
-    keys.forEach(function(k){
-      if(reloadKeys.indexOf(k)>-1){wantsReload=true;return;}
-      if(k==="cfg"&&window.MTSCFG&&window.MTSCFG.reload){window.MTSCFG.reload();wantsReload=true;return;}
-      if(k==="playbooks"&&window.MTSPB){window.MTSPB.reload();return;}
-      if(k==="account"&&window.MTSAccountReload){window.MTSAccountReload();return;}
-      if(k==="theme"){
-        var t=localStorage.getItem(P+"theme")||"light";
-        if((document.documentElement.getAttribute("data-theme")||"light")!==t){
-          document.documentElement.setAttribute("data-theme",t);
-          var b=document.getElementById("themeBtn");
-          if(b)b.textContent=t==="dark"?"Day":"Night";
-        }
-        return;
-      }
-      /* anything stored under an element id — calculator fields, level board, limits */
-      var el=document.getElementById(k);
-      if(el&&"value" in el&&el!==document.activeElement){
-        var v=localStorage.getItem(P+k);
-        if(v!==null&&el.value!==v){el.value=v;el.dispatchEvent(new Event("input",{bubbles:true}));}
-      }
-    });
-    if(wantsReload&&window.MTSReload){
-      if(window.MTSQuiet)window.MTSQuiet(function(){window.MTSReload();});
-      else window.MTSReload();
-    }
-    named=keys.map(function(k){return LABEL[k]||k;});
-  }catch(e){}
-  applying=false;
-  if(named.length&&window.MTSToast){
-    var uniq=[];
-    named.forEach(function(n){if(uniq.indexOf(n)<0)uniq.push(n);});
-    var msg=uniq.slice(0,3).join(", ")+(uniq.length>3?" and "+(uniq.length-3)+" more":"");
-    window.MTSToast(msg+" updated from another tab.");
-  }
-}
-/* Status, for the settings pane: say plainly whether this will work here. */
-window.MTSSyncStatus=function(){
-  var file=location.protocol==="file:";
-  var ls=false;
-  try{localStorage.setItem(P+"__probe","1");localStorage.removeItem(P+"__probe");ls=true;}catch(e){}
-  return {ok:ls&&!file,file:file,storage:ls,channel:!!bc,tab:TAB,
-    note:!ls?"This browser is blocking local storage, so nothing can sync."
-      :file?"Opened straight from disk. Chrome gives each file:// tab its own island, so two tabs will not see each other. Serve the file over http (or run it in the desktop shell) and sync works."
-      :"Live. A change in one tab reaches the others in about a tenth of a second."};
-};
 })();
 </script>
 </body>
