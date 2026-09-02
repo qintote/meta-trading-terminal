@@ -2140,6 +2140,86 @@ tbody tr:hover td{background:var(--route-bg)}
 .rwlegend span{font-family:var(--mono);font-size:10px;color:var(--ink-3)}
 .rwlegend span.on{color:var(--go);font-weight:600}
 #rwTable td{vertical-align:top}
+
+/* =====================================================================
+   MOBILE — last word, after every other layer.
+   Phones get one column, full-width controls, scrollable tables and
+   full-screen dialogs. Nothing is hidden that you need mid-trade.
+   ===================================================================== */
+@media (max-width:760px){
+  .liverail{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .statgrid,.perfgrid,.simgrid,.cmpgrid,.scoregrid,.mini,.spec,.orient,.ds-grid,.caps,
+  .breaks,.pat-wrap,.flow-steps,.mem-grid,.ux-brief{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .narr-g,.lf-b,.rwsplit,.sl-b,.levels,.fs-split{grid-template-columns:minmax(0,1fr)!important}
+  .grades{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .viewgrid{grid-template-columns:minmax(0,1fr)!important}
+  /* every control spans the row instead of sitting at a fixed width */
+  .set-row{flex-wrap:wrap}
+  .set-row label{flex:1 0 100%}
+  .set-row input,.set-row select,.set-row .btn,.bkin,.bkin.wide,.planadd input,.planadd select,
+  .stratpick select,.rwbar .field input,.tin,.tin.wide,.tin.num{width:100%!important;max-width:none!important}
+  .planadd,.stratpick,.rwbar,.dataops,.armbar,.logbar,.evbar,.insopts{flex-wrap:wrap;gap:8px}
+  .planadd .btn,.stratpick .btn,.dataops .btn{flex:1 1 auto}
+  /* dialogs take the whole screen — no pinching to reach a button */
+  .kbd-scrim{padding:0}
+  .setbox,.kbdbox,.cmdbox{max-width:none!important;width:100%;height:100dvh;max-height:100dvh;border-radius:0;border:none}
+  .set-b,.sl-b{padding:12px}
+  .set-tabs{overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch}
+  .set-tab{white-space:nowrap}
+  .set-f{flex-wrap:wrap}
+  /* tables scroll horizontally rather than squeezing to nothing */
+  .matrix-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .matrix-scroll table{min-width:520px}
+  #rwTable{min-width:680px}
+  /* navigation and section chips scroll */
+  .nav,.subnav,.set-tabs,.seg{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .nav::-webkit-scrollbar,.subnav::-webkit-scrollbar,.seg::-webkit-scrollbar{display:none}
+  .navbtn,.subchip,.seg button{white-space:nowrap;flex:none}
+  /* the decision rail is a desktop luxury; the action banner already carries it */
+  .ux-flowctx{display:none!important}
+  .coach{display:none!important}
+  /* touch targets */
+  .nabtn,.btn,.iconbtn,.chip,.grade{min-height:38px}
+  .check{padding:11px 12px}
+  .fs-b{padding:14px 13px}
+  .card.pad{padding:14px 13px}
+  .eyebrow h2{font-size:19px}
+  .na-t{font-size:18px}
+  .poscard{padding:13px 14px}
+  .pc-h{gap:6px}
+  .pc-t{font-size:16px}
+}
+@media (max-width:480px){
+  .liverail,.statgrid,.perfgrid,.simgrid,.cmpgrid,.scoregrid,.mini,.spec,.orient,.ds-grid,.caps,
+  .breaks,.pat-wrap,.flow-steps,.mem-grid,.ux-brief,.lf-grid{grid-template-columns:minmax(0,1fr)!important}
+  .grades{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .masthead{padding:12px 13px}
+  .mast-t{font-size:20px}
+  .annun-value{font-size:17px}
+  .fs-h{padding:12px 13px;gap:9px}
+  .fs-n{width:26px;height:26px;font-size:12px}
+  .fs-h h3{font-size:16px}
+  .na-t,.fm-t{font-size:17px}
+  .aicard p,.fs-note,.gate{font-size:12.6px}
+  .pat-chart{padding:2px}
+  .shotzone{padding:11px}
+  .shot{width:78px;height:54px}
+  .toast{left:10px;right:10px;transform:none;text-align:center}
+  .lightbox{padding:10px}
+  .lb-x{top:8px;right:10px}
+}
+@media (max-width:380px){
+  html{font-size:15px}
+  .navbtn{padding:7px 9px;font-size:11.5px}
+  .setbox .set-tabs{padding:8px 10px 0}
+  .planmini .pmchip{font-size:11.5px}
+}
+/* phones in landscape: keep the dialogs usable */
+@media (max-height:520px) and (max-width:900px){
+  .setbox,.kbdbox,.cmdbox{height:100dvh}
+  .fm-b{padding:10px}
+  .fm-card{padding:12px}
+}
 </style>
 
 </head>
@@ -3598,8 +3678,8 @@ window.CFG=function(k){return isFinite(C[k])?C[k]:D[k];};
           <div class="field"><label for="eAlarm">Drawdown you would quit at (%)</label><input id="eAlarm" type="number" step="1" value="20" inputmode="decimal"></div>
           <div class="field"><label for="eTPD">Setups you would consider daily</label><input id="eTPD" type="number" step="1" value="4" inputmode="numeric"></div>
           <p class="legend" style="margin-top:16px">Losing streak · straight line down</p>
-          <table class="ddtable"><thead><tr><th>In a row</th><th>Equity</th><th>Drawdown</th><th>Wins back</th><th></th></tr></thead>
-          <tbody id="streakBody"></tbody></table>
+          <div class="matrix-scroll"><table class="ddtable"><thead><tr><th>In a row</th><th>Equity</th><th>Drawdown</th><th>Wins back</th><th></th></tr></thead>
+          <tbody id="streakBody"></tbody></table></div>
         </div>
         <div class="engine-r">
           <div class="headline">
@@ -3623,9 +3703,9 @@ window.CFG=function(k){return isFinite(C[k])?C[k]:D[k];};
           <p class="fs-note" id="engineNote"></p>
 
           <p class="legend" style="margin-top:20px">What each risk level does to the same edge</p>
-          <table class="ddtable" id="cmpTable"><thead><tr>
+          <div class="matrix-scroll"><table class="ddtable" id="cmpTable"><thead><tr>
             <th>Risk</th><th>Typical DD</th><th>1 in 20</th><th>Median end</th><th>Hits quit level</th><th>Verdict</th>
-          </tr></thead><tbody id="cmpBody"></tbody></table>
+          </tr></thead><tbody id="cmpBody"></tbody></table></div>
 
           <p class="legend" style="margin-top:20px">Your daily limits, simulated</p>
           <div class="simgrid" style="grid-template-columns:repeat(2,1fr)">
@@ -3966,15 +4046,15 @@ window.CFG=function(k){return isFinite(C[k])?C[k]:D[k];};
       <div class="breaks">
         <div>
           <p class="legend">Where the discipline goes</p>
-          <table class="mini-t"><thead><tr><th>Rule broken</th><th style="text-align:right">Times</th><th style="text-align:right">Net R</th></tr></thead><tbody id="byBreak"></tbody></table>
+          <div class="matrix-scroll"><table class="mini-t"><thead><tr><th>Rule broken</th><th style="text-align:right">Times</th><th style="text-align:right">Net R</th></tr></thead><tbody id="byBreak"></tbody></table></div>
         </div>
         <div>
           <p class="legend">By playbook</p>
-          <table class="mini-t"><thead><tr><th>Strategy</th><th style="text-align:right">N</th><th style="text-align:right">Win %</th><th style="text-align:right">Net R</th></tr></thead><tbody id="byStrat"></tbody></table>
+          <div class="matrix-scroll"><table class="mini-t"><thead><tr><th>Strategy</th><th style="text-align:right">N</th><th style="text-align:right">Win %</th><th style="text-align:right">Net R</th></tr></thead><tbody id="byStrat"></tbody></table></div>
         </div>
         <div>
           <p class="legend">By session window</p>
-          <table class="mini-t"><thead><tr><th>Window</th><th style="text-align:right">N</th><th style="text-align:right">Win %</th><th style="text-align:right">Net R</th></tr></thead><tbody id="bySess"></tbody></table>
+          <div class="matrix-scroll"><table class="mini-t"><thead><tr><th>Window</th><th style="text-align:right">N</th><th style="text-align:right">Win %</th><th style="text-align:right">Net R</th></tr></thead><tbody id="bySess"></tbody></table></div>
         </div>
       </div>
       <div class="gate" id="perfVerdict" style="margin-top:16px"></div>
@@ -4449,8 +4529,8 @@ window.CFG=function(k){return isFinite(C[k])?C[k]:D[k];};
         <div class="statgrid" id="acGrid"></div>
         <div id="acCurve" style="margin-top:12px"></div>
         <div class="breaks" style="margin-top:16px">
-          <div><p class="legend">By month</p><table class="mini-t"><thead><tr><th>Month</th><th style="text-align:right">Trades</th><th style="text-align:right">Net</th><th style="text-align:right">Costs</th></tr></thead><tbody id="acMonths"></tbody></table></div>
-          <div><p class="legend">Imports on record</p><table class="mini-t"><thead><tr><th>Added</th><th>Source</th><th style="text-align:right">New trades</th></tr></thead><tbody id="acImports"></tbody></table></div>
+          <div><p class="legend">By month</p><div class="matrix-scroll"><table class="mini-t"><thead><tr><th>Month</th><th style="text-align:right">Trades</th><th style="text-align:right">Net</th><th style="text-align:right">Costs</th></tr></thead><tbody id="acMonths"></tbody></table></div></div>
+          <div><p class="legend">Imports on record</p><div class="matrix-scroll"><table class="mini-t"><thead><tr><th>Added</th><th>Source</th><th style="text-align:right">New trades</th></tr></thead><tbody id="acImports"></tbody></table></div></div>
         </div>
         <div class="gate" id="acVerdict" style="margin-top:12px"></div>
       </div>
