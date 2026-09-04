@@ -2076,6 +2076,228 @@ tbody tr:hover td{background:var(--route-bg)}
 [data-theme="dark"] .q-btns button[aria-pressed="true"][data-a="no"]{background:var(--card-2);color:var(--ink);border-color:var(--ink-3)}
 [data-theme="dark"] .btn.ghost{background:transparent;color:var(--ink-2);border-color:var(--rule)}
 [data-theme="dark"] tbody tr:hover td{background:var(--card-2)}
+
+/* ---------------------------------------------------------------
+   A completed step collapses — but never while you are still typing
+   inside it. The auto-collapse is suppressed for any step that holds
+   focus, and while a field within it is dirty.
+   --------------------------------------------------------------- */
+.fstep.done:focus-within .fs-b,.fstep.done.ux-editing .fs-b{display:block!important}
+.fstep.done:focus-within .fs-h,.fstep.done.ux-editing .fs-h{border-bottom:1px solid var(--rule-2);cursor:pointer}
+.fstep.done:focus-within .fs-h::after,.fstep.done.ux-editing .fs-h::after{content:"Editing"!important;color:var(--caution)!important}
+.fstep.done:focus-within,.fstep.done.ux-editing{background:var(--card);box-shadow:var(--shadow);border-color:var(--rule)}
+.fstep.done:focus-within .fs-h,.fstep.done.ux-editing .fs-h{min-height:52px;padding:12px 15px}
+.fstep.done:focus-within .fs-sub,.fstep.done.ux-editing .fs-sub{display:block}
+
+/* ---------- plan board ---------- */
+.planboard{margin-top:16px;border-top:1px solid var(--rule-2);padding-top:14px}
+.pb-head{display:flex;align-items:baseline;gap:10px;margin-bottom:4px}
+.pb-head .hint{margin-left:auto;font-family:var(--mono);font-size:10px;color:var(--ink-3)}
+.planadd{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.planadd input{flex:1;min-width:190px;font-size:13px;padding:8px 10px;border:1px solid var(--rule);
+  border-radius:2px;background:var(--card-2);color:var(--ink)}
+.planadd select{font-size:13px;padding:8px 10px;border:1px solid var(--rule);border-radius:2px;
+  background:var(--card-2);color:var(--ink)}
+.planmini{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+.pm-k{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+.pmchip{font-family:var(--sans);font-size:12.4px;padding:6px 10px;border:1px solid var(--rule);border-radius:2px;
+  background:var(--card-2);color:var(--ink-2);cursor:pointer}
+.pmchip small{font-family:var(--mono);font-size:10px;color:var(--ink-3);margin-left:5px}
+.pmchip:hover{border-color:var(--route);color:var(--ink)}
+.pmchip.fit{border-color:var(--route);color:var(--route)}
+
+/* ---------- strategy library ---------- */
+.stratpick{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:4px}
+.stratpick label{display:flex;gap:6px;align-items:center;font-size:12.4px;color:var(--ink-3)}
+.stratpick select{font-size:12.6px;padding:6px 9px;border:1px solid var(--rule);border-radius:2px;
+  background:var(--card);color:var(--ink);max-width:280px}
+.stratread{margin-top:8px;font-size:12.5px;line-height:1.5;color:var(--ink-2)}
+.stratread b{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--route)}
+.stratread .mut{color:var(--ink-3)}
+.stratlib{margin-top:14px;border:1px solid var(--rule);border-radius:3px;background:var(--card-2)}
+.sl-h{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:11px 13px;border-bottom:1px solid var(--rule-2)}
+.sl-k{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
+.sl-h select{font-size:12.4px;padding:6px 8px;border:1px solid var(--rule);border-radius:2px;background:var(--card);color:var(--ink)}
+.sl-h .coach-x{margin-left:auto}
+.sl-b{padding:12px 13px;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px}
+.slcard{border:1px solid var(--rule-2);border-radius:2px;padding:11px 12px;background:var(--card)}
+.sl-ch{display:flex;gap:8px;align-items:baseline;margin-bottom:7px}
+.sl-ch b{font-family:var(--cond);font-size:15px;font-weight:600}
+.sl-pb{font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin-right:auto}
+.sl-steps,.sl-branch{margin:0;padding-left:17px;font-size:12.4px;line-height:1.5;color:var(--ink-2)}
+.sl-branch{list-style:none;padding-left:0}
+.sl-branch li{padding:3px 0;border-bottom:1px dashed var(--rule-2)}
+.sl-branch li:last-child{border-bottom:none}
+.sl-branch i{font-style:normal;font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--route)}
+.sl-edit{padding:12px 13px;border-top:1px solid var(--rule-2)}
+
+/* ---------- reward engine ---------- */
+.rwbar{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+.rwbar .field{margin-bottom:0}
+.rwsplit{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:18px;margin-top:16px}
+@media (max-width:900px){.rwsplit{grid-template-columns:1fr}}
+.rwlegend{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.rwlegend span{font-family:var(--mono);font-size:10px;color:var(--ink-3)}
+.rwlegend span.on{color:var(--go);font-weight:600}
+#rwTable td{vertical-align:top}
+
+/* =====================================================================
+   MOBILE — last word, after every other layer.
+   Phones get one column, full-width controls, scrollable tables and
+   full-screen dialogs. Nothing is hidden that you need mid-trade.
+   ===================================================================== */
+@media (max-width:760px){
+  .liverail{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .statgrid,.perfgrid,.simgrid,.cmpgrid,.scoregrid,.mini,.spec,.orient,.ds-grid,.caps,
+  .breaks,.pat-wrap,.flow-steps,.mem-grid,.ux-brief{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .narr-g,.lf-b,.rwsplit,.sl-b,.levels,.fs-split{grid-template-columns:minmax(0,1fr)!important}
+  .grades{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .viewgrid{grid-template-columns:minmax(0,1fr)!important}
+  /* every control spans the row instead of sitting at a fixed width */
+  .set-row{flex-wrap:wrap}
+  .set-row label{flex:1 0 100%}
+  .set-row input,.set-row select,.set-row .btn,.bkin,.bkin.wide,.planadd input,.planadd select,
+  .stratpick select,.rwbar .field input,.tin,.tin.wide,.tin.num{width:100%!important;max-width:none!important}
+  .planadd,.stratpick,.rwbar,.dataops,.armbar,.logbar,.evbar,.insopts{flex-wrap:wrap;gap:8px}
+  .planadd .btn,.stratpick .btn,.dataops .btn{flex:1 1 auto}
+  /* dialogs take the whole screen — no pinching to reach a button */
+  .kbd-scrim{padding:0}
+  .setbox,.kbdbox,.cmdbox{max-width:none!important;width:100%;height:100dvh;max-height:100dvh;border-radius:0;border:none}
+  .set-b,.sl-b{padding:12px}
+  .set-tabs{overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch}
+  .set-tab{white-space:nowrap}
+  .set-f{flex-wrap:wrap}
+  /* tables scroll horizontally rather than squeezing to nothing */
+  .matrix-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .matrix-scroll table{min-width:520px}
+  #rwTable{min-width:680px}
+  /* navigation and section chips scroll */
+  .nav,.subnav,.set-tabs,.seg{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .nav::-webkit-scrollbar,.subnav::-webkit-scrollbar,.seg::-webkit-scrollbar{display:none}
+  .navbtn,.subchip,.seg button{white-space:nowrap;flex:none}
+  /* the decision rail is a desktop luxury; the action banner already carries it */
+  .ux-flowctx{display:none!important}
+  .coach{display:none!important}
+  /* touch targets */
+  .nabtn,.btn,.iconbtn,.chip,.grade{min-height:38px}
+  .check{padding:11px 12px}
+  .fs-b{padding:14px 13px}
+  .card.pad{padding:14px 13px}
+  .eyebrow h2{font-size:19px}
+  .na-t{font-size:18px}
+  .poscard{padding:13px 14px}
+  .pc-h{gap:6px}
+  .pc-t{font-size:16px}
+}
+@media (max-width:480px){
+  .liverail,.statgrid,.perfgrid,.simgrid,.cmpgrid,.scoregrid,.mini,.spec,.orient,.ds-grid,.caps,
+  .breaks,.pat-wrap,.flow-steps,.mem-grid,.ux-brief,.lf-grid{grid-template-columns:minmax(0,1fr)!important}
+  .grades{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .masthead{padding:12px 13px}
+  .mast-t{font-size:20px}
+  .annun-value{font-size:17px}
+  .fs-h{padding:12px 13px;gap:9px}
+  .fs-n{width:26px;height:26px;font-size:12px}
+  .fs-h h3{font-size:16px}
+  .na-t,.fm-t{font-size:17px}
+  .aicard p,.fs-note,.gate{font-size:12.6px}
+  .pat-chart{padding:2px}
+  .shotzone{padding:11px}
+  .shot{width:78px;height:54px}
+  .toast{left:10px;right:10px;transform:none;text-align:center}
+  .lightbox{padding:10px}
+  .lb-x{top:8px;right:10px}
+}
+@media (max-width:380px){
+  html{font-size:15px}
+  .navbtn{padding:7px 9px;font-size:11.5px}
+  .setbox .set-tabs{padding:8px 10px 0}
+  .planmini .pmchip{font-size:11.5px}
+}
+/* phones in landscape: keep the dialogs usable */
+@media (max-height:520px) and (max-width:900px){
+  .setbox,.kbdbox,.cmdbox{height:100dvh}
+  .fm-b{padding:10px}
+  .fm-card{padding:12px}
+}
+<<<<<<< HEAD
+=======
+
+/* ---------- price action ---------- */
+.pa-svg{width:100%;height:auto;display:block;background:var(--card-2);border:1px solid var(--rule-2);
+  border-radius:2px;margin:12px 0}
+.lede{font-size:15.5px;line-height:1.55;color:var(--ink);margin-top:0}
+.paquiz .paq-n{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+.paq-q{font-size:14.2px;line-height:1.5;margin:10px 0 12px;color:var(--ink);font-weight:500}
+.paquiz .qz-opts{margin-bottom:10px}
+.steps{margin:0;padding-left:19px;font-size:13.2px;line-height:1.6;color:var(--ink-2)}
+.steps li{padding:3px 0}
+.steps b{color:var(--ink)}
+@media (max-width:760px){.lede{font-size:14.4px}.paq-q{font-size:13.4px}}
+
+/* ---------- cross references ---------- */
+.xref{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin-top:16px;padding-top:13px;border-top:1px solid var(--rule-2)}
+.xr-k{font-family:var(--mono);font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-3);flex:none;margin-right:2px}
+.xrchip{text-align:left;background:var(--card-2);border:1px solid var(--rule-2);border-left:2px solid var(--route);
+  border-radius:2px;padding:7px 10px;cursor:pointer;max-width:250px}
+.xrchip b{display:block;font-family:var(--cond);font-size:13px;font-weight:600;color:var(--ink);line-height:1.2}
+.xrchip span{display:block;font-size:11.4px;color:var(--ink-3);line-height:1.35;margin-top:2px}
+.xrchip:hover{border-color:var(--route);background:var(--route-bg)}
+.xrchip:focus-visible{outline:2px solid var(--route);outline-offset:2px}
+.xmap .mapnode rect{fill:var(--card-2);stroke:var(--rule);stroke-width:1}
+.xmap .mapnode text{fill:var(--ink)}
+.xmap .mapnode{cursor:pointer}
+.xmap .mapnode:hover rect{stroke:var(--route);fill:var(--route-bg)}
+.xmap .mapnode:focus{outline:none}
+.xmap .mapnode:focus rect{stroke:var(--route);stroke-width:2}
+@media (max-width:760px){.xrchip{max-width:none;flex:1 1 100%}}
+
+/* ---------- mobile navigation ---------- */
+.mnav{display:none}
+@media (max-width:760px){
+  /* the desktop tab rows go away entirely; the bar below replaces them */
+  .ux-workspaces,.ux-viewtabs,.ux-navutil .navnote,.ux-navutil .kbdhint{display:none!important}
+  .nav.ux-nav{padding:6px 0;gap:8px;justify-content:space-between;min-height:0}
+  .ux-navutil{display:flex;gap:6px;align-items:center;width:100%;justify-content:flex-end}
+  .navstate{font-size:11px;margin-right:auto;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:52vw}
+  body.has-mnav{padding-bottom:calc(64px + env(safe-area-inset-bottom,0px))}
+  .mnav{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:90;
+    background:var(--plate);border-top:1px solid var(--plate-line);
+    padding:5px 4px calc(5px + env(safe-area-inset-bottom,0px));gap:2px}
+  .mnav-b{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:7px 2px 5px;
+    background:transparent;border:none;color:var(--plate-dim);cursor:pointer;border-radius:3px;position:relative;min-height:48px}
+  .mnav-i{font-size:16px;line-height:1}
+  .mnav-t{font-family:var(--mono);font-size:9.5px;letter-spacing:.06em}
+  .mnav-b[aria-pressed="true"]{color:var(--plate-fg);background:rgba(255,255,255,.08)}
+  .mnav-b:active{background:rgba(255,255,255,.14)}
+  .mnav-dot{position:absolute;top:6px;right:calc(50% - 16px);width:7px;height:7px;border-radius:50%;background:var(--abort)}
+  .msheet{position:fixed;inset:0;z-index:96;background:rgba(8,11,16,.55);display:flex;align-items:flex-end;
+    opacity:0;transition:opacity .16s ease}
+  .msheet.on{opacity:1}
+  .msheet-b{width:100%;background:var(--card);border-top-left-radius:10px;border-top-right-radius:10px;
+    padding:8px 12px calc(16px + env(safe-area-inset-bottom,0px));transform:translateY(14px);transition:transform .16s ease;
+    max-height:76vh;overflow:auto}
+  .msheet.on .msheet-b{transform:translateY(0)}
+  .msheet-h{display:flex;align-items:center;padding:8px 4px 10px;border-bottom:1px solid var(--rule-2);margin-bottom:6px}
+  .msheet-h b{font-family:var(--cond);text-transform:uppercase;letter-spacing:.06em;font-size:16px}
+  .msheet-h .coach-x{margin-left:auto}
+  .msheet-i{display:block;width:100%;text-align:left;background:transparent;border:none;border-bottom:1px solid var(--rule-2);
+    padding:13px 6px;cursor:pointer}
+  .msheet-i:last-child{border-bottom:none}
+  .msheet-i b{display:block;font-family:var(--cond);font-size:16px;font-weight:600;color:var(--ink)}
+  .msheet-i span{display:block;font-size:12.4px;color:var(--ink-3);margin-top:2px}
+  .msheet-i:active{background:var(--card-2)}
+  /* the sub-navigation stays, but sits under a shorter header */
+  .subnav{top:44px}
+  /* session mode must clear the bar */
+  .focus{padding-bottom:calc(64px + env(safe-area-inset-bottom,0px))}
+  .toast{bottom:calc(74px + env(safe-area-inset-bottom,0px))}
+}
+@media (max-width:380px){
+  .mnav-t{font-size:9px}
+  .mnav-i{font-size:15px}
+}
+>>>>>>> 291bab8 (update for movile and reference on market price action)
 </style>
 
 </head>
@@ -2103,6 +2325,12 @@ C.set=function(k,v){
   try{var out={};Object.keys(D).forEach(function(x){out[x]=C[x];});localStorage.setItem("mts.v3.cfg",JSON.stringify(out));}catch(e){}
   subs.forEach(function(f){try{f(k);}catch(e){}});
   return true;
+};
+C.reload=function(){
+  try{var raw2=localStorage.getItem("mts.v3.cfg");
+    if(raw2){var o2=JSON.parse(raw2);Object.keys(D).forEach(function(k){if(typeof o2[k]==="number"&&isFinite(o2[k]))C[k]=o2[k];});}
+  }catch(e){}
+  subs.forEach(function(f){try{f("*");}catch(e){}});
 };
 C.reset=function(){Object.keys(D).forEach(function(k){C[k]=D[k];});
   try{localStorage.removeItem("mts.v3.cfg");}catch(e){}subs.forEach(function(f){try{f("*");}catch(e){}});};
@@ -2197,6 +2425,7 @@ window.CFG=function(k){return isFinite(C[k])?C[k]:D[k];};
     <button class="navbtn" role="tab" data-view="flow" data-workspace="today" id="tab-flow" aria-controls="view-flow" aria-selected="true">Flow<small>act</small></button>
     <button class="navbtn" role="tab" data-view="tools" data-workspace="prepare" id="tab-tools" aria-controls="view-tools" aria-selected="false">Tools<small>calculate</small></button>
     <button class="navbtn" role="tab" data-view="reference" data-workspace="learn" id="tab-reference" aria-controls="view-reference" aria-selected="false">Handbook<small>reference</small></button>
+    <button class="navbtn" role="tab" data-view="price" data-workspace="learn" id="tab-price" aria-controls="view-price" aria-selected="false">Price action<small>read</small></button>
     <button class="navbtn" role="tab" data-view="live" data-workspace="learn" id="tab-live" aria-controls="view-live" aria-selected="false">Practice Lab<small>replay</small></button>
     <button class="navbtn" role="tab" data-view="patterns" data-workspace="learn" id="tab-patterns" aria-controls="view-patterns" aria-selected="false">Patterns<small>market</small></button>
     <button class="navbtn" role="tab" data-view="journal" data-workspace="review" id="tab-journal" aria-controls="view-journal" aria-selected="false">Journal<small>measure</small></button>
@@ -2276,8 +2505,44 @@ window.CFG=function(k){return isFinite(C[k])?C[k]:D[k];};
             </div>
             <div class="tfield"><span>Liquidity map — the pools you will trade toward</span>
               <textarea id="nPools" style="min-height:44px" placeholder="PDH 3372, PDL 3341, equal lows 3346, Asia 3352–3361."></textarea></div>
-            <div class="tfield" style="margin-bottom:0"><span>Expected path — what should happen, in one sentence</span>
+            <div class="tfield"><span>Expected path — what should happen, in one sentence</span>
               <textarea id="nPath" style="min-height:44px" placeholder="Sweep the Asia low into London, reclaim, then run the PDH through the New York open."></textarea></div>
+            <div class="tfield" style="margin-bottom:0">
+              <span>How you will get in and out today</span>
+              <div class="stratpick">
+                <label>Entry<select id="selEntry"></select></label>
+                <label>Exit<select id="selExit"></select></label>
+                <button type="button" class="btn ghost" id="stratOpen">Open the library</button>
+              </div>
+              <div class="stratread" id="stratRead"></div>
+            </div>
+          </div>
+
+          <div class="stratlib" id="stratLib" hidden>
+            <div class="sl-h">
+              <span class="sl-k">Strategy library</span>
+              <div class="seg" id="slKind" role="group" aria-label="Kind">
+                <button type="button" data-k="entry" aria-pressed="true">Entries</button>
+                <button type="button" data-k="exit" aria-pressed="false">Exits</button>
+                <button type="button" data-k="branch" aria-pressed="false">If / then</button>
+              </div>
+              <select id="slPb" aria-label="Playbook filter"></select>
+              <button type="button" class="btn ghost" id="slNew">New</button>
+              <button type="button" class="coach-x" id="slClose" aria-label="Close the library">✕</button>
+            </div>
+            <div class="sl-b" id="slBody"></div>
+            <div class="sl-edit" id="slEdit" hidden>
+              <div class="planadd">
+                <input id="slName" type="text" placeholder="Name — e.g. FVG retest entry">
+                <select id="slFor" aria-label="Applies to"></select>
+              </div>
+              <textarea id="slSteps" class="bktx" rows="5" placeholder="One step per line, in order.&#10;For If / then, write:  if price does X | then do Y"></textarea>
+              <div class="dataops" style="margin-top:8px">
+                <button class="btn" id="slSave">Save</button>
+                <button class="btn ghost" id="slCancel">Cancel</button>
+                <span class="note" id="slNote"></span>
+              </div>
+            </div>
           </div>
           <p class="fs-note">Levels go in the <button class="jump" data-go="tools|#t-levels">level board</button>. Session windows and the news protocol are in <button class="jump" data-go="reference|#r-instrument">Reference → the instrument</button>.</p>
         </div>
@@ -2339,6 +2604,7 @@ window.CFG=function(k){return isFinite(C[k])?C[k]:D[k];};
           </div>
           <div class="gate" id="calcGate"></div>
           <p class="fs-note" style="margin-bottom:14px">Numbers come from the <button class="jump" data-go="tools|#t-calc">position calculator</button>. Add the live spread to your stop distance before you size.</p>
+          <div id="planMini"></div>
           <ul class="checks" id="gateList">
             <li><label class="check"><input type="checkbox" data-gate><b>Direction agrees with the HTF bias<small>The trade and the 4H story point the same way.</small></b></label></li>
             <li><label class="check"><input type="checkbox" data-gate><b>Stop and target sit on real levels<small>Structure and liquidity, not round numbers or a fixed dollar amount.</small></b></label></li>
@@ -2528,6 +2794,14 @@ window.CFG=function(k){return isFinite(C[k])?C[k]:D[k];};
     </div>
     <p class="fs-note">The loop is the product. Any single trade is noise; fifty repetitions of this loop is an edge you can measure — and the Journal is where you find out whether you have one.</p>
   </div>
+
+<section id="r-map">
+  <div class="eyebrow"><span class="tab blue">00</span><h2>How this fits together</h2><span class="line"></span><span class="hint">click any box</span></div>
+  <div class="card pad">
+    <p class="fs-note" style="margin-top:0">Read left to right. The auction and the order book explain why price moves; structure and location turn that into a place; patterns are the shapes it makes there. The read combines them, the playbooks pre-commit it, the flow gates it, and the journal measures whether any of it worked — which feeds back into what you practise next.</p>
+    <div id="xmapHost"></div>
+  </div>
+</section>
 
 <section id="r-rules">
   <div class="eyebrow">
@@ -3368,14 +3642,52 @@ window.CFG=function(k){return isFinite(C[k])?C[k]:D[k];};
           </div>
           <div class="gate" id="calcGateTool" style="margin-top:12px"></div>
           <p class="fs-note" id="calcExtra"></p>
+
+          <div class="planboard">
+            <div class="pb-head">
+              <p class="legend" style="margin:0">Planned setups</p>
+              <span class="hint" id="planHint">none</span>
+            </div>
+            <p class="fs-note" style="margin-top:0">Size several setups before the session and keep them side by side. Nothing here is live until you arm it, and each one carries the playbook you planned it under.</p>
+            <div class="planadd">
+              <input id="planTag" type="text" placeholder="Label — e.g. London PDL sweep" aria-label="Setup label">
+              <select id="planPb" aria-label="Playbook"></select>
+              <button class="btn" id="planSave">Save the current numbers</button>
+            </div>
+            <div id="planList"></div>
+          </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="tool" id="t-reward">
+    <div class="eyebrow"><span class="tab green">C</span><h2>Reward engine</h2><span class="line"></span><span class="hint" id="rwHint">—</span></div>
+    <div class="card pad">
+      <p class="fs-note" style="margin-top:0">The same setup, managed eight ways. Risk is one R in every plan — what changes is how you take the profit. Probabilities come from your own journal: how often your trades actually reached each multiple.</p>
+      <div class="rwbar">
+        <div class="field"><label for="rwTarget">Target (R)</label><input id="rwTarget" type="number" step="0.1" value="3"></div>
+        <div class="field"><label for="rwSample">Trades sampled</label><input id="rwSample" type="number" step="10" value="60"></div>
+        <label class="check" style="flex:none"><input type="checkbox" id="rwFromCalc" checked><b>Take the target from the calculator</b></label>
+      </div>
+      <div class="gate" id="rwCurve" style="margin-bottom:12px"></div>
+      <div class="matrix-scroll">
+        <table class="mini-t" id="rwTable"><thead><tr>
+          <th>Management plan</th><th style="text-align:right">Expected</th><th style="text-align:right">Green</th>
+          <th style="text-align:right">If it stalls</th><th style="text-align:right">Best</th><th style="text-align:right">Worst</th><th>What it costs you</th><th></th>
+        </tr></thead><tbody id="rwBody"></tbody></table>
+      </div>
+      <div class="rwsplit">
+        <div><p class="legend">The trade-off</p><div id="rwPlot"></div>
+          <p class="fs-note">Up is more expected R. Right is a higher chance of ending green. Nothing is on both extremes — the plans on the outer edge are the ones worth choosing between.</p></div>
+        <div><p class="legend">Reading it</p><div class="gate" id="rwRead"></div></div>
       </div>
     </div>
   </section>
 
   <!-- RISK ENGINE -->
   <section class="tool" id="t-price">
-    <div class="eyebrow"><span class="tab blue">C</span><h2>Price feed</h2><span class="line"></span><span class="hint" id="pxHint">manual</span></div>
+    <div class="eyebrow"><span class="tab blue">D</span><h2>Price feed</h2><span class="line"></span><span class="hint" id="pxHint">manual</span></div>
     <div class="card pad">
       <p class="fs-note" style="margin-top:0">Optional. With a price the flow can show distance to your stop and target, R in flight on every open position, and warn you when price approaches a level you marked. Without one, type it in when it matters — nothing else changes.</p>
       <div class="insopts">
@@ -3399,7 +3711,7 @@ window.CFG=function(k){return isFinite(C[k])?C[k]:D[k];};
 
   <!-- EVENT CALENDAR -->
   <section class="tool" id="t-events">
-    <div class="eyebrow"><span class="tab red">D</span><h2>Event calendar</h2><span class="line"></span><span class="hint">times in GST</span></div>
+    <div class="eyebrow"><span class="tab red">E</span><h2>Event calendar</h2><span class="line"></span><span class="hint">times in GST</span></div>
     <div class="card">
       <div class="levels">
         <div class="levels-l">
@@ -3435,7 +3747,7 @@ window.CFG=function(k){return isFinite(C[k])?C[k]:D[k];};
   </section>
 
   <section class="tool" id="t-risk">
-    <div class="eyebrow"><span class="tab red">E</span><h2>Risk engine</h2><span class="line"></span><span class="hint">what this risk does over time</span></div>
+    <div class="eyebrow"><span class="tab red">F</span><h2>Risk engine</h2><span class="line"></span><span class="hint">what this risk does over time</span></div>
     <div class="hintstrip" data-tip="engine">
       <span class="ico">TIP</span>
       <span>Set your real numbers here, not hopeful ones. Take the win rate and average R from the log after fifty trades — before that, model 40% and 2R and see whether you can sit through the drawdown it implies.</span>
@@ -3453,8 +3765,8 @@ window.CFG=function(k){return isFinite(C[k])?C[k]:D[k];};
           <div class="field"><label for="eAlarm">Drawdown you would quit at (%)</label><input id="eAlarm" type="number" step="1" value="20" inputmode="decimal"></div>
           <div class="field"><label for="eTPD">Setups you would consider daily</label><input id="eTPD" type="number" step="1" value="4" inputmode="numeric"></div>
           <p class="legend" style="margin-top:16px">Losing streak · straight line down</p>
-          <table class="ddtable"><thead><tr><th>In a row</th><th>Equity</th><th>Drawdown</th><th>Wins back</th><th></th></tr></thead>
-          <tbody id="streakBody"></tbody></table>
+          <div class="matrix-scroll"><table class="ddtable"><thead><tr><th>In a row</th><th>Equity</th><th>Drawdown</th><th>Wins back</th><th></th></tr></thead>
+          <tbody id="streakBody"></tbody></table></div>
         </div>
         <div class="engine-r">
           <div class="headline">
@@ -3478,9 +3790,9 @@ window.CFG=function(k){return isFinite(C[k])?C[k]:D[k];};
           <p class="fs-note" id="engineNote"></p>
 
           <p class="legend" style="margin-top:20px">What each risk level does to the same edge</p>
-          <table class="ddtable" id="cmpTable"><thead><tr>
+          <div class="matrix-scroll"><table class="ddtable" id="cmpTable"><thead><tr>
             <th>Risk</th><th>Typical DD</th><th>1 in 20</th><th>Median end</th><th>Hits quit level</th><th>Verdict</th>
-          </tr></thead><tbody id="cmpBody"></tbody></table>
+          </tr></thead><tbody id="cmpBody"></tbody></table></div>
 
           <p class="legend" style="margin-top:20px">Your daily limits, simulated</p>
           <div class="simgrid" style="grid-template-columns:repeat(2,1fr)">
@@ -3510,6 +3822,196 @@ window.CFG=function(k){return isFinite(C[k])?C[k]:D[k];};
 
 
 <!-- ================= LIVE ================= -->
+
+<div class="view" id="view-price" role="tabpanel" aria-labelledby="tab-price" tabindex="-1">
+  <div class="viewhead"><h2>Price action</h2>
+    <p>Where price comes from, what a candle is evidence of, and a repeatable way to read a chart. Auction first, order book second, patterns last — in that order, because the patterns only mean something once you know what produced them.</p></div>
+  <nav class="subnav" aria-label="Price action sections">
+    <button class="subchip" data-jump="#r-map">How it fits</button>
+    <button class="subchip" data-jump="#pa-auction">The auction</button>
+    <button class="subchip" data-jump="#pa-book">The order book</button>
+    <button class="subchip" data-jump="#pa-candle">Candles as evidence</button>
+    <button class="subchip" data-jump="#pa-structure">Structure</button>
+    <button class="subchip" data-jump="#pa-location">Location</button>
+    <button class="subchip" data-jump="#pa-read">The read</button>
+    <button class="subchip" data-jump="#pa-fail">How reads fail</button>
+    <button class="subchip" data-jump="#pa-practice">Practice</button>
+  </nav>
+  <section id="pa-auction">
+    <div class="eyebrow"><span class="tab">01</span><h2>The auction</h2><span class="line"></span><span class="hint">why price moves at all</span></div>
+    <div class="card pad">
+      <p class="lede">A market is a continuous two-sided auction. Price is not a value — it is an advertisement, moved until it finds trade. Everything on your chart is the record of that search.</p>
+      <p>Price rises for one reason: buyers are willing to pay the offer, and the resting offers are being consumed faster than they are replaced. It falls for the mirror reason. Nothing else moves it. Not the news, not the indicator, not the pattern — those only change the willingness of participants to lift offers or hit bids.</p>
+      <p>An auction has two states, and every read starts by naming which one you are in.</p>
+      <div id="paAuctionSvg"></div>
+      <div class="mgmt">
+        <div class="mgcard"><div class="mg-t">Balance</div>
+          <p>Both sides agree on price and disagree on value, so trade rotates around a centre. Volume builds in the middle, thins at the edges. Time passes and price does not travel. This is where mean reversion works and trend following bleeds.</p>
+          <p class="mut">Visible as: overlapping candles, repeated rejection of the same two prices, shrinking range.</p></div>
+        <div class="mgcard"><div class="mg-t">Imbalance</div>
+          <p>One side is initiating and the other is retreating. Price travels quickly and spends little time at any level, because there is nothing to trade against. This is where trend following works and fading gets run over.</p>
+          <p class="mut">Visible as: long bodies in one direction, small counter-candles, gaps in the middle of the move.</p></div>
+        <div class="mgcard"><div class="mg-t">The transition</div>
+          <p>Balance ends when one side stops defending an edge. Imbalance ends when the initiating side runs out of willing counterparties and price stalls into a new balance. Most of your money is made in the first two hours of an imbalance and lost in the last.</p>
+          <p class="mut">Visible as: a decisive close beyond an edge that held twice, or an impulse leg that arrives and goes nowhere.</p></div>
+      </div>
+      <p class="legend" style="margin-top:16px">The five ideas that do all the work</p>
+      <ul class="rules">
+        <li><b>Value</b><span>The band where most trade happened. Not the midpoint of the range — the price where the two sides did the most business. Price returns to it far more often than it leaves it behind.</span></li>
+        <li><b>Excess</b><span>A sharp rejection at an extreme: a long wick, a fast reversal. It is the auction saying "too high" or "too low" and it marks the end of a leg, not a pause in one.</span></li>
+        <li><b>Initiative activity</b><span>Someone buying above value or selling below it. They are paying for immediacy, which means they have a reason. Initiative moves continue more often than they reverse.</span></li>
+        <li><b>Responsive activity</b><span>Someone selling above value or buying below it. They are fading a stretched price. Responsive moves fail the moment the initiator has size behind them.</span></li>
+        <li><b>Rotation</b><span>Price travelling from one edge to the other without conviction. A rotating market pays the patient and punishes everyone who mistakes movement for direction.</span></li>
+      </ul>
+      <div class="gate ok" style="margin-top:14px"><b>Read this first, every session.</b> Is the market balanced or imbalanced, and where is value relative to price? Every other question you ask about a chart is downstream of that one, and getting it wrong makes every pattern you find point the wrong way.</div>
+    </div>
+  </section>
+
+  <section id="pa-book">
+    <div class="eyebrow"><span class="tab blue">02</span><h2>The order book</h2><span class="line"></span><span class="hint">what actually sits under a candle</span></div>
+    <div class="card pad">
+      <p class="lede">Every candle is a compression of thousands of decisions in a queue. You cannot see the queue on spot gold, but you can see its shadow, and the shadow is enough.</p>
+      <p>There are only two kinds of order. A <b>limit order</b> rests in the book and provides liquidity — it waits, and it moves nothing. A <b>market order</b> takes liquidity — it consumes resting orders and it is the only thing that moves price. Every move you have ever traded was market orders eating the book.</p>
+      <div id="paBookSvg"></div>
+      <ul class="rules">
+        <li><b>Depth</b><span>How much size rests at each price. Thick depth absorbs aggression and price stalls. Thin depth means a modest order travels a long way — which is why the same volume produces a shrug at midday and a vertical leg at the New York open.</span></li>
+        <li><b>Absorption</b><span>Aggressive orders arriving continuously and price not moving. Someone is filling them all. When absorption ends, price usually goes the other way, hard, because the aggressors are trapped.</span></li>
+        <li><b>Exhaustion</b><span>The opposite: aggression dries up and price stops advancing even though nothing is defending it. The move ends not because it was pushed back, but because nobody is left to buy.</span></li>
+        <li><b>Stops as liquidity</b><span>A stop is a market order waiting for a trigger price. A cluster of them is a pool of guaranteed fills. Large participants need those fills to get size done, which is why price so often trades to the obvious level and immediately turns.</span></li>
+        <li><b>Icebergs and spoofs</b><span>Size that is hidden, and size that is shown but never intended to trade. Both mean the visible book lies. This is precisely why we read the outcome — the candle — rather than the advertisement.</span></li>
+      </ul>
+      <p class="legend" style="margin-top:14px">Three chart events, explained by the book</p>
+      <div class="mgmt">
+        <div class="mgcard"><div class="mg-t">The gap and the fast leg</div>
+          <p>Displacement is not strength of conviction. It is thin depth. A leg that travels twenty dollars in four minutes did so because there was almost nothing resting in the way — and the empty space it leaves behind is the fair value gap you later trade back into.</p></div>
+        <div class="mgcard"><div class="mg-t">The wick through a level</div>
+          <p>Price trades to where the stops are, the stops fire as market orders, a resting participant fills against them, and price returns inside. The wick is the fill. That is the entire mechanic of the liquidity sweep.</p></div>
+        <div class="mgcard"><div class="mg-t">The level that keeps holding</div>
+          <p>Repeated tests with no progress mean someone is refilling the book at that price. It holds until it does not, and when it breaks, it breaks quickly, because the wall that was absorbing everything has been pulled.</p></div>
+      </div>
+      <div class="gate" style="margin-top:14px"><b>The practical consequence.</b> Stop asking "is this level support?" and start asking "who is filling here, and what happens when they stop?" A level is not a wall. It is a place where someone was willing to trade, until they were not.</div>
+    </div>
+  </section>
+  <section id="pa-candle">
+    <div class="eyebrow"><span class="tab green">03</span><h2>Candles as evidence</h2><span class="line"></span><span class="hint">what a bar can and cannot tell you</span></div>
+    <div class="card pad">
+      <p class="lede">A candle is four numbers and a duration. Treat it as evidence of an auction, not as a signal, and it becomes reliable. Treat it as a signal on its own and it will take your money in every market condition.</p>
+      <div id="paCandleSvg"></div>
+      <ul class="rules">
+        <li><b>The body</b><span>Where business got done. A long body means one side dominated for the whole period. A small body means the period ended roughly where it began — disagreement, not direction.</span></li>
+        <li><b>The wicks</b><span>Where price was rejected. A long wick is an auction that went looking for trade, found none it liked, and came back. It is the most honest part of a candle.</span></li>
+        <li><b>The close</b><span>The only price both sides agreed to end on. Closes decide structure; wicks decide invalidation. Never break structure on a wick.</span></li>
+        <li><b>The next candle</b><span>A rejection candle nobody follows is a curiosity. Confirmation is not superstition here — it is the difference between one participant and a side.</span></li>
+      </ul>
+      <p class="legend" style="margin-top:16px">The same candle, three locations</p>
+      <div class="matrix-scroll"><table class="mini-t"><thead><tr><th>Where it prints</th><th>What the long lower wick means</th><th>Your move</th></tr></thead><tbody>
+        <tr><td>At a swept low, after an impulse down</td><td>Aggressive sellers were filled by someone larger, and the sellers are now trapped</td><td>The setup this handbook trades — look for the shift and the retest</td></tr>
+        <tr><td>Mid-range, in balance</td><td>Ordinary rotation. Someone bought a dip inside a range that everyone is trading</td><td>Nothing. There is no invalidation level and no measurable target</td></tr>
+        <tr><td>Into a strong trend, against it</td><td>A pause in one-way flow, not a reversal</td><td>Fade it only after structure breaks; otherwise use it as a pullback entry with the trend</td></tr>
+      </tbody></table></div>
+      <div class="gate" style="margin-top:14px"><b>The rule that follows.</b> A candle means nothing until you have said where it printed. This is why the reading sequence puts location before trigger — and why every trigger in the playbooks has a location requirement attached to it.</div>
+    </div>
+  </section>
+
+  <section id="pa-structure">
+    <div class="eyebrow"><span class="tab">04</span><h2>Structure</h2><span class="line"></span><span class="hint">the skeleton under the noise</span></div>
+    <div class="card pad">
+      <p class="lede">Structure is the sequence of swing highs and lows, and it is the only objective thing on a chart. Two traders will disagree about a pattern; they should not disagree about whether the last higher low held.</p>
+      <div id="paStructSvg"></div>
+      <ul class="rules">
+        <li><b>Define a swing once, then never move the definition</b><span>A swing high is a high with lower highs either side of it. Pick the number of bars, write it down, apply it every day. Most bad structure reads are a definition that quietly changed to fit the position.</span></li>
+        <li><b>Break of structure</b><span>A close beyond the last swing in the direction of the trend. It is continuation, and it is the weakest of the structural events — the trend was already doing that.</span></li>
+        <li><b>Change of character</b><span>A close beyond the last opposing swing after an extreme. It is the first evidence that the sequence has stopped. It is permission to look for a reversal, never permission to take one.</span></li>
+        <li><b>The fractal problem</b><span>Every timeframe has its own structure and they disagree constantly. Fix the roles before you look: the higher timeframe grants direction, the middle one grants location, the low one grants timing. A 5M change of character inside a 4H uptrend is a pullback, not a reversal.</span></li>
+      </ul>
+      <p class="legend" style="margin-top:14px">Reading structure in four moves</p>
+      <ol class="steps">
+        <li>Mark the last three swing highs and three swing lows on your bias timeframe. If you cannot mark them cleanly, the market is in balance — stop, and trade the range playbook or nothing.</li>
+        <li>Name the sequence out loud: higher highs and higher lows, lower highs and lower lows, or neither.</li>
+        <li>Find the level that would end the sequence. That is your invalidation, and it exists before you have a trade.</li>
+        <li>Only now drop a timeframe to look for an entry, and only in the direction the sequence allows.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="pa-location">
+    <div class="eyebrow"><span class="tab blue">05</span><h2>Location</h2><span class="line"></span><span class="hint">the half of the edge nobody photographs</span></div>
+    <div class="card pad">
+      <p class="lede">The same trigger is a good trade at one price and a bad one twenty dollars away. Location is what separates them, and it is decided before the candle prints.</p>
+      <div id="paLocSvg"></div>
+      <div class="mgmt">
+        <div class="mgcard"><div class="mg-t">Premium and discount</div>
+          <p>Split the leg you are trading in half. Buying in the lower half is a discount; buying in the upper half is paying a premium for the same idea with a wider stop and a shorter run to target. The maths punishes the second one twice.</p></div>
+        <div class="mgcard"><div class="mg-t">Imbalance</div>
+          <p>A three-candle gap where one side never traded. Price returns to it because business was left unfinished there. It is an entry zone on the way back and a target on the way out.</p></div>
+        <div class="mgcard"><div class="mg-t">Origin</div>
+          <p>The last opposing candle before a displacement leg — where the size that caused the move was absorbed. Use the body, not the wick. If it fails on the first touch, the premise behind the move has changed.</p></div>
+        <div class="mgcard"><div class="mg-t">Pools</div>
+          <p>Equal highs, equal lows, the previous day's extremes, the session range. Not resistance — destinations. Ask which pool price is travelling toward and you have your target before you have your entry.</p></div>
+      </div>
+      <div class="gate" style="margin-top:14px"><b>The test.</b> Before any entry, answer this in one sentence: <i>why here and not twenty dollars away?</i> If the answer is "because the candle looked good", you have a trigger and no location, which is the most common losing trade there is.</div>
+    </div>
+  </section>
+  <section id="pa-read">
+    <div class="eyebrow"><span class="tab red">06</span><h2>The read</h2><span class="line"></span><span class="hint" id="paReadHint">six questions, in order</span></div>
+    <div class="card pad">
+      <p class="lede">This is the sequence, and the order is not negotiable. Each step narrows what the next one is allowed to conclude. Work it top to bottom on any chart, in any market, and you will either arrive at a trade with an invalidation or arrive at "nothing here" — both are correct outcomes.</p>
+      <ul class="checks" id="paReadList">
+        <li><label class="check"><input type="checkbox" data-pr="0"><b>1 · Condition</b><span>Balanced or imbalanced? Where is value relative to price right now?</span></label></li>
+        <li><label class="check"><input type="checkbox" data-pr="1"><b>2 · Structure</b><span>Name the sequence on the bias timeframe, and the level that would end it.</span></label></li>
+        <li><label class="check"><input type="checkbox" data-pr="2"><b>3 · Location</b><span>Premium or discount? Is price at an edge, at an imbalance, at an origin — or in the middle of nowhere?</span></label></li>
+        <li><label class="check"><input type="checkbox" data-pr="3"><b>4 · Liquidity</b><span>Which pool is price travelling toward, and which one has already been taken?</span></label></li>
+        <li><label class="check"><input type="checkbox" data-pr="4"><b>5 · Trigger</b><span>What single event would tell you the other side has stepped in? Write it before it happens.</span></label></li>
+        <li><label class="check"><input type="checkbox" data-pr="5"><b>6 · Invalidation</b><span>What price proves you wrong, and what would that price mean about the auction?</span></label></li>
+      </ul>
+      <div class="gate" id="paReadGate">Work down the list. The verdict appears once all six are answered.</div>
+      <p class="fs-note">This is the same order the flow enforces in steps 1 to 4 — condition and structure become the narrative and the router, location and liquidity become the level board, trigger becomes the playbook confirmations, invalidation becomes the stop. The flow is this read, with gates attached.</p>
+      <p class="legend" style="margin-top:16px">Worked example — a London sweep, read in order</p>
+      <div id="paWorkedSvg"></div>
+      <ol class="steps" id="paWorked">
+        <li><b>Condition.</b> Asia built a tight range on overlapping candles: balance. Value sits in the middle of that range, price is at its lower edge.</li>
+        <li><b>Structure.</b> The 4H is making higher highs and higher lows; the last higher low is at 3341. That level ends the sequence, so it is the boundary of everything that follows.</li>
+        <li><b>Location.</b> Price is in the lower half of the leg from 3341 to 3372 — a discount, and it is sitting on the Asia low rather than in mid-range.</li>
+        <li><b>Liquidity.</b> Equal lows sit just under the Asia low; the previous day high is untouched above. Stops below, destination above. The pool beneath is what the move needs to fund itself.</li>
+        <li><b>Trigger.</b> Written in advance: a wick through the equal lows that closes back inside, then a 5M close above the last lower high, then a displacement leg that leaves a gap.</li>
+        <li><b>Invalidation.</b> A close back under 3341. That would mean the sweep was not a sweep but continuation, and that the sellers were never trapped.</li>
+      </ol>
+      <div class="gate ok"><b>What makes it a read rather than a guess.</b> Every one of those six sentences was true before the entry candle existed. If you can only write them afterwards, you are describing, not reading.</div>
+    </div>
+  </section>
+
+  <section id="pa-fail">
+    <div class="eyebrow"><span class="tab">07</span><h2>How reads fail</h2><span class="line"></span><span class="hint">the six ways, in order of cost</span></div>
+    <div class="card pad">
+      <p class="lede">Almost every losing trade that followed a rule was one of these. They are worth more attention than any pattern, because they are the failures you can actually stop repeating.</p>
+      <ul class="rules">
+        <li><b>Trigger without location</b><span>A textbook candle in the middle of a range. The pattern was real; there was no reason for it to be at that price and no level to be wrong against. This is the most expensive habit in retail trading.</span></li>
+        <li><b>Structure read on the wrong timeframe</b><span>Fading a 4H uptrend because the 5M made a lower low. The 5M is allowed to disagree — that is what a pullback is.</span></li>
+        <li><b>Mistaking a gap for strength</b><span>A vertical leg into thin liquidity looks like conviction and is often just an empty book at a quiet hour. Ask what time it is before you call it displacement.</span></li>
+        <li><b>Fading absorption</b><span>Selling into a level that has held four times, on the fifth test. Repeated holds mean someone is filling — until they pull, and the fifth test is the one that goes.</span></li>
+        <li><b>Reading the advertisement</b><span>Trusting a level because it is obvious. The more obvious it is, the more certain it is to be traded through at least once to collect what is resting beyond it.</span></li>
+        <li><b>Narrative drift</b><span>The read was written for the session, price did something else, and the story quietly changed to keep the position alive. The invalidation you wrote at step 6 exists to stop exactly this.</span></li>
+      </ul>
+      <div class="gate"><b>The diagnostic.</b> After any loss, ask which of these six it was before you ask anything about the entry. Five of them happen before the entry candle, and four of them are decided in the first two minutes of your read.</div>
+    </div>
+  </section>
+  <section id="pa-practice">
+    <div class="eyebrow"><span class="tab green">08</span><h2>Practice</h2><span class="line"></span><span class="hint" id="paQzHint">0 / 0</span></div>
+    <div class="card pad">
+      <p class="fs-note" style="margin-top:0">Ten reads. Each one shows a chart and asks what you would conclude. The explanation matters more than the score — it names which of the six failure modes the wrong answers belong to.</p>
+      <div class="paquiz" id="paQuiz"></div>
+      <div class="dataops">
+        <button class="btn ghost" id="paQzPrev">Back</button>
+        <button class="btn ghost" id="paQzNext">Skip</button>
+        <button class="btn ghost" id="paQzReset">Start over</button>
+        <span class="note" id="paQzNote"></span>
+      </div>
+      <div class="gate" id="paQzVerdict" hidden></div>
+    </div>
+  </section>
+</div>
+
+
 <div class="view" id="view-live" role="tabpanel" aria-labelledby="tab-live" tabindex="-1">
   <div class="viewhead">
     <h2>Practice lab — strategies in play</h2>
@@ -3821,15 +4323,15 @@ window.CFG=function(k){return isFinite(C[k])?C[k]:D[k];};
       <div class="breaks">
         <div>
           <p class="legend">Where the discipline goes</p>
-          <table class="mini-t"><thead><tr><th>Rule broken</th><th style="text-align:right">Times</th><th style="text-align:right">Net R</th></tr></thead><tbody id="byBreak"></tbody></table>
+          <div class="matrix-scroll"><table class="mini-t"><thead><tr><th>Rule broken</th><th style="text-align:right">Times</th><th style="text-align:right">Net R</th></tr></thead><tbody id="byBreak"></tbody></table></div>
         </div>
         <div>
           <p class="legend">By playbook</p>
-          <table class="mini-t"><thead><tr><th>Strategy</th><th style="text-align:right">N</th><th style="text-align:right">Win %</th><th style="text-align:right">Net R</th></tr></thead><tbody id="byStrat"></tbody></table>
+          <div class="matrix-scroll"><table class="mini-t"><thead><tr><th>Strategy</th><th style="text-align:right">N</th><th style="text-align:right">Win %</th><th style="text-align:right">Net R</th></tr></thead><tbody id="byStrat"></tbody></table></div>
         </div>
         <div>
           <p class="legend">By session window</p>
-          <table class="mini-t"><thead><tr><th>Window</th><th style="text-align:right">N</th><th style="text-align:right">Win %</th><th style="text-align:right">Net R</th></tr></thead><tbody id="bySess"></tbody></table>
+          <div class="matrix-scroll"><table class="mini-t"><thead><tr><th>Window</th><th style="text-align:right">N</th><th style="text-align:right">Win %</th><th style="text-align:right">Net R</th></tr></thead><tbody id="bySess"></tbody></table></div>
         </div>
       </div>
       <div class="gate" id="perfVerdict" style="margin-top:16px"></div>
@@ -4304,8 +4806,8 @@ window.CFG=function(k){return isFinite(C[k])?C[k]:D[k];};
         <div class="statgrid" id="acGrid"></div>
         <div id="acCurve" style="margin-top:12px"></div>
         <div class="breaks" style="margin-top:16px">
-          <div><p class="legend">By month</p><table class="mini-t"><thead><tr><th>Month</th><th style="text-align:right">Trades</th><th style="text-align:right">Net</th><th style="text-align:right">Costs</th></tr></thead><tbody id="acMonths"></tbody></table></div>
-          <div><p class="legend">Imports on record</p><table class="mini-t"><thead><tr><th>Added</th><th>Source</th><th style="text-align:right">New trades</th></tr></thead><tbody id="acImports"></tbody></table></div>
+          <div><p class="legend">By month</p><div class="matrix-scroll"><table class="mini-t"><thead><tr><th>Month</th><th style="text-align:right">Trades</th><th style="text-align:right">Net</th><th style="text-align:right">Costs</th></tr></thead><tbody id="acMonths"></tbody></table></div></div>
+          <div><p class="legend">Imports on record</p><div class="matrix-scroll"><table class="mini-t"><thead><tr><th>Added</th><th>Source</th><th style="text-align:right">New trades</th></tr></thead><tbody id="acImports"></tbody></table></div></div>
         </div>
         <div class="gate" id="acVerdict" style="margin-top:12px"></div>
       </div>
@@ -4353,8 +4855,12 @@ var $=function(q){return document.querySelector(q);},
 
 /* ---------- storage (degrades to memory if blocked) ---------- */
 var mem={}, K="mts.v3.";
+var QUIET=false;
+/* While a change from another tab is being applied, this tab must not write its
+   own (now stale) state back — that is how an idle tab clobbers the active one. */
+window.MTSQuiet=function(fn){QUIET=true;try{return fn();}finally{QUIET=false;}};
 var store={get:function(k){try{var v=localStorage.getItem(K+k);return v===null?mem[k]:v;}catch(e){return mem[k];}},
-           set:function(k,v){mem[k]=v;try{localStorage.setItem(K+k,v);}catch(e){}}};
+           set:function(k,v){mem[k]=v;if(QUIET)return;try{localStorage.setItem(K+k,v);}catch(e){}}};
 
 /* ---------- playbook data ---------- */
 var PB={
@@ -5157,6 +5663,7 @@ function openPosition(){
     e:parseFloat($("#entry").value),sl:parseFloat($("#stop").value),tp:parseFloat($("#target").value),
     tp1:c.tp1,a1:c.a1,lots:c.lots,risk:c.riskUSD,rr:c.rr,rr1:c.rr1,
     at:Date.now(),ph:{be:false,tp1:false},legs:[],closed:0,
+    exit:(typeof SEL!=="undefined"?SEL.exit:"")||"",entry:(typeof SEL!=="undefined"?SEL.entry:"")||"",stepIdx:0,
     why:($("#jThesis")?$("#jThesis").value.trim():""),
     inval:($("#jInval")?$("#jInval").value.trim():""),
     assume:($("#jAssume")?$("#jAssume").value.trim():"")});
@@ -5194,8 +5701,31 @@ function posEvent(id,k){
     p.legs.push({part:part,r:p.rr1!=null?p.rr1:1,how:"partial"});
     p.closed=(p.closed||0)+part/100;
   }
+  else if(k==="nextstep"){
+    var rec2=p.exit?byId(p.exit):null,n2=(p.stepIdx||0)+1;
+    if(rec2&&n2>=rec2.steps.length){closePosition(id,"target");return;}
+    p.stepIdx=n2;p.ph.struct=true;
+  }
+  else if(k.indexOf("scale")===0){
+    var pct=parseInt(k.replace("scale",""),10)||50;
+    var left=100-Math.round((p.closed||0)*100);
+    pct=Math.min(pct,left);
+    if(pct<=0){if(window.MTSToast)window.MTSToast("Nothing left to scale out of.");return;}
+    var lr=liveRFor(p);
+    p.legs.push({part:pct,r:Math.round((lr!=null?lr:(p.rr1!=null?p.rr1:1))*100)/100,how:"scaled "+pct+"%"});
+    p.closed=(p.closed||0)+pct/100;p.ph.tp1=true;p.ph.struct=true;
+    if(p.closed>=0.999){closePosition(id,"target");return;}
+    if(window.MTSToast)window.MTSToast(pct+"% out at "+(lr!=null?((lr>0?"+":"")+lr.toFixed(2)+"R"):"the planned level")+".");
+  }
   else if(k==="target"||k==="stopped"||k==="trail"||k==="flat"){closePosition(id,k==="flat"?"trail":k);return;}
   savePos();render();
+}
+function liveRFor(p){
+  var px=(window.MTSPrice&&window.MTSPrice())||null;
+  if(!px||!isFinite(p.e)||!isFinite(p.sl))return null;
+  var d=Math.abs(p.e-p.sl);
+  if(!d)return null;
+  return ((px-p.e)*((isFinite(p.tp)&&p.tp<p.e)?-1:1))/d;
 }
 function posAction(p){
   var mins=(Date.now()-p.at)/60000,lim=TS()[p.pb]||0,ns=newsState();
@@ -5207,6 +5737,19 @@ function posAction(p){
     return {t:"Close it — "+Math.round(mins)+" minutes, past the "+lim+"-minute stop",
       w:"It has not done what it was supposed to do in the time it had.",
       b:[["flat","Closed","danger"],["stopped","Stopped out","danger"]],hot:true};
+  var rec=p.exit?byId(p.exit):null;
+  if(rec&&rec.steps.length){
+    var idx=Math.min(p.stepIdx||0,rec.steps.length-1);
+    var last=idx>=rec.steps.length-1;
+    var btns=[["nextstep",last?"Done — close it":"Done — next step","primary"]];
+    if(!last)btns.push(["scale50","Scale 50%"],["scale33","Scale 33%"]);
+    btns.push(["trail","Trailed out"],["stopped","Stopped out","danger"]);
+    return {t:rec.steps[idx],
+      w:rec.name+" · step "+(idx+1)+" of "+rec.steps.length+
+        (p.legs.length?" · banked "+realisedR(p).toFixed(2)+"R":"")+
+        ". Your own written plan, not a suggestion.",
+      b:btns};
+  }
   if(!p.ph.struct)
     return {t:"Wait. Nothing until structure clears.",
       w:"Breakeven only once "+(p.pb==="range"?"price clears a quarter of the range":"the last opposing swing is taken")+".",
@@ -5219,6 +5762,449 @@ function posAction(p){
     w:"Trail behind structure. "+(p.legs.length?"Banked so far: "+realisedR(p).toFixed(2)+"R.":""),
     b:[["target","Target hit","primary"],["trail","Trailed out"],["stopped","Stopped","danger"]]};
 }
+/* ---------- strategy library: how you get in, how you get out, and the branches ---------- */
+var STRAT_DEFAULTS=[
+ {id:"e1",kind:"entry",pb:"trend",name:"Pullback into value",
+  steps:["Wait for price to reach the 20–50 EMA zone with the trend intact.",
+         "Take a rejection candle off the zone as the first confirmation.",
+         "Take the 5M structure shift back with the trend as the second.",
+         "Enter on the close of the shift candle, stop behind the pullback swing."]},
+ {id:"e2",kind:"entry",pb:"trend",name:"Break and retest",
+  steps:["Mark the level the impulse broke.",
+         "Wait for price to return and hold it from the other side.",
+         "Enter on the hold, stop beyond the retest wick."]},
+ {id:"e3",kind:"entry",pb:"sweep",name:"FVG retest after displacement",
+  steps:["Mark the pool. Wait for the wick through it and the close back inside.",
+         "Require the structure shift on the entry timeframe.",
+         "Require a displacement leg that leaves a gap.",
+         "Enter on the retrace into the gap, stop beyond the sweep wick."]},
+ {id:"e4",kind:"entry",pb:"sweep",name:"Order block entry",
+  steps:["Find the last opposing candle before the displacement.",
+         "Use its body as the zone, not the wick.",
+         "Enter on the first touch, stop beyond the block."]},
+ {id:"e5",kind:"entry",pb:"range",name:"Edge rejection fade",
+  steps:["Require two respected touches on each side before trading the range.",
+         "Wait for price at the boundary, not the middle.",
+         "Take a rejection or a sweep of the edge as the trigger.",
+         "Enter on the close back inside, stop beyond the boundary wick."]},
+ {id:"x1",kind:"exit",pb:"trend",name:"Structure trail",
+  steps:["Do nothing until the last opposing swing is taken out.",
+         "Move the stop to breakeven once it is.",
+         "Take the planned partial at the first target.",
+         "Trail the rest behind each new higher low.",
+         "Close what remains at the session end or the final target."]},
+ {id:"x2",kind:"exit",pb:"sweep",name:"Two-leg scale",
+  steps:["Stop stays where it is until displacement confirms.",
+         "Half off at the first pool, stop to breakeven at the same time.",
+         "Second half runs to the opposing pool.",
+         "If the runner stalls for thirty minutes, close it at market."]},
+ {id:"x3",kind:"exit",pb:"range",name:"Midpoint and boundary",
+  steps:["Stop stays beyond the boundary wick.",
+         "Half off at the midpoint of the range.",
+         "Move to breakeven once the midpoint is cleared.",
+         "Rest to the far boundary. Never hold through a close outside the range."]},
+ {id:"x4",kind:"exit",pb:"any",name:"One target, no management",
+  steps:["Set the stop and target before entry.",
+         "Do nothing until one of them is hit.",
+         "This is the correct exit when you cannot watch the screen."]},
+ {id:"b1",kind:"branch",pb:"any",name:"When it does not go your way",
+  steps:["if price stalls at the entry for 15 minutes | then halve the position and let the rest prove itself",
+         "if a tier-1 print lands within 30 minutes | then flatten or halve before it, never after",
+         "if price closes back through the entry level | then close at market rather than waiting for the stop",
+         "if the setup reaches 1R then gives it all back | then close the trade and log a rule break"]},
+ {id:"b2",kind:"branch",pb:"sweep",name:"Sweep branches",
+  steps:["if the sweep happens without displacement | then stand down, no entry",
+         "if both sides get purged | then wait for one side to be reclaimed before anything",
+         "if the FVG fills completely and closes through | then the premise is void, exit"]}
+];
+var STRATS=[];
+try{var sj=JSON.parse(store.get("strats")||"null");if(Array.isArray(sj))STRATS=sj;}catch(e){}
+if(!STRATS.length)STRATS=JSON.parse(JSON.stringify(STRAT_DEFAULTS));
+var SEL={entry:store.get("selEntry")||"",exit:store.get("selExit")||""};
+function stratsSave(){store.set("strats",JSON.stringify(STRATS));}
+function byId(id){return STRATS.filter(function(x){return x.id===id;})[0];}
+function forPb(kind,pb){
+  return STRATS.filter(function(x){return x.kind===kind&&(x.pb===pb||x.pb==="any"||!pb);});
+}
+function fillSelects(){
+  var pb=S.active||S.routed||"";
+  [["selEntry","entry"],["selExit","exit"]].forEach(function(p){
+    var el=$("#"+p[0]);
+    if(!el)return;
+    var list=forPb(p[1],pb),cur=SEL[p[1]];
+    el.innerHTML='<option value="">— none chosen —</option>'+list.map(function(x){
+      return '<option value="'+x.id+'"'+(cur===x.id?" selected":"")+'>'+pesc(x.name)+
+        (x.pb!=="any"?" · "+(PB[x.pb]?PB[x.pb].name:x.pb):"")+'</option>';}).join("");
+    if(cur&&!byId(cur))el.value="";
+  });
+  var r=$("#stratRead"),en=byId(SEL.entry),ex=byId(SEL.exit);
+  if(r){
+    r.innerHTML=(en||ex)
+      ? ((en?'<div><b>In:</b> '+pesc(en.name)+' — '+pesc(en.steps[0]||"")+'</div>':"")+
+         (ex?'<div><b>Out:</b> '+pesc(ex.name)+' — '+ex.steps.length+' steps, and it drives the live card in step 5.</div>':""))
+      : '<div class="mut">Nothing chosen. The trade will still work; you just manage it from memory instead of a written plan.</div>';
+  }
+}
+function renderLib(){
+  var host=$("#slBody");
+  if(!host)return;
+  var kind=($("#slKind button[aria-pressed=\"true\"]")||{dataset:{k:"entry"}}).dataset.k;
+  var pbf=$("#slPb").value;
+  var list=STRATS.filter(function(x){return x.kind===kind&&(pbf==="all"||x.pb===pbf||x.pb==="any");});
+  host.innerHTML=list.length?list.map(function(x){
+    var i=STRATS.indexOf(x);
+    return '<div class="slcard"><div class="sl-ch"><b>'+pesc(x.name)+'</b>'+
+      '<span class="sl-pb">'+(x.pb==="any"?"any playbook":(PB[x.pb]?PB[x.pb].name:x.pb))+'</span>'+
+      '<button class="iconbtn" data-sl-edit="'+i+'">edit</button>'+
+      '<button class="iconbtn danger" data-sl-del="'+i+'">remove</button></div>'+
+      (x.kind==="branch"
+        ? '<ul class="sl-branch">'+x.steps.map(function(st){
+            var p=st.split("|");
+            return '<li><i>if</i> '+pesc((p[0]||"").trim().replace(/^if\s+/i,""))+
+                   ' <i>then</i> '+pesc((p[1]||"").trim().replace(/^then\s+/i,""))+'</li>';}).join("")+'</ul>'
+        : '<ol class="sl-steps">'+x.steps.map(function(st){return "<li>"+pesc(st)+"</li>";}).join("")+'</ol>')+
+      '</div>';
+  }).join(""):'<p class="fs-note">Nothing here yet for that filter.</p>';
+  $$("#slBody [data-sl-edit]").forEach(function(b){
+    b.addEventListener("click",function(){editStrat(+b.dataset.slEdit);});});
+  $$("#slBody [data-sl-del]").forEach(function(b){
+    b.addEventListener("click",function(){
+      var i=+b.dataset.slDel;
+      if(!window.confirm('Remove "'+STRATS[i].name+'"?'))return;
+      STRATS.splice(i,1);stratsSave();renderLib();fillSelects();});});
+}
+var EDIT=-1;
+function editStrat(i){
+  EDIT=i;
+  var x=i>-1?STRATS[i]:{name:"",pb:"any",steps:[],kind:($("#slKind button[aria-pressed=\"true\"]")||{dataset:{k:"entry"}}).dataset.k};
+  $("#slEdit").hidden=false;
+  $("#slName").value=x.name;
+  $("#slFor").innerHTML='<option value="any">Any playbook</option>'+Object.keys(PB).map(function(k){
+    return '<option value="'+k+'"'+(x.pb===k?" selected":"")+'>'+PB[k].name+'</option>';}).join("");
+  $("#slFor").value=x.pb;
+  $("#slSteps").value=x.steps.join("\n");
+  $("#slNote").textContent=x.kind==="branch"?"One branch per line: if … | then …":"One step per line, in the order you do them.";
+}
+if($("#stratOpen"))$("#stratOpen").addEventListener("click",function(){
+  var lib=$("#stratLib");
+  lib.hidden=!lib.hidden;
+  if(!lib.hidden){
+    if(!$("#slPb").dataset.filled){
+      $("#slPb").innerHTML='<option value="all">All playbooks</option>'+Object.keys(PB).map(function(k){
+        return '<option value="'+k+'">'+PB[k].name+'</option>';}).join("");
+      $("#slPb").dataset.filled="1";
+    }
+    renderLib();
+  }
+});
+if($("#slClose"))$("#slClose").addEventListener("click",function(){$("#stratLib").hidden=true;});
+$$("#slKind button").forEach(function(b){
+  b.addEventListener("click",function(){
+    $$("#slKind button").forEach(function(x){x.setAttribute("aria-pressed",String(x===b));});
+    $("#slEdit").hidden=true;renderLib();});});
+if($("#slPb"))$("#slPb").addEventListener("change",renderLib);
+if($("#slNew"))$("#slNew").addEventListener("click",function(){editStrat(-1);});
+if($("#slCancel"))$("#slCancel").addEventListener("click",function(){$("#slEdit").hidden=true;EDIT=-1;});
+if($("#slSave"))$("#slSave").addEventListener("click",function(){
+  var name=$("#slName").value.trim();
+  if(!name){$("#slNote").textContent="It needs a name.";return;}
+  var kind=($("#slKind button[aria-pressed=\"true\"]")||{dataset:{k:"entry"}}).dataset.k;
+  var steps=$("#slSteps").value.split("\n").map(function(x){return x.trim();}).filter(Boolean);
+  if(!steps.length){$("#slNote").textContent="Write at least one step.";return;}
+  var rec={id:(EDIT>-1?STRATS[EDIT].id:"s"+Date.now()),kind:kind,pb:$("#slFor").value,name:name,steps:steps};
+  if(EDIT>-1)STRATS[EDIT]=rec;else STRATS.push(rec);
+  stratsSave();$("#slEdit").hidden=true;EDIT=-1;renderLib();fillSelects();
+  if(window.MTSToast)window.MTSToast("Strategy saved.");
+});
+[["selEntry","entry"],["selExit","exit"]].forEach(function(p){
+  var el=$("#"+p[0]);
+  if(el)el.addEventListener("change",function(){
+    SEL[p[1]]=el.value;store.set(p[0],el.value);fillSelects();render();});
+});
+
+/* ---------- reward engine: one R of risk, eight ways to take the profit ---------- */
+function reachOf(t){
+  var r=+t.r||0,mx=r;
+  (t.legs||[]).forEach(function(l){if(+l.r>mx)mx=+l.r;});
+  return mx;
+}
+function rewardCurve(n){
+  var H=HIST.slice(-(n||60)).filter(function(t){return isFinite(t.r);});
+  var reach=H.map(reachOf);
+  var grid=[],step=0.25,max=6;
+  for(var x=0;x<=max+0.001;x+=step)grid.push(+x.toFixed(2));
+  var p={},src="journal",note="";
+  if(reach.length>=10){
+    grid.forEach(function(x){
+      p[x]=reach.filter(function(v){return v>=x;}).length/reach.length;
+    });
+    note=reach.length+" trades. Each trade counts the furthest R it is recorded as reaching, so a winner you closed early counts only to where you closed it — the real reach is a little better than this.";
+  } else {
+    src="default";
+    grid.forEach(function(x){p[x]=Math.max(0.02,Math.exp(-0.55*x));});
+    note="Only "+reach.length+" trades on record, so this uses a generic decay curve. It becomes yours once you have logged a few dozen.";
+  }
+  return {grid:grid,p:p,step:step,n:reach.length,src:src,note:note};
+}
+function pAt(c,x){
+  if(x<=0)return 1;
+  var keys=c.grid,last=keys[keys.length-1];
+  if(x>=last)return c.p[last];
+  var lo=Math.floor(x/c.step)*c.step,hi=lo+c.step;
+  var a=c.p[+lo.toFixed(2)],b=c.p[+hi.toFixed(2)];
+  if(a==null)return c.p[last];
+  if(b==null)b=a;
+  return a+(b-a)*((x-lo)/c.step);
+}
+/* A plan is a list of events at R levels. exit takes a share off; add buys more,
+   funded by the stop trailing so total exposure never exceeds the original 1R. */
+function rewardPlans(T){
+  var t=Math.max(0.5,T);
+  return [
+   {n:"All out at target",d:"One exit, no management.",
+    ev:[],note:"Simplest. Everything rides on reaching "+t.toFixed(1)+"R."},
+   {n:"Breakeven, then run",d:"Nothing off; stop to entry at 1R.",
+    ev:[{at:1,stop:0}],note:"Removes the loss once it works, keeps the whole tail."},
+   {n:"Half at 1R",d:"50% off at 1R, stop to entry, rest to target.",
+    ev:[{at:1,exit:0.5,stop:0}],note:"The default two-leg plan."},
+   {n:"Half at half-target",d:"50% off at "+(t/2).toFixed(1)+"R, stop to entry.",
+    ev:[{at:t/2,exit:0.5,stop:0}],note:"Later partial, more tail kept."},
+   {n:"Thirds",d:"A third at 1R, a third at 2R, the rest at target.",
+    ev:[{at:1,exit:0.34,stop:0},{at:2,exit:0.33,stop:1}],note:"Smooths the curve, trims the tail."},
+   {n:"Quarter ladder",d:"25% at 1R, 2R, 3R, the rest at target.",
+    ev:[{at:1,exit:0.25,stop:0},{at:2,exit:0.25,stop:1},{at:3,exit:0.25,stop:2}],
+    note:"Highest chance of green, lowest expected R. Good on days you are shaky."},
+   {n:"Pyramid at 1R",d:"Add 50% of the original size at 1R, stop trails to +0.25R.",
+    ev:[{at:1,add:0.5,stop:0.25}],note:"Risk stays inside 1R because the stop is above entry before the add is on."},
+   {n:"Pyramid and scale",d:"Add 50% at 1R, take half off at 2R, stop trails behind.",
+    ev:[{at:1,add:0.5,stop:0.25},{at:2,exit:0.5,stop:1}],note:"The compromise: bigger when it runs, banked when it stalls."}
+  ];
+}
+/* Simulate a plan against a maximum-reach outcome m (in R). */
+function runPlan(plan,T,m){
+  var size=1,stop=-1,banked=0,exposure=1;
+  for(var i=0;i<plan.ev.length;i++){
+    var e=plan.ev[i];
+    if(m<e.at)break;
+    if(e.exit){var off=size*e.exit;banked+=off*e.at;size-=off;}
+    if(e.add)size+=e.add;
+    if(e.stop!=null)stop=e.stop;
+  }
+  if(m>=T)return banked+size*T;
+  return banked+size*stop;
+}
+function evalPlan(plan,T,c){
+  var ev=0,green=0,best=runPlan(plan,T,T+0.001),worst=null;
+  var firstAt=(plan.ev&&plan.ev.length)?plan.ev[0].at:1;
+  var stall=runPlan(plan,T,firstAt+0.001);
+  for(var x=0;x<=6;x+=c.step){
+    var lo=x,hi=x+c.step;
+    var prob=Math.max(0,pAt(c,lo)-pAt(c,hi));
+    if(prob<=0)continue;
+    var m=lo+c.step/2;
+    var out=runPlan(plan,T,m);
+    ev+=prob*out;
+    if(out>0.001)green+=prob;
+    if(worst===null||out<worst)worst=out;
+  }
+  var tail=pAt(c,6);
+  if(tail>0){var o2=runPlan(plan,T,6.5);ev+=tail*o2;if(o2>0.001)green+=tail;}
+  return {ev:ev,green:green,best:best,stall:stall,worst:worst===null?-1:worst};
+}
+function renderReward(){
+  if(!$("#rwBody"))return;
+  var c=rewardCurve(parseInt($("#rwSample").value,10)||60);
+  var T=parseFloat($("#rwTarget").value)||3;
+  if($("#rwFromCalc").checked){
+    var k=calc();
+    if(k&&k.ok&&k.dirOK&&isFinite(k.rr)){T=Math.round(k.rr*10)/10;$("#rwTarget").value=T;}
+  }
+  $("#rwHint").textContent=c.src==="journal"?(c.n+" trades · target "+T.toFixed(1)+"R"):("generic curve · target "+T.toFixed(1)+"R");
+  $("#rwCurve").className="gate"+(c.src==="journal"?" ok":"");
+  $("#rwCurve").innerHTML="<b>How far your trades run.</b> "+
+    [1,2,3,4].map(function(x){return x+"R: "+Math.round(pAt(c,x)*100)+"%";}).join(" · ")+
+    " reached. "+c.note;
+  var plans=rewardPlans(T).map(function(p){
+    var r=evalPlan(p,T,c);
+    return {p:p,r:r};
+  });
+  var bestEV=Math.max.apply(null,plans.map(function(x){return x.r.ev;}));
+  var bestGreen=Math.max.apply(null,plans.map(function(x){return x.r.green;}));
+  $("#rwBody").innerHTML=plans.map(function(x,i){
+    var evTop=Math.abs(x.r.ev-bestEV)<0.001,grTop=Math.abs(x.r.green-bestGreen)<0.001;
+    return "<tr><td><b>"+x.p.n+"</b><br><span style='color:var(--ink-3);font-size:11.5px'>"+x.p.d+"</span></td>"+
+      "<td class='n'"+(evTop?" style='color:var(--go);font-weight:600'":"")+">"+(x.r.ev>0?"+":"")+x.r.ev.toFixed(2)+"R</td>"+
+      "<td class='n'"+(grTop?" style='color:var(--go);font-weight:600'":"")+">"+Math.round(x.r.green*100)+"%</td>"+
+      "<td class='n' style='color:"+(x.r.stall>0?"var(--go)":"var(--ink-3)")+"'>"+(x.r.stall>0?"+":"")+x.r.stall.toFixed(2)+"R</td>"+
+      "<td class='n'>"+x.r.best.toFixed(2)+"R</td>"+
+      "<td class='n' style='color:var(--abort)'>"+x.r.worst.toFixed(2)+"R</td>"+
+      "<td style='font-size:11.8px;color:var(--ink-3)'>"+x.p.note+"</td>"+
+      "<td class='rowops'><button class='iconbtn' data-rw-apply='"+i+"'>use it</button></td></tr>";
+  }).join("");
+  $$("#rwBody [data-rw-apply]").forEach(function(b){
+    b.addEventListener("click",function(){applyRewardPlan(plans[+b.dataset.rwApply].p,T);});
+  });
+  /* trade-off plot */
+  var W=460,H=250,P=34;
+  var evs=plans.map(function(x){return x.r.ev;}),grs=plans.map(function(x){return x.r.green;});
+  var evLo=Math.min.apply(null,evs),evHi=Math.max.apply(null,evs),gLo=Math.min.apply(null,grs),gHi=Math.max.apply(null,grs);
+  var X=function(g){return (P+((g-gLo)/((gHi-gLo)||1))*(W-P-14)).toFixed(1);};
+  var Y=function(e){return (H-P-((e-evLo)/((evHi-evLo)||1))*(H-P-16)).toFixed(1);};
+  /* the frontier: no other plan beats it on both axes */
+  var front=plans.filter(function(a){
+    return !plans.some(function(b2){return b2!==a&&b2.r.ev>=a.r.ev&&b2.r.green>=a.r.green&&(b2.r.ev>a.r.ev||b2.r.green>a.r.green);});
+  });
+  $("#rwPlot").innerHTML='<svg viewBox="0 0 '+W+' '+H+'" class="ins-svg" role="img" aria-label="Expected R against chance of a green trade">'+
+    '<line x1="'+P+'" y1="'+(H-P)+'" x2="'+(W-10)+'" y2="'+(H-P)+'" stroke="var(--rule)"/>'+
+    '<line x1="'+P+'" y1="14" x2="'+P+'" y2="'+(H-P)+'" stroke="var(--rule)"/>'+
+    '<text x="'+P+'" y="'+(H-10)+'" class="lv-lbl" fill="var(--ink-3)">'+Math.round(gLo*100)+'% green</text>'+
+    '<text x="'+(W-90)+'" y="'+(H-10)+'" class="lv-lbl" fill="var(--ink-3)">'+Math.round(gHi*100)+'%</text>'+
+    '<text x="4" y="20" class="lv-lbl" fill="var(--ink-3)">'+evHi.toFixed(1)+'R</text>'+
+    '<text x="4" y="'+(H-P)+'" class="lv-lbl" fill="var(--ink-3)">'+evLo.toFixed(1)+'R</text>'+
+    plans.map(function(x,i){
+      var on=front.indexOf(x)>-1;
+      return '<circle cx="'+X(x.r.green)+'" cy="'+Y(x.r.ev)+'" r="'+(on?6:4.5)+'" fill="'+(on?"var(--go)":"var(--ink-3)")+
+        '" opacity="'+(on?1:.55)+'"><title>'+x.p.n+' — '+x.r.ev.toFixed(2)+'R, '+Math.round(x.r.green*100)+'% green</title></circle>'+
+        '<text x="'+(+X(x.r.green)+9)+'" y="'+(+Y(x.r.ev)+4)+'" class="lv-lbl" fill="'+(on?"var(--ink)":"var(--ink-3)")+
+        '" font-size="10">'+(i+1)+'</text>';
+    }).join("")+'</svg>'+
+    '<div class="rwlegend">'+plans.map(function(x,i){
+      return '<span'+(front.indexOf(x)>-1?' class="on"':'')+'>'+(i+1)+' '+x.p.n+'</span>';}).join("")+'</div>';
+  var top=plans.slice().sort(function(a,b2){return b2.r.ev-a.r.ev;})[0];
+  var safe=plans.slice().sort(function(a,b2){return b2.r.green-a.r.green;})[0];
+  $("#rwRead").innerHTML="<b>"+top.p.n+"</b> has the highest expected value at "+top.r.ev.toFixed(2)+
+    "R, ending green "+Math.round(top.r.green*100)+"% of the time. <b>"+safe.p.n+"</b> is green "+
+    Math.round(safe.r.green*100)+"% of the time but expects "+safe.r.ev.toFixed(2)+
+    "R. The difference between them is "+Math.abs(top.r.ev-safe.r.ev).toFixed(2)+
+    "R per trade — across a hundred trades that is "+Math.abs((top.r.ev-safe.r.ev)*100).toFixed(0)+
+    "R, which is the real price of comfort. The <b>if it stalls</b> column is the one to read on a choppy day: it is what you keep when the trade triggers and then gives it back. "+
+    "Plans on the green frontier are the only ones worth choosing between; the rest are beaten on both counts.";
+}
+function applyRewardPlan(p,T){
+  var k=calc(),e=parseFloat($("#entry").value),sl=parseFloat($("#stop").value);
+  var firstExit=(p.ev||[]).filter(function(x){return x.exit;})[0];
+  if(firstExit&&isFinite(e)&&isFinite(sl)){
+    var dist=Math.abs(e-sl)+(parseFloat($("#spread").value)||0);
+    var dir=(parseFloat($("#target").value)<e)?-1:1;
+    $("#tp1").value=(e+dir*dist*firstExit.at).toFixed(2);
+    $("#alloc1").value=Math.round(firstExit.exit*100);
+    ["tp1","alloc1"].forEach(function(id){$("#"+id).dispatchEvent(new Event("input",{bubbles:true}));});
+  }
+  var steps=[];
+  steps.push("Stop stays at the invalidation until the first event.");
+  (p.ev||[]).forEach(function(x){
+    var bits=[];
+    if(x.exit)bits.push("take "+Math.round(x.exit*100)+"% off");
+    if(x.add)bits.push("add "+Math.round(x.add*100)+"% of the original size");
+    if(x.stop!=null)bits.push("stop to "+(x.stop===0?"breakeven":"+"+x.stop+"R"));
+    steps.push("At "+x.at+"R: "+bits.join(", ")+".");
+  });
+  steps.push("Everything that remains exits at "+T.toFixed(1)+"R or the stop in force.");
+  var rec={id:"rw"+Date.now(),kind:"exit",pb:S.active||"any",name:p.n+" ("+T.toFixed(1)+"R)",steps:steps};
+  STRATS.push(rec);stratsSave();
+  SEL.exit=rec.id;store.set("selExit",rec.id);
+  fillSelects();renderLib&&renderLib();render();
+  if(window.MTSToast)window.MTSToast('"'+rec.name+'" saved as an exit plan and selected for today.');
+}
+["rwTarget","rwSample"].forEach(function(id){
+  var el=$("#"+id);
+  if(el)el.addEventListener("input",renderReward);
+});
+if($("#rwFromCalc"))$("#rwFromCalc").addEventListener("change",renderReward);
+
+/* ---------- planned setups: size several before the session ---------- */
+var PLANS=[];
+try{var pl=JSON.parse(store.get("plans")||"null");if(Array.isArray(pl))PLANS=pl;}catch(e){}
+function plansSave(){store.set("plans",JSON.stringify(PLANS.slice(-20)));}
+function pesc(t){return String(t==null?"":t).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/"/g,"&quot;");}
+function planMath(p){
+  var bal=parseFloat($("#bal").value),rp=parseFloat($("#risk").value),sp=parseFloat($("#spread").value)||0;
+  var CT=CFG("contract");
+  if(!isFinite(bal)||!isFinite(rp)||!isFinite(p.e)||!isFinite(p.sl))return null;
+  var dist=Math.abs(p.e-p.sl)+sp;
+  if(!dist)return null;
+  var riskUSD=bal*rp/100,lots=riskUSD/(dist*CT);
+  var rr=isFinite(p.tp)?Math.abs(p.tp-p.e)/dist:null;
+  var rr1=isFinite(p.tp1)?Math.abs(p.tp1-p.e)/dist:null;
+  var a1=isFinite(p.a1)?p.a1:null;
+  var blend=(rr!=null&&rr1!=null&&a1)?((a1/100)*rr1+(1-a1/100)*rr):rr;
+  return {lots:lots,riskUSD:riskUSD,dist:dist,rr:rr,rr1:rr1,blend:blend,
+          side:(isFinite(p.tp)&&p.tp<p.e)?"sell":"buy"};
+}
+function renderPlans(){
+  var host=$("#planList"),mini=$("#planMini");
+  if(!host)return;
+  var sel=$("#planPb");
+  if(sel&&!sel.dataset.filled){
+    sel.innerHTML=Object.keys(PB).map(function(k){return '<option value="'+k+'">'+PB[k].name+'</option>';}).join("");
+    sel.dataset.filled="1";
+    if(S.active)sel.value=S.active;
+  }
+  $("#planHint").textContent=PLANS.length?(PLANS.length+" planned"):"none";
+  if(!PLANS.length){
+    host.innerHTML='<p class="fs-note">Nothing planned yet. Fill the calculator above, label it, and save — then do the same for the next idea.</p>';
+    if(mini)mini.innerHTML="";
+    return;
+  }
+  host.innerHTML='<div class="matrix-scroll"><table class="mini-t"><thead><tr><th>Setup</th><th>Playbook</th><th>Side</th>'+
+    '<th style="text-align:right">Entry</th><th style="text-align:right">Stop</th><th style="text-align:right">Targets</th>'+
+    '<th style="text-align:right">Lots</th><th style="text-align:right">R</th><th></th></tr></thead><tbody>'+
+    PLANS.map(function(p,i){
+      var m=planMath(p);
+      var rtxt=(m&&m.rr!=null)?(m.rr.toFixed(2)+((m.blend!=null&&m.rr1!=null)?' <small>bl '+m.blend.toFixed(2)+'</small>':"")):"—";
+      var warn=m&&m.rr!=null&&m.rr<CFG("rrFloor");
+      return '<tr'+(warn?' style="opacity:.72"':'')+'><td><b>'+pesc(p.tag||("Setup "+(i+1)))+'</b></td>'+
+        '<td style="color:var(--ink-3)">'+pesc(PB[p.pb]?PB[p.pb].name:(p.pb||"—"))+'</td>'+
+        '<td>'+(m?m.side:"—")+'</td>'+
+        '<td class="n">'+p.e+'</td><td class="n">'+p.sl+'</td>'+
+        '<td class="n">'+(isFinite(p.tp1)?p.tp1+" / ":"")+(isFinite(p.tp)?p.tp:"—")+'</td>'+
+        '<td class="n">'+(m?m.lots.toFixed(2):"—")+'</td>'+
+        '<td class="n"'+(warn?' style="color:var(--abort)"':'')+'>'+rtxt+'</td>'+
+        '<td class="rowops"><button class="iconbtn" data-plan-load="'+i+'">load</button>'+
+        '<button class="iconbtn" data-plan-arm="'+i+'">arm</button>'+
+        '<button class="iconbtn danger" data-plan-del="'+i+'">remove</button></td></tr>';
+    }).join("")+'</tbody></table></div>'+
+    '<p class="fs-note">'+PLANS.length+' planned · open positions are capped at '+CFG("maxOpenR")+'R however many of these you arm.</p>';
+  $$("#planList [data-plan-load]").forEach(function(b){
+    b.addEventListener("click",function(){loadPlan(+b.dataset.planLoad,false);});});
+  $$("#planList [data-plan-arm]").forEach(function(b){
+    b.addEventListener("click",function(){loadPlan(+b.dataset.planArm,true);});});
+  $$("#planList [data-plan-del]").forEach(function(b){
+    b.addEventListener("click",function(){
+      var i=+b.dataset.planDel;
+      if(!window.confirm('Remove "'+(PLANS[i].tag||"this setup")+'"?'))return;
+      PLANS.splice(i,1);plansSave();renderPlans();});});
+  if(mini){
+    mini.innerHTML='<div class="planmini"><span class="pm-k">Planned</span>'+PLANS.map(function(p,i){
+      var m=planMath(p);
+      return '<button type="button" class="pmchip'+((S.active&&p.pb===S.active)?" fit":"")+'" data-plan-load="'+i+'">'+
+        pesc(p.tag||("Setup "+(i+1)))+' <small>'+(m?m.lots.toFixed(2)+" lots":"—")+'</small></button>';
+    }).join("")+'</div>';
+    $$("#planMini [data-plan-load]").forEach(function(b){
+      b.addEventListener("click",function(){loadPlan(+b.dataset.planLoad,false);});});
+  }
+}
+function loadPlan(i,arm){
+  var p=PLANS[i];
+  if(!p)return;
+  [["entry",p.e],["stop",p.sl],["target",p.tp],["tp1",p.tp1],["alloc1",p.a1]].forEach(function(f){
+    var el=$("#"+f[0]);
+    if(el&&isFinite(f[1])){el.value=f[1];el.dispatchEvent(new Event("input",{bubbles:true}));}
+  });
+  if(p.why&&$("#jThesis")&&!$("#jThesis").value)$("#jThesis").value=p.why;
+  render();
+  if(!arm){if(window.MTSToast)window.MTSToast('"'+(p.tag||"Setup")+'" loaded into the calculator.');return;}
+  if(S.active&&p.pb&&p.pb!==S.active&&window.MTSToast)
+    window.MTSToast("Planned as "+(PB[p.pb]?PB[p.pb].name:p.pb)+", but the router says "+PB[S.active].name+".");
+  var btn=$("#armBtn");
+  if(btn&&!btn.disabled)btn.click();
+  else{
+    setView("flow");
+    var f=$("#f4");if(f)f.scrollIntoView({behavior:reduced()?"auto":"smooth",block:"start"});
+    if(window.MTSToast)window.MTSToast("Loaded — the entry gate is still open, so it cannot be armed yet.");
+  }
+}
+
 function renderPositions(){
   var host=$("#posList"),bar=$("#posBar");
   if(!host)return;
@@ -5243,7 +6229,7 @@ function renderPositions(){
         ' <small>stop $'+dSl.toFixed(2)+' · target $'+dTp.toFixed(2)+'</small></span>';
     }
     return '<div class="poscard'+(a.hot?" hot":"")+'" data-pid="'+p.id+'">'+
-      '<div class="pc-h"><b>'+p.name+'</b><span class="pc-m">'+p.lots.toFixed(2)+' lots · stop '+p.sl+' · target '+p.tp+
+      '<div class="pc-h"><b>'+p.name+'</b><span class="pc-m">'+((p.exit&&byId(p.exit))?byId(p.exit).name+' · ':'')+p.lots.toFixed(2)+' lots · stop '+p.sl+' · target '+p.tp+
       (p.legs.length?' · banked '+realisedR(p).toFixed(2)+'R':'')+'</span>'+live+
       '<span class="pc-t">'+(function(){
         var lr=(PX.v&&isFinite(p.e)&&isFinite(p.sl)&&Math.abs(p.e-p.sl)>0)
@@ -5261,6 +6247,15 @@ function renderPositions(){
   });
 }
 setInterval(function(){if(POS.length)renderPositions();},1000);
+if($("#planSave"))$("#planSave").addEventListener("click",function(){
+  var e=parseFloat($("#entry").value),sl=parseFloat($("#stop").value);
+  if(!isFinite(e)||!isFinite(sl)){if(window.MTSToast)window.MTSToast("Fill the entry and stop first.");return;}
+  PLANS.push({tag:$("#planTag").value.trim(),pb:$("#planPb").value||S.active||"",
+    e:e,sl:sl,tp:parseFloat($("#target").value),tp1:parseFloat($("#tp1").value),
+    a1:parseFloat($("#alloc1").value),why:($("#jThesis")?$("#jThesis").value.trim():""),at:Date.now()});
+  plansSave();$("#planTag").value="";renderPlans();
+  if(window.MTSToast)window.MTSToast("Setup saved to the plan board.");
+});
 
 /* ---------- master render ---------- */
 var STEPNAMES=["Prepare","Route","Confirm","Size & arm","Manage","Debrief","Close the day"];
@@ -5393,7 +6388,7 @@ function render(){
   if($("#socState")){$("#socState").textContent=sc7+" / 3";$("#socState").className="soc-s"+(sc7===3?" ok":"");}
   S.armed=POS.length>0;
   S.armedAt=POS.length?Math.min.apply(null,POS.map(function(p){return p.at;})):0;
-  renderCtx(c);renderPositions();renderPrice();paintDay();
+  renderCtx(c);fillSelects();renderPositions();renderPlans();renderReward();renderPrice();paintDay();
   var stepNow=7;for(var sN=0;sN<7;sN++){if(!done[sN]){stepNow=sN+1;break;}}
   renderHUD({calc:c,routed:S.routed,active:S.active,confirmOK:confirmOK,armed:S.armed,traded:S.traded,ready:ready,
     tripped:tripped,newsBlock:newsBlock,step:stepNow,armNote:$("#armNote").textContent,
@@ -6262,7 +7257,7 @@ function wireWeek(sel,gateId,doneMsg,openMsg){
 wireWeek("[data-week]","weekBackGate","Week measured. Now set up the next one.","Nothing changes until the week is measured.");
 wireWeek("[data-weekf]","weekFwdGate","Week prepared. Monday starts with a plan.","Prepare the week before it prepares you.");
 
-(function restoreSession(){
+function restoreSession(){
   try{
     var st=JSON.parse(store.get("state")||"{}");
     if(!st||st.d!==today)return;
@@ -6273,7 +7268,56 @@ wireWeek("[data-weekf]","weekFwdGate","Week prepared. Monday starts with a plan.
     $$("[data-gate]").forEach(function(c,i){c.checked=!!(st.gate&&st.gate[i]);c.closest(".check").classList.toggle("done",c.checked);});
     $$(".grade").forEach(function(g){g.setAttribute("aria-pressed",String(g.dataset.grade===S.grade));});
   }catch(e){}
-})();
+}
+restoreSession();
+
+/* ---------- reload one slice of state from storage (used by cross-tab sync) ---------- */
+window.MTSReload=function(key){
+  function j(k,d){try{var v=JSON.parse(store.get(k)||"null");return v==null?d:v;}catch(e){return d;}}
+  var touched=[];
+  function slice(fn){try{fn();}catch(e){}}
+  if(!key||key==="hist"){
+    var h=j("hist",[]);
+    if(Array.isArray(h)){HIST=h;touched.push("journal");}
+  }
+  if(!key||key==="pos"){
+    var pj=j("pos",null);
+    POS=(pj&&pj.d===today&&Array.isArray(pj.rows))?pj.rows:[];
+    touched.push("open positions");
+  }
+  if(!key||key==="state"){restoreSession();touched.push("today's flow");}
+  if(!key||key==="armedAt"){S.armedAt=parseInt(store.get("armedAt")||"0",10)||S.armedAt;}
+  if(!key||key==="narr"){
+    var nr=j("narr",null);
+    if(nr&&nr.d===today&&nr.v){
+      NARR=nr.v;
+      [["nWk","wk"],["nDy","dy"],["nInval","inval"],["nPools","pools"],["nPath","path"]].forEach(function(p){
+        var el=$("#"+p[0]);
+        if(el&&el!==document.activeElement)el.value=NARR[p[1]]||"";
+      });
+      touched.push("narrative");
+    }
+  }
+  if(!key||key==="plans"){var pl=j("plans",null);if(Array.isArray(pl)){PLANS=pl;touched.push("planned setups");}}
+  if(!key||key==="strats"){var sj2=j("strats",null);if(Array.isArray(sj2)){STRATS=sj2;touched.push("strategy library");}}
+  if(!key||key==="selEntry"||key==="selExit"){
+    SEL.entry=store.get("selEntry")||"";SEL.exit=store.get("selExit")||"";touched.push("today's entry and exit plan");
+  }
+  slice(function(){
+    if(!key||key==="events"){
+      var ev=j("events",null);
+      if(ev&&ev.d===today&&Array.isArray(ev.rows)&&typeof EV!=="undefined"){
+        EV=ev.rows;if(typeof renderEV==="function")renderEV();touched.push("event calendar");
+      }
+    }
+  });
+  if(!key||key==="reviews"){var rv=j("reviews",null);if(rv&&typeof rv==="object"){REVS=rv;touched.push("day reviews");}}
+  if(!key||key==="drills"){var dr=j("drills",null);if(dr&&Array.isArray(dr.items)){DRILLS=dr;touched.push("drills");}}
+  slice(function(){if(typeof renderLog==="function")renderLog();});
+  slice(function(){if(typeof renderLib==="function"&&$("#stratLib")&&!$("#stratLib").hidden)renderLib();});
+  slice(function(){render();});
+  return touched;
+};
 window.MTSAddTrades=function(rows){
   var before=HIST.length;
   rows.forEach(function(r){HIST.push(r);});
@@ -7632,6 +8676,7 @@ $("#acExport").addEventListener("click",function(){
   }catch(e){if(navigator.clipboard)navigator.clipboard.writeText(txt);$("#acNote").textContent="Copied to the clipboard.";}
 });
 accPaint();
+window.MTSAccountReload=function(){try{var aj2=JSON.parse(accGet()||"null");if(aj2&&Array.isArray(aj2.rows))ACC=aj2;}catch(e){}accPaint();};
 
 $("#insToJournal").addEventListener("click",function(){
   if(!L.length){$("#insNote").textContent="Load an export first.";return;}
@@ -8682,6 +9727,12 @@ function paintData(){
    '<div class="out"><div class="k">Day reviews</div><div class="v">'+(function(){try{return Object.keys(JSON.parse(get("reviews")||"{}")).length;}catch(e){return 0;}})()+'</div></div>'+
    '<div class="out"><div class="k">Storage used</div><div class="v">'+human(bytes())+'</div></div>'+
    '<div class="out"><div class="k">Keys stored</div><div class="v">'+keys().length+'</div></div></div>'+
+   (function(){
+     var st=window.MTSSyncStatus?window.MTSSyncStatus():null;
+     if(!st)return "";
+     return '<div class="gate'+(st.ok?" ok":"")+'" style="margin-bottom:14px"><b>Cross-tab sync — '+
+       (st.ok?"live":"not available here")+'.</b> '+st.note+'</div>';
+   })()+
    '<div class="set-grp"><h4>Today\'s session</h4><div class="set-row"><label>Saved flow state<small>'+
    (st?("routed: "+(st.routed||"none")+" · armed: "+(!!st.armed)+" · grade: "+(st.grade||"—")):"nothing saved")+
    '</small></label><button class="btn ghost" id="setClrState">Clear session</button></div>'+
@@ -9734,10 +10785,10 @@ function refreshBlockers(){
   var list=blockers(),n=document.getElementById('uxCtxBlockN');
   if(n)n.textContent=list.length?(list.length>5?('5 of '+list.length):String(list.length)):'';
   host.innerHTML=list.length?list.slice(0,5).map(function(b){
-    return '<li data-go="'+b[1]+'"><i>■</i><span>'+b[0]+'</span></li>';}).join("")
+    return '<li data-step="'+b[1]+'"><i>■</i><span>'+b[0]+'</span></li>';}).join("")
     :'<li class="ok"><i>✓</i><span>Nothing in the way — the next action above is the whole job.</span></li>';
-  Array.prototype.forEach.call(host.querySelectorAll('[data-go]'),function(li){
-    li.addEventListener('click',function(){jumpTo(li.dataset.go);});
+  Array.prototype.forEach.call(host.querySelectorAll('[data-step]'),function(li){
+    li.addEventListener('click',function(){jumpTo(li.dataset.step);});
   });
   var first=list.length?list[0][1]:null;
   var go=document.getElementById('uxCtxGo');
@@ -10072,6 +11123,750 @@ window.MTSPaintAI=function(){
   if(b)b.addEventListener("click",function(){window[a[1]]&&window[a[1]]();});
 });
 MTSPaintAI();
+})();
+</script>
+<script>
+/* A step that has just been edited stays open until focus has been gone for a while. */
+(function(){
+  var timer=null;
+  document.addEventListener("focusin",function(e){
+    var st=e.target.closest&&e.target.closest(".fstep");
+    if(!st)return;
+    clearTimeout(timer);
+    document.querySelectorAll(".fstep.ux-editing").forEach(function(x){if(x!==st)x.classList.remove("ux-editing");});
+    st.classList.add("ux-editing");
+  });
+  document.addEventListener("focusout",function(e){
+    var st=e.target.closest&&e.target.closest(".fstep");
+    if(!st)return;
+    clearTimeout(timer);
+    timer=setTimeout(function(){
+      if(!st.contains(document.activeElement))st.classList.remove("ux-editing");
+    },2500);
+  });
+})();
+</script>
+<script>
+/* ===== cross-tab sync — one write, every tab in step ===== */
+(function(){
+"use strict";
+var P="mts.v3.",TAB=Math.random().toString(36).slice(2,8),applying=false,queue={},timer=null;
+/* The current view is deliberately not synced: each tab keeps its own place. */
+var SKIP={view:1,backupAt:1,backupCount:1,alertFeed:1,alertsOff:1,tips:1,coachHidden:1};
+var LABEL={
+  hist:"Journal",pos:"Open positions",state:"Today's flow",armedAt:"Trade timer",narr:"Narrative",
+  plans:"Planned setups",strats:"Strategy library",selEntry:"Entry plan",selExit:"Exit plan",
+  events:"Event calendar",reviews:"Day reviews",drills:"Drills",cfg:"Formula constants",
+  playbooks:"Playbooks",theme:"Theme",account:"Account history",hudOpen:"Header panel",patAnim:"Pattern animation"
+};
+var bc=null;
+try{if(window.BroadcastChannel)bc=new BroadcastChannel("mts-sync");}catch(e){}
+
+/* Broadcast our own writes so tabs that miss the storage event still hear it. */
+try{
+  var setItem=Storage.prototype.setItem,removeItem=Storage.prototype.removeItem;
+  Storage.prototype.setItem=function(k,v){
+    setItem.apply(this,arguments);
+    if(!applying&&typeof k==="string"&&k.indexOf(P)===0&&bc){
+      try{bc.postMessage({key:k.slice(P.length),tab:TAB});}catch(e){}
+    }
+  };
+  Storage.prototype.removeItem=function(k){
+    removeItem.apply(this,arguments);
+    if(!applying&&typeof k==="string"&&k.indexOf(P)===0&&bc){
+      try{bc.postMessage({key:k.slice(P.length),tab:TAB});}catch(e){}
+    }
+  };
+}catch(e){}
+
+window.addEventListener("storage",function(e){
+  if(!e.key||e.key.indexOf(P)!==0)return;
+  take(e.key.slice(P.length));
+});
+if(bc)bc.onmessage=function(e){
+  if(!e.data||e.data.tab===TAB)return;
+  take(e.data.key);
+};
+function take(k){
+  if(!k||SKIP[k])return;
+  queue[k]=1;
+  clearTimeout(timer);
+  timer=setTimeout(flush,120);
+}
+function flush(){
+  var keys=Object.keys(queue);
+  queue={};
+  if(!keys.length)return;
+  applying=true;
+  var named=[];
+  try{
+    var reloadKeys=["hist","pos","state","armedAt","narr","plans","strats","selEntry","selExit","events","reviews","drills"];
+    var wantsReload=false;
+    keys.forEach(function(k){
+      if(reloadKeys.indexOf(k)>-1){wantsReload=true;return;}
+      if(k==="cfg"&&window.MTSCFG&&window.MTSCFG.reload){window.MTSCFG.reload();wantsReload=true;return;}
+      if(k==="playbooks"&&window.MTSPB){window.MTSPB.reload();return;}
+      if(k==="account"&&window.MTSAccountReload){window.MTSAccountReload();return;}
+      if(k==="theme"){
+        var t=localStorage.getItem(P+"theme")||"light";
+        if((document.documentElement.getAttribute("data-theme")||"light")!==t){
+          document.documentElement.setAttribute("data-theme",t);
+          var b=document.getElementById("themeBtn");
+          if(b)b.textContent=t==="dark"?"Day":"Night";
+        }
+        return;
+      }
+      /* anything stored under an element id — calculator fields, level board, limits */
+      var el=document.getElementById(k);
+      if(el&&"value" in el&&el!==document.activeElement){
+        var v=localStorage.getItem(P+k);
+        if(v!==null&&el.value!==v){el.value=v;el.dispatchEvent(new Event("input",{bubbles:true}));}
+      }
+    });
+    if(wantsReload&&window.MTSReload){
+      if(window.MTSQuiet)window.MTSQuiet(function(){window.MTSReload();});
+      else window.MTSReload();
+    }
+    named=keys.map(function(k){return LABEL[k]||k;});
+  }catch(e){}
+  applying=false;
+  if(named.length&&window.MTSToast){
+    var uniq=[];
+    named.forEach(function(n){if(uniq.indexOf(n)<0)uniq.push(n);});
+    var msg=uniq.slice(0,3).join(", ")+(uniq.length>3?" and "+(uniq.length-3)+" more":"");
+    window.MTSToast(msg+" updated from another tab.");
+  }
+}
+/* Status, for the settings pane: say plainly whether this will work here. */
+window.MTSSyncStatus=function(){
+  var file=location.protocol==="file:";
+  var ls=false;
+  try{localStorage.setItem(P+"__probe","1");localStorage.removeItem(P+"__probe");ls=true;}catch(e){}
+  return {ok:ls&&!file,file:file,storage:ls,channel:!!bc,tab:TAB,
+    note:!ls?"This browser is blocking local storage, so nothing can sync."
+      :file?"Opened straight from disk. Chrome gives each file:// tab its own island, so two tabs will not see each other. Serve the file over http (or run it in the desktop shell) and sync works."
+      :"Live. A change in one tab reaches the others in about a tenth of a second."};
+};
+})();
+</script>
+<script>
+/* ===== price action: diagrams, the reading checklist, and the drills ===== */
+(function(){
+"use strict";
+var $=function(q){return document.querySelector(q);},$$=function(q){return Array.prototype.slice.call(document.querySelectorAll(q));};
+function svg(vb,body,label){
+  return '<svg viewBox="'+vb+'" class="pa-svg" role="img" aria-label="'+label+'">'+body+'</svg>';
+}
+var C={ink:"var(--ink)",dim:"var(--ink-3)",rule:"var(--rule)",go:"var(--go)",no:"var(--abort)",
+        vio:"var(--violet)",rte:"var(--route)",cau:"var(--caution)"};
+function txt(x,y,t,c,sz,anchor){
+  return '<text x="'+x+'" y="'+y+'" fill="'+(c||C.dim)+'" font-size="'+(sz||11)+'" font-family="var(--mono)"'+
+    (anchor?' text-anchor="'+anchor+'"':'')+'>'+t+'</text>';
+}
+function line(x1,y1,x2,y2,c,d,w){
+  return '<line x1="'+x1+'" y1="'+y1+'" x2="'+x2+'" y2="'+y2+'" stroke="'+(c||C.rule)+'" stroke-width="'+(w||1)+'"'+
+    (d?' stroke-dasharray="'+d+'"':'')+'/>';
+}
+function poly(pts,c,w,fill){
+  return '<polyline points="'+pts+'" fill="'+(fill||"none")+'" stroke="'+(c||C.ink)+'" stroke-width="'+(w||2)+'" stroke-linejoin="round"/>';
+}
+function candle(x,o,h,l,cl,w){
+  var up=cl<=o,col=up?C.go:C.no,bw=w||9;
+  var top=Math.min(o,cl),bot=Math.max(o,cl);
+  return line(x,h,x,l,col,null,1.2)+
+    '<rect x="'+(x-bw/2)+'" y="'+top+'" width="'+bw+'" height="'+Math.max(1.5,bot-top)+'" fill="'+col+'" opacity="'+(up?1:.9)+'"/>';
+}
+
+/* 1 — balance, imbalance, transition */
+function auctionSvg(){
+  var b='';
+  /* balance: a distribution around value */
+  b+=txt(14,16,"BALANCE — trade rotates around value",C.dim,10.5);
+  for(var i=0;i<26;i++){
+    var y=30+i*3.2, wdt=Math.max(4,58*Math.exp(-Math.pow((i-13)/6.2,2)));
+    b+='<rect x="'+(96-wdt/2)+'" y="'+y+'" width="'+wdt+'" height="2.3" fill="'+C.rte+'" opacity="'+(i>7&&i<19?.55:.25)+'"/>';
+  }
+  b+=line(30,58,162,58,C.rte,"4 3")+txt(166,61,"value",C.rte,10);
+  b+=line(30,74,162,74,C.rule,"3 3")+txt(166,77,"edge",C.dim,9.5);
+  b+=line(30,42,162,42,C.rule,"3 3")+txt(166,45,"edge",C.dim,9.5);
+  /* imbalance: one-way travel, thin at every price */
+  b+=txt(220,16,"IMBALANCE — price travels, little trade at any price",C.dim,10.5);
+  var xs=[236,252,268,284,300,316,332,348,364,380];
+  var ys=[104,100,92,78,64,58,50,42,36,32];
+  xs.forEach(function(x,i){
+    var wdt=i>2&&i<8?9:5;
+    b+='<rect x="'+(x-wdt/2)+'" y="'+(ys[i]-4)+'" width="'+wdt+'" height="3" fill="'+C.go+'" opacity=".5"/>';
+    b+=candle(x,ys[i]+6,ys[i]-4,ys[i]+12,ys[i]-2,7);
+  });
+  b+=txt(236,116,"nothing rests here, so a modest order travels far",C.dim,9.5);
+  /* transition */
+  b+=txt(420,16,"TRANSITION — an edge stops being defended",C.dim,10.5);
+  b+=line(432,58,556,58,C.rule,"3 3");
+  b+=candle(444,66,60,72,62)+candle(458,64,58,70,63)+candle(472,63,57,69,61)+
+     candle(486,62,56,68,60)+candle(500,60,54,64,44)+candle(514,46,34,50,36)+candle(528,38,26,42,28);
+  b+=txt(432,88,"held · held · held · gone",C.dim,10);
+  b+='<path d="M500,52 L514,40" stroke="'+C.no+'" stroke-width="1.4" marker-end=""/>';
+  return svg("0 0 600 130",b,"Balance, imbalance and the transition between them");
+}
+/* 2 — the order book */
+function bookSvg(){
+  var b='',topY=26;
+  b+=txt(14,16,"THE BOOK — resting size at each price",C.dim,10.5);
+  var asks=[[3358,34],[3357,48],[3356,26],[3355,72],[3354,18]];
+  var bids=[[3352,22],[3351,64],[3350,30],[3349,52],[3348,40]];
+  asks.forEach(function(r,i){
+    var y=topY+i*14;
+    b+='<rect x="120" y="'+(y-8)+'" width="'+(r[1]*1.5)+'" height="10" fill="'+C.no+'" opacity=".5"/>';
+    b+=txt(78,y,r[0],C.dim,10);
+  });
+  b+=line(60,topY+72,300,topY+72,C.rule,"4 3")+txt(14,topY+75,"spread",C.dim,10);
+  bids.forEach(function(r,i){
+    var y=topY+82+i*14;
+    b+='<rect x="120" y="'+(y-8)+'" width="'+(r[1]*1.5)+'" height="10" fill="'+C.go+'" opacity=".5"/>';
+    b+=txt(78,y,r[0],C.dim,10);
+  });
+  b+=txt(120,topY-12,"offers rest above",C.no,9.5);
+  b+=txt(120,topY+160,"bids rest below",C.go,9.5);
+  /* absorption vs thin book */
+  b+=txt(330,16,"ABSORPTION — aggression arrives, price does not move",C.dim,10.5);
+  b+=line(342,86,470,86,C.rte,null,1.4);
+  [0,1,2,3,4,5].forEach(function(i){
+    b+='<path d="M'+(350+i*20)+',110 L'+(350+i*20)+',92" stroke="'+C.go+'" stroke-width="1.6"/>'+
+       '<path d="M'+(346+i*20)+',96 L'+(350+i*20)+',90 L'+(354+i*20)+',96" fill="none" stroke="'+C.go+'" stroke-width="1.4"/>';
+  });
+  b+='<rect x="342" y="78" width="128" height="8" fill="'+C.rte+'" opacity=".35"/>';
+  b+=txt(342,128,"someone is filling all of it — when they stop, price snaps back",C.dim,9.5);
+  b+=txt(330,150,"THIN BOOK — the same order, twenty dollars of travel",C.dim,10.5);
+  b+=poly("342,196 366,192 384,176 402,150 424,140 448,132 470,126",C.go,2);
+  [366,402,448].forEach(function(x){b+='<circle cx="'+x+'" cy="'+(x===366?192:x===402?150:132)+'" r="2.5" fill="'+C.go+'"/>';});
+  b+=txt(342,214,"nothing resting in the way",C.dim,9.5);
+  return svg("0 0 600 224",b,"Order book depth, absorption and a thin book");
+}
+/* 3 — candle anatomy */
+function candleSvg(){
+  var b='';
+  b+=txt(14,16,"WHAT THE FOUR NUMBERS SAY",C.dim,10.5);
+  b+=line(96,30,96,150,C.go,null,1.6);
+  b+='<rect x="86" y="62" width="20" height="52" fill="'+C.go+'"/>';
+  b+=line(112,30,150,30,C.rule,"3 2")+txt(154,33,"high — where it was rejected",C.dim,10);
+  b+=line(112,62,150,62,C.rule,"3 2")+txt(154,65,"close — the only agreed price",C.ink,10);
+  b+=line(112,114,150,114,C.rule,"3 2")+txt(154,117,"open",C.dim,10);
+  b+=line(112,150,150,150,C.rule,"3 2")+txt(154,153,"low — where buyers stepped in",C.dim,10);
+  b+='<path d="M60,62 L78,62" stroke="'+C.go+'" stroke-width="1.2"/>';
+  b+=txt(14,66,"body =",C.dim,10)+txt(14,80,"business",C.dim,10);
+  b+=txt(14,150,"wick =",C.dim,10)+txt(14,164,"rejection",C.dim,10);
+  /* three locations */
+  b+=txt(360,16,"THE SAME CANDLE, THREE PLACES",C.dim,10.5);
+  b+=line(372,52,590,52,C.rule,"3 3")+txt(372,44,"at a swept low — trapped sellers",C.go,9.5);
+  b+=candle(400,64,74,44,52,8)+candle(414,52,58,40,44,8);
+  b+=line(372,110,590,110,C.rule,"3 3")+txt(372,102,"mid-range — nothing to be wrong against",C.cau,9.5);
+  b+=candle(400,118,124,104,112,8)+candle(414,112,120,106,116,8);
+  b+=line(372,168,590,168,C.rule,"3 3")+txt(372,160,"against a trend — a pause, not a turn",C.no,9.5);
+  b+=candle(400,176,182,160,170,8)+candle(414,170,178,164,176,8);
+  return svg("0 0 600 190",b,"Candle anatomy and how location changes its meaning");
+}
+/* 4 — structure */
+function structSvg(){
+  var b='';
+  b+=txt(14,16,"THE SEQUENCE IS THE ONLY OBJECTIVE THING ON THE CHART",C.dim,10.5);
+  var pts="30,150 70,110 100,128 140,78 172,98 214,52 248,74 292,34 330,60 372,30";
+  b+=poly(pts,C.ink,2);
+  [[70,110,"HH"],[140,78,"HH"],[214,52,"HH"],[292,34,"HH"]].forEach(function(p){
+    b+='<circle cx="'+p[0]+'" cy="'+p[1]+'" r="3" fill="'+C.go+'"/>'+txt(p[0]-8,p[1]-8,p[2],C.go,9.5);});
+  [[100,128,"HL"],[172,98,"HL"],[248,74,"HL"],[330,60,"HL"]].forEach(function(p){
+    b+='<circle cx="'+p[0]+'" cy="'+p[1]+'" r="3" fill="'+C.rte+'"/>'+txt(p[0]-8,p[1]+16,p[2],C.rte,9.5);});
+  b+=line(330,60,590,60,C.no,"4 3")+txt(430,52,"the level that ends the sequence — your invalidation",C.no,10);
+  /* change of character */
+  b+=poly("372,30 404,58 430,44 470,88 500,70 540,118",C.dim,1.8);
+  b+='<circle cx="470" cy="88" r="3.5" fill="'+C.no+'"/>'+txt(478,92,"close beyond the last higher low = change of character",C.no,9.5);
+  b+=txt(14,178,"Break of structure continues the sequence. Change of character ends it. Neither is an entry.",C.dim,10);
+  return svg("0 0 600 190",b,"Structure: higher highs, higher lows and the change of character");
+}
+/* 5 — location */
+function locSvg(){
+  var b='';
+  b+=txt(14,16,"LOCATION DECIDES WHETHER THE TRIGGER IS WORTH ANYTHING",C.dim,10.5);
+  b+='<rect x="40" y="34" width="250" height="52" fill="'+C.no+'" opacity=".08"/>';
+  b+='<rect x="40" y="86" width="250" height="52" fill="'+C.go+'" opacity=".08"/>';
+  b+=line(40,86,290,86,C.rte,"4 3")+txt(294,89,"50% — the divide",C.rte,10);
+  b+=txt(46,50,"PREMIUM — sell side of the leg",C.no,10);
+  b+=txt(46,130,"DISCOUNT — buy side of the leg",C.go,10);
+  b+=line(40,34,290,34,C.rule)+txt(294,37,"leg high",C.dim,9.5);
+  b+=line(40,138,290,138,C.rule)+txt(294,141,"leg low",C.dim,9.5);
+  /* imbalance + origin */
+  b+=txt(360,16,"THE THREE THINGS WORTH ENTERING ON",C.dim,10.5);
+  b+='<rect x="372" y="34" width="60" height="26" fill="'+C.vio+'" opacity=".18"/>';
+  b+=txt(438,50,"imbalance — unfinished business",C.vio,10);
+  b+='<rect x="372" y="74" width="60" height="20" fill="'+C.rte+'" opacity=".22"/>';
+  b+=txt(438,88,"origin — where size was absorbed",C.rte,10);
+  b+=line(372,124,432,124,C.cau,null,1.6)+line(372,130,432,130,C.cau,null,1.6);
+  b+=txt(438,130,"pool — a destination, not a wall",C.cau,10);
+  b+=txt(360,164,"Everywhere else is the middle of nowhere, whatever the candle looks like.",C.dim,10);
+  return svg("0 0 600 176",b,"Premium and discount, imbalance, origin and liquidity pools");
+}
+/* 6 — the worked example */
+function workedSvg(){
+  var b='';
+  b+=line(30,60,570,60,C.cau,"5 4")+txt(34,54,"previous day high — the destination",C.cau,10);
+  b+=line(30,150,470,150,C.rte,"4 3")+txt(34,144,"Asia low + equal lows — the fuel",C.rte,10);
+  b+=line(30,176,570,176,C.no,"4 3")+txt(34,190,"3341 — the last higher low. Invalidation.",C.no,10);
+  b+='<rect x="120" y="112" width="150" height="40" fill="'+C.rte+'" opacity=".10"/>'+txt(126,108,"Asia balance",C.dim,9.5);
+  b+=poly("40,120 70,128 100,122 130,132 160,126 190,138 214,146 236,168 252,150 268,140 286,112 300,96 318,104 340,88 366,70 400,58 440,50 480,44",C.ink,2);
+  b+='<circle cx="236" cy="168" r="4" fill="'+C.no+'"/>'+txt(196,186,"1 sweep",C.no,10);
+  b+='<circle cx="268" cy="140" r="4" fill="'+C.rte+'"/>'+txt(258,132,"2 shift",C.rte,10);
+  b+='<rect x="286" y="96" width="34" height="20" fill="'+C.vio+'" opacity=".2"/>'+txt(292,92,"3 gap",C.vio,10);
+  b+='<circle cx="318" cy="104" r="4" fill="'+C.go+'"/>'+txt(324,116,"4 entry on the retest",C.go,10);
+  b+=txt(430,74,"target: the untouched pool above",C.cau,10);
+  return svg("0 0 600 200",b,"A London sweep read in order");
+}
+/* mount the diagrams */
+[["#paAuctionSvg",auctionSvg],["#paBookSvg",bookSvg],["#paCandleSvg",candleSvg],
+ ["#paStructSvg",structSvg],["#paLocSvg",locSvg],["#paWorkedSvg",workedSvg]].forEach(function(p){
+  var el=$(p[0]);
+  if(el)el.innerHTML=p[1]();
+});
+
+/* ---------- the reading checklist ---------- */
+var PRLABEL=["condition","structure","location","liquidity","trigger","invalidation"];
+function paRead(){
+  var boxes=$$("#paReadList [data-pr]"),done=boxes.filter(function(b){return b.checked;}).length;
+  boxes.forEach(function(b){b.closest(".check").classList.toggle("done",b.checked);});
+  var g=$("#paReadGate");
+  $("#paReadHint").textContent=done+" / 6 answered";
+  if(done===6){
+    g.className="gate ok";
+    g.textContent="Six answers, in order. You now have a trade with a level that proves it wrong — or a clear no-trade, which is the same work done. Take it into step 1 of the flow.";
+  } else {
+    var next=PRLABEL[boxes.map(function(b){return b.checked;}).indexOf(false)];
+    g.className="gate";
+    g.textContent=(6-done)+" still open. Next: "+next+". Answering out of order is how a trigger ends up without a location.";
+  }
+}
+$$("#paReadList [data-pr]").forEach(function(b){b.addEventListener("change",paRead);});
+if($("#paReadList"))paRead();
+})();
+</script>
+<script>
+/* ===== price action drills ===== */
+(function(){
+"use strict";
+var $=function(q){return document.querySelector(q);},$$=function(q){return Array.prototype.slice.call(document.querySelectorAll(q));};
+var C={ink:"var(--ink)",dim:"var(--ink-3)",rule:"var(--rule)",go:"var(--go)",no:"var(--abort)",
+       vio:"var(--violet)",rte:"var(--route)",cau:"var(--caution)"};
+function T(x,y,t,c,sz){return '<text x="'+x+'" y="'+y+'" fill="'+(c||C.dim)+'" font-size="'+(sz||10.5)+'" font-family="var(--mono)">'+t+'</text>';}
+function L(x1,y1,x2,y2,c,d,w){return '<line x1="'+x1+'" y1="'+y1+'" x2="'+x2+'" y2="'+y2+'" stroke="'+(c||C.rule)+'" stroke-width="'+(w||1)+'"'+(d?' stroke-dasharray="'+d+'"':'')+'/>';}
+function P(pts,c,w){return '<polyline points="'+pts+'" fill="none" stroke="'+(c||C.ink)+'" stroke-width="'+(w||2)+'" stroke-linejoin="round"/>';}
+function Z(x,y,w,h,c,o){return '<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" fill="'+c+'" opacity="'+(o||.15)+'"/>';}
+function S(body,label){return '<svg viewBox="0 0 560 190" class="pa-svg" role="img" aria-label="'+label+'">'+body+'</svg>';}
+
+var Q=[
+ {q:"Overlapping candles for three hours, the same two prices rejected repeatedly, range shrinking. What is the market doing and what does it license?",
+  svg:S(Z(60,70,420,54,C.rte,.10)+L(60,70,480,70,C.rule,"4 3")+L(60,124,480,124,C.rule,"4 3")+
+      P("70,110 100,86 130,116 160,80 190,112 220,84 250,118 280,88 310,110 340,82 370,114 400,90 430,108",C.ink,1.8)+
+      T(66,62,"edge held three times")+T(66,142,"edge held three times"),"A balanced market"),
+  o:[["Balance — the range playbook, at the edges only","right","Two respected edges, value in the middle, no travel. Mean reversion is licensed and only at a boundary; the middle of this is a no-trade zone."],
+     ["A coil before a breakout — buy the first break","wrong","This is trigger without location dressed as anticipation. The break may come, but you have no edge on which way, and mid-range breaks are the most common trap on gold."],
+     ["An uptrend forming, because the last low is higher","wrong","Structure read on noise. Inside balance, individual swings mean nothing — the sequence has to be read on the timeframe that set the range."]]},
+ {q:"Price has travelled twenty dollars in four minutes at 02:00 GST, on candles with long bodies and no retracement. What is the most likely explanation?",
+  svg:S(P("60,150 90,144 120,132 150,100 180,70 210,56 240,48",C.go,2.4)+T(60,172,"04:00 GST · thin session")+
+      T(250,52,"nothing traded through here",C.dim)+Z(150,60,90,44,C.vio,.14),"A fast leg in a thin session"),
+  o:[["Thin liquidity, not conviction","right","At that hour the book is empty. The same order that shrugs at the London open travels twenty dollars here. Treat the gap as unfinished business, not as strength."],
+     ["Strong institutional buying — join it","wrong","Mistaking a gap for strength. Ask what time it is before you call something displacement; the hour is part of the evidence."],
+     ["A news release you missed","ok","Possible, and worth checking. But even if so, the mechanic is the same: the move went far because nothing was resting in the way."]]},
+ {q:"A level has held four times. Each test brings aggressive selling and price does not fall. What is happening, and what does the fifth test usually mean?",
+  svg:S(L(60,80,500,80,C.rte,null,1.6)+
+      [0,1,2,3].map(function(i){return P((90+i*90)+",130 "+(110+i*90)+",96 "+(130+i*90)+",84 "+(150+i*90)+",108",C.ink,1.6);}).join("")+
+      T(60,72,"someone is filling every seller here",C.rte)+T(60,158,"four tests, no progress"),"Absorption at a level"),
+  o:[["Absorption — and the fifth test is the dangerous one","right","Repeated holds mean a participant is refilling the book. It holds until they pull, and when they do it goes quickly. Fading the fifth test is fading a wall that may no longer be there."],
+     ["Strong support — sell it with a tight stop above","wrong","This is fading absorption, one of the six failure modes. You are betting the filler stays, and you find out they left by being stopped."],
+     ["Nothing readable without volume data","wrong","The outcome is the data. Aggression arriving with no price movement is absorption, whatever your volume feed says."]]},
+ {q:"The 4H is making higher highs and higher lows. The 5M has just made a lower low. What have you actually learned?",
+  svg:S(P("40,150 90,110 130,126 190,76 230,96 300,50 340,72 420,36",C.ink,2.2)+T(40,168,"4H — higher highs, higher lows")+
+      P("340,72 360,84 380,78 400,96 420,88 440,104",C.dim,1.6)+T(346,124,"5M — a lower low inside the pullback",C.dim),"Fractal disagreement"),
+  o:[["That the pullback is underway — nothing about the trend","right","Timeframes are allowed to disagree; that disagreement is what a pullback is. The 4H sequence is intact until its own last higher low breaks."],
+     ["That the trend has reversed — look for shorts","wrong","Structure read on the wrong timeframe. This is the second most expensive failure in the list and it feels like discipline while you do it."],
+     ["That you should wait for the 4H to close","ok","Patient and not wrong, but it costs you the entry. The 5M lower low is the pullback you were waiting for, provided location agrees."]]},
+ {q:"Equal lows have formed under the session low. What are they, and what is your target if price sweeps them and reclaims?",
+  svg:S(L(60,140,420,140,C.rte,"4 3")+T(64,134,"equal lows — resting stops",C.rte)+
+      L(60,50,500,50,C.cau,"5 4")+T(64,44,"untouched previous day high",C.cau)+
+      P("70,90 110,120 150,110 190,136 230,138 270,152 300,124 340,104 380,84 430,62",C.ink,2)+
+      '<circle cx="270" cy="152" r="4" fill="'+C.no+'"/>',"Equal lows and an untouched high"),
+  o:[["Fuel below, destination above — target the untouched high","right","Pools are destinations, not walls. The stops below fund the move; the untouched pool above is where it is going. That is your target before you have an entry."],
+     ["Support — buy the equal lows with a stop underneath","wrong","Reading the advertisement. The more obvious the level, the more certain it is to be traded through to collect what rests beyond it."],
+     ["A double bottom — buy the second touch","wrong","The pattern name is doing the work here. Without the sweep and the reclaim, two touches of an obvious level is just the setup for the raid."]]},
+ {q:"Price swept the pool, closed back inside, and is now drifting upward in small overlapping candles. What is missing?",
+  svg:S(L(60,140,500,140,C.rte,"4 3")+P("70,100 110,124 150,132 190,146 220,158 240,142 262,138 284,132 306,136 328,128 350,132 372,124",C.ink,1.9)+
+      '<circle cx="220" cy="158" r="4" fill="'+C.no+'"/>'+T(196,178,"the sweep")+T(300,110,"drift, not displacement",C.cau),"A sweep without displacement"),
+  o:[["Displacement — and without it there is no trade","right","A reversal with real sponsorship does not overlap; it displaces and leaves a gap. Two of three conditions is not a setup, and this is the variation that produces the new low."],
+     ["Time — give it another twenty minutes","wrong","Waiting does not add evidence. If the leg had backing it would already be leaving inefficiency behind."],
+     ["A retest of the sweep low","ok","You may well get one, but the missing piece is the decisive leg. Without it the retest is just continuation down."]]},
+ {q:"You have a textbook rejection candle. It printed in the middle of a range, forty dollars from either edge. What do you do?",
+  svg:S(L(60,50,500,50,C.rule,"4 3")+L(60,150,500,150,C.rule,"4 3")+T(64,44,"range high")+T(64,168,"range low")+
+      P("70,100 120,92 170,106 220,96 270,104 320,94 370,102",C.ink,1.8)+
+      '<circle cx="270" cy="104" r="4.5" fill="'+C.cau+'"/>'+T(282,108,"perfect candle, nowhere",C.cau),"A good candle in a bad place"),
+  o:[["Nothing — there is no invalidation level here","right","Trigger without location: the most expensive habit there is. Mid-range there is nothing to be wrong against and no measurable target, so the candle cannot be traded however good it looks."],
+     ["Trade it small, since the pattern is valid","wrong","Small size on a setup that does not exist is still negative expectancy, and it teaches you the rules are negotiable."],
+     ["Trade it toward the nearer edge","wrong","Half a range is not a target; it is a guess with a wide stop. The playbook asks for a boundary, and you are not at one."]]},
+ {q:"An impulse leg left a three-candle gap. Price is now returning into it. What is that zone, and what would void it?",
+  svg:S(P("60,150 100,140 140,120 176,86 214,60 250,66 286,80 320,92 356,104",C.ink,2)+
+      Z(140,84,80,36,C.vio,.2)+T(226,104,"the imbalance",C.vio)+
+      L(60,124,500,124,C.no,"4 3")+T(400,118,"a close through the far side voids it",C.no),"Returning into an imbalance"),
+  o:[["An entry zone — voided by a close through its far side","right","Price returns because business was left unfinished. It is a zone while it holds; a close clean through it says the premise behind the leg has changed."],
+     ["A support level — buy anywhere inside it","wrong","Inside is not a level. Without the far side as your invalidation you have no stop that means anything."],
+     ["Proof the move will continue","wrong","The gap is evidence of speed, not of continuation. It tells you where, not whether."]]},
+ {q:"Price closed decisively below a range that had held four times, then rallied straight back inside within two candles. What is the correct read?",
+  svg:S(L(60,60,500,60,C.rule,"4 3")+L(60,140,500,140,C.rule,"4 3")+
+      P("70,100 120,132 170,110 220,138 270,116 310,142 340,166 366,150 392,124 430,104 470,92",C.ink,2)+
+      '<circle cx="340" cy="166" r="4" fill="'+C.no+'"/>'+T(300,184,"break")+T(396,120,"reclaimed",C.go),"A failed break and reclaim"),
+  o:[["A failed break — the strongest reversal signal in a range","right","The breakout traders are trapped and their stops sit above. A reclaim after a decisive break is the spring, and the target is the opposite edge."],
+     ["A continuation — the range is broken, expect lower","wrong","The reclaim is the information. A break that cannot hold has told you who was on the wrong side."],
+     ["Ambiguous — stand aside","ok","Never a bad answer, but this is one of the cleaner reads there is: break, fail, reclaim, with the stops of the trapped side directly above."]]},
+ {q:"Your read said long above 3341. Price is at 3336 and you are still in, telling yourself the level was 'approximate'. What has happened?",
+  svg:S(L(60,90,500,90,C.no,"4 3")+T(64,84,"3341 — written before entry",C.no)+
+      P("70,130 120,112 170,96 210,80 250,72 290,88 330,102 370,116 410,128 450,138",C.ink,2)+
+      '<circle cx="290" cy="88" r="4" fill="'+C.cau+'"/>'+T(300,72,"here the story quietly changed",C.cau),"Narrative drift"),
+  o:[["Narrative drift — the read was abandoned, not updated","right","The invalidation existed precisely to prevent this. Changing what a level means while a position is open is the failure that turns a planned 1R into an unplanned three."],
+     ["A wick tolerance — this is normal","wrong","Tolerance is decided before entry and written down. Deciding it afterwards, while losing, is not tolerance."],
+     ["The 4H bias is still valid so the trade is fine","wrong","The bias was never the invalidation. You wrote a level; price traded through it; the read is over regardless of the higher timeframe."]]}
+];
+
+var IDX=0,ANS={},SCORE=0;
+function paint(){
+  var host=$("#paQuiz");
+  if(!host)return;
+  var q=Q[IDX],a=ANS[IDX];
+  $("#paQzHint").textContent=Object.keys(ANS).length+" / "+Q.length+" · "+SCORE.toFixed(1)+" correct";
+  host.innerHTML='<div class="paq-n">Read '+(IDX+1)+' of '+Q.length+'</div>'+
+    q.svg+'<div class="paq-q">'+q.q+'</div><div class="qz-opts" id="paqOpts">'+
+    q.o.map(function(o,i){
+      var cls=a?(o[1]==="right"?" right":(a.i===i?(o[1]==="ok"?" ok":" wrong"):"")):"";
+      return '<button type="button" class="qzopt'+cls+'" data-i="'+i+'"'+(a?" disabled":"")+'>'+o[0]+'</button>';
+    }).join("")+'</div>'+
+    (a?'<div class="qz-fb '+(q.o[a.i][1]==="right"?"right":q.o[a.i][1]==="ok"?"ok":"wrong")+'"><b>'+
+       (q.o[a.i][1]==="right"?"Correct.":q.o[a.i][1]==="ok"?"Defensible.":"Not this one.")+'</b> '+q.o[a.i][2]+'</div>':'');
+  $$("#paqOpts .qzopt").forEach(function(b){
+    b.addEventListener("click",function(){
+      var i=+b.dataset.i,v=q.o[i][1];
+      ANS[IDX]={i:i,v:v};
+      SCORE+=v==="right"?1:(v==="ok"?0.5:0);
+      paint();
+      $("#paQzNote").textContent=(IDX<Q.length-1)?"Press next for the following read.":"";
+      if(Object.keys(ANS).length===Q.length)verdict();
+    });
+  });
+  $("#paQzNext").textContent=ANS[IDX]?(IDX<Q.length-1?"Next":"Finish"):"Skip";
+}
+function verdict(){
+  var pct=Math.round(SCORE/Q.length*100),g=$("#paQzVerdict");
+  g.hidden=false;
+  g.className="gate "+(pct>=80?"ok":"");
+  g.innerHTML="<b>"+SCORE.toFixed(1)+" of "+Q.length+" — "+pct+"%.</b> "+
+    (pct>=80?"You are reading location and condition before triggers, which is the whole skill. Take the same six questions to a live chart and write them out before the session."
+     :pct>=50?"The mechanics are there. The misses were mostly location and timeframe — reread sections 05 and 04, then run these again."
+     :"Work through sections 01 to 05 in order before trading from these ideas. The failure list in section 07 names what the wrong answers have in common.");
+}
+if($("#paQzNext")){
+  $("#paQzNext").addEventListener("click",function(){
+    if(IDX<Q.length-1){IDX++;paint();}
+    else if(Object.keys(ANS).length===Q.length)verdict();
+  });
+  $("#paQzPrev").addEventListener("click",function(){if(IDX>0){IDX--;paint();}});
+  $("#paQzReset").addEventListener("click",function(){IDX=0;ANS={};SCORE=0;$("#paQzVerdict").hidden=true;$("#paQzNote").textContent="";paint();});
+  paint();
+}
+})();
+</script>
+<script>
+/* ===== cross-references: what each section depends on, and what depends on it ===== */
+(function(){
+"use strict";
+var $=function(q){return document.querySelector(q);},$$=function(q){return Array.prototype.slice.call(document.querySelectorAll(q));};
+
+/* Each entry: [where it lives, label, why it is related]. Written as relationships,
+   not as a menu — the "why" is the part that teaches something. */
+var REL={
+  /* ---- price action ---- */
+  "pa-auction":[
+    ["reference|#r-instrument","Instrument · gold's sessions","Which hours have a two-sided auction at all, and which are noise"],
+    ["reference|#r-macro","Macro map","What makes one side initiate: yields, the dollar, risk events"],
+    ["patterns|#p-library","Session and cycle patterns","The auction states as they actually print"],
+    ["tools|#t-levels","Level board","Yesterday's value and range, entered before the session"]],
+  "pa-book":[
+    ["reference|#r-instrument","Spread and rollover","When the book is thin enough to make any move look decisive"],
+    ["patterns|#p-library","Liquidity and order-flow patterns","Sweeps, voids, absorption as chart shapes"],
+    ["tools|#t-events","Event calendar","Scheduled moments when depth vanishes on purpose"],
+    ["reference|#r-playbooks","Liquidity sweep playbook","The book mechanic turned into an entry sequence"]],
+  "pa-candle":[
+    ["patterns|#p-library","Candlestick patterns","The named shapes, each with its location requirement"],
+    ["price|#pa-location","Location","Why the same candle is a trade at one price and noise at another"],
+    ["reference|#r-indicators","Indicators","What they add once you can already read the bar"]],
+  "pa-structure":[
+    ["reference|#r-playbooks","Trend playbook","Structure as the qualifying condition for trend following"],
+    ["patterns|#p-library","Structure patterns","Break of structure, change of character, failure swings"],
+    ["flow|#f2","Regime router","The three questions that turn a structure read into a playbook"],
+    ["price|#pa-read","The read","Where structure sits in the six-question sequence"]],
+  "pa-location":[
+    ["tools|#t-calc","Position calculator","Location decides stop distance, which decides size"],
+    ["tools|#t-reward","Reward engine","How far price runs from a given location, in your own numbers"],
+    ["patterns|#p-confluence","Confluence rules","How many independent factors a location actually has"],
+    ["reference|#r-matrix","Setup matrix","Location and trigger combined into graded setups"]],
+  "pa-read":[
+    ["flow|#f1","Flow · prepare","The same six questions, with gates attached"],
+    ["reference|#r-rules","The rules","What the read is not allowed to override"],
+    ["live|#live-stage","Practice Lab","The read applied stage by stage to nine scenarios"],
+    ["journal|#j-entries","Journal","Where the read is recorded and later graded"]],
+  "pa-fail":[
+    ["journal|#j-caps","Capabilities","Which of the six failure modes your own record shows"],
+    ["journal|#j-whatif","What if","Test a rule that would have removed a failure mode"],
+    ["reference|#r-governance","Governance","The rules that exist specifically to stop narrative drift"],
+    ["live|#live-stage","Vetoed scenarios","The three replays built around reads that should not be taken"]],
+  "pa-practice":[
+    ["live|#live-stage","Practice Lab","Same idea, applied to a moving chart"],
+    ["patterns|#p-library","Pattern library","Sixty-nine shapes, each with its bias and its context"],
+    ["journal|#j-drills","Drills","This week's prescribed work, from your weakest capability"]],
+  /* ---- handbook ---- */
+  "r-rules":[
+    ["price|#pa-fail","How reads fail","The six mistakes these rules were written against"],
+    ["flow|#f4","Entry gate","Where the rules become a locked button rather than a wish"],
+    ["journal|#j-caps","Capabilities","Whether you actually follow them, measured"]],
+  "r-instrument":[
+    ["price|#pa-auction","The auction","Why gold's session structure produces the range it does"],
+    ["price|#pa-book","The order book","Spread, rollover and depth, explained mechanically"],
+    ["tools|#t-levels","Level board","Where the instrument's numbers get entered each morning"]],
+  "r-macro":[
+    ["price|#pa-auction","Initiative activity","Macro is what makes one side initiate rather than respond"],
+    ["tools|#t-events","Event calendar","The releases that change the auction within a minute"]],
+  "r-indicators":[
+    ["price|#pa-candle","Candles as evidence","Indicators derive from price; read the source first"],
+    ["price|#pa-structure","Structure","What a moving average is a lagging approximation of"]],
+  "r-playbooks":[
+    ["price|#pa-read","The read","Playbooks are this sequence, pre-committed"],
+    ["price|#pa-structure","Structure","The qualifying condition each playbook tests"],
+    ["price|#pa-location","Location","Why each playbook names a place as well as a trigger"],
+    ["tools|#t-reward","Reward engine","How to take profit once a playbook is working"]],
+  "r-matrix":[
+    ["price|#pa-location","Location","The column the matrix grades on"],
+    ["patterns|#p-confluence","Confluence","How the grades are arrived at"]],
+  "r-management":[
+    ["price|#pa-book","Absorption and exhaustion","What tells you a move is finishing while you are in it"],
+    ["tools|#t-reward","Reward engine","The same choice, priced against your own reach curve"],
+    ["flow|#f5","Live management","Where the plan becomes one instruction at a time"]],
+  "r-governance":[
+    ["price|#pa-fail","Narrative drift","The failure governance exists to prevent"],
+    ["journal|#j-week","This week","The limits, measured rather than remembered"]],
+  "r-glossary":[
+    ["price|#pa-auction","The auction","Most of these terms are auction mechanics underneath"],
+    ["patterns|#p-library","Pattern library","Every named shape, animated"]],
+  /* ---- patterns, lab, tools, journal ---- */
+  "p-concepts":[
+    ["price|#pa-candle","Candles as evidence","What a pattern is evidence of, before it is a name"],
+    ["price|#pa-location","Location","The half of a pattern that never appears in the picture"]],
+  "p-library":[
+    ["price|#pa-structure","Structure","Where the structural shapes come from"],
+    ["price|#pa-book","The order book","Why sweeps, voids and blocks exist at all"],
+    ["price|#pa-fail","How reads fail","Trigger without location, named"]],
+  "p-confluence":[
+    ["price|#pa-location","Location","Independent factors versus the same factor counted twice"],
+    ["reference|#r-matrix","Setup matrix","Confluence turned into a grade"]],
+  "live-stage":[
+    ["price|#pa-read","The read","The six questions the replay walks through"],
+    ["price|#pa-practice","Price action drills","Static reads, if you want the theory first"]],
+  "t-levels":[
+    ["price|#pa-location","Location","What the numbers on this board are for"],
+    ["price|#pa-auction","Value and range","Yesterday's auction, in three figures"]],
+  "t-calc":[
+    ["price|#pa-location","Location","Stop distance comes from structure, not from preference"],
+    ["reference|#r-rules","Risk doctrine","Why risk is fixed and size is the output"]],
+  "t-reward":[
+    ["reference|#r-management","Management doctrine","The rules the plans here have to obey"],
+    ["price|#pa-book","Exhaustion","What tells you the runner is done"]],
+  "t-risk":[
+    ["journal|#j-week","This week","Modelled drawdown against the real one"],
+    ["reference|#r-governance","Governance","Where the limits are written down"]],
+  "j-caps":[
+    ["price|#pa-fail","How reads fail","The failure modes the scores are detecting"],
+    ["journal|#j-drills","Drills","What to do about the weakest one"]],
+  "j-whatif":[
+    ["price|#pa-fail","How reads fail","Candidate rules usually target one of the six"],
+    ["reference|#r-rules","The rules","Where an adopted rule belongs afterwards"]]
+};
+
+function chips(list){
+  return '<div class="xref"><span class="xr-k">Connects to</span>'+list.map(function(r){
+    return '<button type="button" class="xrchip" data-go="'+r[0]+'"><b>'+r[1]+'</b><span>'+r[2]+'</span></button>';
+  }).join("")+'</div>';
+}
+Object.keys(REL).forEach(function(id){
+  var sec=document.getElementById(id);
+  if(!sec)return;
+  var card=sec.querySelector(".card")||sec;
+  var d=document.createElement("div");
+  d.innerHTML=chips(REL[id]);
+  card.appendChild(d.firstChild);
+});
+
+/* ---------- the map: how the whole handbook fits together ---------- */
+function mapSvg(){
+  var N=[
+   {id:"pa-auction",v:"price",x:70,y:44,t:"Auction",s:"why price moves"},
+   {id:"pa-book",v:"price",x:70,y:112,t:"Order book",s:"what sits underneath"},
+   {id:"pa-structure",v:"price",x:230,y:34,t:"Structure",s:"the sequence"},
+   {id:"pa-location",v:"price",x:230,y:100,t:"Location",s:"where, not what"},
+   {id:"p-library",v:"patterns",x:230,y:166,t:"Patterns",s:"named shapes"},
+   {id:"pa-read",v:"price",x:396,y:68,t:"The read",s:"six questions"},
+   {id:"r-playbooks",v:"reference",x:396,y:150,t:"Playbooks",s:"pre-committed reads"},
+   {id:"f4",v:"flow",x:552,y:44,t:"Entry gate",s:"size and arm"},
+   {id:"f5",v:"flow",x:552,y:112,t:"Management",s:"one action at a time"},
+   {id:"j-entries",v:"journal",x:552,y:178,t:"Journal",s:"what happened"},
+   {id:"j-caps",v:"journal",x:396,y:216,t:"Capabilities",s:"what to fix"}
+  ];
+  var E=[[0,2],[0,3],[1,3],[1,4],[2,5],[3,5],[4,5],[5,6],[6,7],[7,8],[8,9],[9,10],[10,6]];
+  var b='';
+  E.forEach(function(e){
+    var a=N[e[0]],c=N[e[1]];
+    b+='<path d="M'+(a.x+56)+','+(a.y+14)+' C'+(a.x+96)+','+(a.y+14)+' '+(c.x-40)+','+(c.y+14)+' '+c.x+','+(c.y+14)+
+       '" fill="none" stroke="var(--rule)" stroke-width="1.1" opacity=".8"/>';
+  });
+  N.forEach(function(n,i){
+    b+='<g class="mapnode" data-go="'+n.v+'|#'+n.id+'" tabindex="0" role="button" aria-label="'+n.t+'">'+
+      '<rect x="'+n.x+'" y="'+n.y+'" width="112" height="30" rx="3"/>'+
+      '<text x="'+(n.x+9)+'" y="'+(n.y+13)+'" font-size="11" font-family="var(--cond)" font-weight="600">'+n.t+'</text>'+
+      '<text x="'+(n.x+9)+'" y="'+(n.y+24)+'" font-size="8.5" font-family="var(--mono)" opacity=".62">'+n.s+'</text></g>';
+  });
+  return '<svg viewBox="0 0 700 260" class="pa-svg xmap" role="img" aria-label="How the sections relate">'+b+'</svg>';
+}
+var mapHost=document.getElementById("xmapHost");
+if(mapHost)mapHost.innerHTML=mapSvg();
+})();
+</script>
+<script>
+/* ===== mobile navigation: a bottom bar, because a phone is held at the bottom ===== */
+(function(){
+"use strict";
+var $=function(q){return document.querySelector(q);},$$=function(q){return Array.prototype.slice.call(document.querySelectorAll(q));};
+var MQ=window.matchMedia("(max-width:760px)");
+
+var GROUPS=[
+  {k:"flow",label:"Flow",icon:"◎",views:[["flow","Today's flow","six gated steps"]]},
+  {k:"prepare",label:"Prepare",icon:"▤",views:[["tools","Tools","levels, sizing, reward, price, events, risk"]]},
+  {k:"learn",label:"Learn",icon:"❑",views:[
+     ["price","Price action","the auction, the book, the read"],
+     ["reference","Handbook","rules, playbooks, macro, glossary"],
+     ["live","Practice Lab","replay and practise nine scenarios"],
+     ["patterns","Patterns","the annotated library"]]},
+  {k:"review",label:"Review",icon:"▦",views:[
+     ["journal","Journal","entries, week, capabilities, drills"],
+     ["insights","Insights","import a statement, account history"]]},
+  {k:"more",label:"More",icon:"⋯",actions:[
+     ["focus","Session mode","one screen, current position"],
+     ["alerts","Alerts","what will interrupt you"],
+     ["settings","Settings","everything stored, formulas, playbooks"],
+     ["search","Search","jump to anything"],
+     ["theme","Switch theme","day or night"]]}
+];
+
+function build(){
+  if($("#mnav"))return;
+  var bar=document.createElement("nav");
+  bar.className="mnav";bar.id="mnav";
+  bar.setAttribute("aria-label","Main sections");
+  bar.innerHTML=GROUPS.map(function(g){
+    return '<button type="button" class="mnav-b" data-g="'+g.k+'" aria-pressed="false">'+
+      '<span class="mnav-i" aria-hidden="true">'+g.icon+'</span><span class="mnav-t">'+g.label+'</span>'+
+      (g.k==="more"?'<span class="mnav-dot" id="mnavDot" hidden></span>':'')+'</button>';
+  }).join("");
+  document.body.appendChild(bar);
+
+  var sheet=document.createElement("div");
+  sheet.className="msheet";sheet.id="msheet";sheet.hidden=true;
+  sheet.innerHTML='<div class="msheet-b" role="dialog" aria-modal="true" aria-label="Sections">'+
+    '<div class="msheet-h"><b id="msheetT">Learn</b><button class="coach-x" id="msheetX" aria-label="Close">✕</button></div>'+
+    '<div id="msheetList"></div></div>';
+  document.body.appendChild(sheet);
+
+  $$("#mnav .mnav-b").forEach(function(b){
+    b.addEventListener("click",function(){pick(b.dataset.g);});
+  });
+  $("#msheetX").addEventListener("click",close);
+  sheet.addEventListener("click",function(e){if(e.target===sheet)close();});
+  document.addEventListener("keydown",function(e){if(e.key==="Escape"&&!sheet.hidden)close();});
+}
+function open_(g){
+  var sheet=$("#msheet");
+  $("#msheetT").textContent=g.label;
+  $("#msheetList").innerHTML=(g.views||g.actions||[]).map(function(v){
+    return '<button type="button" class="msheet-i" data-v="'+v[0]+'"><b>'+v[1]+'</b><span>'+v[2]+'</span></button>';
+  }).join("");
+  $$("#msheetList .msheet-i").forEach(function(b){
+    b.addEventListener("click",function(){act(b.dataset.v);});
+  });
+  sheet.hidden=false;
+  requestAnimationFrame(function(){sheet.classList.add("on");});
+}
+function close(){
+  var sheet=$("#msheet");
+  if(!sheet)return;
+  sheet.classList.remove("on");
+  setTimeout(function(){sheet.hidden=true;},160);
+}
+function pick(k){
+  var g=GROUPS.filter(function(x){return x.k===k;})[0];
+  if(!g)return;
+  if(g.views&&g.views.length===1){go(g.views[0][0]);close();return;}
+  open_(g);
+}
+function go(view){
+  var b=document.querySelector('.navbtn[data-view="'+view+'"]');
+  if(b)b.click();
+  sync();
+}
+function act(id){
+  close();
+  var map={focus:"#focusBtn",alerts:"#bellBtn",settings:"#gearBtn",theme:"#themeBtn",search:"#cmdOpenUx"};
+  if(map[id]){var el=$(map[id]);if(el)el.click();return;}
+  go(id);
+}
+function currentView(){
+  var v=document.querySelector(".view.active");
+  return v?v.id.replace("view-",""):"flow";
+}
+function sync(){
+  if(!$("#mnav"))return;
+  var v=currentView();
+  var owner=GROUPS.filter(function(g){
+    return (g.views||[]).some(function(x){return x[0]===v;});
+  })[0];
+  $$("#mnav .mnav-b").forEach(function(b){
+    b.setAttribute("aria-pressed",String(!!owner&&b.dataset.g===owner.k));
+  });
+  var dot=$("#mnavDot"),bell=$("#bellN");
+  if(dot)dot.hidden=!(bell&&!bell.hidden);
+}
+function apply(){
+  if(MQ.matches){build();sync();}
+  var bar=$("#mnav");
+  if(bar)bar.style.display=MQ.matches?"":"none";
+  document.body.classList.toggle("has-mnav",MQ.matches);
+}
+if(MQ.addEventListener)MQ.addEventListener("change",apply);
+else if(MQ.addListener)MQ.addListener(apply);
+apply();
+/* Keep the bar in step with whatever changed the view — nav clicks, palette, links.
+   Watch only the view panels, and never react to our own writes. */
+var busy=false,mo=null;
+function watched(){
+  if(mo)mo.disconnect();
+  mo=new MutationObserver(function(){
+    if(busy)return;
+    busy=true;
+    setTimeout(function(){busy=false;sync();},0);
+  });
+  $$(".view").forEach(function(v){mo.observe(v,{attributes:true,attributeFilter:["class"]});});
+  var bell=$("#bellN");
+  if(bell)mo.observe(bell,{attributes:true,attributeFilter:["hidden"]});
+}
+watched();
+window.MTSMobileNav={sync:sync};
 })();
 </script>
 </body>
