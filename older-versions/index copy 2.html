@@ -195,10 +195,8 @@ section{margin-top:34px}
 .stat-k{font-family:var(--mono);font-size:10px;letter-spacing:.13em;color:var(--ink-3);text-transform:uppercase}
 .stat-v{font-family:var(--cond);font-size:19px;font-weight:600}
 
-/* was ".pb.override-on \n.flow{...}" — a stray selector fragment that scoped the
-   playbook step grid to a class that never exists, so the three steps never
-   became a grid. */
-.flow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--rule-2)}
+.pb.override-on 
+.flow{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--rule-2)}
 .step{background:var(--card);padding:17px 18px}
 .step h4{font-family:var(--cond);text-transform:uppercase;letter-spacing:.13em;font-size:13px;font-weight:600;margin:0 0 3px;color:var(--ink)}
 .step .sh{font-size:12px;color:var(--ink-3);margin:0 0 12px}
@@ -2297,42 +2295,6 @@ tbody tr:hover td{background:var(--route-bg)}
   .mnav-t{font-size:9px}
   .mnav-i{font-size:15px}
 }
-
-/* ---------------------------------------------------------------
-   Grid tracks default to min-width:auto, so a wide panel on one
-   side squeezes the other to nothing. Every two-up layout in the
-   app gets explicit minmax(0,...) and min-width:0 children.
-   --------------------------------------------------------------- */
-.levels{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr)}
-.levels>*,.gov>*,.two>*,.fs-split>*,.rwsplit>*,.breaks>*,.viewgrid>*,.lvgrid>*{min-width:0}
-.gov,.two{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
-.fs-split{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
-#t-calc .levels-l .field input{min-width:0}
-#t-calc .levels-l .field label{white-space:normal;overflow-wrap:anywhere}
-@media (max-width:1100px){
-  .levels{grid-template-columns:minmax(0,1fr)}
-  .levels-l{border-right:none;border-bottom:1px solid var(--rule-2)}
-}
-
-/* ---------------------------------------------------------------
-   Every multi-track grid gets shrinkable tracks. A track sized in
-   fr still refuses to go below its content unless it is minmax(0,..),
-   which is what squeezed the calculator's input column.
-   --------------------------------------------------------------- */
-.calc-out,.lgrid,.ux-ctx-grid,.kbd-list,.mem-grid,.orient,.pat-wrap,.perfgrid,.spec{
-  grid-template-columns:repeat(2,minmax(0,1fr))}
-.statgrid{grid-template-columns:repeat(auto-fit,minmax(min(140px,100%),1fr))}
-.flow{grid-template-columns:repeat(3,minmax(0,1fr))}
-.ux-nav{grid-template-columns:minmax(0,1fr) auto}
-.calc-out>*,.lgrid>*,.ux-ctx-grid>*,.kbd-list>*,.mem-grid>*,.orient>*,.pat-wrap>*,
-.perfgrid>*,.spec>*,.statgrid>*,.flow>*,.ux-nav>*,.caps>*,.mgmt>*,.breaks>*,.sl-b>*,
-.lf-grid>*,.ds-grid>*,.simgrid>*,.cmpgrid>*,.scoregrid>*,.mini>*,.rwsplit>*{min-width:0}
-/* long unbroken values must wrap rather than widen their track */
-.out .v,.cap-v,.pc-m,.mini-t td,.gl p,.aicard p{overflow-wrap:anywhere}
-@media (max-width:760px){
-  .calc-out,.lgrid,.ux-ctx-grid,.kbd-list,.mem-grid,.orient,.pat-wrap,.perfgrid,.spec,.flow{
-    grid-template-columns:minmax(0,1fr)}
-}
 </style>
 
 </head>
@@ -2349,39 +2311,21 @@ var D={
   tailBad:2.5, cvBad:0.35, slGood:0.95, costBad:0.15,
   pfA:2, pfB:1.5, pfC:1.25, pfD:1.05
 };
-/* A stored constant can be edited by hand or arrive from an older build.
-   Clamp it: a contract size of zero produced an infinite position. */
-var LIM={contract:[0.01,10000],rrFloor:[0.1,20],atrFloorLo:[0.01,2],atrFloorHi:[0.01,3],
-  rangeMult:[0.5,20],tsSweep:[0,600],tsRange:[0,600],compGood:[0,1],cleanGood:[0,1],
-  simRuns:[100,20000],cmpRuns:[50,10000],daySims:[100,50000],exitTol:[0.000001,0.05],
-  revengeMin:[0,240],heavyDay:[1,50],tailBad:[1,50],cvBad:[0.01,5],slGood:[0,1],
-  costBad:[0.001,1],pfA:[1,20],pfB:[1,20],pfC:[1,20],pfD:[1,20],weekMult:[0.5,20],
-  maxOpenR:[0.25,20],proxDist:[0.05,100]};
-function clamp(k,v){
-  var r=LIM[k];
-  if(!r||!isFinite(v))return null;
-  return Math.min(r[1],Math.max(r[0],v));
-}
 var C={},subs=[];
 try{var raw=localStorage.getItem("mts.v3.cfg");if(raw){var o=JSON.parse(raw);Object.keys(D).forEach(function(k){
-  var v=clamp(k,typeof o[k]==="number"?o[k]:parseFloat(o[k]));
-  if(v!==null)C[k]=v;});}}catch(e){}
+  if(typeof o[k]==="number"&&isFinite(o[k]))C[k]=o[k];});}}catch(e){}
 Object.keys(D).forEach(function(k){if(!(k in C))C[k]=D[k];});
 C.defaults=D;
 C.set=function(k,v){
-  if(!(k in D))return false;
-  var cv=clamp(k,typeof v==="number"?v:parseFloat(v));
-  if(cv===null)return false;
-  C[k]=cv;
+  if(!(k in D)||!isFinite(v))return false;
+  C[k]=+v;
   try{var out={};Object.keys(D).forEach(function(x){out[x]=C[x];});localStorage.setItem("mts.v3.cfg",JSON.stringify(out));}catch(e){}
   subs.forEach(function(f){try{f(k);}catch(e){}});
   return true;
 };
 C.reload=function(){
   try{var raw2=localStorage.getItem("mts.v3.cfg");
-    if(raw2){var o2=JSON.parse(raw2);Object.keys(D).forEach(function(k){
-      var v2=clamp(k,typeof o2[k]==="number"?o2[k]:parseFloat(o2[k]));
-      if(v2!==null)C[k]=v2;});}
+    if(raw2){var o2=JSON.parse(raw2);Object.keys(D).forEach(function(k){if(typeof o2[k]==="number"&&isFinite(o2[k]))C[k]=o2[k];});}
   }catch(e){}
   subs.forEach(function(f){try{f("*");}catch(e){}});
 };
@@ -4908,7 +4852,6 @@ var $=function(q){return document.querySelector(q);},
 
 /* ---------- storage (degrades to memory if blocked) ---------- */
 var mem={}, K="mts.v3.";
-function fin(v){return typeof v==="number"&&isFinite(v);}
 var QUIET=false;
 /* While a change from another tab is being applied, this tab must not write its
    own (now stale) state back — that is how an idle tab clobbers the active one. */
@@ -5236,29 +5179,7 @@ runEngine();
 /* ---------- session log and limits ---------- */
 function gstDate(){return new Date(Date.now()+4*3600*1000).toISOString().slice(0,10);}
 var today=gstDate(),HIST=[];
-/* Entries can arrive hand-edited, half-written or from an old version. Coerce what
-   is coercible, drop what is not, and never let a bad row reach the arithmetic. */
-function sanitiseTrade(t){
-  if(!t||typeof t!=="object")return null;
-  var r=typeof t.r==="number"?t.r:parseFloat(t.r);
-  if(!isFinite(r))return null;
-  var d=typeof t.d==="string"&&/^\d{4}-\d{2}-\d{2}$/.test(t.d)?t.d:null;
-  if(!d)return null;
-  var num=function(v){var n=typeof v==="number"?v:parseFloat(v);return isFinite(n)?n:null;};
-  return {d:d,t:typeof t.t==="string"?t.t:"00:00",s:typeof t.s==="string"?t.s:"—",
-    r:r,g:(typeof t.g==="string"&&/^[A-D]$/.test(t.g))?t.g:"",w:typeof t.w==="string"?t.w:"",
-    plan:num(t.plan),lots:num(t.lots),e:num(t.e),sl:num(t.sl),tp:num(t.tp),
-    rb:Array.isArray(t.rb)?t.rb.filter(function(x){return typeof x==="string";}):[],
-    legs:Array.isArray(t.legs)?t.legs.filter(function(l){return l&&isFinite(l.r)&&isFinite(l.part);}):null,
-    why:typeof t.why==="string"?t.why:"",inval:typeof t.inval==="string"?t.inval:"",
-    assume:typeof t.assume==="string"?t.assume:"",narr:typeof t.narr==="string"?t.narr:"",
-    bias:typeof t.bias==="string"?t.bias:"",key:typeof t.key==="string"?t.key:"",
-    shots:num(t.shots)||0};
-}
-function sanitiseAll(a){
-  return (Array.isArray(a)?a:[]).map(sanitiseTrade).filter(Boolean);
-}
-try{var raw=store.get("hist");if(raw){var p=JSON.parse(raw);HIST=sanitiseAll(p);}}catch(e){}
+try{var raw=store.get("hist");if(raw){var p=JSON.parse(raw);if(Array.isArray(p))HIST=p;}}catch(e){}
 try{var old=store.get("log");if(old&&!HIST.length){var o=JSON.parse(old);
   if(o&&Array.isArray(o.rows))o.rows.forEach(function(r){HIST.push({d:o.date,t:r.t,s:r.s,r:r.r,g:"",w:""});});}}catch(e){}
 function todays(){return HIST.filter(function(e){return e.d===today;});}
@@ -5798,10 +5719,10 @@ function posEvent(id,k){
 }
 function liveRFor(p){
   var px=(window.MTSPrice&&window.MTSPrice())||null;
-  if(!fin(p.e)||!fin(p.sl)||!px)return null;
+  if(!px||!isFinite(p.e)||!isFinite(p.sl))return null;
   var d=Math.abs(p.e-p.sl);
   if(!d)return null;
-  return ((px-p.e)*((fin(p.tp)&&p.tp<p.e)?-1:1))/d;
+  return ((px-p.e)*((isFinite(p.tp)&&p.tp<p.e)?-1:1))/d;
 }
 function posAction(p){
   var mins=(Date.now()-p.at)/60000,lim=TS()[p.pb]||0,ns=newsState();
@@ -6184,13 +6105,7 @@ function applyRewardPlan(p,T){
 }
 ["rwTarget","rwSample"].forEach(function(id){
   var el=$("#"+id);
-  if(!el)return;
-  el.addEventListener("input",function(){
-    if(id==="rwTarget"&&$("#rwFromCalc").checked){
-      $("#rwFromCalc").checked=false;   /* a typed target wins over the calculator */
-    }
-    renderReward();
-  });
+  if(el)el.addEventListener("input",renderReward);
 });
 if($("#rwFromCalc"))$("#rwFromCalc").addEventListener("change",renderReward);
 
@@ -6199,20 +6114,19 @@ var PLANS=[];
 try{var pl=JSON.parse(store.get("plans")||"null");if(Array.isArray(pl))PLANS=pl;}catch(e){}
 function plansSave(){store.set("plans",JSON.stringify(PLANS.slice(-20)));}
 function pesc(t){return String(t==null?"":t).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/"/g,"&quot;");}
-function fin(v){return typeof v==="number"&&isFinite(v);}
 function planMath(p){
   var bal=parseFloat($("#bal").value),rp=parseFloat($("#risk").value),sp=parseFloat($("#spread").value)||0;
   var CT=CFG("contract");
-  if(!fin(bal)||!fin(rp)||!fin(p.e)||!fin(p.sl))return null;
+  if(!isFinite(bal)||!isFinite(rp)||!isFinite(p.e)||!isFinite(p.sl))return null;
   var dist=Math.abs(p.e-p.sl)+sp;
   if(!dist)return null;
   var riskUSD=bal*rp/100,lots=riskUSD/(dist*CT);
-  var rr=fin(p.tp)?Math.abs(p.tp-p.e)/dist:null;
-  var rr1=fin(p.tp1)?Math.abs(p.tp1-p.e)/dist:null;
-  var a1=fin(p.a1)?p.a1:null;
+  var rr=isFinite(p.tp)?Math.abs(p.tp-p.e)/dist:null;
+  var rr1=isFinite(p.tp1)?Math.abs(p.tp1-p.e)/dist:null;
+  var a1=isFinite(p.a1)?p.a1:null;
   var blend=(rr!=null&&rr1!=null&&a1)?((a1/100)*rr1+(1-a1/100)*rr):rr;
   return {lots:lots,riskUSD:riskUSD,dist:dist,rr:rr,rr1:rr1,blend:blend,
-          side:(fin(p.tp)&&p.tp<p.e)?"sell":"buy"};
+          side:(isFinite(p.tp)&&p.tp<p.e)?"sell":"buy"};
 }
 function renderPlans(){
   var host=$("#planList"),mini=$("#planMini");
@@ -6240,7 +6154,7 @@ function renderPlans(){
         '<td style="color:var(--ink-3)">'+pesc(PB[p.pb]?PB[p.pb].name:(p.pb||"—"))+'</td>'+
         '<td>'+(m?m.side:"—")+'</td>'+
         '<td class="n">'+p.e+'</td><td class="n">'+p.sl+'</td>'+
-        '<td class="n">'+(fin(p.tp1)?p.tp1+" / ":"")+(fin(p.tp)?p.tp:"—")+'</td>'+
+        '<td class="n">'+(isFinite(p.tp1)?p.tp1+" / ":"")+(isFinite(p.tp)?p.tp:"—")+'</td>'+
         '<td class="n">'+(m?m.lots.toFixed(2):"—")+'</td>'+
         '<td class="n"'+(warn?' style="color:var(--abort)"':'')+'>'+rtxt+'</td>'+
         '<td class="rowops"><button class="iconbtn" data-plan-load="'+i+'">load</button>'+
@@ -6272,9 +6186,7 @@ function loadPlan(i,arm){
   if(!p)return;
   [["entry",p.e],["stop",p.sl],["target",p.tp],["tp1",p.tp1],["alloc1",p.a1]].forEach(function(f){
     var el=$("#"+f[0]);
-    if(!el)return;
-    if(fin(f[1])){el.value=f[1];el.dispatchEvent(new Event("input",{bubbles:true}));}
-    else if(f[0]==="tp1"){el.value="";el.dispatchEvent(new Event("input",{bubbles:true}));}
+    if(el&&isFinite(f[1])){el.value=f[1];el.dispatchEvent(new Event("input",{bubbles:true}));}
   });
   if(p.why&&$("#jThesis")&&!$("#jThesis").value)$("#jThesis").value=p.why;
   render();
@@ -6317,8 +6229,8 @@ function renderPositions(){
       '<div class="pc-h"><b>'+p.name+'</b><span class="pc-m">'+((p.exit&&byId(p.exit))?byId(p.exit).name+' · ':'')+p.lots.toFixed(2)+' lots · stop '+p.sl+' · target '+p.tp+
       (p.legs.length?' · banked '+realisedR(p).toFixed(2)+'R':'')+'</span>'+live+
       '<span class="pc-t">'+(function(){
-        var lr=(PX.v&&fin(p.e)&&fin(p.sl)&&Math.abs(p.e-p.sl)>0)
-          ?((PX.v-p.e)*((fin(p.tp)&&p.tp<p.e)?-1:1))/Math.abs(p.e-p.sl):null;
+        var lr=(PX.v&&isFinite(p.e)&&isFinite(p.sl)&&Math.abs(p.e-p.sl)>0)
+          ?((PX.v-p.e)*((p.tp!=null&&p.tp<p.e)?-1:1))/Math.abs(p.e-p.sl):null;
         return (lr!=null?'<span class="pc-r '+(lr>=0?"up":"dn")+'">'+(lr>0?"+":"")+lr.toFixed(2)+'R</span> ':"")+
           ((m<10?"0":"")+m+":"+(sec<10?"0":"")+sec);
       })()+'</span></div>'+
@@ -6336,10 +6248,8 @@ if($("#planSave"))$("#planSave").addEventListener("click",function(){
   var e=parseFloat($("#entry").value),sl=parseFloat($("#stop").value);
   if(!isFinite(e)||!isFinite(sl)){if(window.MTSToast)window.MTSToast("Fill the entry and stop first.");return;}
   PLANS.push({tag:$("#planTag").value.trim(),pb:$("#planPb").value||S.active||"",
-    e:e,sl:sl,
-    tp:(fin(parseFloat($("#target").value))?parseFloat($("#target").value):null),
-    tp1:(fin(parseFloat($("#tp1").value))?parseFloat($("#tp1").value):null),
-    a1:(fin(parseFloat($("#alloc1").value))?parseFloat($("#alloc1").value):null),why:($("#jThesis")?$("#jThesis").value.trim():""),at:Date.now()});
+    e:e,sl:sl,tp:parseFloat($("#target").value),tp1:parseFloat($("#tp1").value),
+    a1:parseFloat($("#alloc1").value),why:($("#jThesis")?$("#jThesis").value.trim():""),at:Date.now()});
   plansSave();$("#planTag").value="";renderPlans();
   if(window.MTSToast)window.MTSToast("Setup saved to the plan board.");
 });
@@ -6618,9 +6528,7 @@ function capScores(){
 function agg2(a){return a.reduce(function(x,t){return x+t.r;},0);}
 /* ---------- weekly exposure ---------- */
 function weekKey(d){
-  var dt=new Date(String(d)+"T00:00:00Z");
-  if(isNaN(dt.getTime()))return "";
-  var day=(dt.getUTCDay()+6)%7;
+  var dt=new Date(d+"T00:00:00Z"),day=(dt.getUTCDay()+6)%7;
   dt.setUTCDate(dt.getUTCDate()-day);
   return dt.toISOString().slice(0,10);
 }
@@ -6737,12 +6645,7 @@ function paintWhatIf(){
 /* ---------- drills, prescribed from the capability scores ---------- */
 var DRILLS={week:"",items:[]};
 try{var dj0=JSON.parse(store.get("drills")||"null");if(dj0&&Array.isArray(dj0.items))DRILLS=dj0;}catch(e){}
-function drWeek(d){
-  var dt=new Date(String(d)+"T00:00:00Z");
-  if(isNaN(dt.getTime()))return "";
-  var n=(dt.getUTCDay()+6)%7;dt.setUTCDate(dt.getUTCDate()-n);
-  return dt.toISOString().slice(0,10);
-}
+function drWeek(d){var dt=new Date(d+"T00:00:00Z"),n=(dt.getUTCDay()+6)%7;dt.setUTCDate(dt.getUTCDate()-n);return dt.toISOString().slice(0,10);}
 function drSave(){store.set("drills",JSON.stringify(DRILLS));}
 function assignDrills(){
   var caps=(typeof capScores==="function")?capScores():null,picked=[];
@@ -6775,9 +6678,9 @@ function reviewTrade(i){
   var t=HIST[i];
   if(!t)return;
   var lv=[["Entry",t.e,"var(--violet)"],["Stop",t.sl,"var(--abort)"],["Target",t.tp,"var(--go)"]]
-    .filter(function(x){return fin(x[1]);});
+    .filter(function(x){return isFinite(x[1]);});
   var svg="";
-  if(lv.length>=2&&fin(t.e)){
+  if(lv.length>=2&&isFinite(t.e)){
     var vals=lv.map(function(x){return x[1];}),hi=Math.max.apply(null,vals),lo=Math.min.apply(null,vals);
     var pad=(hi-lo)*0.35||1;hi+=pad;lo-=pad;
     var W=760,H=250;
@@ -6788,8 +6691,8 @@ function reviewTrade(i){
         '" stroke-width="1.2" stroke-dasharray="5 4"/><text x="'+(W-144)+'" y="'+(+Y(x[1])+4)+
         '" class="lv-lbl" fill="'+x[2]+'">'+x[0]+" "+x[1]+'</text>';
     });
-    var end=t.r>0?(fin(t.tp)?t.tp:t.e):(fin(t.sl)?t.sl:t.e);
-    if(t.r>0&&t.plan&&fin(t.tp)&&t.r<t.plan*0.85)end=t.e+(t.tp-t.e)*(t.r/t.plan);
+    var end=t.r>0?(isFinite(t.tp)?t.tp:t.e):(isFinite(t.sl)?t.sl:t.e);
+    if(t.r>0&&t.plan&&isFinite(t.tp)&&t.r<t.plan*0.85)end=t.e+(t.tp-t.e)*(t.r/t.plan);
     var wob=(end-t.e)*0.3;
     svg+='<polyline points="56,'+Y(t.e)+' 230,'+Y(t.e-wob)+' 420,'+Y(t.e+wob*0.4)+' '+(W-160)+','+Y(end)+
       '" fill="none" stroke="var(--ink-2)" stroke-width="2.2" stroke-linejoin="round"/>'+
@@ -7372,7 +7275,7 @@ window.MTSReload=function(key){
   function slice(fn){try{fn();}catch(e){}}
   if(!key||key==="hist"){
     var h=j("hist",[]);
-    if(Array.isArray(h)){HIST=sanitiseAll(h);touched.push("journal");}
+    if(Array.isArray(h)){HIST=h;touched.push("journal");}
   }
   if(!key||key==="pos"){
     var pj=j("pos",null);
@@ -10473,12 +10376,9 @@ function check(){
   var todayR=hist.filter(function(x){return x.d===day;}).reduce(function(a,x){return a+(+x.r||0);},0);
   var maxLoss=Math.abs(parseFloat((get("maxLossR")||"2")))||2;
   if(todayR<=-maxLoss) fire("limit","Daily loss limit reached at "+todayR.toFixed(2)+"R","The session is closed. Nothing else today.","dl|"+day);
-  var wk=(function(d){var dt=new Date(String(d)+"T00:00:00Z");if(isNaN(dt.getTime()))return "";
-    var n=(dt.getUTCDay()+6)%7;dt.setUTCDate(dt.getUTCDate()-n);return dt.toISOString().slice(0,10);})(day);
+  var wk=(function(d){var dt=new Date(d+"T00:00:00Z"),n=(dt.getUTCDay()+6)%7;dt.setUTCDate(dt.getUTCDate()-n);return dt.toISOString().slice(0,10);})(day);
   var wkR=hist.filter(function(x){
-    var dt=new Date(String(x.d)+"T00:00:00Z");
-    if(isNaN(dt.getTime()))return false;
-    var n=(dt.getUTCDay()+6)%7;dt.setUTCDate(dt.getUTCDate()-n);
+    var dt=new Date(x.d+"T00:00:00Z"),n=(dt.getUTCDay()+6)%7;dt.setUTCDate(dt.getUTCDate()-n);
     return dt.toISOString().slice(0,10)===wk;}).reduce(function(a,x){return a+(+x.r||0);},0);
   var wkLim=maxLoss*(window.MTSCFG?window.MTSCFG.weekMult:2.5);
   if(wkR<=-wkLim) fire("weekly","Weekly loss budget spent ("+wkR.toFixed(1)+"R)","Half size until you are green again, or stop for the week.","wk100|"+wk);
