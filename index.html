@@ -2220,6 +2220,84 @@ tbody tr:hover td{background:var(--route-bg)}
   .fm-b{padding:10px}
   .fm-card{padding:12px}
 }
+<<<<<<< HEAD
+=======
+
+/* ---------- price action ---------- */
+.pa-svg{width:100%;height:auto;display:block;background:var(--card-2);border:1px solid var(--rule-2);
+  border-radius:2px;margin:12px 0}
+.lede{font-size:15.5px;line-height:1.55;color:var(--ink);margin-top:0}
+.paquiz .paq-n{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+.paq-q{font-size:14.2px;line-height:1.5;margin:10px 0 12px;color:var(--ink);font-weight:500}
+.paquiz .qz-opts{margin-bottom:10px}
+.steps{margin:0;padding-left:19px;font-size:13.2px;line-height:1.6;color:var(--ink-2)}
+.steps li{padding:3px 0}
+.steps b{color:var(--ink)}
+@media (max-width:760px){.lede{font-size:14.4px}.paq-q{font-size:13.4px}}
+
+/* ---------- cross references ---------- */
+.xref{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin-top:16px;padding-top:13px;border-top:1px solid var(--rule-2)}
+.xr-k{font-family:var(--mono);font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-3);flex:none;margin-right:2px}
+.xrchip{text-align:left;background:var(--card-2);border:1px solid var(--rule-2);border-left:2px solid var(--route);
+  border-radius:2px;padding:7px 10px;cursor:pointer;max-width:250px}
+.xrchip b{display:block;font-family:var(--cond);font-size:13px;font-weight:600;color:var(--ink);line-height:1.2}
+.xrchip span{display:block;font-size:11.4px;color:var(--ink-3);line-height:1.35;margin-top:2px}
+.xrchip:hover{border-color:var(--route);background:var(--route-bg)}
+.xrchip:focus-visible{outline:2px solid var(--route);outline-offset:2px}
+.xmap .mapnode rect{fill:var(--card-2);stroke:var(--rule);stroke-width:1}
+.xmap .mapnode text{fill:var(--ink)}
+.xmap .mapnode{cursor:pointer}
+.xmap .mapnode:hover rect{stroke:var(--route);fill:var(--route-bg)}
+.xmap .mapnode:focus{outline:none}
+.xmap .mapnode:focus rect{stroke:var(--route);stroke-width:2}
+@media (max-width:760px){.xrchip{max-width:none;flex:1 1 100%}}
+
+/* ---------- mobile navigation ---------- */
+.mnav{display:none}
+@media (max-width:760px){
+  /* the desktop tab rows go away entirely; the bar below replaces them */
+  .ux-workspaces,.ux-viewtabs,.ux-navutil .navnote,.ux-navutil .kbdhint{display:none!important}
+  .nav.ux-nav{padding:6px 0;gap:8px;justify-content:space-between;min-height:0}
+  .ux-navutil{display:flex;gap:6px;align-items:center;width:100%;justify-content:flex-end}
+  .navstate{font-size:11px;margin-right:auto;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:52vw}
+  body.has-mnav{padding-bottom:calc(64px + env(safe-area-inset-bottom,0px))}
+  .mnav{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:90;
+    background:var(--plate);border-top:1px solid var(--plate-line);
+    padding:5px 4px calc(5px + env(safe-area-inset-bottom,0px));gap:2px}
+  .mnav-b{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:7px 2px 5px;
+    background:transparent;border:none;color:var(--plate-dim);cursor:pointer;border-radius:3px;position:relative;min-height:48px}
+  .mnav-i{font-size:16px;line-height:1}
+  .mnav-t{font-family:var(--mono);font-size:9.5px;letter-spacing:.06em}
+  .mnav-b[aria-pressed="true"]{color:var(--plate-fg);background:rgba(255,255,255,.08)}
+  .mnav-b:active{background:rgba(255,255,255,.14)}
+  .mnav-dot{position:absolute;top:6px;right:calc(50% - 16px);width:7px;height:7px;border-radius:50%;background:var(--abort)}
+  .msheet{position:fixed;inset:0;z-index:96;background:rgba(8,11,16,.55);display:flex;align-items:flex-end;
+    opacity:0;transition:opacity .16s ease}
+  .msheet.on{opacity:1}
+  .msheet-b{width:100%;background:var(--card);border-top-left-radius:10px;border-top-right-radius:10px;
+    padding:8px 12px calc(16px + env(safe-area-inset-bottom,0px));transform:translateY(14px);transition:transform .16s ease;
+    max-height:76vh;overflow:auto}
+  .msheet.on .msheet-b{transform:translateY(0)}
+  .msheet-h{display:flex;align-items:center;padding:8px 4px 10px;border-bottom:1px solid var(--rule-2);margin-bottom:6px}
+  .msheet-h b{font-family:var(--cond);text-transform:uppercase;letter-spacing:.06em;font-size:16px}
+  .msheet-h .coach-x{margin-left:auto}
+  .msheet-i{display:block;width:100%;text-align:left;background:transparent;border:none;border-bottom:1px solid var(--rule-2);
+    padding:13px 6px;cursor:pointer}
+  .msheet-i:last-child{border-bottom:none}
+  .msheet-i b{display:block;font-family:var(--cond);font-size:16px;font-weight:600;color:var(--ink)}
+  .msheet-i span{display:block;font-size:12.4px;color:var(--ink-3);margin-top:2px}
+  .msheet-i:active{background:var(--card-2)}
+  /* the sub-navigation stays, but sits under a shorter header */
+  .subnav{top:44px}
+  /* session mode must clear the bar */
+  .focus{padding-bottom:calc(64px + env(safe-area-inset-bottom,0px))}
+  .toast{bottom:calc(74px + env(safe-area-inset-bottom,0px))}
+}
+@media (max-width:380px){
+  .mnav-t{font-size:9px}
+  .mnav-i{font-size:15px}
+}
+>>>>>>> 291bab8 (update for movile and reference on market price action)
 </style>
 
 </head>
@@ -2347,6 +2425,7 @@ window.CFG=function(k){return isFinite(C[k])?C[k]:D[k];};
     <button class="navbtn" role="tab" data-view="flow" data-workspace="today" id="tab-flow" aria-controls="view-flow" aria-selected="true">Flow<small>act</small></button>
     <button class="navbtn" role="tab" data-view="tools" data-workspace="prepare" id="tab-tools" aria-controls="view-tools" aria-selected="false">Tools<small>calculate</small></button>
     <button class="navbtn" role="tab" data-view="reference" data-workspace="learn" id="tab-reference" aria-controls="view-reference" aria-selected="false">Handbook<small>reference</small></button>
+    <button class="navbtn" role="tab" data-view="price" data-workspace="learn" id="tab-price" aria-controls="view-price" aria-selected="false">Price action<small>read</small></button>
     <button class="navbtn" role="tab" data-view="live" data-workspace="learn" id="tab-live" aria-controls="view-live" aria-selected="false">Practice Lab<small>replay</small></button>
     <button class="navbtn" role="tab" data-view="patterns" data-workspace="learn" id="tab-patterns" aria-controls="view-patterns" aria-selected="false">Patterns<small>market</small></button>
     <button class="navbtn" role="tab" data-view="journal" data-workspace="review" id="tab-journal" aria-controls="view-journal" aria-selected="false">Journal<small>measure</small></button>
@@ -2715,6 +2794,14 @@ window.CFG=function(k){return isFinite(C[k])?C[k]:D[k];};
     </div>
     <p class="fs-note">The loop is the product. Any single trade is noise; fifty repetitions of this loop is an edge you can measure — and the Journal is where you find out whether you have one.</p>
   </div>
+
+<section id="r-map">
+  <div class="eyebrow"><span class="tab blue">00</span><h2>How this fits together</h2><span class="line"></span><span class="hint">click any box</span></div>
+  <div class="card pad">
+    <p class="fs-note" style="margin-top:0">Read left to right. The auction and the order book explain why price moves; structure and location turn that into a place; patterns are the shapes it makes there. The read combines them, the playbooks pre-commit it, the flow gates it, and the journal measures whether any of it worked — which feeds back into what you practise next.</p>
+    <div id="xmapHost"></div>
+  </div>
+</section>
 
 <section id="r-rules">
   <div class="eyebrow">
@@ -3735,6 +3822,196 @@ window.CFG=function(k){return isFinite(C[k])?C[k]:D[k];};
 
 
 <!-- ================= LIVE ================= -->
+
+<div class="view" id="view-price" role="tabpanel" aria-labelledby="tab-price" tabindex="-1">
+  <div class="viewhead"><h2>Price action</h2>
+    <p>Where price comes from, what a candle is evidence of, and a repeatable way to read a chart. Auction first, order book second, patterns last — in that order, because the patterns only mean something once you know what produced them.</p></div>
+  <nav class="subnav" aria-label="Price action sections">
+    <button class="subchip" data-jump="#r-map">How it fits</button>
+    <button class="subchip" data-jump="#pa-auction">The auction</button>
+    <button class="subchip" data-jump="#pa-book">The order book</button>
+    <button class="subchip" data-jump="#pa-candle">Candles as evidence</button>
+    <button class="subchip" data-jump="#pa-structure">Structure</button>
+    <button class="subchip" data-jump="#pa-location">Location</button>
+    <button class="subchip" data-jump="#pa-read">The read</button>
+    <button class="subchip" data-jump="#pa-fail">How reads fail</button>
+    <button class="subchip" data-jump="#pa-practice">Practice</button>
+  </nav>
+  <section id="pa-auction">
+    <div class="eyebrow"><span class="tab">01</span><h2>The auction</h2><span class="line"></span><span class="hint">why price moves at all</span></div>
+    <div class="card pad">
+      <p class="lede">A market is a continuous two-sided auction. Price is not a value — it is an advertisement, moved until it finds trade. Everything on your chart is the record of that search.</p>
+      <p>Price rises for one reason: buyers are willing to pay the offer, and the resting offers are being consumed faster than they are replaced. It falls for the mirror reason. Nothing else moves it. Not the news, not the indicator, not the pattern — those only change the willingness of participants to lift offers or hit bids.</p>
+      <p>An auction has two states, and every read starts by naming which one you are in.</p>
+      <div id="paAuctionSvg"></div>
+      <div class="mgmt">
+        <div class="mgcard"><div class="mg-t">Balance</div>
+          <p>Both sides agree on price and disagree on value, so trade rotates around a centre. Volume builds in the middle, thins at the edges. Time passes and price does not travel. This is where mean reversion works and trend following bleeds.</p>
+          <p class="mut">Visible as: overlapping candles, repeated rejection of the same two prices, shrinking range.</p></div>
+        <div class="mgcard"><div class="mg-t">Imbalance</div>
+          <p>One side is initiating and the other is retreating. Price travels quickly and spends little time at any level, because there is nothing to trade against. This is where trend following works and fading gets run over.</p>
+          <p class="mut">Visible as: long bodies in one direction, small counter-candles, gaps in the middle of the move.</p></div>
+        <div class="mgcard"><div class="mg-t">The transition</div>
+          <p>Balance ends when one side stops defending an edge. Imbalance ends when the initiating side runs out of willing counterparties and price stalls into a new balance. Most of your money is made in the first two hours of an imbalance and lost in the last.</p>
+          <p class="mut">Visible as: a decisive close beyond an edge that held twice, or an impulse leg that arrives and goes nowhere.</p></div>
+      </div>
+      <p class="legend" style="margin-top:16px">The five ideas that do all the work</p>
+      <ul class="rules">
+        <li><b>Value</b><span>The band where most trade happened. Not the midpoint of the range — the price where the two sides did the most business. Price returns to it far more often than it leaves it behind.</span></li>
+        <li><b>Excess</b><span>A sharp rejection at an extreme: a long wick, a fast reversal. It is the auction saying "too high" or "too low" and it marks the end of a leg, not a pause in one.</span></li>
+        <li><b>Initiative activity</b><span>Someone buying above value or selling below it. They are paying for immediacy, which means they have a reason. Initiative moves continue more often than they reverse.</span></li>
+        <li><b>Responsive activity</b><span>Someone selling above value or buying below it. They are fading a stretched price. Responsive moves fail the moment the initiator has size behind them.</span></li>
+        <li><b>Rotation</b><span>Price travelling from one edge to the other without conviction. A rotating market pays the patient and punishes everyone who mistakes movement for direction.</span></li>
+      </ul>
+      <div class="gate ok" style="margin-top:14px"><b>Read this first, every session.</b> Is the market balanced or imbalanced, and where is value relative to price? Every other question you ask about a chart is downstream of that one, and getting it wrong makes every pattern you find point the wrong way.</div>
+    </div>
+  </section>
+
+  <section id="pa-book">
+    <div class="eyebrow"><span class="tab blue">02</span><h2>The order book</h2><span class="line"></span><span class="hint">what actually sits under a candle</span></div>
+    <div class="card pad">
+      <p class="lede">Every candle is a compression of thousands of decisions in a queue. You cannot see the queue on spot gold, but you can see its shadow, and the shadow is enough.</p>
+      <p>There are only two kinds of order. A <b>limit order</b> rests in the book and provides liquidity — it waits, and it moves nothing. A <b>market order</b> takes liquidity — it consumes resting orders and it is the only thing that moves price. Every move you have ever traded was market orders eating the book.</p>
+      <div id="paBookSvg"></div>
+      <ul class="rules">
+        <li><b>Depth</b><span>How much size rests at each price. Thick depth absorbs aggression and price stalls. Thin depth means a modest order travels a long way — which is why the same volume produces a shrug at midday and a vertical leg at the New York open.</span></li>
+        <li><b>Absorption</b><span>Aggressive orders arriving continuously and price not moving. Someone is filling them all. When absorption ends, price usually goes the other way, hard, because the aggressors are trapped.</span></li>
+        <li><b>Exhaustion</b><span>The opposite: aggression dries up and price stops advancing even though nothing is defending it. The move ends not because it was pushed back, but because nobody is left to buy.</span></li>
+        <li><b>Stops as liquidity</b><span>A stop is a market order waiting for a trigger price. A cluster of them is a pool of guaranteed fills. Large participants need those fills to get size done, which is why price so often trades to the obvious level and immediately turns.</span></li>
+        <li><b>Icebergs and spoofs</b><span>Size that is hidden, and size that is shown but never intended to trade. Both mean the visible book lies. This is precisely why we read the outcome — the candle — rather than the advertisement.</span></li>
+      </ul>
+      <p class="legend" style="margin-top:14px">Three chart events, explained by the book</p>
+      <div class="mgmt">
+        <div class="mgcard"><div class="mg-t">The gap and the fast leg</div>
+          <p>Displacement is not strength of conviction. It is thin depth. A leg that travels twenty dollars in four minutes did so because there was almost nothing resting in the way — and the empty space it leaves behind is the fair value gap you later trade back into.</p></div>
+        <div class="mgcard"><div class="mg-t">The wick through a level</div>
+          <p>Price trades to where the stops are, the stops fire as market orders, a resting participant fills against them, and price returns inside. The wick is the fill. That is the entire mechanic of the liquidity sweep.</p></div>
+        <div class="mgcard"><div class="mg-t">The level that keeps holding</div>
+          <p>Repeated tests with no progress mean someone is refilling the book at that price. It holds until it does not, and when it breaks, it breaks quickly, because the wall that was absorbing everything has been pulled.</p></div>
+      </div>
+      <div class="gate" style="margin-top:14px"><b>The practical consequence.</b> Stop asking "is this level support?" and start asking "who is filling here, and what happens when they stop?" A level is not a wall. It is a place where someone was willing to trade, until they were not.</div>
+    </div>
+  </section>
+  <section id="pa-candle">
+    <div class="eyebrow"><span class="tab green">03</span><h2>Candles as evidence</h2><span class="line"></span><span class="hint">what a bar can and cannot tell you</span></div>
+    <div class="card pad">
+      <p class="lede">A candle is four numbers and a duration. Treat it as evidence of an auction, not as a signal, and it becomes reliable. Treat it as a signal on its own and it will take your money in every market condition.</p>
+      <div id="paCandleSvg"></div>
+      <ul class="rules">
+        <li><b>The body</b><span>Where business got done. A long body means one side dominated for the whole period. A small body means the period ended roughly where it began — disagreement, not direction.</span></li>
+        <li><b>The wicks</b><span>Where price was rejected. A long wick is an auction that went looking for trade, found none it liked, and came back. It is the most honest part of a candle.</span></li>
+        <li><b>The close</b><span>The only price both sides agreed to end on. Closes decide structure; wicks decide invalidation. Never break structure on a wick.</span></li>
+        <li><b>The next candle</b><span>A rejection candle nobody follows is a curiosity. Confirmation is not superstition here — it is the difference between one participant and a side.</span></li>
+      </ul>
+      <p class="legend" style="margin-top:16px">The same candle, three locations</p>
+      <div class="matrix-scroll"><table class="mini-t"><thead><tr><th>Where it prints</th><th>What the long lower wick means</th><th>Your move</th></tr></thead><tbody>
+        <tr><td>At a swept low, after an impulse down</td><td>Aggressive sellers were filled by someone larger, and the sellers are now trapped</td><td>The setup this handbook trades — look for the shift and the retest</td></tr>
+        <tr><td>Mid-range, in balance</td><td>Ordinary rotation. Someone bought a dip inside a range that everyone is trading</td><td>Nothing. There is no invalidation level and no measurable target</td></tr>
+        <tr><td>Into a strong trend, against it</td><td>A pause in one-way flow, not a reversal</td><td>Fade it only after structure breaks; otherwise use it as a pullback entry with the trend</td></tr>
+      </tbody></table></div>
+      <div class="gate" style="margin-top:14px"><b>The rule that follows.</b> A candle means nothing until you have said where it printed. This is why the reading sequence puts location before trigger — and why every trigger in the playbooks has a location requirement attached to it.</div>
+    </div>
+  </section>
+
+  <section id="pa-structure">
+    <div class="eyebrow"><span class="tab">04</span><h2>Structure</h2><span class="line"></span><span class="hint">the skeleton under the noise</span></div>
+    <div class="card pad">
+      <p class="lede">Structure is the sequence of swing highs and lows, and it is the only objective thing on a chart. Two traders will disagree about a pattern; they should not disagree about whether the last higher low held.</p>
+      <div id="paStructSvg"></div>
+      <ul class="rules">
+        <li><b>Define a swing once, then never move the definition</b><span>A swing high is a high with lower highs either side of it. Pick the number of bars, write it down, apply it every day. Most bad structure reads are a definition that quietly changed to fit the position.</span></li>
+        <li><b>Break of structure</b><span>A close beyond the last swing in the direction of the trend. It is continuation, and it is the weakest of the structural events — the trend was already doing that.</span></li>
+        <li><b>Change of character</b><span>A close beyond the last opposing swing after an extreme. It is the first evidence that the sequence has stopped. It is permission to look for a reversal, never permission to take one.</span></li>
+        <li><b>The fractal problem</b><span>Every timeframe has its own structure and they disagree constantly. Fix the roles before you look: the higher timeframe grants direction, the middle one grants location, the low one grants timing. A 5M change of character inside a 4H uptrend is a pullback, not a reversal.</span></li>
+      </ul>
+      <p class="legend" style="margin-top:14px">Reading structure in four moves</p>
+      <ol class="steps">
+        <li>Mark the last three swing highs and three swing lows on your bias timeframe. If you cannot mark them cleanly, the market is in balance — stop, and trade the range playbook or nothing.</li>
+        <li>Name the sequence out loud: higher highs and higher lows, lower highs and lower lows, or neither.</li>
+        <li>Find the level that would end the sequence. That is your invalidation, and it exists before you have a trade.</li>
+        <li>Only now drop a timeframe to look for an entry, and only in the direction the sequence allows.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="pa-location">
+    <div class="eyebrow"><span class="tab blue">05</span><h2>Location</h2><span class="line"></span><span class="hint">the half of the edge nobody photographs</span></div>
+    <div class="card pad">
+      <p class="lede">The same trigger is a good trade at one price and a bad one twenty dollars away. Location is what separates them, and it is decided before the candle prints.</p>
+      <div id="paLocSvg"></div>
+      <div class="mgmt">
+        <div class="mgcard"><div class="mg-t">Premium and discount</div>
+          <p>Split the leg you are trading in half. Buying in the lower half is a discount; buying in the upper half is paying a premium for the same idea with a wider stop and a shorter run to target. The maths punishes the second one twice.</p></div>
+        <div class="mgcard"><div class="mg-t">Imbalance</div>
+          <p>A three-candle gap where one side never traded. Price returns to it because business was left unfinished there. It is an entry zone on the way back and a target on the way out.</p></div>
+        <div class="mgcard"><div class="mg-t">Origin</div>
+          <p>The last opposing candle before a displacement leg — where the size that caused the move was absorbed. Use the body, not the wick. If it fails on the first touch, the premise behind the move has changed.</p></div>
+        <div class="mgcard"><div class="mg-t">Pools</div>
+          <p>Equal highs, equal lows, the previous day's extremes, the session range. Not resistance — destinations. Ask which pool price is travelling toward and you have your target before you have your entry.</p></div>
+      </div>
+      <div class="gate" style="margin-top:14px"><b>The test.</b> Before any entry, answer this in one sentence: <i>why here and not twenty dollars away?</i> If the answer is "because the candle looked good", you have a trigger and no location, which is the most common losing trade there is.</div>
+    </div>
+  </section>
+  <section id="pa-read">
+    <div class="eyebrow"><span class="tab red">06</span><h2>The read</h2><span class="line"></span><span class="hint" id="paReadHint">six questions, in order</span></div>
+    <div class="card pad">
+      <p class="lede">This is the sequence, and the order is not negotiable. Each step narrows what the next one is allowed to conclude. Work it top to bottom on any chart, in any market, and you will either arrive at a trade with an invalidation or arrive at "nothing here" — both are correct outcomes.</p>
+      <ul class="checks" id="paReadList">
+        <li><label class="check"><input type="checkbox" data-pr="0"><b>1 · Condition</b><span>Balanced or imbalanced? Where is value relative to price right now?</span></label></li>
+        <li><label class="check"><input type="checkbox" data-pr="1"><b>2 · Structure</b><span>Name the sequence on the bias timeframe, and the level that would end it.</span></label></li>
+        <li><label class="check"><input type="checkbox" data-pr="2"><b>3 · Location</b><span>Premium or discount? Is price at an edge, at an imbalance, at an origin — or in the middle of nowhere?</span></label></li>
+        <li><label class="check"><input type="checkbox" data-pr="3"><b>4 · Liquidity</b><span>Which pool is price travelling toward, and which one has already been taken?</span></label></li>
+        <li><label class="check"><input type="checkbox" data-pr="4"><b>5 · Trigger</b><span>What single event would tell you the other side has stepped in? Write it before it happens.</span></label></li>
+        <li><label class="check"><input type="checkbox" data-pr="5"><b>6 · Invalidation</b><span>What price proves you wrong, and what would that price mean about the auction?</span></label></li>
+      </ul>
+      <div class="gate" id="paReadGate">Work down the list. The verdict appears once all six are answered.</div>
+      <p class="fs-note">This is the same order the flow enforces in steps 1 to 4 — condition and structure become the narrative and the router, location and liquidity become the level board, trigger becomes the playbook confirmations, invalidation becomes the stop. The flow is this read, with gates attached.</p>
+      <p class="legend" style="margin-top:16px">Worked example — a London sweep, read in order</p>
+      <div id="paWorkedSvg"></div>
+      <ol class="steps" id="paWorked">
+        <li><b>Condition.</b> Asia built a tight range on overlapping candles: balance. Value sits in the middle of that range, price is at its lower edge.</li>
+        <li><b>Structure.</b> The 4H is making higher highs and higher lows; the last higher low is at 3341. That level ends the sequence, so it is the boundary of everything that follows.</li>
+        <li><b>Location.</b> Price is in the lower half of the leg from 3341 to 3372 — a discount, and it is sitting on the Asia low rather than in mid-range.</li>
+        <li><b>Liquidity.</b> Equal lows sit just under the Asia low; the previous day high is untouched above. Stops below, destination above. The pool beneath is what the move needs to fund itself.</li>
+        <li><b>Trigger.</b> Written in advance: a wick through the equal lows that closes back inside, then a 5M close above the last lower high, then a displacement leg that leaves a gap.</li>
+        <li><b>Invalidation.</b> A close back under 3341. That would mean the sweep was not a sweep but continuation, and that the sellers were never trapped.</li>
+      </ol>
+      <div class="gate ok"><b>What makes it a read rather than a guess.</b> Every one of those six sentences was true before the entry candle existed. If you can only write them afterwards, you are describing, not reading.</div>
+    </div>
+  </section>
+
+  <section id="pa-fail">
+    <div class="eyebrow"><span class="tab">07</span><h2>How reads fail</h2><span class="line"></span><span class="hint">the six ways, in order of cost</span></div>
+    <div class="card pad">
+      <p class="lede">Almost every losing trade that followed a rule was one of these. They are worth more attention than any pattern, because they are the failures you can actually stop repeating.</p>
+      <ul class="rules">
+        <li><b>Trigger without location</b><span>A textbook candle in the middle of a range. The pattern was real; there was no reason for it to be at that price and no level to be wrong against. This is the most expensive habit in retail trading.</span></li>
+        <li><b>Structure read on the wrong timeframe</b><span>Fading a 4H uptrend because the 5M made a lower low. The 5M is allowed to disagree — that is what a pullback is.</span></li>
+        <li><b>Mistaking a gap for strength</b><span>A vertical leg into thin liquidity looks like conviction and is often just an empty book at a quiet hour. Ask what time it is before you call it displacement.</span></li>
+        <li><b>Fading absorption</b><span>Selling into a level that has held four times, on the fifth test. Repeated holds mean someone is filling — until they pull, and the fifth test is the one that goes.</span></li>
+        <li><b>Reading the advertisement</b><span>Trusting a level because it is obvious. The more obvious it is, the more certain it is to be traded through at least once to collect what is resting beyond it.</span></li>
+        <li><b>Narrative drift</b><span>The read was written for the session, price did something else, and the story quietly changed to keep the position alive. The invalidation you wrote at step 6 exists to stop exactly this.</span></li>
+      </ul>
+      <div class="gate"><b>The diagnostic.</b> After any loss, ask which of these six it was before you ask anything about the entry. Five of them happen before the entry candle, and four of them are decided in the first two minutes of your read.</div>
+    </div>
+  </section>
+  <section id="pa-practice">
+    <div class="eyebrow"><span class="tab green">08</span><h2>Practice</h2><span class="line"></span><span class="hint" id="paQzHint">0 / 0</span></div>
+    <div class="card pad">
+      <p class="fs-note" style="margin-top:0">Ten reads. Each one shows a chart and asks what you would conclude. The explanation matters more than the score — it names which of the six failure modes the wrong answers belong to.</p>
+      <div class="paquiz" id="paQuiz"></div>
+      <div class="dataops">
+        <button class="btn ghost" id="paQzPrev">Back</button>
+        <button class="btn ghost" id="paQzNext">Skip</button>
+        <button class="btn ghost" id="paQzReset">Start over</button>
+        <span class="note" id="paQzNote"></span>
+      </div>
+      <div class="gate" id="paQzVerdict" hidden></div>
+    </div>
+  </section>
+</div>
+
+
 <div class="view" id="view-live" role="tabpanel" aria-labelledby="tab-live" tabindex="-1">
   <div class="viewhead">
     <h2>Practice lab — strategies in play</h2>
@@ -10508,10 +10785,10 @@ function refreshBlockers(){
   var list=blockers(),n=document.getElementById('uxCtxBlockN');
   if(n)n.textContent=list.length?(list.length>5?('5 of '+list.length):String(list.length)):'';
   host.innerHTML=list.length?list.slice(0,5).map(function(b){
-    return '<li data-go="'+b[1]+'"><i>■</i><span>'+b[0]+'</span></li>';}).join("")
+    return '<li data-step="'+b[1]+'"><i>■</i><span>'+b[0]+'</span></li>';}).join("")
     :'<li class="ok"><i>✓</i><span>Nothing in the way — the next action above is the whole job.</span></li>';
-  Array.prototype.forEach.call(host.querySelectorAll('[data-go]'),function(li){
-    li.addEventListener('click',function(){jumpTo(li.dataset.go);});
+  Array.prototype.forEach.call(host.querySelectorAll('[data-step]'),function(li){
+    li.addEventListener('click',function(){jumpTo(li.dataset.step);});
   });
   var first=list.length?list[0][1]:null;
   var go=document.getElementById('uxCtxGo');
@@ -10970,6 +11247,626 @@ window.MTSSyncStatus=function(){
       :file?"Opened straight from disk. Chrome gives each file:// tab its own island, so two tabs will not see each other. Serve the file over http (or run it in the desktop shell) and sync works."
       :"Live. A change in one tab reaches the others in about a tenth of a second."};
 };
+})();
+</script>
+<script>
+/* ===== price action: diagrams, the reading checklist, and the drills ===== */
+(function(){
+"use strict";
+var $=function(q){return document.querySelector(q);},$$=function(q){return Array.prototype.slice.call(document.querySelectorAll(q));};
+function svg(vb,body,label){
+  return '<svg viewBox="'+vb+'" class="pa-svg" role="img" aria-label="'+label+'">'+body+'</svg>';
+}
+var C={ink:"var(--ink)",dim:"var(--ink-3)",rule:"var(--rule)",go:"var(--go)",no:"var(--abort)",
+        vio:"var(--violet)",rte:"var(--route)",cau:"var(--caution)"};
+function txt(x,y,t,c,sz,anchor){
+  return '<text x="'+x+'" y="'+y+'" fill="'+(c||C.dim)+'" font-size="'+(sz||11)+'" font-family="var(--mono)"'+
+    (anchor?' text-anchor="'+anchor+'"':'')+'>'+t+'</text>';
+}
+function line(x1,y1,x2,y2,c,d,w){
+  return '<line x1="'+x1+'" y1="'+y1+'" x2="'+x2+'" y2="'+y2+'" stroke="'+(c||C.rule)+'" stroke-width="'+(w||1)+'"'+
+    (d?' stroke-dasharray="'+d+'"':'')+'/>';
+}
+function poly(pts,c,w,fill){
+  return '<polyline points="'+pts+'" fill="'+(fill||"none")+'" stroke="'+(c||C.ink)+'" stroke-width="'+(w||2)+'" stroke-linejoin="round"/>';
+}
+function candle(x,o,h,l,cl,w){
+  var up=cl<=o,col=up?C.go:C.no,bw=w||9;
+  var top=Math.min(o,cl),bot=Math.max(o,cl);
+  return line(x,h,x,l,col,null,1.2)+
+    '<rect x="'+(x-bw/2)+'" y="'+top+'" width="'+bw+'" height="'+Math.max(1.5,bot-top)+'" fill="'+col+'" opacity="'+(up?1:.9)+'"/>';
+}
+
+/* 1 — balance, imbalance, transition */
+function auctionSvg(){
+  var b='';
+  /* balance: a distribution around value */
+  b+=txt(14,16,"BALANCE — trade rotates around value",C.dim,10.5);
+  for(var i=0;i<26;i++){
+    var y=30+i*3.2, wdt=Math.max(4,58*Math.exp(-Math.pow((i-13)/6.2,2)));
+    b+='<rect x="'+(96-wdt/2)+'" y="'+y+'" width="'+wdt+'" height="2.3" fill="'+C.rte+'" opacity="'+(i>7&&i<19?.55:.25)+'"/>';
+  }
+  b+=line(30,58,162,58,C.rte,"4 3")+txt(166,61,"value",C.rte,10);
+  b+=line(30,74,162,74,C.rule,"3 3")+txt(166,77,"edge",C.dim,9.5);
+  b+=line(30,42,162,42,C.rule,"3 3")+txt(166,45,"edge",C.dim,9.5);
+  /* imbalance: one-way travel, thin at every price */
+  b+=txt(220,16,"IMBALANCE — price travels, little trade at any price",C.dim,10.5);
+  var xs=[236,252,268,284,300,316,332,348,364,380];
+  var ys=[104,100,92,78,64,58,50,42,36,32];
+  xs.forEach(function(x,i){
+    var wdt=i>2&&i<8?9:5;
+    b+='<rect x="'+(x-wdt/2)+'" y="'+(ys[i]-4)+'" width="'+wdt+'" height="3" fill="'+C.go+'" opacity=".5"/>';
+    b+=candle(x,ys[i]+6,ys[i]-4,ys[i]+12,ys[i]-2,7);
+  });
+  b+=txt(236,116,"nothing rests here, so a modest order travels far",C.dim,9.5);
+  /* transition */
+  b+=txt(420,16,"TRANSITION — an edge stops being defended",C.dim,10.5);
+  b+=line(432,58,556,58,C.rule,"3 3");
+  b+=candle(444,66,60,72,62)+candle(458,64,58,70,63)+candle(472,63,57,69,61)+
+     candle(486,62,56,68,60)+candle(500,60,54,64,44)+candle(514,46,34,50,36)+candle(528,38,26,42,28);
+  b+=txt(432,88,"held · held · held · gone",C.dim,10);
+  b+='<path d="M500,52 L514,40" stroke="'+C.no+'" stroke-width="1.4" marker-end=""/>';
+  return svg("0 0 600 130",b,"Balance, imbalance and the transition between them");
+}
+/* 2 — the order book */
+function bookSvg(){
+  var b='',topY=26;
+  b+=txt(14,16,"THE BOOK — resting size at each price",C.dim,10.5);
+  var asks=[[3358,34],[3357,48],[3356,26],[3355,72],[3354,18]];
+  var bids=[[3352,22],[3351,64],[3350,30],[3349,52],[3348,40]];
+  asks.forEach(function(r,i){
+    var y=topY+i*14;
+    b+='<rect x="120" y="'+(y-8)+'" width="'+(r[1]*1.5)+'" height="10" fill="'+C.no+'" opacity=".5"/>';
+    b+=txt(78,y,r[0],C.dim,10);
+  });
+  b+=line(60,topY+72,300,topY+72,C.rule,"4 3")+txt(14,topY+75,"spread",C.dim,10);
+  bids.forEach(function(r,i){
+    var y=topY+82+i*14;
+    b+='<rect x="120" y="'+(y-8)+'" width="'+(r[1]*1.5)+'" height="10" fill="'+C.go+'" opacity=".5"/>';
+    b+=txt(78,y,r[0],C.dim,10);
+  });
+  b+=txt(120,topY-12,"offers rest above",C.no,9.5);
+  b+=txt(120,topY+160,"bids rest below",C.go,9.5);
+  /* absorption vs thin book */
+  b+=txt(330,16,"ABSORPTION — aggression arrives, price does not move",C.dim,10.5);
+  b+=line(342,86,470,86,C.rte,null,1.4);
+  [0,1,2,3,4,5].forEach(function(i){
+    b+='<path d="M'+(350+i*20)+',110 L'+(350+i*20)+',92" stroke="'+C.go+'" stroke-width="1.6"/>'+
+       '<path d="M'+(346+i*20)+',96 L'+(350+i*20)+',90 L'+(354+i*20)+',96" fill="none" stroke="'+C.go+'" stroke-width="1.4"/>';
+  });
+  b+='<rect x="342" y="78" width="128" height="8" fill="'+C.rte+'" opacity=".35"/>';
+  b+=txt(342,128,"someone is filling all of it — when they stop, price snaps back",C.dim,9.5);
+  b+=txt(330,150,"THIN BOOK — the same order, twenty dollars of travel",C.dim,10.5);
+  b+=poly("342,196 366,192 384,176 402,150 424,140 448,132 470,126",C.go,2);
+  [366,402,448].forEach(function(x){b+='<circle cx="'+x+'" cy="'+(x===366?192:x===402?150:132)+'" r="2.5" fill="'+C.go+'"/>';});
+  b+=txt(342,214,"nothing resting in the way",C.dim,9.5);
+  return svg("0 0 600 224",b,"Order book depth, absorption and a thin book");
+}
+/* 3 — candle anatomy */
+function candleSvg(){
+  var b='';
+  b+=txt(14,16,"WHAT THE FOUR NUMBERS SAY",C.dim,10.5);
+  b+=line(96,30,96,150,C.go,null,1.6);
+  b+='<rect x="86" y="62" width="20" height="52" fill="'+C.go+'"/>';
+  b+=line(112,30,150,30,C.rule,"3 2")+txt(154,33,"high — where it was rejected",C.dim,10);
+  b+=line(112,62,150,62,C.rule,"3 2")+txt(154,65,"close — the only agreed price",C.ink,10);
+  b+=line(112,114,150,114,C.rule,"3 2")+txt(154,117,"open",C.dim,10);
+  b+=line(112,150,150,150,C.rule,"3 2")+txt(154,153,"low — where buyers stepped in",C.dim,10);
+  b+='<path d="M60,62 L78,62" stroke="'+C.go+'" stroke-width="1.2"/>';
+  b+=txt(14,66,"body =",C.dim,10)+txt(14,80,"business",C.dim,10);
+  b+=txt(14,150,"wick =",C.dim,10)+txt(14,164,"rejection",C.dim,10);
+  /* three locations */
+  b+=txt(360,16,"THE SAME CANDLE, THREE PLACES",C.dim,10.5);
+  b+=line(372,52,590,52,C.rule,"3 3")+txt(372,44,"at a swept low — trapped sellers",C.go,9.5);
+  b+=candle(400,64,74,44,52,8)+candle(414,52,58,40,44,8);
+  b+=line(372,110,590,110,C.rule,"3 3")+txt(372,102,"mid-range — nothing to be wrong against",C.cau,9.5);
+  b+=candle(400,118,124,104,112,8)+candle(414,112,120,106,116,8);
+  b+=line(372,168,590,168,C.rule,"3 3")+txt(372,160,"against a trend — a pause, not a turn",C.no,9.5);
+  b+=candle(400,176,182,160,170,8)+candle(414,170,178,164,176,8);
+  return svg("0 0 600 190",b,"Candle anatomy and how location changes its meaning");
+}
+/* 4 — structure */
+function structSvg(){
+  var b='';
+  b+=txt(14,16,"THE SEQUENCE IS THE ONLY OBJECTIVE THING ON THE CHART",C.dim,10.5);
+  var pts="30,150 70,110 100,128 140,78 172,98 214,52 248,74 292,34 330,60 372,30";
+  b+=poly(pts,C.ink,2);
+  [[70,110,"HH"],[140,78,"HH"],[214,52,"HH"],[292,34,"HH"]].forEach(function(p){
+    b+='<circle cx="'+p[0]+'" cy="'+p[1]+'" r="3" fill="'+C.go+'"/>'+txt(p[0]-8,p[1]-8,p[2],C.go,9.5);});
+  [[100,128,"HL"],[172,98,"HL"],[248,74,"HL"],[330,60,"HL"]].forEach(function(p){
+    b+='<circle cx="'+p[0]+'" cy="'+p[1]+'" r="3" fill="'+C.rte+'"/>'+txt(p[0]-8,p[1]+16,p[2],C.rte,9.5);});
+  b+=line(330,60,590,60,C.no,"4 3")+txt(430,52,"the level that ends the sequence — your invalidation",C.no,10);
+  /* change of character */
+  b+=poly("372,30 404,58 430,44 470,88 500,70 540,118",C.dim,1.8);
+  b+='<circle cx="470" cy="88" r="3.5" fill="'+C.no+'"/>'+txt(478,92,"close beyond the last higher low = change of character",C.no,9.5);
+  b+=txt(14,178,"Break of structure continues the sequence. Change of character ends it. Neither is an entry.",C.dim,10);
+  return svg("0 0 600 190",b,"Structure: higher highs, higher lows and the change of character");
+}
+/* 5 — location */
+function locSvg(){
+  var b='';
+  b+=txt(14,16,"LOCATION DECIDES WHETHER THE TRIGGER IS WORTH ANYTHING",C.dim,10.5);
+  b+='<rect x="40" y="34" width="250" height="52" fill="'+C.no+'" opacity=".08"/>';
+  b+='<rect x="40" y="86" width="250" height="52" fill="'+C.go+'" opacity=".08"/>';
+  b+=line(40,86,290,86,C.rte,"4 3")+txt(294,89,"50% — the divide",C.rte,10);
+  b+=txt(46,50,"PREMIUM — sell side of the leg",C.no,10);
+  b+=txt(46,130,"DISCOUNT — buy side of the leg",C.go,10);
+  b+=line(40,34,290,34,C.rule)+txt(294,37,"leg high",C.dim,9.5);
+  b+=line(40,138,290,138,C.rule)+txt(294,141,"leg low",C.dim,9.5);
+  /* imbalance + origin */
+  b+=txt(360,16,"THE THREE THINGS WORTH ENTERING ON",C.dim,10.5);
+  b+='<rect x="372" y="34" width="60" height="26" fill="'+C.vio+'" opacity=".18"/>';
+  b+=txt(438,50,"imbalance — unfinished business",C.vio,10);
+  b+='<rect x="372" y="74" width="60" height="20" fill="'+C.rte+'" opacity=".22"/>';
+  b+=txt(438,88,"origin — where size was absorbed",C.rte,10);
+  b+=line(372,124,432,124,C.cau,null,1.6)+line(372,130,432,130,C.cau,null,1.6);
+  b+=txt(438,130,"pool — a destination, not a wall",C.cau,10);
+  b+=txt(360,164,"Everywhere else is the middle of nowhere, whatever the candle looks like.",C.dim,10);
+  return svg("0 0 600 176",b,"Premium and discount, imbalance, origin and liquidity pools");
+}
+/* 6 — the worked example */
+function workedSvg(){
+  var b='';
+  b+=line(30,60,570,60,C.cau,"5 4")+txt(34,54,"previous day high — the destination",C.cau,10);
+  b+=line(30,150,470,150,C.rte,"4 3")+txt(34,144,"Asia low + equal lows — the fuel",C.rte,10);
+  b+=line(30,176,570,176,C.no,"4 3")+txt(34,190,"3341 — the last higher low. Invalidation.",C.no,10);
+  b+='<rect x="120" y="112" width="150" height="40" fill="'+C.rte+'" opacity=".10"/>'+txt(126,108,"Asia balance",C.dim,9.5);
+  b+=poly("40,120 70,128 100,122 130,132 160,126 190,138 214,146 236,168 252,150 268,140 286,112 300,96 318,104 340,88 366,70 400,58 440,50 480,44",C.ink,2);
+  b+='<circle cx="236" cy="168" r="4" fill="'+C.no+'"/>'+txt(196,186,"1 sweep",C.no,10);
+  b+='<circle cx="268" cy="140" r="4" fill="'+C.rte+'"/>'+txt(258,132,"2 shift",C.rte,10);
+  b+='<rect x="286" y="96" width="34" height="20" fill="'+C.vio+'" opacity=".2"/>'+txt(292,92,"3 gap",C.vio,10);
+  b+='<circle cx="318" cy="104" r="4" fill="'+C.go+'"/>'+txt(324,116,"4 entry on the retest",C.go,10);
+  b+=txt(430,74,"target: the untouched pool above",C.cau,10);
+  return svg("0 0 600 200",b,"A London sweep read in order");
+}
+/* mount the diagrams */
+[["#paAuctionSvg",auctionSvg],["#paBookSvg",bookSvg],["#paCandleSvg",candleSvg],
+ ["#paStructSvg",structSvg],["#paLocSvg",locSvg],["#paWorkedSvg",workedSvg]].forEach(function(p){
+  var el=$(p[0]);
+  if(el)el.innerHTML=p[1]();
+});
+
+/* ---------- the reading checklist ---------- */
+var PRLABEL=["condition","structure","location","liquidity","trigger","invalidation"];
+function paRead(){
+  var boxes=$$("#paReadList [data-pr]"),done=boxes.filter(function(b){return b.checked;}).length;
+  boxes.forEach(function(b){b.closest(".check").classList.toggle("done",b.checked);});
+  var g=$("#paReadGate");
+  $("#paReadHint").textContent=done+" / 6 answered";
+  if(done===6){
+    g.className="gate ok";
+    g.textContent="Six answers, in order. You now have a trade with a level that proves it wrong — or a clear no-trade, which is the same work done. Take it into step 1 of the flow.";
+  } else {
+    var next=PRLABEL[boxes.map(function(b){return b.checked;}).indexOf(false)];
+    g.className="gate";
+    g.textContent=(6-done)+" still open. Next: "+next+". Answering out of order is how a trigger ends up without a location.";
+  }
+}
+$$("#paReadList [data-pr]").forEach(function(b){b.addEventListener("change",paRead);});
+if($("#paReadList"))paRead();
+})();
+</script>
+<script>
+/* ===== price action drills ===== */
+(function(){
+"use strict";
+var $=function(q){return document.querySelector(q);},$$=function(q){return Array.prototype.slice.call(document.querySelectorAll(q));};
+var C={ink:"var(--ink)",dim:"var(--ink-3)",rule:"var(--rule)",go:"var(--go)",no:"var(--abort)",
+       vio:"var(--violet)",rte:"var(--route)",cau:"var(--caution)"};
+function T(x,y,t,c,sz){return '<text x="'+x+'" y="'+y+'" fill="'+(c||C.dim)+'" font-size="'+(sz||10.5)+'" font-family="var(--mono)">'+t+'</text>';}
+function L(x1,y1,x2,y2,c,d,w){return '<line x1="'+x1+'" y1="'+y1+'" x2="'+x2+'" y2="'+y2+'" stroke="'+(c||C.rule)+'" stroke-width="'+(w||1)+'"'+(d?' stroke-dasharray="'+d+'"':'')+'/>';}
+function P(pts,c,w){return '<polyline points="'+pts+'" fill="none" stroke="'+(c||C.ink)+'" stroke-width="'+(w||2)+'" stroke-linejoin="round"/>';}
+function Z(x,y,w,h,c,o){return '<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" fill="'+c+'" opacity="'+(o||.15)+'"/>';}
+function S(body,label){return '<svg viewBox="0 0 560 190" class="pa-svg" role="img" aria-label="'+label+'">'+body+'</svg>';}
+
+var Q=[
+ {q:"Overlapping candles for three hours, the same two prices rejected repeatedly, range shrinking. What is the market doing and what does it license?",
+  svg:S(Z(60,70,420,54,C.rte,.10)+L(60,70,480,70,C.rule,"4 3")+L(60,124,480,124,C.rule,"4 3")+
+      P("70,110 100,86 130,116 160,80 190,112 220,84 250,118 280,88 310,110 340,82 370,114 400,90 430,108",C.ink,1.8)+
+      T(66,62,"edge held three times")+T(66,142,"edge held three times"),"A balanced market"),
+  o:[["Balance — the range playbook, at the edges only","right","Two respected edges, value in the middle, no travel. Mean reversion is licensed and only at a boundary; the middle of this is a no-trade zone."],
+     ["A coil before a breakout — buy the first break","wrong","This is trigger without location dressed as anticipation. The break may come, but you have no edge on which way, and mid-range breaks are the most common trap on gold."],
+     ["An uptrend forming, because the last low is higher","wrong","Structure read on noise. Inside balance, individual swings mean nothing — the sequence has to be read on the timeframe that set the range."]]},
+ {q:"Price has travelled twenty dollars in four minutes at 02:00 GST, on candles with long bodies and no retracement. What is the most likely explanation?",
+  svg:S(P("60,150 90,144 120,132 150,100 180,70 210,56 240,48",C.go,2.4)+T(60,172,"04:00 GST · thin session")+
+      T(250,52,"nothing traded through here",C.dim)+Z(150,60,90,44,C.vio,.14),"A fast leg in a thin session"),
+  o:[["Thin liquidity, not conviction","right","At that hour the book is empty. The same order that shrugs at the London open travels twenty dollars here. Treat the gap as unfinished business, not as strength."],
+     ["Strong institutional buying — join it","wrong","Mistaking a gap for strength. Ask what time it is before you call something displacement; the hour is part of the evidence."],
+     ["A news release you missed","ok","Possible, and worth checking. But even if so, the mechanic is the same: the move went far because nothing was resting in the way."]]},
+ {q:"A level has held four times. Each test brings aggressive selling and price does not fall. What is happening, and what does the fifth test usually mean?",
+  svg:S(L(60,80,500,80,C.rte,null,1.6)+
+      [0,1,2,3].map(function(i){return P((90+i*90)+",130 "+(110+i*90)+",96 "+(130+i*90)+",84 "+(150+i*90)+",108",C.ink,1.6);}).join("")+
+      T(60,72,"someone is filling every seller here",C.rte)+T(60,158,"four tests, no progress"),"Absorption at a level"),
+  o:[["Absorption — and the fifth test is the dangerous one","right","Repeated holds mean a participant is refilling the book. It holds until they pull, and when they do it goes quickly. Fading the fifth test is fading a wall that may no longer be there."],
+     ["Strong support — sell it with a tight stop above","wrong","This is fading absorption, one of the six failure modes. You are betting the filler stays, and you find out they left by being stopped."],
+     ["Nothing readable without volume data","wrong","The outcome is the data. Aggression arriving with no price movement is absorption, whatever your volume feed says."]]},
+ {q:"The 4H is making higher highs and higher lows. The 5M has just made a lower low. What have you actually learned?",
+  svg:S(P("40,150 90,110 130,126 190,76 230,96 300,50 340,72 420,36",C.ink,2.2)+T(40,168,"4H — higher highs, higher lows")+
+      P("340,72 360,84 380,78 400,96 420,88 440,104",C.dim,1.6)+T(346,124,"5M — a lower low inside the pullback",C.dim),"Fractal disagreement"),
+  o:[["That the pullback is underway — nothing about the trend","right","Timeframes are allowed to disagree; that disagreement is what a pullback is. The 4H sequence is intact until its own last higher low breaks."],
+     ["That the trend has reversed — look for shorts","wrong","Structure read on the wrong timeframe. This is the second most expensive failure in the list and it feels like discipline while you do it."],
+     ["That you should wait for the 4H to close","ok","Patient and not wrong, but it costs you the entry. The 5M lower low is the pullback you were waiting for, provided location agrees."]]},
+ {q:"Equal lows have formed under the session low. What are they, and what is your target if price sweeps them and reclaims?",
+  svg:S(L(60,140,420,140,C.rte,"4 3")+T(64,134,"equal lows — resting stops",C.rte)+
+      L(60,50,500,50,C.cau,"5 4")+T(64,44,"untouched previous day high",C.cau)+
+      P("70,90 110,120 150,110 190,136 230,138 270,152 300,124 340,104 380,84 430,62",C.ink,2)+
+      '<circle cx="270" cy="152" r="4" fill="'+C.no+'"/>',"Equal lows and an untouched high"),
+  o:[["Fuel below, destination above — target the untouched high","right","Pools are destinations, not walls. The stops below fund the move; the untouched pool above is where it is going. That is your target before you have an entry."],
+     ["Support — buy the equal lows with a stop underneath","wrong","Reading the advertisement. The more obvious the level, the more certain it is to be traded through to collect what rests beyond it."],
+     ["A double bottom — buy the second touch","wrong","The pattern name is doing the work here. Without the sweep and the reclaim, two touches of an obvious level is just the setup for the raid."]]},
+ {q:"Price swept the pool, closed back inside, and is now drifting upward in small overlapping candles. What is missing?",
+  svg:S(L(60,140,500,140,C.rte,"4 3")+P("70,100 110,124 150,132 190,146 220,158 240,142 262,138 284,132 306,136 328,128 350,132 372,124",C.ink,1.9)+
+      '<circle cx="220" cy="158" r="4" fill="'+C.no+'"/>'+T(196,178,"the sweep")+T(300,110,"drift, not displacement",C.cau),"A sweep without displacement"),
+  o:[["Displacement — and without it there is no trade","right","A reversal with real sponsorship does not overlap; it displaces and leaves a gap. Two of three conditions is not a setup, and this is the variation that produces the new low."],
+     ["Time — give it another twenty minutes","wrong","Waiting does not add evidence. If the leg had backing it would already be leaving inefficiency behind."],
+     ["A retest of the sweep low","ok","You may well get one, but the missing piece is the decisive leg. Without it the retest is just continuation down."]]},
+ {q:"You have a textbook rejection candle. It printed in the middle of a range, forty dollars from either edge. What do you do?",
+  svg:S(L(60,50,500,50,C.rule,"4 3")+L(60,150,500,150,C.rule,"4 3")+T(64,44,"range high")+T(64,168,"range low")+
+      P("70,100 120,92 170,106 220,96 270,104 320,94 370,102",C.ink,1.8)+
+      '<circle cx="270" cy="104" r="4.5" fill="'+C.cau+'"/>'+T(282,108,"perfect candle, nowhere",C.cau),"A good candle in a bad place"),
+  o:[["Nothing — there is no invalidation level here","right","Trigger without location: the most expensive habit there is. Mid-range there is nothing to be wrong against and no measurable target, so the candle cannot be traded however good it looks."],
+     ["Trade it small, since the pattern is valid","wrong","Small size on a setup that does not exist is still negative expectancy, and it teaches you the rules are negotiable."],
+     ["Trade it toward the nearer edge","wrong","Half a range is not a target; it is a guess with a wide stop. The playbook asks for a boundary, and you are not at one."]]},
+ {q:"An impulse leg left a three-candle gap. Price is now returning into it. What is that zone, and what would void it?",
+  svg:S(P("60,150 100,140 140,120 176,86 214,60 250,66 286,80 320,92 356,104",C.ink,2)+
+      Z(140,84,80,36,C.vio,.2)+T(226,104,"the imbalance",C.vio)+
+      L(60,124,500,124,C.no,"4 3")+T(400,118,"a close through the far side voids it",C.no),"Returning into an imbalance"),
+  o:[["An entry zone — voided by a close through its far side","right","Price returns because business was left unfinished. It is a zone while it holds; a close clean through it says the premise behind the leg has changed."],
+     ["A support level — buy anywhere inside it","wrong","Inside is not a level. Without the far side as your invalidation you have no stop that means anything."],
+     ["Proof the move will continue","wrong","The gap is evidence of speed, not of continuation. It tells you where, not whether."]]},
+ {q:"Price closed decisively below a range that had held four times, then rallied straight back inside within two candles. What is the correct read?",
+  svg:S(L(60,60,500,60,C.rule,"4 3")+L(60,140,500,140,C.rule,"4 3")+
+      P("70,100 120,132 170,110 220,138 270,116 310,142 340,166 366,150 392,124 430,104 470,92",C.ink,2)+
+      '<circle cx="340" cy="166" r="4" fill="'+C.no+'"/>'+T(300,184,"break")+T(396,120,"reclaimed",C.go),"A failed break and reclaim"),
+  o:[["A failed break — the strongest reversal signal in a range","right","The breakout traders are trapped and their stops sit above. A reclaim after a decisive break is the spring, and the target is the opposite edge."],
+     ["A continuation — the range is broken, expect lower","wrong","The reclaim is the information. A break that cannot hold has told you who was on the wrong side."],
+     ["Ambiguous — stand aside","ok","Never a bad answer, but this is one of the cleaner reads there is: break, fail, reclaim, with the stops of the trapped side directly above."]]},
+ {q:"Your read said long above 3341. Price is at 3336 and you are still in, telling yourself the level was 'approximate'. What has happened?",
+  svg:S(L(60,90,500,90,C.no,"4 3")+T(64,84,"3341 — written before entry",C.no)+
+      P("70,130 120,112 170,96 210,80 250,72 290,88 330,102 370,116 410,128 450,138",C.ink,2)+
+      '<circle cx="290" cy="88" r="4" fill="'+C.cau+'"/>'+T(300,72,"here the story quietly changed",C.cau),"Narrative drift"),
+  o:[["Narrative drift — the read was abandoned, not updated","right","The invalidation existed precisely to prevent this. Changing what a level means while a position is open is the failure that turns a planned 1R into an unplanned three."],
+     ["A wick tolerance — this is normal","wrong","Tolerance is decided before entry and written down. Deciding it afterwards, while losing, is not tolerance."],
+     ["The 4H bias is still valid so the trade is fine","wrong","The bias was never the invalidation. You wrote a level; price traded through it; the read is over regardless of the higher timeframe."]]}
+];
+
+var IDX=0,ANS={},SCORE=0;
+function paint(){
+  var host=$("#paQuiz");
+  if(!host)return;
+  var q=Q[IDX],a=ANS[IDX];
+  $("#paQzHint").textContent=Object.keys(ANS).length+" / "+Q.length+" · "+SCORE.toFixed(1)+" correct";
+  host.innerHTML='<div class="paq-n">Read '+(IDX+1)+' of '+Q.length+'</div>'+
+    q.svg+'<div class="paq-q">'+q.q+'</div><div class="qz-opts" id="paqOpts">'+
+    q.o.map(function(o,i){
+      var cls=a?(o[1]==="right"?" right":(a.i===i?(o[1]==="ok"?" ok":" wrong"):"")):"";
+      return '<button type="button" class="qzopt'+cls+'" data-i="'+i+'"'+(a?" disabled":"")+'>'+o[0]+'</button>';
+    }).join("")+'</div>'+
+    (a?'<div class="qz-fb '+(q.o[a.i][1]==="right"?"right":q.o[a.i][1]==="ok"?"ok":"wrong")+'"><b>'+
+       (q.o[a.i][1]==="right"?"Correct.":q.o[a.i][1]==="ok"?"Defensible.":"Not this one.")+'</b> '+q.o[a.i][2]+'</div>':'');
+  $$("#paqOpts .qzopt").forEach(function(b){
+    b.addEventListener("click",function(){
+      var i=+b.dataset.i,v=q.o[i][1];
+      ANS[IDX]={i:i,v:v};
+      SCORE+=v==="right"?1:(v==="ok"?0.5:0);
+      paint();
+      $("#paQzNote").textContent=(IDX<Q.length-1)?"Press next for the following read.":"";
+      if(Object.keys(ANS).length===Q.length)verdict();
+    });
+  });
+  $("#paQzNext").textContent=ANS[IDX]?(IDX<Q.length-1?"Next":"Finish"):"Skip";
+}
+function verdict(){
+  var pct=Math.round(SCORE/Q.length*100),g=$("#paQzVerdict");
+  g.hidden=false;
+  g.className="gate "+(pct>=80?"ok":"");
+  g.innerHTML="<b>"+SCORE.toFixed(1)+" of "+Q.length+" — "+pct+"%.</b> "+
+    (pct>=80?"You are reading location and condition before triggers, which is the whole skill. Take the same six questions to a live chart and write them out before the session."
+     :pct>=50?"The mechanics are there. The misses were mostly location and timeframe — reread sections 05 and 04, then run these again."
+     :"Work through sections 01 to 05 in order before trading from these ideas. The failure list in section 07 names what the wrong answers have in common.");
+}
+if($("#paQzNext")){
+  $("#paQzNext").addEventListener("click",function(){
+    if(IDX<Q.length-1){IDX++;paint();}
+    else if(Object.keys(ANS).length===Q.length)verdict();
+  });
+  $("#paQzPrev").addEventListener("click",function(){if(IDX>0){IDX--;paint();}});
+  $("#paQzReset").addEventListener("click",function(){IDX=0;ANS={};SCORE=0;$("#paQzVerdict").hidden=true;$("#paQzNote").textContent="";paint();});
+  paint();
+}
+})();
+</script>
+<script>
+/* ===== cross-references: what each section depends on, and what depends on it ===== */
+(function(){
+"use strict";
+var $=function(q){return document.querySelector(q);},$$=function(q){return Array.prototype.slice.call(document.querySelectorAll(q));};
+
+/* Each entry: [where it lives, label, why it is related]. Written as relationships,
+   not as a menu — the "why" is the part that teaches something. */
+var REL={
+  /* ---- price action ---- */
+  "pa-auction":[
+    ["reference|#r-instrument","Instrument · gold's sessions","Which hours have a two-sided auction at all, and which are noise"],
+    ["reference|#r-macro","Macro map","What makes one side initiate: yields, the dollar, risk events"],
+    ["patterns|#p-library","Session and cycle patterns","The auction states as they actually print"],
+    ["tools|#t-levels","Level board","Yesterday's value and range, entered before the session"]],
+  "pa-book":[
+    ["reference|#r-instrument","Spread and rollover","When the book is thin enough to make any move look decisive"],
+    ["patterns|#p-library","Liquidity and order-flow patterns","Sweeps, voids, absorption as chart shapes"],
+    ["tools|#t-events","Event calendar","Scheduled moments when depth vanishes on purpose"],
+    ["reference|#r-playbooks","Liquidity sweep playbook","The book mechanic turned into an entry sequence"]],
+  "pa-candle":[
+    ["patterns|#p-library","Candlestick patterns","The named shapes, each with its location requirement"],
+    ["price|#pa-location","Location","Why the same candle is a trade at one price and noise at another"],
+    ["reference|#r-indicators","Indicators","What they add once you can already read the bar"]],
+  "pa-structure":[
+    ["reference|#r-playbooks","Trend playbook","Structure as the qualifying condition for trend following"],
+    ["patterns|#p-library","Structure patterns","Break of structure, change of character, failure swings"],
+    ["flow|#f2","Regime router","The three questions that turn a structure read into a playbook"],
+    ["price|#pa-read","The read","Where structure sits in the six-question sequence"]],
+  "pa-location":[
+    ["tools|#t-calc","Position calculator","Location decides stop distance, which decides size"],
+    ["tools|#t-reward","Reward engine","How far price runs from a given location, in your own numbers"],
+    ["patterns|#p-confluence","Confluence rules","How many independent factors a location actually has"],
+    ["reference|#r-matrix","Setup matrix","Location and trigger combined into graded setups"]],
+  "pa-read":[
+    ["flow|#f1","Flow · prepare","The same six questions, with gates attached"],
+    ["reference|#r-rules","The rules","What the read is not allowed to override"],
+    ["live|#live-stage","Practice Lab","The read applied stage by stage to nine scenarios"],
+    ["journal|#j-entries","Journal","Where the read is recorded and later graded"]],
+  "pa-fail":[
+    ["journal|#j-caps","Capabilities","Which of the six failure modes your own record shows"],
+    ["journal|#j-whatif","What if","Test a rule that would have removed a failure mode"],
+    ["reference|#r-governance","Governance","The rules that exist specifically to stop narrative drift"],
+    ["live|#live-stage","Vetoed scenarios","The three replays built around reads that should not be taken"]],
+  "pa-practice":[
+    ["live|#live-stage","Practice Lab","Same idea, applied to a moving chart"],
+    ["patterns|#p-library","Pattern library","Sixty-nine shapes, each with its bias and its context"],
+    ["journal|#j-drills","Drills","This week's prescribed work, from your weakest capability"]],
+  /* ---- handbook ---- */
+  "r-rules":[
+    ["price|#pa-fail","How reads fail","The six mistakes these rules were written against"],
+    ["flow|#f4","Entry gate","Where the rules become a locked button rather than a wish"],
+    ["journal|#j-caps","Capabilities","Whether you actually follow them, measured"]],
+  "r-instrument":[
+    ["price|#pa-auction","The auction","Why gold's session structure produces the range it does"],
+    ["price|#pa-book","The order book","Spread, rollover and depth, explained mechanically"],
+    ["tools|#t-levels","Level board","Where the instrument's numbers get entered each morning"]],
+  "r-macro":[
+    ["price|#pa-auction","Initiative activity","Macro is what makes one side initiate rather than respond"],
+    ["tools|#t-events","Event calendar","The releases that change the auction within a minute"]],
+  "r-indicators":[
+    ["price|#pa-candle","Candles as evidence","Indicators derive from price; read the source first"],
+    ["price|#pa-structure","Structure","What a moving average is a lagging approximation of"]],
+  "r-playbooks":[
+    ["price|#pa-read","The read","Playbooks are this sequence, pre-committed"],
+    ["price|#pa-structure","Structure","The qualifying condition each playbook tests"],
+    ["price|#pa-location","Location","Why each playbook names a place as well as a trigger"],
+    ["tools|#t-reward","Reward engine","How to take profit once a playbook is working"]],
+  "r-matrix":[
+    ["price|#pa-location","Location","The column the matrix grades on"],
+    ["patterns|#p-confluence","Confluence","How the grades are arrived at"]],
+  "r-management":[
+    ["price|#pa-book","Absorption and exhaustion","What tells you a move is finishing while you are in it"],
+    ["tools|#t-reward","Reward engine","The same choice, priced against your own reach curve"],
+    ["flow|#f5","Live management","Where the plan becomes one instruction at a time"]],
+  "r-governance":[
+    ["price|#pa-fail","Narrative drift","The failure governance exists to prevent"],
+    ["journal|#j-week","This week","The limits, measured rather than remembered"]],
+  "r-glossary":[
+    ["price|#pa-auction","The auction","Most of these terms are auction mechanics underneath"],
+    ["patterns|#p-library","Pattern library","Every named shape, animated"]],
+  /* ---- patterns, lab, tools, journal ---- */
+  "p-concepts":[
+    ["price|#pa-candle","Candles as evidence","What a pattern is evidence of, before it is a name"],
+    ["price|#pa-location","Location","The half of a pattern that never appears in the picture"]],
+  "p-library":[
+    ["price|#pa-structure","Structure","Where the structural shapes come from"],
+    ["price|#pa-book","The order book","Why sweeps, voids and blocks exist at all"],
+    ["price|#pa-fail","How reads fail","Trigger without location, named"]],
+  "p-confluence":[
+    ["price|#pa-location","Location","Independent factors versus the same factor counted twice"],
+    ["reference|#r-matrix","Setup matrix","Confluence turned into a grade"]],
+  "live-stage":[
+    ["price|#pa-read","The read","The six questions the replay walks through"],
+    ["price|#pa-practice","Price action drills","Static reads, if you want the theory first"]],
+  "t-levels":[
+    ["price|#pa-location","Location","What the numbers on this board are for"],
+    ["price|#pa-auction","Value and range","Yesterday's auction, in three figures"]],
+  "t-calc":[
+    ["price|#pa-location","Location","Stop distance comes from structure, not from preference"],
+    ["reference|#r-rules","Risk doctrine","Why risk is fixed and size is the output"]],
+  "t-reward":[
+    ["reference|#r-management","Management doctrine","The rules the plans here have to obey"],
+    ["price|#pa-book","Exhaustion","What tells you the runner is done"]],
+  "t-risk":[
+    ["journal|#j-week","This week","Modelled drawdown against the real one"],
+    ["reference|#r-governance","Governance","Where the limits are written down"]],
+  "j-caps":[
+    ["price|#pa-fail","How reads fail","The failure modes the scores are detecting"],
+    ["journal|#j-drills","Drills","What to do about the weakest one"]],
+  "j-whatif":[
+    ["price|#pa-fail","How reads fail","Candidate rules usually target one of the six"],
+    ["reference|#r-rules","The rules","Where an adopted rule belongs afterwards"]]
+};
+
+function chips(list){
+  return '<div class="xref"><span class="xr-k">Connects to</span>'+list.map(function(r){
+    return '<button type="button" class="xrchip" data-go="'+r[0]+'"><b>'+r[1]+'</b><span>'+r[2]+'</span></button>';
+  }).join("")+'</div>';
+}
+Object.keys(REL).forEach(function(id){
+  var sec=document.getElementById(id);
+  if(!sec)return;
+  var card=sec.querySelector(".card")||sec;
+  var d=document.createElement("div");
+  d.innerHTML=chips(REL[id]);
+  card.appendChild(d.firstChild);
+});
+
+/* ---------- the map: how the whole handbook fits together ---------- */
+function mapSvg(){
+  var N=[
+   {id:"pa-auction",v:"price",x:70,y:44,t:"Auction",s:"why price moves"},
+   {id:"pa-book",v:"price",x:70,y:112,t:"Order book",s:"what sits underneath"},
+   {id:"pa-structure",v:"price",x:230,y:34,t:"Structure",s:"the sequence"},
+   {id:"pa-location",v:"price",x:230,y:100,t:"Location",s:"where, not what"},
+   {id:"p-library",v:"patterns",x:230,y:166,t:"Patterns",s:"named shapes"},
+   {id:"pa-read",v:"price",x:396,y:68,t:"The read",s:"six questions"},
+   {id:"r-playbooks",v:"reference",x:396,y:150,t:"Playbooks",s:"pre-committed reads"},
+   {id:"f4",v:"flow",x:552,y:44,t:"Entry gate",s:"size and arm"},
+   {id:"f5",v:"flow",x:552,y:112,t:"Management",s:"one action at a time"},
+   {id:"j-entries",v:"journal",x:552,y:178,t:"Journal",s:"what happened"},
+   {id:"j-caps",v:"journal",x:396,y:216,t:"Capabilities",s:"what to fix"}
+  ];
+  var E=[[0,2],[0,3],[1,3],[1,4],[2,5],[3,5],[4,5],[5,6],[6,7],[7,8],[8,9],[9,10],[10,6]];
+  var b='';
+  E.forEach(function(e){
+    var a=N[e[0]],c=N[e[1]];
+    b+='<path d="M'+(a.x+56)+','+(a.y+14)+' C'+(a.x+96)+','+(a.y+14)+' '+(c.x-40)+','+(c.y+14)+' '+c.x+','+(c.y+14)+
+       '" fill="none" stroke="var(--rule)" stroke-width="1.1" opacity=".8"/>';
+  });
+  N.forEach(function(n,i){
+    b+='<g class="mapnode" data-go="'+n.v+'|#'+n.id+'" tabindex="0" role="button" aria-label="'+n.t+'">'+
+      '<rect x="'+n.x+'" y="'+n.y+'" width="112" height="30" rx="3"/>'+
+      '<text x="'+(n.x+9)+'" y="'+(n.y+13)+'" font-size="11" font-family="var(--cond)" font-weight="600">'+n.t+'</text>'+
+      '<text x="'+(n.x+9)+'" y="'+(n.y+24)+'" font-size="8.5" font-family="var(--mono)" opacity=".62">'+n.s+'</text></g>';
+  });
+  return '<svg viewBox="0 0 700 260" class="pa-svg xmap" role="img" aria-label="How the sections relate">'+b+'</svg>';
+}
+var mapHost=document.getElementById("xmapHost");
+if(mapHost)mapHost.innerHTML=mapSvg();
+})();
+</script>
+<script>
+/* ===== mobile navigation: a bottom bar, because a phone is held at the bottom ===== */
+(function(){
+"use strict";
+var $=function(q){return document.querySelector(q);},$$=function(q){return Array.prototype.slice.call(document.querySelectorAll(q));};
+var MQ=window.matchMedia("(max-width:760px)");
+
+var GROUPS=[
+  {k:"flow",label:"Flow",icon:"◎",views:[["flow","Today's flow","six gated steps"]]},
+  {k:"prepare",label:"Prepare",icon:"▤",views:[["tools","Tools","levels, sizing, reward, price, events, risk"]]},
+  {k:"learn",label:"Learn",icon:"❑",views:[
+     ["price","Price action","the auction, the book, the read"],
+     ["reference","Handbook","rules, playbooks, macro, glossary"],
+     ["live","Practice Lab","replay and practise nine scenarios"],
+     ["patterns","Patterns","the annotated library"]]},
+  {k:"review",label:"Review",icon:"▦",views:[
+     ["journal","Journal","entries, week, capabilities, drills"],
+     ["insights","Insights","import a statement, account history"]]},
+  {k:"more",label:"More",icon:"⋯",actions:[
+     ["focus","Session mode","one screen, current position"],
+     ["alerts","Alerts","what will interrupt you"],
+     ["settings","Settings","everything stored, formulas, playbooks"],
+     ["search","Search","jump to anything"],
+     ["theme","Switch theme","day or night"]]}
+];
+
+function build(){
+  if($("#mnav"))return;
+  var bar=document.createElement("nav");
+  bar.className="mnav";bar.id="mnav";
+  bar.setAttribute("aria-label","Main sections");
+  bar.innerHTML=GROUPS.map(function(g){
+    return '<button type="button" class="mnav-b" data-g="'+g.k+'" aria-pressed="false">'+
+      '<span class="mnav-i" aria-hidden="true">'+g.icon+'</span><span class="mnav-t">'+g.label+'</span>'+
+      (g.k==="more"?'<span class="mnav-dot" id="mnavDot" hidden></span>':'')+'</button>';
+  }).join("");
+  document.body.appendChild(bar);
+
+  var sheet=document.createElement("div");
+  sheet.className="msheet";sheet.id="msheet";sheet.hidden=true;
+  sheet.innerHTML='<div class="msheet-b" role="dialog" aria-modal="true" aria-label="Sections">'+
+    '<div class="msheet-h"><b id="msheetT">Learn</b><button class="coach-x" id="msheetX" aria-label="Close">✕</button></div>'+
+    '<div id="msheetList"></div></div>';
+  document.body.appendChild(sheet);
+
+  $$("#mnav .mnav-b").forEach(function(b){
+    b.addEventListener("click",function(){pick(b.dataset.g);});
+  });
+  $("#msheetX").addEventListener("click",close);
+  sheet.addEventListener("click",function(e){if(e.target===sheet)close();});
+  document.addEventListener("keydown",function(e){if(e.key==="Escape"&&!sheet.hidden)close();});
+}
+function open_(g){
+  var sheet=$("#msheet");
+  $("#msheetT").textContent=g.label;
+  $("#msheetList").innerHTML=(g.views||g.actions||[]).map(function(v){
+    return '<button type="button" class="msheet-i" data-v="'+v[0]+'"><b>'+v[1]+'</b><span>'+v[2]+'</span></button>';
+  }).join("");
+  $$("#msheetList .msheet-i").forEach(function(b){
+    b.addEventListener("click",function(){act(b.dataset.v);});
+  });
+  sheet.hidden=false;
+  requestAnimationFrame(function(){sheet.classList.add("on");});
+}
+function close(){
+  var sheet=$("#msheet");
+  if(!sheet)return;
+  sheet.classList.remove("on");
+  setTimeout(function(){sheet.hidden=true;},160);
+}
+function pick(k){
+  var g=GROUPS.filter(function(x){return x.k===k;})[0];
+  if(!g)return;
+  if(g.views&&g.views.length===1){go(g.views[0][0]);close();return;}
+  open_(g);
+}
+function go(view){
+  var b=document.querySelector('.navbtn[data-view="'+view+'"]');
+  if(b)b.click();
+  sync();
+}
+function act(id){
+  close();
+  var map={focus:"#focusBtn",alerts:"#bellBtn",settings:"#gearBtn",theme:"#themeBtn",search:"#cmdOpenUx"};
+  if(map[id]){var el=$(map[id]);if(el)el.click();return;}
+  go(id);
+}
+function currentView(){
+  var v=document.querySelector(".view.active");
+  return v?v.id.replace("view-",""):"flow";
+}
+function sync(){
+  if(!$("#mnav"))return;
+  var v=currentView();
+  var owner=GROUPS.filter(function(g){
+    return (g.views||[]).some(function(x){return x[0]===v;});
+  })[0];
+  $$("#mnav .mnav-b").forEach(function(b){
+    b.setAttribute("aria-pressed",String(!!owner&&b.dataset.g===owner.k));
+  });
+  var dot=$("#mnavDot"),bell=$("#bellN");
+  if(dot)dot.hidden=!(bell&&!bell.hidden);
+}
+function apply(){
+  if(MQ.matches){build();sync();}
+  var bar=$("#mnav");
+  if(bar)bar.style.display=MQ.matches?"":"none";
+  document.body.classList.toggle("has-mnav",MQ.matches);
+}
+if(MQ.addEventListener)MQ.addEventListener("change",apply);
+else if(MQ.addListener)MQ.addListener(apply);
+apply();
+/* Keep the bar in step with whatever changed the view — nav clicks, palette, links.
+   Watch only the view panels, and never react to our own writes. */
+var busy=false,mo=null;
+function watched(){
+  if(mo)mo.disconnect();
+  mo=new MutationObserver(function(){
+    if(busy)return;
+    busy=true;
+    setTimeout(function(){busy=false;sync();},0);
+  });
+  $$(".view").forEach(function(v){mo.observe(v,{attributes:true,attributeFilter:["class"]});});
+  var bell=$("#bellN");
+  if(bell)mo.observe(bell,{attributes:true,attributeFilter:["hidden"]});
+}
+watched();
+window.MTSMobileNav={sync:sync};
 })();
 </script>
 </body>
