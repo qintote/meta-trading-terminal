@@ -1,0 +1,249 @@
+//@version=6
+strategy("MTS 3 — Mean Reversion", overlay=true, pyramiding=0,
+     process_orders_on_close=true, initial_capital=10000)
+
+// ============================================================================
+// META TRADING SYSTEM — PLAYBOOK 3: MEAN REVERSION
+// Source logic:
+// qualify range with 2 respected touches each side -> wait at edge
+// -> any 2 of rejection / sweep / LTF break / fading volume
+// -> enter after price shifts back inside
+// -> stop beyond boundary/wick -> midpoint partial -> far-side target.
+// ============================================================================
+
+// ---------- Inputs ----------
+pivotLen           = input.int(3, "Range pivot strength", minval=1)
+atrLen             = input.int(14, "ATR length", minval=2)
+levelTolATR        = input.float(0.25, "Touch-level tolerance (ATR)", minval=0.05, step=0.05)
+edgeTolATR         = input.float(0.30, "Edge-entry tolerance (ATR)", minval=0.05, step=0.05)
+ltfBreakLen        = input.int(4, "LTF break lookback", minval=2)
+confirmWindow      = input.int(8, "Max bars to collect confirmations", minval=2)
+volLen             = input.int(20, "Volume average length", minval=2)
+breakoutCheckBars  = input.int(10, "Bars that must remain inside range", minval=2)
+stopBufferATR      = input.float(0.05, "Stop buffer beyond boundary/wick (ATR)", minval=0.0, step=0.01)
+minRR              = input.float(2.0, "Minimum R:R to far side", minval=1.0, step=0.1)
+qty                = input.float(1.0, "Order quantity", minval=0.01, step=0.01)
+
+// ---------- Candle helpers ----------
+f_bull_rejection() =>
+    body = math.abs(close - open)
+    rng = math.max(high - low, syminfo.mintick)
+    lowerWick = math.min(open, close) - low
+    pin = close > open and lowerWick >= body * 2.0 and close >= low + rng * 0.60
+    engulf = close > open and close[1] < open[1] and open <= close[1] and close >= open[1]
+    pin or engulf
+
+f_bear_rejection() =>
+    body = math.abs(close - open)
+    rng = math.max(high - low, syminfo.mintick)
+    upperWick = high - math.max(open, close)
+    pin = close < open and upperWick >= body * 2.0 and close <= high - rng * 0.60
+    engulf = close < open and close[1] > open[1] and open >= close[1] and close <= open[1]
+    pin or engulf
+
+atr = ta.atr(atrLen)
+levelTol = atr * levelTolATR
+edgeTol  = atr * edgeTolATR
+volAvg = ta.sma(volume, volLen)
+
+// ---------- Qualify range using two pivot touches each side ----------
+ph = ta.pivothigh(high, pivotLen, pivotLen)
+pl = ta.pivotlow(low, pivotLen, pivotLen)
+
+ph0 = ta.valuewhen(not na(ph), ph, 0)
+ph1 = ta.valuewhen(not na(ph), ph, 1)
+pl0 = ta.valuewhen(not na(pl), pl, 0)
+pl1 = ta.valuewhen(not na(pl), pl, 1)
+
+twoHighTouches = not na(ph1) and math.abs(ph0 - ph1) <= levelTol
+twoLowTouches  = not na(pl1) and math.abs(pl0 - pl1) <= levelTol
+
+rangeHigh = twoHighTouches ? (ph0 + ph1) * 0.5 : na
+rangeLow  = twoLowTouches  ? (pl0 + pl1) * 0.5 : na
+rangeWidth = rangeHigh - rangeLow
+midpoint = (rangeHigh + rangeLow) * 0.5
+
+insideRecently =
+     not na(rangeHigh) and not na(rangeLow) and
+     ta.highest(close, breakoutCheckBars) <= rangeHigh + levelTol and
+     ta.lowest(close, breakoutCheckBars) >= rangeLow - levelTol
+
+qualifiedRange =
+     twoHighTouches and twoLowTouches and
+     rangeWidth > atr and insideRecently
+
+// ---------- Edge setup state ----------
+var bool  longSetup = false
+var bool  shortSetup = false
+var int   longStart = na
+var int   shortStart = na
+var float setupHigh = na
+var float setupLow = na
+var float setupMid = na
+var float longExtreme = na
+var float shortExtreme = na
+
+var bool longRejectSeen = false
+var bool longSweepSeen  = false
+var bool longBreakSeen  = false
+var bool longVolSeen    = false
+
+var bool shortRejectSeen = false
+var bool shortSweepSeen  = false
+var bool shortBreakSeen  = false
+var bool shortVolSeen    = false
+
+flat = strategy.position_size == 0
+
+atLowEdge  = qualifiedRange and low <= rangeLow + edgeTol
+atHighEdge = qualifiedRange and high >= rangeHigh - edgeTol
+
+if flat and atLowEdge and not longSetup
+    longSetup := true
+    shortSetup := false
+    longStart := bar_index
+    setupHigh := rangeHigh
+    setupLow := rangeLow
+    setupMid := midpoint
+    longExtreme := low
+    longRejectSeen := false
+    longSweepSeen := false
+    longBreakSeen := false
+    longVolSeen := false
+
+if flat and atHighEdge and not shortSetup
+    shortSetup := true
+    longSetup := false
+    shortStart := bar_index
+    setupHigh := rangeHigh
+    setupLow := rangeLow
+    setupMid := midpoint
+    shortExtreme := high
+    shortRejectSeen := false
+    shortSweepSeen := false
+    shortBreakSeen := false
+    shortVolSeen := false
+
+// Abort stale setups or a range invalidated by a close outside.
+if longSetup
+    longExtreme := math.min(longExtreme, low)
+    if bar_index - longStart > confirmWindow or close < setupLow - levelTol
+        longSetup := false
+
+if shortSetup
+    shortExtreme := math.max(shortExtreme, high)
+    if bar_index - shortStart > confirmWindow or close > setupHigh + levelTol
+        shortSetup := false
+
+// ---------- Accumulate the four allowed confirmations ----------
+if longSetup
+    longRejectSeen := longRejectSeen or f_bull_rejection()
+    longSweepSeen  := longSweepSeen or (low < setupLow and close > setupLow)
+    longBreakSeen  := longBreakSeen or (close > ta.highest(high[1], ltfBreakLen))
+    longVolSeen    := longVolSeen or (volume < volAvg)
+
+if shortSetup
+    shortRejectSeen := shortRejectSeen or f_bear_rejection()
+    shortSweepSeen  := shortSweepSeen or (high > setupHigh and close < setupHigh)
+    shortBreakSeen  := shortBreakSeen or (close < ta.lowest(low[1], ltfBreakLen))
+    shortVolSeen    := shortVolSeen or (volume < volAvg)
+
+longScore =
+     (longRejectSeen ? 1 : 0) +
+     (longSweepSeen  ? 1 : 0) +
+     (longBreakSeen  ? 1 : 0) +
+     (longVolSeen    ? 1 : 0)
+
+shortScore =
+     (shortRejectSeen ? 1 : 0) +
+     (shortSweepSeen  ? 1 : 0) +
+     (shortBreakSeen  ? 1 : 0) +
+     (shortVolSeen    ? 1 : 0)
+
+// Entry is only allowed after price is back INSIDE the range.
+longReady  = longSetup and longScore >= 2 and close > setupLow and close < setupMid
+shortReady = shortSetup and shortScore >= 2 and close < setupHigh and close > setupMid
+
+// ---------- Execution ----------
+var float activeStop = na
+var float activeMid  = na
+var float activeFar  = na
+var float activeEntry = na
+var float activeQuarter = na
+
+if longReady and flat
+    stopPrice = math.min(setupLow, longExtreme) - atr * stopBufferATR
+    risk = close - stopPrice
+    farTarget = setupHigh
+    rr = risk > syminfo.mintick ? (farTarget - close) / risk : 0.0
+
+    if rr >= minRR
+        activeEntry   := close
+        activeStop    := stopPrice
+        activeMid     := setupMid
+        activeFar     := farTarget
+        activeQuarter := setupLow + (setupHigh - setupLow) * 0.25
+        strategy.entry("Range Long", strategy.long, qty=qty)
+        longSetup := false
+
+if shortReady and flat
+    stopPrice = math.max(setupHigh, shortExtreme) + atr * stopBufferATR
+    risk = stopPrice - close
+    farTarget = setupLow
+    rr = risk > syminfo.mintick ? (close - farTarget) / risk : 0.0
+
+    if rr >= minRR
+        activeEntry   := close
+        activeStop    := stopPrice
+        activeMid     := setupMid
+        activeFar     := farTarget
+        activeQuarter := setupHigh - (setupHigh - setupLow) * 0.25
+        strategy.entry("Range Short", strategy.short, qty=qty)
+        shortSetup := false
+
+// Source management:
+// - half off at midpoint
+// - once 25% of range is cleared, stop may move to breakeven
+// - remainder goes to the far side
+if strategy.position_size > 0
+    if high >= activeQuarter
+        activeStop := math.max(activeStop, activeEntry)
+    strategy.exit("Range L Mid", "Range Long", stop=activeStop, limit=activeMid, qty_percent=50)
+    strategy.exit("Range L Far", "Range Long", stop=activeStop, limit=activeFar, qty_percent=100)
+
+    // A close outside the qualified range voids the premise.
+    if close < setupLow
+        strategy.close("Range Long", comment="Range invalidated")
+
+if strategy.position_size < 0
+    if low <= activeQuarter
+        activeStop := math.min(activeStop, activeEntry)
+    strategy.exit("Range S Mid", "Range Short", stop=activeStop, limit=activeMid, qty_percent=50)
+    strategy.exit("Range S Far", "Range Short", stop=activeStop, limit=activeFar, qty_percent=100)
+
+    if close > setupHigh
+        strategy.close("Range Short", comment="Range invalidated")
+
+if strategy.position_size == 0 and strategy.position_size[1] != 0
+    activeStop := na
+    activeMid := na
+    activeFar := na
+    activeEntry := na
+    activeQuarter := na
+
+// ---------- Visuals ----------
+plot(qualifiedRange ? rangeHigh : na, "Range High", color=color.red, style=plot.style_linebr)
+plot(qualifiedRange ? midpoint : na, "Range Midpoint", color=color.gray, style=plot.style_linebr)
+plot(qualifiedRange ? rangeLow : na, "Range Low", color=color.green, style=plot.style_linebr)
+
+plotshape(longReady, title="Mean Reversion Long", style=shape.triangleup,
+     location=location.belowbar, color=color.lime, size=size.tiny, text="MR L")
+plotshape(shortReady, title="Mean Reversion Short", style=shape.triangledown,
+     location=location.abovebar, color=color.red, size=size.tiny, text="MR S")
+
+plot(strategy.position_size != 0 ? activeStop : na, "Active Stop", color=color.red, style=plot.style_linebr)
+plot(strategy.position_size != 0 ? activeMid : na, "Midpoint Target", color=color.orange, style=plot.style_linebr)
+plot(strategy.position_size != 0 ? activeFar : na, "Far-side Target", color=color.green, style=plot.style_linebr)
+
+alertcondition(longReady, "Mean Reversion Long", "Qualified range edge long: 2+ confirmations")
+alertcondition(shortReady, "Mean Reversion Short", "Qualified range edge short: 2+ confirmations")

@@ -2930,9 +2930,10 @@ window.CFG=function(k){return isFinite(C[k])?C[k]:D[k];};
     <button class="navbtn" role="tab" data-view="tools" data-workspace="prepare" id="tab-tools" aria-controls="view-tools" aria-selected="false">Tools<small>calculate</small></button>
     <button class="navbtn" role="tab" data-view="reference" data-workspace="learn" id="tab-reference" aria-controls="view-reference" aria-selected="false">Handbook<small>reference</small></button>
     <button class="navbtn" role="tab" data-view="price" data-workspace="learn" id="tab-price" aria-controls="view-price" aria-selected="false">Price action<small>read</small></button>
-    <button class="navbtn" role="tab" data-view="live" data-workspace="learn" id="tab-live" aria-controls="view-live" aria-selected="false">Strategies<small>define + practice</small></button>
+    <button class="navbtn" role="tab" data-view="live" data-workspace="learn" id="tab-live" aria-controls="view-live" aria-selected="false">Practice Lab<small>replay</small></button>
     <button class="navbtn" role="tab" data-view="patterns" data-workspace="learn" id="tab-patterns" aria-controls="view-patterns" aria-selected="false">Patterns<small>market</small></button>
-    <button class="navbtn" role="tab" data-view="journal" data-workspace="review" id="tab-journal" aria-controls="view-journal" aria-selected="false">Journal & Insights<small>measure + analyse</small></button>
+    <button class="navbtn" role="tab" data-view="journal" data-workspace="review" id="tab-journal" aria-controls="view-journal" aria-selected="false">Journal<small>measure</small></button>
+    <button class="navbtn" role="tab" data-view="insights" data-workspace="review" id="tab-insights" aria-controls="view-insights" aria-selected="false">Insights<small>upload history</small></button>
   </div>
   <div class="ux-navutil">
     <span class="navnote" id="navNote">Session ready</span>
@@ -4776,70 +4777,16 @@ window.CFG=function(k){return isFinite(C[k])?C[k]:D[k];};
 
 <div class="view" id="view-live" role="tabpanel" aria-labelledby="tab-live" tabindex="-1">
   <div class="viewhead">
-    <h2>Price Action strategies</h2>
-    <p>Three objective setups, one rule language. Learn the exact qualification criteria first, then practise recognition bar by bar without seeing the future.</p>
+    <h2>Practice lab — strategies in play</h2>
+    <p>Each playbook run forward one stage at a time — the context that qualifies it, the patterns that print, the checks that pass or fail, and where the trade ends. Three variations each: the one that works, the one that gets vetoed, and the awkward one in between.</p>
   </div>
   <div class="hintstrip" data-tip="live">
     <span class="ico">TIP</span>
-    <span>Use the objective rules below exactly as written. The sandbox deliberately includes valid setups and lookalikes that must be rejected.</span>
+    <span>Watch a variation end to end before you trade the playbook live. The vetoed variations matter more than the winning ones — they are the shapes that look like a setup and are not.</span>
     <button type="button" data-dismiss>Got it</button>
   </div>
 
-  <section class="tool" id="strat-objective">
-    <div class="eyebrow"><span class="tab green">01</span><h2>Objective definitions</h2><span class="line"></span><span class="hint">same baseline as the Pine strategies</span></div>
-    <div class="pa-strategy-grid">
-      <article class="card pad pa-strategy-card" data-pa-def="pa-breakout">
-        <div class="pa-strategy-head"><div><span class="pill">PA 1</span><h3>Breakout</h3></div><span class="pill go">momentum</span></div>
-        <p>Trade only when price <b>closes</b> beyond a pre-existing 20-bar structure boundary by at least <span class="num">0.10 ATR</span>. A wick through the level is not a breakout.</p>
-        <ol class="steps"><li>Resistance = highest high of the previous 20 completed bars; support = lowest low.</li><li>Long: close &gt; resistance + 0.10 ATR. Short: close &lt; support − 0.10 ATR.</li><li>The previous candle must not already have closed beyond the same buffered level.</li><li>Stop = broken level ± 0.35 ATR. Baseline target = 2R.</li></ol>
-        <div class="gate"><b>Invalid:</b> wick-only break, already-extended breakout, or no clearly established structure level.</div>
-      </article>
-      <article class="card pad pa-strategy-card" data-pa-def="pa-double">
-        <div class="pa-strategy-head"><div><span class="pill">PA 2</span><h3>Double Top / Double Bottom</h3></div><span class="pill warn">reversal</span></div>
-        <p>The pattern is not tradable at the second extreme. It becomes tradable only after the <b>neckline closes through</b>.</p>
-        <ol class="steps"><li>Use confirmed swing pivots: 3 bars left and 3 bars right.</li><li>The two tops/bottoms must be 5–60 bars apart and within 0.35 ATR of each other.</li><li>A real opposite pivot must exist between the two extremes; that pivot is the neckline.</li><li>Confirmation = close through neckline by 0.05 ATR within 30 bars. Stop = 0.25 ATR beyond the pattern extreme. Target = 2R.</li></ol>
-        <div class="gate"><b>Invalid:</b> similar highs/lows without an intervening swing, no neckline break, expired confirmation, or a close beyond the pattern extreme first.</div>
-      </article>
-      <article class="card pad pa-strategy-card" data-pa-def="pa-retest">
-        <div class="pa-strategy-head"><div><span class="pill">PA 3</span><h3>Breakout &amp; Retest</h3></div><span class="pill go">confirmation</span></div>
-        <p>The breakout only <b>arms</b> the setup. Entry requires the old level to be revisited from the other side and hold.</p>
-        <ol class="steps"><li>First require the same 20-bar breakout close + 0.10 ATR buffer used by PA Breakout.</li><li>Within 20 bars, price must revisit within 0.25 ATR of the broken level.</li><li>Long: retest candle closes back above the level and bullish. Short: closes back below and bearish.</li><li>Invalidate if price closes 0.50 ATR through the level. Stop = retest wick ± 0.20 ATR. Target = 2R.</li></ol>
-        <div class="gate"><b>Invalid:</b> no retest, touch without a confirmed hold, retest after expiry, or decisive failure through the broken level.</div>
-      </article>
-    </div>
-    <div class="gate ok mt-4"><b>Hierarchy:</b> Breakout enters on the escape. Breakout &amp; Retest waits for proof that the level changed role. Double Top/Bottom is a reversal pattern and requires the neckline; two equal extremes alone are not an entry.</div>
-  </section>
-
-  <section class="tool" id="strat-sandbox">
-    <div class="eyebrow"><span class="tab blue">02</span><h2>Strategy sandbox</h2><span class="line"></span><span class="hint" id="pasScore">0 correct · 0 attempts</span></div>
-    <div class="card pad">
-      <div class="pas-topbar">
-        <div><p class="legend mb-1">Blind chart practice</p><p class="fs-note mt-0">Schematic price action, not live market data. Reveal bars progressively, make the call, then compare it with the objective rule.</p></div>
-        <div class="dataops"><button type="button" class="btn ghost" id="pasNew">New scenario</button><button type="button" class="btn ghost" id="pasResetScore">Reset score</button></div>
-      </div>
-      <div class="pas-grid">
-        <div class="pas-chart-wrap">
-          <div class="pas-meta"><span class="pill" id="pasStage">0 / 0 bars</span><span class="pill" id="pasAtr">ATR normalized</span><span class="pill warn" id="pasBlind">answer hidden</span></div>
-          <svg id="pasChart" class="pas-chart" viewBox="0 0 900 420" role="img" aria-label="Price action practice chart"></svg>
-          <div class="pas-controls">
-            <button type="button" class="btn ghost" id="pasPrev">Previous bar</button>
-            <button type="button" class="btn" id="pasNext">Reveal next bar</button>
-            <button type="button" class="btn ghost" id="pasAll">Reveal all</button>
-          </div>
-        </div>
-        <aside class="pas-panel">
-          <div class="field"><label for="pasStrategy">What setup is objectively present?</label><select id="pasStrategy"><option value="">Choose</option><option value="pa-breakout">PA Breakout</option><option value="pa-double">PA Double Top / Double Bottom</option><option value="pa-retest">PA Breakout &amp; Retest</option><option value="none">No valid setup</option></select></div>
-          <div class="field"><label for="pasDirection">Direction</label><select id="pasDirection"><option value="">Choose</option><option value="long">Long</option><option value="short">Short</option><option value="none">None</option></select></div>
-          <div class="field"><label for="pasAction">What should you do at the currently revealed bar?</label><select id="pasAction"><option value="">Choose</option><option value="wait">Wait</option><option value="enter">Enter</option><option value="stand">Stand down</option></select></div>
-          <button type="button" class="btn lg" id="pasCheck">Check my call</button>
-          <div class="gate mt-3" id="pasFeedback">Reveal bars and make the decision from what is visible now.</div>
-          <div class="pas-rule" id="pasRule" hidden></div>
-        </aside>
-      </div>
-    </div>
-  </section>
-
-  <section class="tool" id="live-stage" hidden>
+  <section class="tool" id="live-stage">
     <div class="eyebrow"><span class="tab green">01</span><h2>Replay</h2><span class="line"></span><span class="hint" id="lvHint">—</span></div>
 
     <div class="lvpicker">
@@ -4917,7 +4864,7 @@ window.CFG=function(k){return isFinite(C[k])?C[k]:D[k];};
     </div>
   </section>
 
-  <section class="tool" id="live-compare" hidden>
+  <section class="tool" id="live-compare">
     <div class="eyebrow"><span class="tab">02</span><h2>What separates them</h2><span class="line"></span><span class="hint">the same three questions, three answers</span></div>
     <div class="card matrix-scroll">
       <table class="mini-t macro-t">
@@ -5095,14 +5042,9 @@ window.CFG=function(k){return isFinite(C[k])?C[k]:D[k];};
 <!-- ================= JOURNAL ================= -->
 <div class="view" id="view-journal" role="tabpanel" aria-labelledby="tab-journal" tabindex="-1">
   <div class="viewhead">
-    <h2>Journal &amp; Insights</h2>
+    <h2>Journal</h2>
     <p>Every trade you log is kept in this browser. After roughly fifty consistently recorded trades, your own distribution becomes the strongest calibration source for expectancy, execution, and rule compliance. Browser snapshots are kept automatically.</p>
   </div>
-  <nav class="subnav" aria-label="Journal and insights sections">
-    <button class="subchip" data-journal-go="#j-entries">Journal</button>
-    <button class="subchip" data-journal-go="#journal-insights">Insights / broker import</button>
-  </nav>
-
   <div class="hintstrip" data-tip="journal">
     <span class="ico">TIP</span>
     <span>Export to JSON every few weeks. The journal lives in this browser only — clearing site data wipes it, and no server has a copy.</span>
@@ -5632,7 +5574,7 @@ window.CFG=function(k){return isFinite(C[k])?C[k]:D[k];};
 
 
 <!-- ================= INSIGHTS ================= -->
-<div class="view" id="view-insights" role="tabpanel" aria-labelledby="tab-journal" tabindex="-1">
+<div class="view" id="view-insights" role="tabpanel" aria-labelledby="tab-insights" tabindex="-1">
   <div class="viewhead">
     <h2>Insights</h2>
     <p>Import an MT5, Exness, or broker history export. It is parsed locally in this browser — nothing is uploaded — then summarized into expectancy, drawdown, timing, setup performance, and recurring behaviour.</p>
@@ -8084,8 +8026,7 @@ document.addEventListener("keydown",function(e){
   var k=e.key.toLowerCase();
   if(e.key==="?"){e.preventDefault();$("#kbdScrim").hidden=!$("#kbdScrim").hidden;return;}
   if(k>="1"&&k<="7"){goStep(Number(k));return;}
-  var views={f:"flow",r:"reference",t:"tools",j:"journal",p:"patterns",s:"live"};
-  if(k==="i"){setView("journal","#journal-insights");return;}
+  var views={f:"flow",r:"reference",t:"tools",j:"journal",p:"patterns",i:"insights",s:"live"};
   if(views[k]){setView(views[k]);return;}
   if("abcd".indexOf(k)>-1){var g=$('.grade[data-grade="'+k.toUpperCase()+'"]');if(g){g.click();setView("flow");}return;}
   if(k==="l"){setView("flow");$("#logR").focus();return;}
@@ -13212,11 +13153,12 @@ var $=function(q){return document.querySelector(q);},$$=function(q){return Array
 
 var AREAS=[
   {k:"trading", label:"Trading",  views:["flow"]},
-  {k:"journal", label:"Journal & Insights",  views:["journal","insights"]},
+  {k:"journal", label:"Journal",  views:["journal"]},
+  {k:"insights",label:"Insights", views:["insights"]},
   {k:"library", label:"Library",  views:["reference","price","patterns","live"],
    sub:[["reference","#r-rules","Handbook"],["reference","#r-playbooks","Playbooks"],
         ["price","#pa-auction","Price action"],["patterns","#p-library","Patterns"],
-        ["live","#strat-sandbox","Strategies"],["reference","#r-econ","Macro & calendar"],
+        ["live","#live-stage","Practice lab"],["reference","#r-econ","Macro & calendar"],
         ["reference","#r-glossary","Glossary"]]},
   {k:"tools",label:"Tools", views:["tools"],
    sub:[["tools","#t-levels","Level board"],["tools","#t-calc","Position size"],
@@ -17905,62 +17847,5 @@ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",
   document.addEventListener('DOMContentLoaded',function(){var s=$("#paToolStrategy");if(s){s.addEventListener('change',paint);paint();}});
 })();
 </script>
-
-<style id="mts-pa-strategy-sandbox">
-.pa-strategy-grid{display:grid;gap:var(--sp-4);grid-template-columns:repeat(3,minmax(0,1fr))}.pa-strategy-card{display:flex;flex-direction:column;gap:var(--sp-3)}.pa-strategy-head{display:flex;align-items:flex-start;justify-content:space-between;gap:var(--sp-3)}.pa-strategy-head h3{margin-top:var(--sp-2);font-size:var(--fs-card)}.pa-strategy-card .steps{flex:1}.pas-topbar,.pas-meta,.pas-controls{display:flex;align-items:center;justify-content:space-between;gap:var(--sp-3);flex-wrap:wrap}.pas-grid{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(280px,.7fr);gap:var(--sp-5);margin-top:var(--sp-4)}.pas-chart-wrap{min-width:0}.pas-chart{width:100%;height:auto;display:block;background:var(--surface-2);border-radius:var(--r-card);border:1px solid var(--line)}.pas-controls{justify-content:flex-start;margin-top:var(--sp-3)}.pas-panel{background:var(--surface-2);border-radius:var(--r-card);padding:var(--sp-5)}.pas-rule{margin-top:var(--sp-3);padding:var(--sp-4);border-radius:var(--r-ctl);background:var(--surface);font-size:var(--fs-caption);color:var(--text-2);line-height:var(--lh-body)}.pas-rule b{color:var(--text)}.pas-candle-up{stroke:var(--pos);fill:var(--pos)}.pas-candle-dn{stroke:var(--neg);fill:var(--neg)}.pas-level{stroke:var(--warn);stroke-dasharray:6 5;stroke-width:1.4}.pas-neck{stroke:var(--accent);stroke-dasharray:4 4;stroke-width:1.4}.pas-label{fill:var(--text-3);font:12px var(--font-sans)}.pas-entry{fill:var(--accent)}#journal-insights{margin-top:var(--sp-8);padding-top:var(--sp-6);border-top:1px solid var(--line)}
-@media(max-width:1199px){.pa-strategy-grid{grid-template-columns:1fr}.pas-grid{grid-template-columns:1fr}}
-</style>
-<script>
-(function(){
-"use strict";
-var $=function(q,r){return (r||document).querySelector(q);}, $$=function(q,r){return Array.prototype.slice.call((r||document).querySelectorAll(q));};
-/* Merge Insights into Journal without changing any Insights element IDs/listeners. */
-function mergeReview(){
-  var j=$("#view-journal"),ins=$("#view-insights"),tab=$("#tab-insights"),wasActive=ins&&ins.classList.contains("active");
-  if(!j||!ins)return;
-  if(tab)tab.remove();
-  var host=$("#journal-insights");
-  if(!host){host=document.createElement("section");host.id="journal-insights";host.className="tool";host.innerHTML='<div class="eyebrow"><span class="tab blue">Insights</span><h2>Broker history insights</h2><span class="line"></span><span class="hint">import + analyse</span></div>';j.appendChild(host);}
-  while(ins.firstChild)host.appendChild(ins.firstChild);
-  ins.hidden=true;ins.classList.remove("active");
-  if(wasActive){j.classList.add("active");var jb=$("#tab-journal");if(jb)jb.setAttribute("aria-selected","true");try{localStorage.setItem("mts.v3.view","journal");}catch(e){}}
-  $$('[data-go^="insights|"]').forEach(function(el){el.dataset.go="journal|#journal-insights";});
-  $$('[data-journal-go]').forEach(function(b){b.addEventListener('click',function(){var t=$(b.dataset.journalGo);if(t)t.scrollIntoView({behavior:'smooth',block:'start'});});});
-}
-/* Make the shell/navigation describe the combined destinations even if the shell was built earlier. */
-function patchShell(){
-  $$('.shell-b').forEach(function(b){if(b.dataset.area==='journal')b.textContent='Journal & Insights';if(b.dataset.area==='insights')b.remove();});
-  $$('.shell-sb').forEach(function(b){if(/Practice lab/i.test(b.textContent))b.textContent='Strategies';});
-  var live=$('#tab-live');if(live)live.innerHTML='Strategies<small>define + practice</small>';
-  var j=$('#tab-journal');if(j)j.innerHTML='Journal & Insights<small>measure + analyse</small>';
-}
-var scenarios=[
- {id:'bo-long',name:'Valid bullish breakout',strategy:'pa-breakout',dir:'long',trigger:15,level:58,kind:'level',bars:[[54,57,52,56],[55,59,53,57],[57,60,54,55],[55,59,52,58],[58,60,55,57],[57,59,53,55],[55,58,52,56],[56,59,54,57],[57,60,55,58],[58,59,54,56],[56,59,53,57],[57,60,55,57],[57,60,54,56],[56,59,53,57],[57,62,56,61],[61,66,60,65],[65,69,63,68]],why:'The close at bar 15 finishes above the established resistance by the breakout buffer. Entry is permitted on that confirmed close.'},
- {id:'bo-wick',name:'Wick-only false breakout',strategy:'none',dir:'none',trigger:14,level:58,kind:'level',bars:[[54,57,52,56],[56,59,54,57],[57,59,53,55],[55,58,52,56],[56,59,54,57],[57,59,53,55],[55,58,52,56],[56,59,53,57],[57,59,54,55],[55,58,52,56],[56,59,54,57],[57,59,53,56],[56,59,54,57],[57,63,55,56],[56,58,52,53],[53,55,49,51]],why:'Price trades through resistance intrabar but closes back below it. A wick through the level is explicitly not a breakout.'},
- {id:'dt-short',name:'Confirmed double top',strategy:'pa-double',dir:'short',trigger:18,level:48,kind:'neck',bars:[[45,50,43,48],[48,54,47,52],[52,59,51,57],[57,64,55,62],[62,68,60,66],[66,70,63,65],[65,67,57,59],[59,61,51,53],[53,56,47,50],[50,54,48,52],[52,59,50,57],[57,64,56,62],[62,69,60,66],[66,70,63,65],[65,67,58,60],[60,62,53,55],[55,57,49,51],[51,52,45,46],[46,48,40,42],[42,44,36,38]],why:'Two confirmed highs are comparable, a real pullback creates the neckline, and the close through that neckline confirms the reversal. The second top by itself was only an armed pattern.'},
- {id:'db-no-break',name:'Double bottom not confirmed',strategy:'none',dir:'none',action:'wait',trigger:18,level:62,kind:'neck',bars:[[66,68,60,62],[62,64,54,56],[56,58,48,50],[50,52,42,44],[44,47,40,43],[43,50,42,48],[48,56,47,54],[54,62,52,60],[60,64,58,62],[62,63,56,58],[58,59,50,52],[52,54,44,46],[46,48,40,43],[43,50,42,48],[48,55,47,53],[53,59,51,57],[57,61,55,60],[60,63,58,61],[61,62,56,58]],why:'The two lows are present, but price has not closed through the neckline. The pattern is incomplete, so the correct action is to wait rather than enter.'},
- {id:'db-long',name:'Confirmed double bottom',strategy:'pa-double',dir:'long',trigger:18,level:62,kind:'neck',bars:[[66,68,60,62],[62,64,54,56],[56,58,48,50],[50,52,42,44],[44,47,40,43],[43,50,42,48],[48,56,47,54],[54,62,52,60],[60,64,58,62],[62,63,56,58],[58,59,50,52],[52,54,44,46],[46,48,40,43],[43,50,42,48],[48,55,47,53],[53,59,51,57],[57,61,55,60],[60,66,59,65],[65,70,64,68],[68,72,66,70]],why:'Two confirmed lows are comparable, the intervening swing defines the neckline, and bar 18 closes through that neckline. The reversal is confirmed only there, not at the second low.'},
- {id:'rt-long',name:'Bullish breakout and retest',strategy:'pa-retest',dir:'long',trigger:19,level:58,kind:'level',bars:[[53,56,51,55],[55,58,53,56],[56,59,54,57],[57,59,53,55],[55,58,52,56],[56,59,54,57],[57,59,54,56],[56,58,53,55],[55,59,54,57],[57,59,55,56],[56,59,54,57],[57,60,55,58],[58,63,57,62],[62,66,61,65],[65,68,63,66],[66,67,61,62],[62,64,58,60],[60,62,57,59],[59,64,58,63],[63,68,62,67]],why:'The breakout first closes beyond resistance. Later price revisits the old resistance within tolerance, then the trigger candle closes bullish and back above the level. That hold is the entry.'},
- {id:'rt-fail',name:'Retest failure',strategy:'none',dir:'none',trigger:18,level:58,kind:'level',bars:[[53,56,51,55],[55,58,53,56],[56,59,54,57],[57,59,53,55],[55,58,52,56],[56,59,54,57],[57,59,54,56],[56,58,53,55],[55,59,54,57],[57,59,55,56],[56,59,54,57],[57,60,55,58],[58,63,57,62],[62,66,61,65],[65,67,61,62],[62,63,57,59],[59,60,53,54],[54,56,49,51],[51,53,46,48]],why:'A breakout occurred, but the revisit does not hold. Price closes decisively back through the broken level, invalidating the role reversal instead of confirming it.'},
- {id:'bo-short',name:'Valid bearish breakout',strategy:'pa-breakout',dir:'short',trigger:15,level:42,kind:'level',bars:[[46,48,43,45],[45,47,42,44],[44,48,43,46],[46,48,43,44],[44,47,42,45],[45,48,43,46],[46,48,43,44],[44,47,42,45],[45,48,43,46],[46,47,42,44],[44,47,42,45],[45,47,43,44],[44,46,42,43],[43,45,42,43],[43,44,38,39],[39,40,34,35],[35,37,30,32]],why:'The candle closes below established support by the required buffer; the prior close was not already beyond the level. That is a confirmed bearish breakout.'},
- {id:'rt-short',name:'Bearish breakout and retest',strategy:'pa-retest',dir:'short',trigger:19,level:42,kind:'level',bars:[[47,49,44,46],[46,48,43,45],[45,48,42,44],[44,47,42,45],[45,48,43,46],[46,48,42,44],[44,47,42,45],[45,48,43,46],[46,47,42,44],[44,47,42,45],[45,47,43,44],[44,46,42,43],[43,44,38,39],[39,40,34,35],[35,37,31,33],[33,39,32,37],[37,42,36,40],[40,43,39,42],[42,43,38,39],[39,40,34,35]],why:'Support breaks first. The later revisit tests the old support from below and the trigger candle closes bearish back under it. That confirmed rejection is the short entry.'}
-];
-var PAS={i:-1,reveal:0,correct:0,attempts:0,answered:false};
-function scen(){return scenarios[PAS.i]||scenarios[0];}
-function newScenario(){var n=Math.floor(Math.random()*scenarios.length);if(scenarios.length>1&&n===PAS.i)n=(n+1)%scenarios.length;PAS.i=n;PAS.reveal=Math.min(8,scen().bars.length);PAS.answered=false;$('#pasStrategy').value='';$('#pasDirection').value='';$('#pasAction').value='';$('#pasFeedback').className='gate mt-3';$('#pasFeedback').textContent='Read only what is visible. Reveal more bars when the setup is not yet complete.';$('#pasRule').hidden=true;render();}
-function y(v,min,max){return 370-(v-min)/(max-min)*320;}
-function render(){var s=scen(),bars=s.bars.slice(0,PAS.reveal),all=s.bars.flat(),min=Math.min.apply(null,all)-3,max=Math.max.apply(null,all)+3,svg=$('#pasChart');if(!svg)return;var W=900,left=42,right=20,top=24,bottom=30,cw=(W-left-right)/s.bars.length,parts=['<rect x="'+left+'" y="'+top+'" width="'+(W-left-right)+'" height="'+(420-top-bottom)+'" fill="none" stroke="var(--chart-grid)"/>'];for(var g=0;g<5;g++){var gy=top+g*(420-top-bottom)/4;parts.push('<line x1="'+left+'" y1="'+gy+'" x2="'+(W-right)+'" y2="'+gy+'" stroke="var(--chart-grid)"/>');}if(s.level!=null){var ly=y(s.level,min,max);parts.push('<line class="'+(s.kind==='neck'?'pas-neck':'pas-level')+'" x1="'+left+'" y1="'+ly+'" x2="'+(W-right)+'" y2="'+ly+'"/><text class="pas-label" x="'+(left+6)+'" y="'+(ly-7)+'">'+(s.kind==='neck'?'neckline':'structure level')+'</text>');}bars.forEach(function(b,i){var x=left+i*cw+cw*.5,yo=y(b[0],min,max),yh=y(b[1],min,max),yl=y(b[2],min,max),yc=y(b[3],min,max),up=b[3]>=b[0],cls=up?'pas-candle-up':'pas-candle-dn',bw=Math.max(5,cw*.5);parts.push('<line class="'+cls+'" x1="'+x+'" y1="'+yh+'" x2="'+x+'" y2="'+yl+'" stroke-width="1.4"/><rect class="'+cls+'" x="'+(x-bw/2)+'" y="'+Math.min(yo,yc)+'" width="'+bw+'" height="'+Math.max(2,Math.abs(yc-yo))+'" rx="1"/>');if(i+1===s.trigger&&PAS.reveal>=s.trigger){parts.push('<circle class="pas-entry" cx="'+x+'" cy="'+yc+'" r="5"/><text class="pas-label" x="'+(x+8)+'" y="'+(yc-8)+'">decision bar</text>');}});svg.innerHTML=parts.join('');$('#pasStage').textContent=PAS.reveal+' / '+s.bars.length+' bars';$('#pasPrev').disabled=PAS.reveal<=1;$('#pasNext').disabled=PAS.reveal>=s.bars.length;$('#pasBlind').textContent=PAS.answered?s.name:'answer hidden';$('#pasBlind').className='pill '+(PAS.answered?'go':'warn');$('#pasScore').textContent=PAS.correct+' correct · '+PAS.attempts+' attempts';}
-function expectedAction(s){if(PAS.reveal<s.trigger)return 'wait';return s.action||(s.strategy==='none'?'stand':'enter');}
-function check(){var s=scen(),st=$('#pasStrategy').value,di=$('#pasDirection').value,ac=$('#pasAction').value;if(!st||!di||!ac){$('#pasFeedback').className='gate mt-3 warn';$('#pasFeedback').textContent='Choose the setup, direction and action first.';return;}var ea=expectedAction(s),es=PAS.reveal<s.trigger?'none':s.strategy,ed=PAS.reveal<s.trigger?'none':s.dir;/* Before trigger, setup may be forming but no objectively completed setup exists. */var ok=(st===es&&di===ed&&ac===ea);PAS.attempts++;if(ok)PAS.correct++;PAS.answered=true;$('#pasFeedback').className='gate mt-3 '+(ok?'ok':'bad');$('#pasFeedback').innerHTML=(ok?'<b>Correct.</b> ':'<b>Not yet.</b> ')+(PAS.reveal<s.trigger?'The objective trigger has not appeared in the revealed bars. The correct decision is WAIT; do not name a completed setup from future structure.':s.why);$('#pasRule').hidden=false;$('#pasRule').innerHTML='<b>Objective answer:</b> '+(es==='none'?'No valid completed setup':({'pa-breakout':'PA Breakout','pa-double':'PA Double Top / Double Bottom','pa-retest':'PA Breakout & Retest'})[es])+' · '+(ed==='none'?'no direction':ed.toUpperCase())+' · '+ea.toUpperCase()+'.<br><b>Why:</b> '+s.why;render();}
-function initSandbox(){if(!$('#pasChart'))return;$('#pasNew').addEventListener('click',newScenario);$('#pasResetScore').addEventListener('click',function(){PAS.correct=PAS.attempts=0;render();});$('#pasPrev').addEventListener('click',function(){PAS.reveal=Math.max(1,PAS.reveal-1);PAS.answered=false;$('#pasRule').hidden=true;render();});$('#pasNext').addEventListener('click',function(){PAS.reveal=Math.min(scen().bars.length,PAS.reveal+1);PAS.answered=false;$('#pasRule').hidden=true;render();});$('#pasAll').addEventListener('click',function(){PAS.reveal=scen().bars.length;PAS.answered=false;$('#pasRule').hidden=true;render();});$('#pasCheck').addEventListener('click',check);newScenario();}
-function redirectInsights(){/* Preserve old URLs/shortcuts while presenting one Review destination. */
-  var oldSet=window.setView;if(typeof oldSet==='function'&&!oldSet.__merged){var wrapped=function(v,h){if(v==='insights'){v='journal';h='#journal-insights';}return oldSet(v,h);};wrapped.__merged=true;window.setView=wrapped;}
-  document.addEventListener('click',function(e){var el=e.target.closest&&e.target.closest('[data-go^="insights|"]');if(el){e.preventDefault();var t=$('#journal-insights');var j=$('#tab-journal');if(j)j.click();setTimeout(function(){if(t)t.scrollIntoView({behavior:'smooth',block:'start'});},50);}},true);
-}
-function boot(){mergeReview();patchShell();redirectInsights();initSandbox();}
-if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
-})();
-</script>
-
 </body>
 </html>

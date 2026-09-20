@@ -1,0 +1,180 @@
+//@version=6
+strategy("MTS 1 — Trend Following", overlay=true, pyramiding=0,
+     process_orders_on_close=true, initial_capital=10000)
+
+// ============================================================================
+// META TRADING SYSTEM — PLAYBOOK 1: TREND FOLLOWING
+// Source logic:
+// 4H trend -> 1H refinement -> pullback to value -> rejection -> LTF shift
+// -> enter with trend -> stop behind pullback swing -> >= 2R target.
+// ============================================================================
+
+// ---------- Inputs ----------
+htf             = input.timeframe("240", "Primary trend timeframe")
+refineTf        = input.timeframe("60", "Refinement timeframe")
+emaFastLen      = input.int(50, "Fast EMA", minval=2)
+emaSlowLen      = input.int(200, "Slow EMA", minval=10)
+pivotLen        = input.int(3, "HTF pivot strength", minval=1)
+entryEmaLen     = input.int(50, "Entry-TF value EMA", minval=2)
+atrLen          = input.int(14, "ATR length", minval=2)
+valueTolATR     = input.float(0.35, "Value-area tolerance (ATR)", minval=0.05, step=0.05)
+ltfShiftLen     = input.int(5, "LTF structure-shift lookback", minval=2)
+confirmWindow   = input.int(6, "Max bars from rejection to shift", minval=1)
+stopLookback    = input.int(12, "Pullback-swing stop lookback", minval=3)
+minRR           = input.float(2.0, "Minimum R:R", minval=1.0, step=0.1)
+targetRR        = input.float(2.0, "Backtest target (R)", minval=2.0, step=0.1)
+qty             = input.float(1.0, "Order quantity", minval=0.01, step=0.01)
+
+useManualZone   = input.bool(false, "Also allow a manually marked value level")
+manualZone      = input.float(0.0, "Manual value level")
+manualTargetOn  = input.bool(false, "Use manual objective target instead of fixed R")
+manualLongTP    = input.float(0.0, "Manual long target")
+manualShortTP   = input.float(0.0, "Manual short target")
+
+// ---------- Utilities ----------
+f_swings() =>
+    ph = ta.pivothigh(high, pivotLen, pivotLen)
+    pl = ta.pivotlow(low, pivotLen, pivotLen)
+    lastPH = ta.valuewhen(not na(ph), ph, 0)
+    prevPH = ta.valuewhen(not na(ph), ph, 1)
+    lastPL = ta.valuewhen(not na(pl), pl, 0)
+    prevPL = ta.valuewhen(not na(pl), pl, 1)
+    [lastPH, prevPH, lastPL, prevPL]
+
+f_bull_rejection() =>
+    body = math.abs(close - open)
+    rng = math.max(high - low, syminfo.mintick)
+    lowerWick = math.min(open, close) - low
+    pin = close > open and lowerWick >= body * 2.0 and close >= low + rng * 0.60
+    engulf = close > open and close[1] < open[1] and open <= close[1] and close >= open[1]
+    pin or engulf
+
+f_bear_rejection() =>
+    body = math.abs(close - open)
+    rng = math.max(high - low, syminfo.mintick)
+    upperWick = high - math.max(open, close)
+    pin = close < open and upperWick >= body * 2.0 and close <= high - rng * 0.60
+    engulf = close < open and close[1] > open[1] and open >= close[1] and close <= open[1]
+    pin or engulf
+
+// ---------- 4H / 1H trend qualification ----------
+htfClose = request.security(syminfo.tickerid, htf, close)
+htfE50   = request.security(syminfo.tickerid, htf, ta.ema(close, emaFastLen))
+htfE200  = request.security(syminfo.tickerid, htf, ta.ema(close, emaSlowLen))
+[htfPH0, htfPH1, htfPL0, htfPL1] = request.security(syminfo.tickerid, htf, f_swings())
+
+rClose = request.security(syminfo.tickerid, refineTf, close)
+rE50   = request.security(syminfo.tickerid, refineTf, ta.ema(close, emaFastLen))
+rE200  = request.security(syminfo.tickerid, refineTf, ta.ema(close, emaSlowLen))
+[rPH0, rPH1, rPL0, rPL1] = request.security(syminfo.tickerid, refineTf, f_swings())
+
+htfBullStructure = not na(htfPH1) and not na(htfPL1) and htfPH0 > htfPH1 and htfPL0 > htfPL1
+htfBearStructure = not na(htfPH1) and not na(htfPL1) and htfPH0 < htfPH1 and htfPL0 < htfPL1
+rBullStructure   = not na(rPH1) and not na(rPL1) and rPH0 > rPH1 and rPL0 > rPL1
+rBearStructure   = not na(rPH1) and not na(rPL1) and rPH0 < rPH1 and rPL0 < rPL1
+
+bullTrend = htfE50 > htfE200 and htfClose > htfE50 and htfBullStructure and
+            rE50 > rE200 and rClose > rE50 and rBullStructure
+bearTrend = htfE50 < htfE200 and htfClose < htfE50 and htfBearStructure and
+            rE50 < rE200 and rClose < rE50 and rBearStructure
+
+// ---------- Pullback into value ----------
+atr = ta.atr(atrLen)
+valueEma = ta.ema(close, entryEmaLen)
+tol = atr * valueTolATR
+
+entryPH = ta.pivothigh(high, pivotLen, pivotLen)
+entryPL = ta.pivotlow(low, pivotLen, pivotLen)
+lastEntryPH = ta.valuewhen(not na(entryPH), entryPH, 0)
+lastEntryPL = ta.valuewhen(not na(entryPL), entryPL, 0)
+
+touchLevel(float level) =>
+    not na(level) and low <= level + tol and high >= level - tol
+
+touchEMA       = low <= valueEma + tol and high >= valueEma - tol
+touchLongFlip  = touchLevel(lastEntryPH)     // prior resistance acting as support
+touchShortFlip = touchLevel(lastEntryPL)     // prior support acting as resistance
+touchManual    = useManualZone and manualZone > 0 and touchLevel(manualZone)
+
+longAtValue  = bullTrend and (touchEMA or touchLongFlip or touchManual)
+shortAtValue = bearTrend and (touchEMA or touchShortFlip or touchManual)
+
+// ---------- Confirmation: rejection then LTF shift ----------
+bullRejectAtValue = longAtValue and f_bull_rejection()
+bearRejectAtValue = shortAtValue and f_bear_rejection()
+
+barsFromBullReject = ta.barssince(bullRejectAtValue)
+barsFromBearReject = ta.barssince(bearRejectAtValue)
+
+bullShiftLevel = ta.highest(high[1], ltfShiftLen)
+bearShiftLevel = ta.lowest(low[1], ltfShiftLen)
+bullShift = close > bullShiftLevel
+bearShift = close < bearShiftLevel
+
+longSignal =
+     strategy.position_size == 0 and bullTrend and
+     not na(barsFromBullReject) and barsFromBullReject <= confirmWindow and bullShift
+
+shortSignal =
+     strategy.position_size == 0 and bearTrend and
+     not na(barsFromBearReject) and barsFromBearReject <= confirmWindow and bearShift
+
+// ---------- Execution ----------
+var float activeStop   = na
+var float activeTarget = na
+var float activeEntry  = na
+
+if longSignal
+    stopPrice = ta.lowest(low, stopLookback)
+    risk = close - stopPrice
+    fixedTarget = close + risk * targetRR
+    objectiveTarget = manualTargetOn and manualLongTP > close ? manualLongTP : fixedTarget
+    rr = risk > syminfo.mintick ? (objectiveTarget - close) / risk : 0.0
+
+    if risk > syminfo.mintick and rr >= minRR
+        activeEntry  := close
+        activeStop   := stopPrice
+        activeTarget := objectiveTarget
+        strategy.entry("Trend Long", strategy.long, qty=qty)
+
+if shortSignal
+    stopPrice = ta.highest(high, stopLookback)
+    risk = stopPrice - close
+    fixedTarget = close - risk * targetRR
+    objectiveTarget = manualTargetOn and manualShortTP > 0 and manualShortTP < close ? manualShortTP : fixedTarget
+    rr = risk > syminfo.mintick ? (close - objectiveTarget) / risk : 0.0
+
+    if risk > syminfo.mintick and rr >= minRR
+        activeEntry  := close
+        activeStop   := stopPrice
+        activeTarget := objectiveTarget
+        strategy.entry("Trend Short", strategy.short, qty=qty)
+
+// Playbook rule: never widen the stop.
+if strategy.position_size > 0
+    strategy.exit("Trend Long Exit", "Trend Long", stop=activeStop, limit=activeTarget)
+
+if strategy.position_size < 0
+    strategy.exit("Trend Short Exit", "Trend Short", stop=activeStop, limit=activeTarget)
+
+// Reset stored levels after a completed trade.
+if strategy.position_size == 0 and strategy.position_size[1] != 0
+    activeStop := na
+    activeTarget := na
+    activeEntry := na
+
+// ---------- Visuals ----------
+plot(valueEma, "Entry 50 EMA", color=color.orange)
+plot(htfE50, "HTF 50 EMA", color=color.new(color.blue, 30))
+plot(htfE200, "HTF 200 EMA", color=color.new(color.purple, 30))
+
+plotshape(longSignal, title="Trend Long Signal", style=shape.triangleup,
+     location=location.belowbar, color=color.lime, size=size.tiny, text="TF L")
+plotshape(shortSignal, title="Trend Short Signal", style=shape.triangledown,
+     location=location.abovebar, color=color.red, size=size.tiny, text="TF S")
+
+plot(strategy.position_size != 0 ? activeStop : na, "Active Stop", color=color.red, style=plot.style_linebr)
+plot(strategy.position_size != 0 ? activeTarget : na, "Active Target", color=color.green, style=plot.style_linebr)
+
+alertcondition(longSignal, "Trend Following Long", "Trend-following long setup confirmed")
+alertcondition(shortSignal, "Trend Following Short", "Trend-following short setup confirmed")

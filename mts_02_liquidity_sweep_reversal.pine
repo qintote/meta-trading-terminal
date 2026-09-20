@@ -1,0 +1,219 @@
+//@version=6
+strategy("MTS 2 — Liquidity Sweep + Reversal", overlay=true, pyramiding=0,
+     process_orders_on_close=true, initial_capital=10000)
+
+// ============================================================================
+// META TRADING SYSTEM — PLAYBOOK 2: LIQUIDITY SWEEP + REVERSAL
+// Source sequence is strict:
+// HTF bias -> marked liquidity -> sweep -> MSS/BOS -> displacement
+// -> retrace into FVG/order-block proxy -> stop beyond sweep wick
+// -> target opposite liquidity.
+// ============================================================================
+
+// ---------- Inputs ----------
+htf               = input.timeframe("240", "HTF bias timeframe")
+emaFastLen        = input.int(50, "HTF fast EMA", minval=2)
+emaSlowLen        = input.int(200, "HTF slow EMA", minval=10)
+poolMode          = input.string("Previous Day", "Liquidity pool source",
+                     options=["Previous Day", "Recent Swing"])
+poolLookback      = input.int(30, "Recent-swing pool lookback", minval=5)
+mssLookback       = input.int(5, "MSS/BOS lookback", minval=2)
+atrLen            = input.int(14, "ATR length", minval=2)
+dispATR           = input.float(0.8, "Displacement body >= ATR ×", minval=0.2, step=0.1)
+setupMaxBars      = input.int(20, "Max bars from sweep to entry", minval=3)
+requireFVG        = input.bool(false, "Require a true 3-candle FVG")
+fallbackZoneATR   = input.float(0.10, "Fallback retest-zone half width (ATR)", minval=0.01, step=0.01)
+stopBufferATR     = input.float(0.05, "Stop buffer beyond sweep wick (ATR)", minval=0.0, step=0.01)
+minRR             = input.float(2.0, "Minimum R:R", minval=1.0, step=0.1)
+qty               = input.float(1.0, "Order quantity", minval=0.01, step=0.01)
+
+// ---------- HTF bias ----------
+htfClose = request.security(syminfo.tickerid, htf, close)
+htfE50   = request.security(syminfo.tickerid, htf, ta.ema(close, emaFastLen))
+htfE200  = request.security(syminfo.tickerid, htf, ta.ema(close, emaSlowLen))
+
+bullBias = htfClose > htfE200 and htfE50 > htfE200
+bearBias = htfClose < htfE200 and htfE50 < htfE200
+
+// ---------- Liquidity pools ----------
+pdh = request.security(syminfo.tickerid, "D", high[1], lookahead=barmerge.lookahead_on)
+pdl = request.security(syminfo.tickerid, "D", low[1],  lookahead=barmerge.lookahead_on)
+
+recentHighPool = ta.highest(high[1], poolLookback)
+recentLowPool  = ta.lowest(low[1], poolLookback)
+
+highPool = poolMode == "Previous Day" ? pdh : recentHighPool
+lowPool  = poolMode == "Previous Day" ? pdl : recentLowPool
+
+// ---------- Candle mechanics ----------
+atr = ta.atr(atrLen)
+body = math.abs(close - open)
+bullDisplacement = close > open and body >= atr * dispATR
+bearDisplacement = close < open and body >= atr * dispATR
+
+bullFVG = low > high[2]
+bearFVG = high < low[2]
+
+// ---------- State machine ----------
+var bool  longActive     = false
+var bool  shortActive    = false
+var bool  longMSSSeen    = false
+var bool  shortMSSSeen   = false
+var bool  longDispSeen   = false
+var bool  shortDispSeen  = false
+var int   longStartBar   = na
+var int   shortStartBar  = na
+var int   longDispBar    = na
+var int   shortDispBar   = na
+var float longSweepWick  = na
+var float shortSweepWick = na
+var float longMSSLevel   = na
+var float shortMSSLevel  = na
+var float longZoneLow    = na
+var float longZoneHigh   = na
+var float shortZoneLow   = na
+var float shortZoneHigh  = na
+var float longTargetPool = na
+var float shortTargetPool= na
+
+flat = strategy.position_size == 0
+
+// 1) Sweep the low for longs / high for shorts and CLOSE back inside.
+longSweep  = flat and bullBias and not na(lowPool)  and low < lowPool   and close > lowPool
+shortSweep = flat and bearBias and not na(highPool) and high > highPool and close < highPool
+
+if longSweep
+    longActive      := true
+    shortActive     := false
+    longMSSSeen     := false
+    longDispSeen    := false
+    longStartBar    := bar_index
+    longSweepWick   := low
+    longMSSLevel    := ta.highest(high[1], mssLookback)
+    longTargetPool  := highPool
+    longZoneLow     := na
+    longZoneHigh    := na
+
+if shortSweep
+    shortActive      := true
+    longActive       := false
+    shortMSSSeen     := false
+    shortDispSeen    := false
+    shortStartBar    := bar_index
+    shortSweepWick   := high
+    shortMSSLevel    := ta.lowest(low[1], mssLookback)
+    shortTargetPool  := lowPool
+    shortZoneLow     := na
+    shortZoneHigh    := na
+
+// Abort if the sequence takes too long or invalidation is broken before entry.
+if longActive and ((bar_index - longStartBar > setupMaxBars) or close < longSweepWick)
+    longActive := false
+if shortActive and ((bar_index - shortStartBar > setupMaxBars) or close > shortSweepWick)
+    shortActive := false
+
+// 2) MSS / BOS must occur AFTER the sweep.
+if longActive and not longMSSSeen and bar_index > longStartBar and close > longMSSLevel
+    longMSSSeen := true
+
+if shortActive and not shortMSSSeen and bar_index > shortStartBar and close < shortMSSLevel
+    shortMSSSeen := true
+
+// 3) Displacement must occur AFTER MSS.
+if longActive and longMSSSeen and not longDispSeen and bullDisplacement
+    if bullFVG
+        longZoneLow  := high[2]
+        longZoneHigh := low
+        longDispSeen := true
+        longDispBar  := bar_index
+    else if not requireFVG
+        mid = (open + close) * 0.5
+        longZoneLow  := mid - atr * fallbackZoneATR
+        longZoneHigh := mid + atr * fallbackZoneATR
+        longDispSeen := true
+        longDispBar  := bar_index
+
+if shortActive and shortMSSSeen and not shortDispSeen and bearDisplacement
+    if bearFVG
+        shortZoneLow  := high
+        shortZoneHigh := low[2]
+        shortDispSeen := true
+        shortDispBar  := bar_index
+    else if not requireFVG
+        mid = (open + close) * 0.5
+        shortZoneLow  := mid - atr * fallbackZoneATR
+        shortZoneHigh := mid + atr * fallbackZoneATR
+        shortDispSeen := true
+        shortDispBar  := bar_index
+
+// 4) Entry only on a later retest of the displacement zone.
+longRetest =
+     longActive and longDispSeen and bar_index > longDispBar and
+     low <= longZoneHigh and high >= longZoneLow and close > longSweepWick
+
+shortRetest =
+     shortActive and shortDispSeen and bar_index > shortDispBar and
+     high >= shortZoneLow and low <= shortZoneHigh and close < shortSweepWick
+
+// ---------- Execution ----------
+var float activeStop   = na
+var float activeTarget = na
+
+if longRetest and flat
+    stopPrice = longSweepWick - atr * stopBufferATR
+    targetPrice = longTargetPool
+    risk = close - stopPrice
+    rr = risk > syminfo.mintick and targetPrice > close ? (targetPrice - close) / risk : 0.0
+
+    if rr >= minRR
+        activeStop   := stopPrice
+        activeTarget := targetPrice
+        strategy.entry("Sweep Long", strategy.long, qty=qty)
+        longActive := false
+
+if shortRetest and flat
+    stopPrice = shortSweepWick + atr * stopBufferATR
+    targetPrice = shortTargetPool
+    risk = stopPrice - close
+    rr = risk > syminfo.mintick and targetPrice < close ? (close - targetPrice) / risk : 0.0
+
+    if rr >= minRR
+        activeStop   := stopPrice
+        activeTarget := targetPrice
+        strategy.entry("Sweep Short", strategy.short, qty=qty)
+        shortActive := false
+
+if strategy.position_size > 0
+    strategy.exit("Sweep Long Exit", "Sweep Long", stop=activeStop, limit=activeTarget)
+
+if strategy.position_size < 0
+    strategy.exit("Sweep Short Exit", "Sweep Short", stop=activeStop, limit=activeTarget)
+
+if strategy.position_size == 0 and strategy.position_size[1] != 0
+    activeStop := na
+    activeTarget := na
+
+// ---------- Visuals ----------
+plot(highPool, "High liquidity pool / opposite target", color=color.new(color.red, 25), style=plot.style_linebr)
+plot(lowPool,  "Low liquidity pool / opposite target", color=color.new(color.green, 25), style=plot.style_linebr)
+
+plot(longActive and longDispSeen ? longZoneLow : na, "Long retest zone low", color=color.aqua, style=plot.style_linebr)
+plot(longActive and longDispSeen ? longZoneHigh : na, "Long retest zone high", color=color.aqua, style=plot.style_linebr)
+plot(shortActive and shortDispSeen ? shortZoneLow : na, "Short retest zone low", color=color.orange, style=plot.style_linebr)
+plot(shortActive and shortDispSeen ? shortZoneHigh : na, "Short retest zone high", color=color.orange, style=plot.style_linebr)
+
+plotshape(longSweep, title="Low Sweep", style=shape.circle, location=location.belowbar,
+     color=color.yellow, size=size.tiny, text="SW")
+plotshape(shortSweep, title="High Sweep", style=shape.circle, location=location.abovebar,
+     color=color.yellow, size=size.tiny, text="SW")
+
+plotshape(longRetest, title="Sweep Long Entry", style=shape.triangleup, location=location.belowbar,
+     color=color.lime, size=size.tiny, text="L")
+plotshape(shortRetest, title="Sweep Short Entry", style=shape.triangledown, location=location.abovebar,
+     color=color.red, size=size.tiny, text="S")
+
+plot(strategy.position_size != 0 ? activeStop : na, "Active Stop", color=color.red, style=plot.style_linebr)
+plot(strategy.position_size != 0 ? activeTarget : na, "Active Target", color=color.green, style=plot.style_linebr)
+
+alertcondition(longRetest, "Liquidity Sweep Long", "Sweep -> MSS -> displacement -> retest long")
+alertcondition(shortRetest, "Liquidity Sweep Short", "Sweep -> MSS -> displacement -> retest short")
