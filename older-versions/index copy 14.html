@@ -2785,28 +2785,6 @@ textarea{padding-top:12px;padding-bottom:12px}
 }
 
 </style>
-<style id="mts-pa-strategies-v5-fixed">
-.visually-hidden{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
-
-/* Strategy workspace v4 — additive layout/interaction layer using existing tokens */
-.strat-hero{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(320px,.8fr);gap:var(--sp-5);background:linear-gradient(180deg,color-mix(in srgb,var(--surface-2) 80%,transparent),var(--surface));border:1px solid color-mix(in srgb,var(--accent) 18%,var(--line));box-shadow:var(--shadow-2)}
-.strat-hero h3{margin:var(--sp-1) 0 var(--sp-2);font-size:var(--fs-section)}.strat-chiprow{display:flex;flex-wrap:wrap;gap:var(--sp-2);margin-top:var(--sp-4)}.strat-hero-stats{display:grid;gap:var(--sp-3)}
-.strat-kpi{padding:var(--sp-4);border-radius:var(--r-card);background:var(--surface-2);border:1px solid var(--line);display:flex;flex-direction:column;gap:6px}.strat-kpi .k{font-size:var(--fs-micro);color:var(--text-3);text-transform:uppercase;letter-spacing:.06em}.strat-kpi .v{font-size:var(--fs-card);font-weight:600}.strat-kpi .s{font-size:var(--fs-caption);color:var(--text-2)}
-.strat-scan-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--sp-4);margin-top:var(--sp-5)}.strat-scan-card{display:flex;flex-direction:column;gap:var(--sp-2);min-height:170px}.strat-scan-card p{color:var(--text-2)}.strat-scan-card.emphasis{border-color:color-mix(in srgb,var(--warn) 35%,var(--line));background:color-mix(in srgb,var(--warn-soft) 55%,var(--surface))}
-.pa-strategy-grid{display:grid;gap:var(--sp-4);grid-template-columns:repeat(3,minmax(0,1fr))}.pa-strategy-card{display:flex;flex-direction:column;gap:var(--sp-3);position:relative;overflow:hidden;transition:transform var(--t-base) var(--ease),box-shadow var(--t-base) var(--ease),border-color var(--t-base) var(--ease)}.pa-strategy-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-2)}.pa-strategy-card.is-focus,.pa-strategy-card.is-animating{border-color:color-mix(in srgb,var(--accent) 42%,var(--line));box-shadow:var(--shadow-2)}.pa-strategy-card::before{content:"";position:absolute;left:0;right:0;top:0;height:4px;background:var(--accent)}.pa-strategy-card[data-pa-def="pa-double"]::before{background:var(--warn)}
-.strat-def-head{display:flex;align-items:flex-start;justify-content:space-between;gap:var(--sp-3)}.strat-def-head h3{margin-top:var(--sp-2);font-size:var(--fs-card)}.strat-tagline{font-size:var(--fs-caption);color:var(--text-2)}.strat-mini{width:100%;height:auto;border:1px solid var(--line);border-radius:var(--r-card);background:var(--surface-2)}.strat-mini polyline{transition:stroke-dashoffset 900ms var(--ease)}.pa-strategy-card.is-animating .strat-mini polyline{stroke-dasharray:420;stroke-dashoffset:420;animation:strat-trace 2.2s var(--ease) forwards}.pa-strategy-card.is-animating .strat-mini circle{animation:strat-pulse .75s var(--ease) 1.65s 2}
-@keyframes strat-trace{to{stroke-dashoffset:0}}@keyframes strat-pulse{50%{transform:scale(1.8);transform-origin:center;opacity:.45}}
-.strat-keygrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--sp-3)}.strat-keygrid>div,.strat-anim-status{padding:var(--sp-3);border-radius:var(--r-ctl);background:var(--surface-2);border:1px solid var(--line)}.strat-keygrid .k,.strat-anim-status span{display:block;font-size:var(--fs-micro);color:var(--text-3);text-transform:uppercase;letter-spacing:.05em}.strat-keygrid .v,.strat-anim-status b{display:block;font-size:var(--fs-caption);margin-top:3px}.strat-anim-status{transition:background var(--t-base) var(--ease),border-color var(--t-base) var(--ease)}.pa-strategy-card.is-animating .strat-anim-status{background:var(--accent-soft);border-color:color-mix(in srgb,var(--accent) 30%,var(--line))}.strat-card-actions{display:flex;gap:var(--sp-2);flex-wrap:wrap;margin-top:auto}
-.strat-compare{margin-top:var(--sp-4)}.strat-compare-h{display:flex;justify-content:space-between;gap:var(--sp-3);align-items:flex-end;flex-wrap:wrap}.strat-compare-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--sp-3);margin-top:var(--sp-4)}.strat-compare-col{padding:var(--sp-3);border-radius:var(--r-ctl);background:var(--surface-2);border:1px solid var(--line)}.strat-compare-col .k{display:block;font-size:var(--fs-caption);color:var(--text-2)}.strat-compare-col .v{display:block;margin-top:5px}
-.strat-replay-shell{background:linear-gradient(180deg,var(--surface),var(--surface-2))}.strat-replay-head{display:flex;align-items:flex-start;justify-content:space-between;gap:var(--sp-4);flex-wrap:wrap}.scr-controls{display:grid;grid-template-columns:repeat(4,minmax(150px,1fr));gap:var(--sp-3);margin:var(--sp-4) 0}.scr-controls .field{margin:0}.scr-controls .field span{display:block;font-size:var(--fs-caption);color:var(--text-2);margin-bottom:6px}.scr-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--sp-4)}.scr-pane{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-card);padding:var(--sp-4);min-width:0}.scr-pane-h{display:flex;justify-content:space-between;align-items:flex-start;gap:var(--sp-3);margin-bottom:var(--sp-3)}.scr-pane-h h3{margin-top:var(--sp-2);font-size:var(--fs-card)}.scr-chart{width:100%;height:auto;background:var(--surface-2);border:1px solid var(--line);border-radius:var(--r-ctl)}.scr-readout{margin-top:var(--sp-3);padding:var(--sp-3);border-radius:var(--r-ctl);background:var(--surface-2);font-size:var(--fs-caption);color:var(--text-2)}.scr-timeline{display:flex;gap:var(--sp-4);align-items:center;margin-top:var(--sp-4);padding:var(--sp-3);border-radius:var(--r-ctl);background:var(--surface)}.scr-track{height:7px;min-width:180px;flex:1;background:var(--surface-3);border-radius:var(--r-pill);overflow:hidden}.scr-track span{display:block;height:100%;width:5%;background:var(--accent);border-radius:var(--r-pill);transition:width var(--t-base) var(--ease)}.scr-timeline-copy{display:flex;flex-direction:column;gap:2px;min-width:260px}.scr-timeline-copy span{font-size:var(--fs-caption);color:var(--text-2)}
-.pas-shell{background:linear-gradient(180deg,var(--surface),var(--surface-2))}.pas-topbar,.pas-meta,.pas-controls{display:flex;align-items:center;justify-content:space-between;gap:var(--sp-3);flex-wrap:wrap}.pas-filterbar,.pas-difficulty{display:flex;align-items:center;gap:var(--sp-2);flex-wrap:wrap;padding:var(--sp-3);border:1px solid var(--line);border-radius:var(--r-ctl);background:var(--surface-2);margin-top:var(--sp-3)}.pas-filter{min-height:34px;padding:0 var(--sp-3);border-radius:var(--r-pill);border:1px solid var(--line);background:var(--surface);color:var(--text-2);font-size:var(--fs-caption);cursor:pointer}.pas-filter.is-active{background:var(--accent-soft);border-color:transparent;color:var(--accent);font-weight:600}.pas-difficulty{justify-content:space-between}.pas-difficulty-copy{display:flex;flex-direction:column;gap:2px}.pas-difficulty-copy>span:last-child{font-size:var(--fs-caption);color:var(--text-2)}
-.pas-grid.enhanced{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(330px,.85fr);gap:var(--sp-5);margin-top:var(--sp-4)}.pas-chart-wrap{min-width:0}.pas-progress{display:flex;align-items:center;gap:var(--sp-3);padding:var(--sp-3);background:var(--surface-2);border:1px solid var(--line);border-radius:var(--r-ctl);margin:var(--sp-3) 0}.pas-progress-bar{width:180px;height:7px;background:var(--surface-3);border-radius:var(--r-pill);overflow:hidden}.pas-progress-bar span{display:block;height:100%;background:var(--accent);border-radius:var(--r-pill);transition:width var(--t-base) var(--ease)}.pas-progress-copy{display:flex;flex-direction:column;gap:2px}.pas-progress-copy span{font-size:var(--fs-caption);color:var(--text-2)}.pas-chart{width:100%;height:auto;background:var(--surface-2);border:1px solid var(--line);border-radius:var(--r-card)}.pas-controls{justify-content:flex-start;margin-top:var(--sp-3)}.pas-coach{display:flex;align-items:flex-start;gap:var(--sp-3);padding:var(--sp-3);border-radius:var(--r-ctl);background:var(--surface-2);margin-top:var(--sp-3)}.pas-coach p{margin:0;color:var(--text-2)}.pas-panel.enhanced{display:flex;flex-direction:column;gap:var(--sp-4);background:var(--surface-2);border:1px solid var(--line);border-radius:var(--r-card);padding:var(--sp-5)}.pa-answer-group{display:flex;flex-direction:column;gap:var(--sp-2)}.pa-answer-label{font-size:var(--fs-caption);font-weight:600;color:var(--text-2)}.pa-answer-options{display:flex;gap:var(--sp-2);flex-wrap:wrap}.pa-answer-chip{min-height:38px;padding:0 var(--sp-3);border:1px solid var(--line);border-radius:var(--r-ctl);background:var(--surface);font-size:var(--fs-caption);color:var(--text-2);cursor:pointer}.pa-answer-chip:hover{border-color:var(--line-strong);color:var(--text)}.pa-answer-chip.is-active{background:var(--accent-soft);border-color:transparent;color:var(--accent);font-weight:600}.pas-decision-summary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--sp-3)}.pas-decision-summary>div{padding:var(--sp-3);background:var(--surface);border-radius:var(--r-ctl);border:1px solid var(--line)}.pas-decision-summary .k{display:block;font-size:var(--fs-micro);color:var(--text-3)}.pas-decision-summary .v{display:block;margin-top:4px;font-weight:600}.pas-rule{padding:var(--sp-4);border-radius:var(--r-ctl);background:var(--surface);font-size:var(--fs-caption);color:var(--text-2)}
-.pas-mistake{padding:var(--sp-4);border-radius:var(--r-card);background:var(--neg-soft);border:1px solid color-mix(in srgb,var(--neg) 20%,transparent)}.pas-mistake-h{display:flex;align-items:center;gap:var(--sp-2);flex-wrap:wrap}.pas-mistake p{margin:var(--sp-3) 0;color:var(--text-2)}.pas-mistake-rule{padding:var(--sp-3);border-radius:var(--r-ctl);background:var(--surface);font-size:var(--fs-caption)}.pas-mistake-rule span{display:block;color:var(--text-3);margin-bottom:3px}
-.pas-candle-up{stroke:var(--pos);fill:var(--pos)}.pas-candle-dn{stroke:var(--neg);fill:var(--neg)}.pas-level{stroke:var(--warn);stroke-dasharray:6 5;stroke-width:1.4}.pas-neck{stroke:var(--accent);stroke-dasharray:4 4;stroke-width:1.4}.pas-label{fill:var(--text-3);font:12px var(--font-sans)}.pas-entry{fill:var(--accent)}
-@media(max-width:1199px){.strat-hero,.pas-grid.enhanced{grid-template-columns:1fr}.strat-scan-grid,.strat-compare-grid,.pa-strategy-grid{grid-template-columns:1fr}.scr-controls{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media(max-width:900px){.scr-grid{grid-template-columns:1fr}.scr-timeline{align-items:flex-start;flex-direction:column}.scr-track{width:100%}.scr-timeline-copy{min-width:0}}
-@media(max-width:767px){.scr-controls,.strat-keygrid,.pas-decision-summary{grid-template-columns:1fr}.pas-difficulty{align-items:flex-start;flex-direction:column}.pa-answer-chip{width:100%;text-align:left}.pas-progress{align-items:flex-start;flex-direction:column}.pas-progress-bar{width:100%}}
-</style>
 </head>
 <body>
 <script>
@@ -4807,313 +4785,61 @@ window.CFG=function(k){return isFinite(C[k])?C[k]:D[k];};
     <button type="button" data-dismiss>Got it</button>
   </div>
 
-  <section class="tool" id="strat-overview">
-    <div class="strat-hero card pad">
-      <div class="strat-hero-main">
-        <span class="legend">Strategy cockpit</span>
-        <h3>One reading language. Three trade expressions.</h3>
-        <p>Every strategy uses the same underlying structure rules. The difference is <b>when</b> the trade becomes valid: on the break, after a neckline break, or after a role-reversal retest.</p>
-        <div class="strat-chiprow">
-          <span class="pill">Closes confirm structure</span>
-          <span class="pill">Wicks show rejection or invalidation</span>
-          <span class="pill">Baseline target = 2R</span>
-          <span class="pill">Invalid setups must be rejected</span>
-        </div>
-      </div>
-      <div class="strat-hero-stats" aria-label="Strategy summary metrics">
-        <div class="strat-kpi">
-          <span class="k">Setups</span>
-          <span class="v">3</span>
-          <span class="s">breakout · reversal · confirmation</span>
-        </div>
-        <div class="strat-kpi">
-          <span class="k">Decision frame</span>
-          <span class="v">Context → Trigger → Action</span>
-          <span class="s">same logic in TradingView and in this sandbox</span>
-        </div>
-        <div class="strat-kpi">
-          <span class="k">Practice mode</span>
-          <span class="v">Blind reveal</span>
-          <span class="s">valid setups plus deliberate lookalikes</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="strat-scan-grid">
-      <article class="card pad strat-scan-card">
-        <span class="pill">1 · CONTEXT</span>
-        <h4>Locate the level or pattern</h4>
-        <p>Mark resistance, support, or the double-top/double-bottom structure before you think about entry. If the structure is not objective, the trade is not objective.</p>
-      </article>
-      <article class="card pad strat-scan-card">
-        <span class="pill">2 · TRIGGER</span>
-        <h4>Wait for the confirming event</h4>
-        <p>Breakout needs a <b>close beyond structure</b>. Double top/bottom needs a <b>neckline break</b>. Breakout &amp; Retest needs the <b>hold after the revisit</b>.</p>
-      </article>
-      <article class="card pad strat-scan-card">
-        <span class="pill">3 · ACTION</span>
-        <h4>Choose the action at the visible bar</h4>
-        <p>The right answer is sometimes <b>wait</b> and sometimes <b>stand down</b>. The sandbox trains that discipline, not just the entries.</p>
-      </article>
-      <article class="card pad strat-scan-card emphasis">
-        <span class="pill warn">RULE</span>
-        <h4>Do not let a forming idea become a completed setup</h4>
-        <p>Seeing a pattern begin is not the same as seeing it complete. A second top is not a short. A wick beyond resistance is not a breakout. A touch back to a broken level is not yet a retest entry.</p>
-      </article>
-    </div>
-  </section>
-
   <section class="tool" id="strat-objective">
     <div class="eyebrow"><span class="tab green">01</span><h2>Objective definitions</h2><span class="line"></span><span class="hint">same baseline as the Pine strategies</span></div>
-    <div class="pa-strategy-grid strat-enhanced-grid">
-      <article class="card pad pa-strategy-card strat-def" data-pa-def="pa-breakout">
-        <div class="pa-strategy-head strat-def-head">
-          <div>
-            <span class="pill">PA 1</span>
-            <h3>Breakout</h3>
-            <p class="strat-tagline">Trade the escape, not the idea of escape.</p>
-          </div>
-          <span class="pill go">momentum</span>
-        </div>
-        <svg class="strat-mini" viewBox="0 0 280 120" aria-hidden="true">
-          <rect x="10" y="10" width="260" height="100" rx="14" fill="var(--surface-2)" stroke="var(--line)"/>
-          <line x1="28" y1="46" x2="252" y2="46" class="pas-level"/>
-          <polyline points="28,78 52,70 76,76 100,68 124,74 148,70 172,74 196,38 220,26 244,18" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-          <circle cx="196" cy="38" r="4.5" class="pas-entry"/>
-          <text x="28" y="34" class="pas-label">structure level</text>
-          <text x="205" y="34" class="pas-label">close beyond level</text>
-        </svg>
-        <div class="strat-anim-status" data-strat-status="pa-breakout"><span>Sequence</span><b>Structure → breakout close → entry</b></div>
-        <div class="strat-keygrid">
-          <div><span class="k">Read</span><span class="v">20-bar resistance / support</span></div>
-          <div><span class="k">Trigger</span><span class="v">Close beyond level by 0.10 ATR</span></div>
-          <div><span class="k">Entry timing</span><span class="v">Immediate on the confirmed break</span></div>
-          <div><span class="k">Stop / target</span><span class="v">0.35 ATR behind level · 2R</span></div>
-        </div>
+    <div class="pa-strategy-grid">
+      <article class="card pad pa-strategy-card" data-pa-def="pa-breakout">
+        <div class="pa-strategy-head"><div><span class="pill">PA 1</span><h3>Breakout</h3></div><span class="pill go">momentum</span></div>
         <p>Trade only when price <b>closes</b> beyond a pre-existing 20-bar structure boundary by at least <span class="num">0.10 ATR</span>. A wick through the level is not a breakout.</p>
-        <ol class="steps compact"><li>Resistance = highest high of the previous 20 completed bars; support = lowest low.</li><li>Long: close &gt; resistance + 0.10 ATR. Short: close &lt; support − 0.10 ATR.</li><li>The previous candle must not already have closed beyond the same buffered level.</li><li>Stop = broken level ± 0.35 ATR. Baseline target = 2R.</li></ol>
+        <ol class="steps"><li>Resistance = highest high of the previous 20 completed bars; support = lowest low.</li><li>Long: close &gt; resistance + 0.10 ATR. Short: close &lt; support − 0.10 ATR.</li><li>The previous candle must not already have closed beyond the same buffered level.</li><li>Stop = broken level ± 0.35 ATR. Baseline target = 2R.</li></ol>
         <div class="gate"><b>Invalid:</b> wick-only break, already-extended breakout, or no clearly established structure level.</div>
-        <div class="strat-card-actions"><button type="button" class="btn ghost sm" data-strat-animate="pa-breakout">Animate setup</button><button type="button" class="btn ghost sm" data-pas-focus="pa-breakout">Practise Breakout</button></div>
       </article>
-
-      <article class="card pad pa-strategy-card strat-def" data-pa-def="pa-double">
-        <div class="pa-strategy-head strat-def-head">
-          <div>
-            <span class="pill">PA 2</span>
-            <h3>Double Top / Double Bottom</h3>
-            <p class="strat-tagline">The second test arms the idea. The neckline confirms it.</p>
-          </div>
-          <span class="pill warn">reversal</span>
-        </div>
-        <svg class="strat-mini" viewBox="0 0 280 120" aria-hidden="true">
-          <rect x="10" y="10" width="260" height="100" rx="14" fill="var(--surface-2)" stroke="var(--line)"/>
-          <line x1="24" y1="82" x2="252" y2="82" class="pas-neck"/>
-          <polyline points="24,86 48,64 72,28 96,58 120,82 144,60 168,30 192,60 216,92 248,100" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-          <circle cx="216" cy="92" r="4.5" class="pas-entry"/>
-          <text x="28" y="98" class="pas-label">neckline</text>
-          <text x="176" y="26" class="pas-label">2nd top / bottom</text>
-        </svg>
-        <div class="strat-anim-status" data-strat-status="pa-double"><span>Sequence</span><b>First extreme → neckline → second extreme → break</b></div>
-        <div class="strat-keygrid">
-          <div><span class="k">Read</span><span class="v">Two pivots 5–60 bars apart</span></div>
-          <div><span class="k">Trigger</span><span class="v">Neckline close-through by 0.05 ATR</span></div>
-          <div><span class="k">Entry timing</span><span class="v">Only after the neckline confirms</span></div>
-          <div><span class="k">Stop / target</span><span class="v">0.25 ATR beyond extreme · 2R</span></div>
-        </div>
+      <article class="card pad pa-strategy-card" data-pa-def="pa-double">
+        <div class="pa-strategy-head"><div><span class="pill">PA 2</span><h3>Double Top / Double Bottom</h3></div><span class="pill warn">reversal</span></div>
         <p>The pattern is not tradable at the second extreme. It becomes tradable only after the <b>neckline closes through</b>.</p>
-        <ol class="steps compact"><li>Use confirmed swing pivots: 3 bars left and 3 bars right.</li><li>The two tops/bottoms must be 5–60 bars apart and within 0.35 ATR of each other.</li><li>A real opposite pivot must exist between the two extremes; that pivot is the neckline.</li><li>Confirmation = close through neckline by 0.05 ATR within 30 bars. Stop = 0.25 ATR beyond the pattern extreme. Target = 2R.</li></ol>
+        <ol class="steps"><li>Use confirmed swing pivots: 3 bars left and 3 bars right.</li><li>The two tops/bottoms must be 5–60 bars apart and within 0.35 ATR of each other.</li><li>A real opposite pivot must exist between the two extremes; that pivot is the neckline.</li><li>Confirmation = close through neckline by 0.05 ATR within 30 bars. Stop = 0.25 ATR beyond the pattern extreme. Target = 2R.</li></ol>
         <div class="gate"><b>Invalid:</b> similar highs/lows without an intervening swing, no neckline break, expired confirmation, or a close beyond the pattern extreme first.</div>
-        <div class="strat-card-actions"><button type="button" class="btn ghost sm" data-strat-animate="pa-double">Animate setup</button><button type="button" class="btn ghost sm" data-pas-focus="pa-double">Practise Double Top / Bottom</button></div>
       </article>
-
-      <article class="card pad pa-strategy-card strat-def" data-pa-def="pa-retest">
-        <div class="pa-strategy-head strat-def-head">
-          <div>
-            <span class="pill">PA 3</span>
-            <h3>Breakout &amp; Retest</h3>
-            <p class="strat-tagline">The break starts the setup. The hold completes it.</p>
-          </div>
-          <span class="pill go">confirmation</span>
-        </div>
-        <svg class="strat-mini" viewBox="0 0 280 120" aria-hidden="true">
-          <rect x="10" y="10" width="260" height="100" rx="14" fill="var(--surface-2)" stroke="var(--line)"/>
-          <line x1="24" y1="64" x2="252" y2="64" class="pas-level"/>
-          <polyline points="24,90 48,82 72,88 96,80 120,84 144,76 168,46 192,28 216,58 240,36" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-          <circle cx="216" cy="58" r="4.5" class="pas-entry"/>
-          <text x="28" y="54" class="pas-label">broken level</text>
-          <text x="220" y="76" class="pas-label">retest hold</text>
-        </svg>
-        <div class="strat-anim-status" data-strat-status="pa-retest"><span>Sequence</span><b>Breakout → revisit → hold → entry</b></div>
-        <div class="strat-keygrid">
-          <div><span class="k">Read</span><span class="v">Breakout from 20-bar structure</span></div>
-          <div><span class="k">Trigger</span><span class="v">Retest within 20 bars and directional close</span></div>
-          <div><span class="k">Entry timing</span><span class="v">On the confirmed hold at the revisit</span></div>
-          <div><span class="k">Stop / target</span><span class="v">Retest wick ± 0.20 ATR · 2R</span></div>
-        </div>
+      <article class="card pad pa-strategy-card" data-pa-def="pa-retest">
+        <div class="pa-strategy-head"><div><span class="pill">PA 3</span><h3>Breakout &amp; Retest</h3></div><span class="pill go">confirmation</span></div>
         <p>The breakout only <b>arms</b> the setup. Entry requires the old level to be revisited from the other side and hold.</p>
-        <ol class="steps compact"><li>First require the same 20-bar breakout close + 0.10 ATR buffer used by PA Breakout.</li><li>Within 20 bars, price must revisit within 0.25 ATR of the broken level.</li><li>Long: retest candle closes back above the level and bullish. Short: closes back below and bearish.</li><li>Invalidate if price closes 0.50 ATR through the level. Stop = retest wick ± 0.20 ATR. Target = 2R.</li></ol>
+        <ol class="steps"><li>First require the same 20-bar breakout close + 0.10 ATR buffer used by PA Breakout.</li><li>Within 20 bars, price must revisit within 0.25 ATR of the broken level.</li><li>Long: retest candle closes back above the level and bullish. Short: closes back below and bearish.</li><li>Invalidate if price closes 0.50 ATR through the level. Stop = retest wick ± 0.20 ATR. Target = 2R.</li></ol>
         <div class="gate"><b>Invalid:</b> no retest, touch without a confirmed hold, retest after expiry, or decisive failure through the broken level.</div>
-        <div class="strat-card-actions"><button type="button" class="btn ghost sm" data-strat-animate="pa-retest">Animate setup</button><button type="button" class="btn ghost sm" data-pas-focus="pa-retest">Practise Breakout &amp; Retest</button></div>
       </article>
     </div>
     <div class="gate ok mt-4"><b>Hierarchy:</b> Breakout enters on the escape. Breakout &amp; Retest waits for proof that the level changed role. Double Top/Bottom is a reversal pattern and requires the neckline; two equal extremes alone are not an entry.</div>
-    <div class="strat-compare card pad mt-4">
-      <div class="strat-compare-h">
-        <div><span class="legend">Fast comparison</span><h3>How the three setups differ</h3></div>
-        <span class="pill">same market, different timing logic</span>
-      </div>
-      <div class="strat-compare-grid">
-        <div class="strat-compare-col"><span class="k">If price escapes and keeps going</span><span class="v">Use <b>Breakout</b></span></div>
-        <div class="strat-compare-col"><span class="k">If price fails twice at the same area</span><span class="v">Use <b>Double Top / Bottom</b></span></div>
-        <div class="strat-compare-col"><span class="k">If price escapes, then proves the level flipped</span><span class="v">Use <b>Breakout &amp; Retest</b></span></div>
-        <div class="strat-compare-col"><span class="k">If the trigger is not complete yet</span><span class="v">Correct answer = <b>Wait</b> or <b>Stand down</b></span></div>
-      </div>
-    </div>
-  </section>
-
-
-  <section class="tool" id="strat-compare-replay">
-    <div class="eyebrow"><span class="tab green">02</span><h2>Compare replay</h2><span class="line"></span><span class="hint">same decision language · different trigger timing</span></div>
-    <div class="card pad strat-replay-shell">
-      <div class="strat-replay-head">
-        <div>
-          <p class="legend mb-1">Side-by-side replay</p>
-          <p class="fs-note mt-0">Compare two strategies candle by candle. The synchronized playhead makes the timing difference visible: what is merely context for one setup may already be the trigger for another.</p>
-        </div>
-        <div class="dataops">
-          <button type="button" class="btn ghost" id="scrReset">Reset</button>
-          <button type="button" class="btn" id="scrPlay">▶ Play comparison</button>
-        </div>
-      </div>
-      <div class="scr-controls">
-        <label class="field"><span>Left strategy</span><select id="scrLeft"><option value="pa-breakout">PA Breakout</option><option value="pa-double">Double Top / Bottom</option><option value="pa-retest">Breakout &amp; Retest</option></select></label>
-        <label class="field"><span>Right strategy</span><select id="scrRight"><option value="pa-retest">Breakout &amp; Retest</option><option value="pa-breakout">PA Breakout</option><option value="pa-double">Double Top / Bottom</option></select></label>
-        <label class="field"><span>Direction</span><select id="scrDir"><option value="long">Long / bullish</option><option value="short">Short / bearish</option></select></label>
-        <label class="field"><span>Speed</span><select id="scrSpeed"><option value="900">Normal</option><option value="1400">Slow</option><option value="520">Fast</option></select></label>
-      </div>
-      <div class="scr-grid">
-        <article class="scr-pane">
-          <div class="scr-pane-h"><div><span class="pill" id="scrLeftPill">PA Breakout</span><h3 id="scrLeftTitle">Breakout</h3></div><span class="pill" id="scrLeftState">Context</span></div>
-          <svg id="scrLeftChart" class="scr-chart" viewBox="0 0 620 300" role="img" aria-label="Left strategy comparison chart"></svg>
-          <div class="scr-readout" id="scrLeftRead">Waiting for structure and trigger.</div>
-        </article>
-        <article class="scr-pane">
-          <div class="scr-pane-h"><div><span class="pill" id="scrRightPill">PA Breakout &amp; Retest</span><h3 id="scrRightTitle">Breakout &amp; Retest</h3></div><span class="pill" id="scrRightState">Context</span></div>
-          <svg id="scrRightChart" class="scr-chart" viewBox="0 0 620 300" role="img" aria-label="Right strategy comparison chart"></svg>
-          <div class="scr-readout" id="scrRightRead">Waiting for structure and trigger.</div>
-        </article>
-      </div>
-      <div class="scr-timeline">
-        <div class="scr-track"><span id="scrFill"></span></div>
-        <div class="scr-timeline-copy"><strong id="scrStep">Bar 1</strong><span id="scrLesson">Compare what each strategy is allowed to do at the same stage.</span></div>
-      </div>
-    </div>
   </section>
 
   <section class="tool" id="strat-sandbox">
-    <div class="eyebrow"><span class="tab blue">03</span><h2>Strategy sandbox</h2><span class="line"></span><span class="hint" id="pasScore">0 correct · 0 attempts</span></div>
-    <div class="card pad pas-shell">
-      <div class="pas-topbar enhanced">
-        <div>
-          <p class="legend mb-1">Blind chart practice</p>
-          <p class="fs-note mt-0">Schematic price action, not live market data. Reveal bars progressively, make the call, then compare it with the objective rule. Classify only what is objectively complete, then decide the action for the visible chart.</p>
-        </div>
+    <div class="eyebrow"><span class="tab blue">02</span><h2>Strategy sandbox</h2><span class="line"></span><span class="hint" id="pasScore">0 correct · 0 attempts</span></div>
+    <div class="card pad">
+      <div class="pas-topbar">
+        <div><p class="legend mb-1">Blind chart practice</p><p class="fs-note mt-0">Schematic price action, not live market data. Reveal bars progressively, make the call, then compare it with the objective rule.</p></div>
         <div class="dataops"><button type="button" class="btn ghost" id="pasNew">New scenario</button><button type="button" class="btn ghost" id="pasResetScore">Reset score</button></div>
       </div>
-
-      <div class="pas-filterbar" role="group" aria-label="Scenario focus">
-        <span class="legend">Practice focus</span>
-        <button type="button" class="pas-filter is-active" data-pas-filter="all" aria-pressed="true">All setups</button>
-        <button type="button" class="pas-filter" data-pas-filter="pa-breakout" aria-pressed="false">Breakout</button>
-        <button type="button" class="pas-filter" data-pas-filter="pa-double" aria-pressed="false">Double Top / Bottom</button>
-        <button type="button" class="pas-filter" data-pas-filter="pa-retest" aria-pressed="false">Breakout &amp; Retest</button>
-        <button type="button" class="pas-filter" data-pas-filter="invalid" aria-pressed="false">Only invalids</button>
-      </div>
-
-      <div class="pas-difficulty" role="group" aria-label="Practice difficulty">
-        <div class="pas-difficulty-copy"><span class="legend">Difficulty</span><span id="pasDifficultyWhy">Guided shows structure labels and starts closer to the decision.</span></div>
-        <div class="seg" id="pasDifficultySeg">
-          <button type="button" data-pas-difficulty="guided" aria-pressed="true">Guided</button>
-          <button type="button" data-pas-difficulty="standard" aria-pressed="false">Standard</button>
-          <button type="button" data-pas-difficulty="hard" aria-pressed="false">Hard</button>
-        </div>
-      </div>
-
-      <div class="pas-grid enhanced">
+      <div class="pas-grid">
         <div class="pas-chart-wrap">
-          <div class="pas-meta"><span class="pill" id="pasStage">0 / 0 bars</span><span class="pill" id="pasAtr">ATR normalized</span><span class="pill" id="pasFocusLabel">All setups</span><span class="pill warn" id="pasBlind">answer hidden</span></div>
-          <div class="pas-progress"><div class="pas-progress-bar"><span id="pasProgressFill"></span></div><div class="pas-progress-copy"><strong id="pasProgressTxt">Reveal bars to analyse the setup.</strong><span id="pasScenarioName">Blind scenario</span></div></div>
+          <div class="pas-meta"><span class="pill" id="pasStage">0 / 0 bars</span><span class="pill" id="pasAtr">ATR normalized</span><span class="pill warn" id="pasBlind">answer hidden</span></div>
           <svg id="pasChart" class="pas-chart" viewBox="0 0 900 420" role="img" aria-label="Price action practice chart"></svg>
           <div class="pas-controls">
             <button type="button" class="btn ghost" id="pasPrev">Previous bar</button>
             <button type="button" class="btn" id="pasNext">Reveal next bar</button>
             <button type="button" class="btn ghost" id="pasAll">Reveal all</button>
           </div>
-          <div class="pas-coach"><span class="pill" id="pasStatePill">State</span><p id="pasStateExplain">Use only the visible candles. Before the trigger bar appears, the correct action is usually to wait.</p></div>
         </div>
-
-        <aside class="pas-panel enhanced">
-          <div class="pas-panel-block">
-            <div class="legend">Decision builder</div>
-            <h3>Make the call</h3>
-            <p class="fs-note mt-1">Pick the setup, the direction and the action. Use the buttons for speed or the hidden form fields for state handling.</p>
-          </div>
-
-          <div class="visually-hidden">
-            <label for="pasStrategy">What setup is objectively present?</label>
-            <select id="pasStrategy"><option value="">Choose</option><option value="pa-breakout">PA Breakout</option><option value="pa-double">PA Double Top / Double Bottom</option><option value="pa-retest">PA Breakout &amp; Retest</option><option value="none">No valid setup</option></select>
-            <label for="pasDirection">Direction</label>
-            <select id="pasDirection"><option value="">Choose</option><option value="long">Long</option><option value="short">Short</option><option value="none">None</option></select>
-            <label for="pasAction">What should you do at the currently revealed bar?</label>
-            <select id="pasAction"><option value="">Choose</option><option value="wait">Wait</option><option value="enter">Enter</option><option value="stand">Stand down</option></select>
-          </div>
-
-          <div class="pa-answer-group" data-target="pasStrategy">
-            <div class="pa-answer-label">1. What setup is objectively present?</div>
-            <div class="pa-answer-options">
-              <button type="button" class="pa-answer-chip" data-value="pa-breakout">PA Breakout</button>
-              <button type="button" class="pa-answer-chip" data-value="pa-double">Double Top / Bottom</button>
-              <button type="button" class="pa-answer-chip" data-value="pa-retest">Breakout &amp; Retest</button>
-              <button type="button" class="pa-answer-chip" data-value="none">No valid setup</button>
-            </div>
-          </div>
-
-          <div class="pa-answer-group" data-target="pasDirection">
-            <div class="pa-answer-label">2. Which direction?</div>
-            <div class="pa-answer-options">
-              <button type="button" class="pa-answer-chip" data-value="long">Long</button>
-              <button type="button" class="pa-answer-chip" data-value="short">Short</button>
-              <button type="button" class="pa-answer-chip" data-value="none">None</button>
-            </div>
-          </div>
-
-          <div class="pa-answer-group" data-target="pasAction">
-            <div class="pa-answer-label">3. What should you do at this bar?</div>
-            <div class="pa-answer-options">
-              <button type="button" class="pa-answer-chip" data-value="wait">Wait</button>
-              <button type="button" class="pa-answer-chip" data-value="enter">Enter</button>
-              <button type="button" class="pa-answer-chip" data-value="stand">Stand down</button>
-            </div>
-          </div>
-
-          <div class="pas-decision-summary">
-            <div><span class="k">Current focus</span><span class="v" id="pasDecisionFocus">All setups</span></div>
-            <div><span class="k">Score</span><span class="v" id="pasDecisionScore">0 / 0 correct</span></div>
-          </div>
-
+        <aside class="pas-panel">
+          <div class="field"><label for="pasStrategy">What setup is objectively present?</label><select id="pasStrategy"><option value="">Choose</option><option value="pa-breakout">PA Breakout</option><option value="pa-double">PA Double Top / Double Bottom</option><option value="pa-retest">PA Breakout &amp; Retest</option><option value="none">No valid setup</option></select></div>
+          <div class="field"><label for="pasDirection">Direction</label><select id="pasDirection"><option value="">Choose</option><option value="long">Long</option><option value="short">Short</option><option value="none">None</option></select></div>
+          <div class="field"><label for="pasAction">What should you do at the currently revealed bar?</label><select id="pasAction"><option value="">Choose</option><option value="wait">Wait</option><option value="enter">Enter</option><option value="stand">Stand down</option></select></div>
           <button type="button" class="btn lg" id="pasCheck">Check my call</button>
           <div class="gate mt-3" id="pasFeedback">Reveal bars and make the decision from what is visible now.</div>
           <div class="pas-rule" id="pasRule" hidden></div>
-          <div class="pas-mistake" id="pasMistake" hidden>
-            <div class="pas-mistake-h"><span class="pill bad">Mistake trainer</span><strong id="pasMistakeType">—</strong></div>
-            <p id="pasMistakeWhy">—</p>
-            <div class="pas-mistake-rule"><span>Rule to remember</span><b id="pasMistakeRule">—</b></div>
-          </div>
         </aside>
       </div>
     </div>
   </section>
-<section class="tool" id="live-stage" hidden>
+
+  <section class="tool" id="live-stage" hidden>
     <div class="eyebrow"><span class="tab green">01</span><h2>Replay</h2><span class="line"></span><span class="hint" id="lvHint">—</span></div>
 
     <div class="lvpicker">
@@ -6275,7 +6001,7 @@ function calc(){
       s=parseFloat($("#stop").value),t=parseFloat($("#target").value),sp=parseFloat($("#spread").value)||0;
   if(![bal,rp,e,s,t].every(function(n){return isFinite(n);})||bal<=0||rp<=0||Math.abs(e-s)===0) return {ok:false};
   var CT=window.MTSCFG?window.MTSCFG.contract:100;
-  var riskUSD=bal*rp/100,dist=Math.abs(e-s)+sp,rew=Math.abs(t-e),lots=Math.floor(riskUSD/(dist*CT)*100+1e-9)/100,
+  var riskUSD=bal*rp/100,dist=Math.abs(e-s)+sp,rew=Math.abs(t-e),lots=riskUSD/(dist*CT),
       dirOK=(t>e&&s<e)||(t<e&&s>e),rr=rew/dist;
   var t1=parseFloat($("#tp1")?$("#tp1").value:""),a1=parseFloat($("#alloc1")?$("#alloc1").value:"");
   a1=isFinite(a1)?Math.min(100,Math.max(0,a1)):NaN;
@@ -6514,7 +6240,7 @@ function addTrade(inputId){
   var c=calc();
   HIST.push({d:today,t:fmt(gstNow()),s:(PENDING&&PENDING.pos?PENDING.pos.name:(S.active&&PB[S.active]?PB[S.active].name:"—")),r:v,
     g:S.grade||"",w:windowNow().n.replace(/^the /,""),
-    lots:c.ok?Number(c.lots.toFixed(2)):null,
+    plan:c.ok&&c.dirOK?Number(c.rr.toFixed(2)):null,lots:c.ok?Number(c.lots.toFixed(2)):null,
     e:parseFloat($("#entry").value)||null,sl:parseFloat($("#stop").value)||null,tp:parseFloat($("#target").value)||null,
     rb:breakNames(),legs:(PENDING&&PENDING.pos?PENDING.pos.legs:null),
     plan:(PENDING&&PENDING.pos?Number(PENDING.pos.rr.toFixed(2)):(calc().ok&&calc().dirOK?Number(calc().rr.toFixed(2)):null)),
@@ -8625,8 +8351,6 @@ window.MTSAddTrades=function(rows){
 renderEV();renderBreaks();renderPlaybook();renderLog();refreshRestore();window.__booted=1;renderHUD();
 var bootDupes=dedupeHist();
 if(bootDupes.n){renderLog();setTimeout(function(){dupeReport(bootDupes);},350);}
-/* v18: GST day rollover — `today` is fixed at load, so reload once the date changes and nothing is in progress */
-var rollNoted=false;setInterval(function(){if(gstDate()===today)return;var ae=document.activeElement,typing=ae&&/^(INPUT|TEXTAREA|SELECT)$/.test(ae.tagName);if(!POS.length&&!S.armed&&!typing){location.reload();return;}if(!rollNoted&&window.MTSToast){rollNoted=true;window.MTSToast("New GST trading day. Finish the open trade, then reload to reset daily limits.");}},30000);
 })();
 </script>
 
@@ -13616,10 +13340,9 @@ function paintSession(){
   if(open&&open!=="flat")bits.push(["open",open,"live"]);
   var px=rail("Price");
   if(px)bits.push(["px",px,""]);
-  var html=bits.map(function(b){
+  host.innerHTML=bits.map(function(b){
     return '<span class="sbit'+(b[2]?" "+b[2]:"")+'" data-k="'+shellEsc(b[0])+'">'+shellEsc(b[1])+'</span>';
   }).join('<i class="sdiv"></i>');
-  if(host.__h===html)return;host.__h=html;host.innerHTML=html;
 }
 setInterval(paintSession,900);
 paintSession();
@@ -13987,7 +13710,7 @@ var dotHost=$("#shDot")?$("#shDot").parentNode:null;
   el.setAttribute("title",p[2]);
 });
 /* mobile navigation icons */
-var MICON={flow:"activity",prepare:"layers",learn:"book",review:"chart",more:"more",
+var MICON={flow:"activity",prepare:"layers",learn:"book",review:"chart",more:"more",insights:"chart",
            trading:"activity",journal:"journal",insights:"chart",library:"book"};
 function paintMobileIcons(){
   $$("#mnav .mnav-b").forEach(function(b){
@@ -14161,8 +13884,6 @@ function capturePlan(){
 var arm=$("#armBtn");if(arm)arm.addEventListener("click",function(ev){
   var r=val("#v7ArmReason");if(!r){ev.preventDefault();ev.stopImmediatePropagation();$("#v7ArmReason").focus();if(window.MTSToast)window.MTSToast("Choose why you are taking the trade before arming.");return;}
   if(r!=="setup"&&!$("#v7CogAck").checked){ev.preventDefault();ev.stopImmediatePropagation();if(window.MTSToast)window.MTSToast("Behavioural warning: acknowledge the decision or change the reason.");return;}
-  /* v18: do not freeze a plan for an ARM the control guardrails are about to refuse */
-  if(window.MTSOps&&MTSOps.state.guardrails.enforce&&MTSOps.evaluateGuardrails().some(function(x){return !x.pass&&x.severity==="hard";}))return;
   capturePlan();
 },{capture:true});
 function attachPending(){setTimeout(function(){var a=trades(),t=a[a.length-1];if(!t||!V7.pendingPlan)return;var k=tradeKey(t);if(!V7.plans[k]){V7.pendingPlan.tradeKey=k;V7.plans[k]=V7.pendingPlan;}V7.pendingPlan=null;save();renderTradePick();renderEvidence();},30);}
@@ -17344,7 +17065,7 @@ function push(title,body,tone,life){
 function alertsTopLeft(){
   host();
   var origToast=window.MTSToast;
-  window.MTSToast=function(msg){if(MUTE)return;push(msg,"", /blocked|failed|could not|cannot|unavailable|must|not supported|denied|invalid/i.test(msg||"")?"warn":/saved|applied|cleared|copied|added|done|complete/i.test(msg||"")?"pos":"info",5000);};
+  window.MTSToast=function(msg){if(MUTE)return;push(msg,"", /saved|applied|cleared|copied|added|done/i.test(msg||"")?"pos":"info",5000);};
   var origAlert=window.MTSAlert;
   if(typeof origAlert==="function"){
     window.MTSAlert=function(type,title,body,key){
@@ -17994,7 +17715,7 @@ function fmtR(n){return n==null||!isFinite(n)?"—":(n>0?"+":"")+n.toFixed(2)+"R
 function audit(type,title,detail){OPS.audit.push({id:uid("a-"),at:NOW(),type:type||"system",title:String(title||"Event").slice(0,180),detail:String(detail||"").slice(0,1000)});if(OPS.audit.length>1500)OPS.audit=OPS.audit.slice(-1500);save();renderAudit();}
 window.MTSOpsAudit=audit;
 function download(name,content,type){var b=new Blob([content],{type:type||"application/octet-stream"}),u=URL.createObjectURL(b),a=document.createElement("a");a.href=u;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(u);},1000);}
-function copyText(t){function legacy(){var ta=document.createElement("textarea");ta.value=t;ta.setAttribute("readonly","");ta.style.position="fixed";ta.style.opacity="0";document.body.appendChild(ta);ta.select();var ok=false;try{ok=document.execCommand("copy");}catch(e){}ta.remove();return ok?Promise.resolve():Promise.reject(new Error("copy"));}if(navigator.clipboard&&navigator.clipboard.writeText)return navigator.clipboard.writeText(t).catch(legacy);var ta=document.createElement("textarea");ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand("copy");}catch(e){}ta.remove();return Promise.resolve();}
+function copyText(t){if(navigator.clipboard&&navigator.clipboard.writeText)return navigator.clipboard.writeText(t);var ta=document.createElement("textarea");ta.value=t;document.body.appendChild(ta);ta.select();try{document.execCommand("copy");}catch(e){}ta.remove();return Promise.resolve();}
 
 /* navigation */
 function initOpsNav(){var side=$(".ops-side");if(!side)return;$$('[data-ops-go]',side).forEach(function(b){b.addEventListener("click",function(){var t=$("#"+b.dataset.opsGo);if(t)t.scrollIntoView({behavior:"smooth",block:"start"});});});var secs=$$(".ops-section"),obs=new IntersectionObserver(function(es){var best=es.filter(function(x){return x.isIntersecting;}).sort(function(a,b){return b.intersectionRatio-a.intersectionRatio;})[0];if(!best)return;$$('[data-ops-go]',side).forEach(function(b){b.classList.toggle("on",b.dataset.opsGo===best.target.id);});},{rootMargin:"-18% 0px -65% 0px",threshold:[0,.15,.4]});secs.forEach(function(s){obs.observe(s);});}
@@ -18009,12 +17730,12 @@ function loadMarketForm(){var m=OPS.market;$("#opsDxy").value=m.dxy||"unknown";$
 function saveMarket(){var old=JSON.stringify(OPS.market);OPS.market={dxy:read("#opsDxy")||"unknown",yield:read("#opsYield")||"unknown",structure:read("#opsStructure")||"unknown",regime:read("#opsRegime")||"unknown",location:read("#opsLocation").slice(0,160),rangeUsed:num(read("#opsRangeUsed")),updatedAt:NOW()};save();if(old!==JSON.stringify(OPS.market))audit("system","Market context updated",OPS.market.structure+" · "+OPS.market.regime+" · "+OPS.market.location);$("#opsMarketNote").textContent="Saved to this terminal.";renderMarket();}
 
 /* Opportunities */
-function rr(e,s,t){if(e==null||s==null||t==null||e===s||(t-e)*(e-s)<=0)return null;return Math.abs((t-e)/(e-s));}
+function rr(e,s,t){if(e==null||s==null||t==null||e===s)return null;return Math.abs((t-e)/(e-s));}
 function expiryPassed(x){if(!x.expires)return false;var p=x.expires.split(":"),m=(+p[0]||0)*60+(+p[1]||0);return gstMinutes()>m;}
 function oppStatus(x){if(expiryPassed(x))return "expired";var n=(x.checks||[]).filter(Boolean).length;return n===4?"qualified":n>=2?"forming":"watching";}
 function currentFlowOpportunity(){var e=num(read("#entry")),s=num(read("#stop")),t=num(read("#target"));return {name:(text("#pbSub")||text("#uxActionSetup")||"Current setup").split(" — ")[0],dir:e!=null&&s!=null?(s<e?"Long":"Short"):"Long",entry:e,stop:s,target:t,expires:"",checks:[false,false,false,false],note:(read("#jThesis")||read("#nPath")||"").slice(0,500)};}
 function fillOppForm(x){x=x||{checks:[]};$("#opsOppName").value=x.name||"";$("#opsOppDir").value=x.dir||"Long";$("#opsOppEntry").value=x.entry==null?"":x.entry;$("#opsOppStop").value=x.stop==null?"":x.stop;$("#opsOppTarget").value=x.target==null?"":x.target;$("#opsOppExpiry").value=x.expires||"";$("#opsOppNote").value=x.note||"";[1,2,3,4].forEach(function(i){$("#opsOppC"+i).checked=!!(x.checks||[])[i-1];});}
-function renderOpps(){var host=$("#opsOppList");if(!host)return;var arr=OPS.opportunities.slice().sort(function(a,b){var o={qualified:0,forming:1,watching:2,expired:3};return o[oppStatus(a)]-o[oppStatus(b)]||(b.createdAt||"").localeCompare(a.createdAt||"");});$("#opsOppBadge").textContent=arr.filter(function(x){return oppStatus(x)!=="expired";}).length;var __h=arr.length?arr.map(function(x){var st=oppStatus(x),r=rr(x.entry,x.stop,x.target),checks=x.checks||[];return '<article class="ops-opp" data-opp="'+esc(x.id)+'"><div class="ops-opp-head"><div><b>'+esc(x.name||"Untitled opportunity")+'</b><p>'+esc(x.dir||"—")+(x.expires?' · expires '+esc(x.expires):'')+(x.note?' · '+esc(x.note):'')+'</p></div><span class="ops-status '+st+'">'+st.toUpperCase()+'</span></div><div class="ops-opp-levels"><span>ENTRY<b>'+esc(x.entry==null?'—':x.entry)+'</b></span><span>STOP<b>'+esc(x.stop==null?'—':x.stop)+'</b></span><span>TARGET<b>'+esc(x.target==null?'—':x.target)+'</b></span><span>R:R<b>'+esc(r==null?'—':r.toFixed(2)+'R')+'</b></span></div><div class="ops-opp-checks">'+["Location","Trigger","Momentum","Retest"].map(function(k,i){return '<button type="button" data-opp-check="'+i+'" class="'+(checks[i]?'on':'')+'">'+(checks[i]?'✓ ':'')+esc(k)+'</button>';}).join("")+'</div><div class="ops-opp-actions"><button type="button" class="ops-mini primary" data-opp-load>Load into Flow</button><button type="button" class="ops-mini" data-opp-edit>Edit</button><button type="button" class="ops-mini danger" data-opp-del>Delete</button></div></article>';}).join(""):'<div class="ops-empty">No opportunities are waiting. Capture the current Flow setup or add one manually.</div>';if(host.__h===__h)return;host.__h=__h;host.innerHTML=__h;$$('[data-opp]',host).forEach(function(card){var id=card.dataset.opp,x=OPS.opportunities.filter(function(o){return o.id===id;})[0];if(!x)return;$$('[data-opp-check]',card).forEach(function(b){b.addEventListener("click",function(){x.checks=x.checks||[false,false,false,false];x.checks[+b.dataset.oppCheck]=!x.checks[+b.dataset.oppCheck];save();audit("opportunity","Opportunity confirmation changed",x.name+" · "+oppStatus(x));renderOpps();renderGuardrails();});});$("[data-opp-load]",card).addEventListener("click",function(){if(x.entry!=null)setInput("#entry",x.entry);if(x.stop!=null)setInput("#stop",x.stop);if(x.target!=null)setInput("#target",x.target);audit("opportunity","Opportunity loaded into Flow",x.name);var nav=$('.navbtn[data-view="flow"]');if(nav)nav.click();setTimeout(function(){var f=$("#f4");if(f)f.scrollIntoView({behavior:"smooth",block:"start"});},70);});$("[data-opp-edit]",card).addEventListener("click",function(){fillOppForm(x);$("#opsOppAdd").dataset.edit=id;$("#opsOppAdd").textContent="Save opportunity";$("#opsOppName").focus();});$("[data-opp-del]",card).addEventListener("click",function(){OPS.opportunities=OPS.opportunities.filter(function(o){return o.id!==id;});save();audit("opportunity","Opportunity deleted",x.name);renderOpps();renderGuardrails();});});}
+function renderOpps(){var host=$("#opsOppList");if(!host)return;var arr=OPS.opportunities.slice().sort(function(a,b){var o={qualified:0,forming:1,watching:2,expired:3};return o[oppStatus(a)]-o[oppStatus(b)]||(b.createdAt||"").localeCompare(a.createdAt||"");});$("#opsOppBadge").textContent=arr.filter(function(x){return oppStatus(x)!=="expired";}).length;host.innerHTML=arr.length?arr.map(function(x){var st=oppStatus(x),r=rr(x.entry,x.stop,x.target),checks=x.checks||[];return '<article class="ops-opp" data-opp="'+esc(x.id)+'"><div class="ops-opp-head"><div><b>'+esc(x.name||"Untitled opportunity")+'</b><p>'+esc(x.dir||"—")+(x.expires?' · expires '+esc(x.expires):'')+(x.note?' · '+esc(x.note):'')+'</p></div><span class="ops-status '+st+'">'+st.toUpperCase()+'</span></div><div class="ops-opp-levels"><span>ENTRY<b>'+esc(x.entry==null?'—':x.entry)+'</b></span><span>STOP<b>'+esc(x.stop==null?'—':x.stop)+'</b></span><span>TARGET<b>'+esc(x.target==null?'—':x.target)+'</b></span><span>R:R<b>'+esc(r==null?'—':r.toFixed(2)+'R')+'</b></span></div><div class="ops-opp-checks">'+["Location","Trigger","Momentum","Retest"].map(function(k,i){return '<button type="button" data-opp-check="'+i+'" class="'+(checks[i]?'on':'')+'">'+(checks[i]?'✓ ':'')+esc(k)+'</button>';}).join("")+'</div><div class="ops-opp-actions"><button type="button" class="ops-mini primary" data-opp-load>Load into Flow</button><button type="button" class="ops-mini" data-opp-edit>Edit</button><button type="button" class="ops-mini danger" data-opp-del>Delete</button></div></article>';}).join(""):'<div class="ops-empty">No opportunities are waiting. Capture the current Flow setup or add one manually.</div>';$$('[data-opp]',host).forEach(function(card){var id=card.dataset.opp,x=OPS.opportunities.filter(function(o){return o.id===id;})[0];if(!x)return;$$('[data-opp-check]',card).forEach(function(b){b.addEventListener("click",function(){x.checks=x.checks||[false,false,false,false];x.checks[+b.dataset.oppCheck]=!x.checks[+b.dataset.oppCheck];save();audit("opportunity","Opportunity confirmation changed",x.name+" · "+oppStatus(x));renderOpps();renderGuardrails();});});$("[data-opp-load]",card).addEventListener("click",function(){if(x.entry!=null)setInput("#entry",x.entry);if(x.stop!=null)setInput("#stop",x.stop);if(x.target!=null)setInput("#target",x.target);audit("opportunity","Opportunity loaded into Flow",x.name);var nav=$('.navbtn[data-view="flow"]');if(nav)nav.click();setTimeout(function(){var f=$("#f4");if(f)f.scrollIntoView({behavior:"smooth",block:"start"});},70);});$("[data-opp-edit]",card).addEventListener("click",function(){fillOppForm(x);$("#opsOppAdd").dataset.edit=id;$("#opsOppAdd").textContent="Save opportunity";$("#opsOppName").focus();});$("[data-opp-del]",card).addEventListener("click",function(){OPS.opportunities=OPS.opportunities.filter(function(o){return o.id!==id;});save();audit("opportunity","Opportunity deleted",x.name);renderOpps();renderGuardrails();});});}
 function saveOpp(){var editing=$("#opsOppAdd").dataset.edit||"",x=editing?OPS.opportunities.filter(function(o){return o.id===editing;})[0]:null;var data={name:read("#opsOppName").slice(0,160)||"Untitled opportunity",dir:read("#opsOppDir")||"Long",entry:num(read("#opsOppEntry")),stop:num(read("#opsOppStop")),target:num(read("#opsOppTarget")),expires:read("#opsOppExpiry"),checks:[1,2,3,4].map(function(i){return $("#opsOppC"+i).checked;}),note:read("#opsOppNote").slice(0,600)};if(x){Object.assign(x,data,{updatedAt:NOW()});audit("opportunity","Opportunity updated",x.name+" · "+oppStatus(x));}else{data.id=uid("o-");data.createdAt=NOW();OPS.opportunities.push(data);audit("opportunity","Opportunity added",data.name+" · "+oppStatus(data));}save();fillOppForm(null);$("#opsOppAdd").dataset.edit="";$("#opsOppAdd").textContent="Add opportunity";renderOpps();renderGuardrails();}
 
 /* Risk governor + guardrails */
@@ -18023,7 +17744,7 @@ function readiness(){var t=text("#v7Readiness");var n=parseFloat(t);return isFin
 function psych(){var p=(v7().psych||{})[DAY()];return p||{energy:3,focus:3,stress:2,confidence:3,urgency:1};}
 function nativeLocked(){var l=$("#lockBannerFlow")||$("#lockBanner");return !!(l&&l.classList.contains("locked"));}
 function riskMode(){var td=todayTrades(),ts=stat(td),all=journal(),wk=weekKey(DAY()),ws=stat(all.filter(function(t){return weekKey(t.d)===wk;})),maxLoss=Math.abs(num(read("#maxLossR"))||2),weekMult=window.MTSCFG&&isFinite(window.MTSCFG.weekMult)?+window.MTSCFG.weekMult:2.5,p=psych(),rd=readiness(),recent=all.slice(-3),breaky=recent.filter(function(t){return (t.rb||[]).length;}).length,poor=recent.filter(function(t){return t.g==="C"||t.g==="D";}).length,reasons=[];if(nativeLocked()||ts.net<=-maxLoss||consecutiveLosses()>=(parseInt(read("#maxStreak"),10)||2)){reasons.push("A native daily/session hard limit is active.");return {mode:"LOCKED",cap:0,reasons:reasons};}if(ws.net<=-(maxLoss*weekMult*.6)){reasons.push("At least 60% of the weekly loss budget is used.");return {mode:"RECOVERY",cap:+OPS.risk.recovery||0,reasons:reasons};}if(breaky>=2||poor>=2){reasons.push("Recent execution contains repeated rule breaks or C/D grades.");return {mode:"RECOVERY",cap:+OPS.risk.recovery||0,reasons:reasons};}if(ts.l>=1){reasons.push("At least one loss has been recorded today.");}if(rd!=null&&rd<70){reasons.push("Readiness is below 70%.");}if(p.stress>=4||p.urgency>=4){reasons.push("Stress or urgency is high.");}if(p.energy<=2||p.focus<=2){reasons.push("Energy or focus is low.");}if(reasons.length)return {mode:"CAUTION",cap:+OPS.risk.caution||0,reasons:reasons};return {mode:"NORMAL",cap:+OPS.risk.normal||0,reasons:["No risk-reduction condition is currently active."]};}
-function currentRR(){var e=num(read("#entry")),s=num(read("#stop")),t=num(read("#target")),sp=Math.max(0,num(read("#spread"))||0);if(rr(e,s,t)==null)return null;return Math.abs(t-e)/(Math.abs(e-s)+sp);}
+function currentRR(){return rr(num(read("#entry")),num(read("#stop")),num(read("#target")));}
 function newsBlock(){var r=OPS.guardrails.news,now=gstMinutes(),hit=null;eventsToday().forEach(function(e){if(+e.k!==1)return;var p=String(e.t||"").split(":"),m=(+p[0]||0)*60+(+p[1]||0),d=m-now;if(d<=+r.before&&d>=-(+r.after)&&(!hit||Math.abs(d)<Math.abs(hit.delta)))hit={event:e,delta:d};});return hit;}
 function cooldown(){var losses=todayTrades().filter(function(t){return +t.r<0;}).sort(function(a,b){return (a.t||"").localeCompare(b.t||"");});var last=losses[losses.length-1];if(!last)return {active:false,remain:0,last:null};var dt=parseTradeTime(last);if(!dt)return {active:false,remain:0,last:last};var mins=(Date.now()-dt.getTime())/60000,need=+OPS.guardrails.cooldown.minutes||15;return {active:mins>=0&&mins<need,remain:Math.max(0,Math.ceil(need-mins)),last:last};}
 function evaluateGuardrails(){var g=OPS.guardrails,out=[],rrv=currentRR(),cd=cooldown(),news=newsBlock(),streak=consecutiveLosses(),maxStreak=parseInt(read("#maxStreak"),10)||2,td=todayTrades(),net=stat(td).net,maxLoss=Math.abs(num(read("#maxLossR"))||2),maxTrades=parseInt(read("#maxTrades"),10)||3,reason=read("#v7ArmReason"),ack=$("#v7CogAck")?$("#v7CogAck").checked:false,rm=riskMode(),requested=num(read("#risk"));function add(k,label,pass,detail){var r=g[k]||{};if(r.enabled===false)return;out.push({key:k,label:label,pass:pass,severity:r.severity||"hard",detail:detail});}
@@ -18045,10 +17766,10 @@ function renderGuardrails(){var host=$("#opsRuleList");if(!host)return;var g=OPS
  {k:"cognitive",name:"Cognitive reason",desc:"Mirrors the existing reason + acknowledgement protection."},
  {k:"riskcap",name:"Dynamic risk cap",desc:"Blocks when requested risk exceeds the governor's permitted risk."},
  {k:"qualified",name:"Qualified opportunity",desc:"Optional: require one four-confirmation opportunity before ARM."}
- ];var __h=defs.map(function(d){var r=g[d.k];return '<div class="ops-rule '+(d.native?'native':'')+'"><div class="ops-rule-copy"><b>'+esc(d.name)+'</b><span>'+esc(d.desc)+'</span></div><div>'+(d.value?'<input type="number" min="0" step="'+(d.k==='minrr'?'0.1':'1')+'" data-guard-val="'+d.k+'" data-field="'+d.value+'" value="'+esc(r[d.value])+'" aria-label="'+esc(d.name)+' value">':'<span class="pill">'+(d.native?esc((parseInt(read('#maxStreak'),10)||2)+' losses'):'rule')+'</span>')+'</div><div><select data-guard-sev="'+d.k+'" aria-label="'+esc(d.name)+' severity"><option value="hard"'+(r.severity==='hard'?' selected':'')+'>Hard block</option><option value="warn"'+(r.severity==='warn'?' selected':'')+'>Warning</option></select></div><label class="ops-rule-toggle"><input type="checkbox" data-guard-on="'+d.k+'"'+(r.enabled!==false?' checked':'')+' aria-label="Enable '+esc(d.name)+'"></label></div>';}).join("");if(host.__h!==__h){host.__h=__h;host.innerHTML=__h;$$('[data-guard-on]',host).forEach(function(e){e.addEventListener("change",function(){g[e.dataset.guardOn].enabled=e.checked;save();audit("guardrail","Guardrail "+(e.checked?"enabled":"disabled"),e.dataset.guardOn);renderGuardrails();});});$$('[data-guard-sev]',host).forEach(function(e){e.addEventListener("change",function(){g[e.dataset.guardSev].severity=e.value;save();audit("guardrail","Guardrail severity changed",e.dataset.guardSev+" → "+e.value);renderGuardrails();});});$$('[data-guard-val]',host).forEach(function(e){e.addEventListener("change",function(){var x=g[e.dataset.guardVal],n=num(e.value);if(n==null)return;x[e.dataset.field]=n;save();audit("guardrail","Guardrail threshold changed",e.dataset.guardVal+" → "+n);renderGuardrails();});});}var ev=evaluateGuardrails(),blocks=ev.filter(function(x){return !x.pass&&x.severity==="hard";}),warns=ev.filter(function(x){return !x.pass&&x.severity!=="hard";}),head=$("#opsGuardHead");head.className="ops-guard-head "+(blocks.length?"bad":warns.length?"warn":"ok");head.innerHTML='<strong>'+(blocks.length?'ARM blocked':warns.length?'ARM allowed with warnings':'ARM guardrails clear')+'</strong><span>'+blocks.length+' hard · '+warns.length+' warn</span>';$("#opsGuardBadge").textContent=blocks.length||"✓";$("#opsGuardEval").innerHTML=ev.map(function(x){return '<div class="ops-eval '+(!x.pass?(x.severity==='hard'?'block':'warn'):'')+'"><i></i><div><b>'+esc(x.label)+'</b><span>'+esc(x.detail)+' · '+(x.pass?'pass':x.severity==='hard'?'HARD BLOCK':'warning')+'</span></div></div>';}).join("");var c=$("#opsArmContract");if(!OPS.guardrails.enforce){c.className="gate warn";c.textContent="Hard-rule enforcement is switched off. The original native flow rules still apply.";}else if(blocks.length){c.className="gate bad";c.textContent=blocks.length+" hard guardrail(s) currently block ARM: "+blocks.map(function(x){return x.label;}).join(", ")+".";}else{c.className="gate ok";c.textContent="Control-layer guardrails are clear. ARM still depends on the original Flow gate.";}}
+ ];host.innerHTML=defs.map(function(d){var r=g[d.k];return '<div class="ops-rule '+(d.native?'native':'')+'"><div class="ops-rule-copy"><b>'+esc(d.name)+'</b><span>'+esc(d.desc)+'</span></div><div>'+(d.value?'<input type="number" min="0" step="'+(d.k==='minrr'?'0.1':'1')+'" data-guard-val="'+d.k+'" data-field="'+d.value+'" value="'+esc(r[d.value])+'" aria-label="'+esc(d.name)+' value">':'<span class="pill">'+(d.native?esc((parseInt(read('#maxStreak'),10)||2)+' losses'):'rule')+'</span>')+'</div><div><select data-guard-sev="'+d.k+'" aria-label="'+esc(d.name)+' severity"><option value="hard"'+(r.severity==='hard'?' selected':'')+'>Hard block</option><option value="warn"'+(r.severity==='warn'?' selected':'')+'>Warning</option></select></div><label class="ops-rule-toggle"><input type="checkbox" data-guard-on="'+d.k+'"'+(r.enabled!==false?' checked':'')+' aria-label="Enable '+esc(d.name)+'"></label></div>';}).join("");$$('[data-guard-on]',host).forEach(function(e){e.addEventListener("change",function(){g[e.dataset.guardOn].enabled=e.checked;save();audit("guardrail","Guardrail "+(e.checked?"enabled":"disabled"),e.dataset.guardOn);renderGuardrails();});});$$('[data-guard-sev]',host).forEach(function(e){e.addEventListener("change",function(){g[e.dataset.guardSev].severity=e.value;save();audit("guardrail","Guardrail severity changed",e.dataset.guardSev+" → "+e.value);renderGuardrails();});});$$('[data-guard-val]',host).forEach(function(e){e.addEventListener("change",function(){var x=g[e.dataset.guardVal],n=num(e.value);if(n==null)return;x[e.dataset.field]=n;save();audit("guardrail","Guardrail threshold changed",e.dataset.guardVal+" → "+n);renderGuardrails();});});var ev=evaluateGuardrails(),blocks=ev.filter(function(x){return !x.pass&&x.severity==="hard";}),warns=ev.filter(function(x){return !x.pass&&x.severity!=="hard";}),head=$("#opsGuardHead");head.className="ops-guard-head "+(blocks.length?"bad":warns.length?"warn":"ok");head.innerHTML='<strong>'+(blocks.length?'ARM blocked':warns.length?'ARM allowed with warnings':'ARM guardrails clear')+'</strong><span>'+blocks.length+' hard · '+warns.length+' warn</span>';$("#opsGuardBadge").textContent=blocks.length||"✓";$("#opsGuardEval").innerHTML=ev.map(function(x){return '<div class="ops-eval '+(!x.pass?(x.severity==='hard'?'block':'warn'):'')+'"><i></i><div><b>'+esc(x.label)+'</b><span>'+esc(x.detail)+' · '+(x.pass?'pass':x.severity==='hard'?'HARD BLOCK':'warning')+'</span></div></div>';}).join("");var c=$("#opsArmContract");if(!OPS.guardrails.enforce){c.className="gate warn";c.textContent="Hard-rule enforcement is switched off. The original native flow rules still apply.";}else if(blocks.length){c.className="gate bad";c.textContent=blocks.length+" hard guardrail(s) currently block ARM: "+blocks.map(function(x){return x.label;}).join(", ")+".";}else{c.className="gate ok";c.textContent="Control-layer guardrails are clear. ARM still depends on the original Flow gate.";}}
 function renderRisk(){var x=riskMode(),hero=$("#opsRiskHero");if(!hero)return;var cls=x.mode==="NORMAL"?"":x.mode==="LOCKED"?"bad":"warn",requested=num(read("#risk"));hero.innerHTML='<div class="ops-risk-mode '+cls+'">'+esc(x.mode)+'</div><div class="ops-risk-main"><b>'+esc(x.mode==="LOCKED"?'Risk permission closed':x.mode.charAt(0)+x.mode.slice(1).toLowerCase()+' risk mode')+'</b><span>'+(requested==null?'No requested risk is currently entered.':esc(requested.toFixed(2)+'% requested'))+'</span></div><div class="ops-risk-cap"><span>MAX PERMITTED</span><b>'+esc(x.cap.toFixed(2))+'%</b></div>';$("#opsRiskWhy").innerHTML=x.reasons.map(function(r){return '<div class="ops-why"><b>'+esc(x.mode)+'</b><span>'+esc(r)+'</span></div>';}).join("");$("#opsRiskNormal").value=OPS.risk.normal;$("#opsRiskCaution").value=OPS.risk.caution;$("#opsRiskRecovery").value=OPS.risk.recovery;$("#opsRiskEnforce").checked=OPS.risk.enforce!==false;}
 function saveRisk(){var n=num(read("#opsRiskNormal")),c=num(read("#opsRiskCaution")),r=num(read("#opsRiskRecovery"));if(n==null||c==null||r==null||n<c||c<r){toast("Risk policy must descend Normal ≥ Caution ≥ Recovery.");return;}OPS.risk.normal=n;OPS.risk.caution=c;OPS.risk.recovery=r;OPS.risk.enforce=$("#opsRiskEnforce").checked;save();audit("risk","Risk governor policy changed","Normal "+n+"% · Caution "+c+"% · Recovery "+r+"% · enforce "+OPS.risk.enforce);renderRisk();renderGuardrails();}
-function enforceArm(){var btn=$("#armBtn");if(!btn)return;btn.addEventListener("click",function(e){if(!OPS.guardrails.enforce)return;var blocks=hardBlocks();if(!blocks.length)return;e.preventDefault();e.stopImmediatePropagation();btn.classList.add("v14-blocked");btn.classList.remove("mts-shake");void btn.offsetWidth;btn.classList.add("mts-shake");setTimeout(function(){btn.classList.remove("mts-shake");},420);var note=$("#armNote");if(note)note.textContent="Control guardrail: "+blocks[0].label+" — "+blocks[0].detail;toast("ARM blocked: "+blocks[0].label);audit("guardrail","ARM blocked",blocks.map(function(x){return x.label+": "+x.detail;}).join(" | "));var sec=$("#op-guardrails");var nav=$('.navbtn[data-view="operations"]');if(nav)nav.click();setTimeout(function(){if(sec)sec.scrollIntoView({behavior:"smooth",block:"start"});},70);},true);}
+function enforceArm(){var btn=$("#armBtn");if(!btn)return;btn.addEventListener("click",function(e){if(!OPS.guardrails.enforce)return;var blocks=hardBlocks();if(!blocks.length)return;e.preventDefault();e.stopImmediatePropagation();btn.classList.add("v14-blocked");var note=$("#armNote");if(note)note.textContent="Control guardrail: "+blocks[0].label+" — "+blocks[0].detail;toast("ARM blocked: "+blocks[0].label);audit("guardrail","ARM blocked",blocks.map(function(x){return x.label+": "+x.detail;}).join(" | "));var sec=$("#op-guardrails");var nav=$('.navbtn[data-view="operations"]');if(nav)nav.click();setTimeout(function(){if(sec)sec.scrollIntoView({behavior:"smooth",block:"start"});},70);},true);}
 
 /* Session brief */
 function lastReview(){var d=v7().dayReviews||{},ks=Object.keys(d).sort().reverse();return ks.length?d[ks[0]]:null;}
@@ -18071,7 +17792,7 @@ function populateTradeSelects(){var a=journal().slice().reverse(),html=a.length?
 /* Execution */
 function execCalc(k,x){var t=byKey(k),p=(v7().plans||{})[k]||null;if(!t||!x)return null;var planned=p&&p.entry!=null?p.entry:t.e,stop=p&&p.stop!=null?p.stop:t.sl,fill=num(x.fill),dist=planned!=null&&stop!=null?Math.abs(planned-stop):null,dir=p&&p.direction?p.direction:(planned!=null&&stop!=null?(stop<planned?"Long":"Short"):""),slip=0,spreadR=0;if(fill!=null&&planned!=null&&dist){slip=dir==="Short"?(planned-fill)/dist:(fill-planned)/dist;}if(num(x.spread)!=null&&dist)spreadR=(+x.spread)/dist;var fee=num(x.commissionR)||0,leak=slip+spreadR+fee;return {trade:t,plan:p,planned:planned,stop:stop,dist:dist,dir:dir,slippageR:slip,spreadR:spreadR,feesR:fee,leakageR:leak,adjusted:(+t.r||0)+leak};}
 function loadExec(){var k=read("#opsExecTrade"),x=OPS.execution[k]||{},S=v7(),a=(S.actuals||{})[k]||{},p=(S.plans||{})[k]||null,t=byKey(k);$("#opsExecFill").value=x.fill!=null?x.fill:(a.entry!=null?a.entry:(t&&t.e!=null?t.e:(p&&p.entry!=null?p.entry:"")));$("#opsExecSpread").value=x.spread==null?"":x.spread;$("#opsExecCommission").value=x.commissionR==null?"":x.commissionR;$("#opsExecLatency").value=x.latencyMs==null?"":x.latencyMs;$("#opsExecNote").value=x.note||"";renderExecution();}
-function renderExecution(){var rows=[];Object.keys(OPS.execution).forEach(function(k){var c=execCalc(k,OPS.execution[k]);if(c)rows.push({k:k,c:c,x:OPS.execution[k]});});var avg=rows.length?rows.reduce(function(a,r){return a+r.c.leakageR;},0)/rows.length:null,avgLat=rows.filter(function(r){return num(r.x.latencyMs)!=null;});avgLat=avgLat.length?avgLat.reduce(function(a,r){return a+(+r.x.latencyMs);},0)/avgLat.length:null;var total=rows.reduce(function(a,r){return a+r.c.leakageR;},0);$("#opsExecMetrics").innerHTML=metric("Recorded",String(rows.length))+metric("Avg leakage",avg==null?"—":avg.toFixed(2)+"R",null,avg!=null&&avg>.15?"bad":"")+metric("Total leakage",rows.length?total.toFixed(2)+"R":"—")+metric("Avg latency",avgLat==null?"—":Math.round(avgLat)+" ms");var g=$("#opsExecRead");g.className="gate "+(avg!=null&&avg>.15?"warn":rows.length?"ok":"");g.textContent=!rows.length?"Add manual fill/spread/fee evidence to separate execution cost from strategy outcome.":"Estimated execution leakage is normalized by planned stop distance. It is approximate until broker fills and costs are captured automatically.";$("#opsExecRows").innerHTML=rows.length?rows.slice().reverse().map(function(r){var t=r.c.trade;return '<tr><td>'+esc(t.d+' '+t.t+' · '+(t.s||'—'))+'</td><td class="n">'+esc(r.x.fill==null?'—':r.x.fill)+'</td><td class="n '+(r.c.slippageR>.1?'bad':'')+'">'+r.c.slippageR.toFixed(2)+'R</td><td class="n">'+r.c.spreadR.toFixed(2)+'R</td><td class="n">'+r.c.feesR.toFixed(2)+'R</td><td class="n">'+esc(r.x.latencyMs==null?'—':r.x.latencyMs+' ms')+'</td><td class="n '+(r.c.leakageR>.15?'bad':'')+'">'+r.c.leakageR.toFixed(2)+'R</td></tr>';}).join(""):'<tr><td colspan="7">No execution evidence recorded.</td></tr>';}
+function renderExecution(){var rows=[];Object.keys(OPS.execution).forEach(function(k){var c=execCalc(k,OPS.execution[k]);if(c)rows.push({k:k,c:c,x:OPS.execution[k]});});var avg=rows.length?rows.reduce(function(a,r){return a+r.c.leakageR;},0)/rows.length:null,avgLat=rows.filter(function(r){return num(r.x.latencyMs)!=null;});avgLat=avgLat.length?avgLat.reduce(function(a,r){return a+(+r.x.latencyMs);},0)/avgLat.length:null,total=rows.reduce(function(a,r){return a+r.c.leakageR;},0);$("#opsExecMetrics").innerHTML=metric("Recorded",String(rows.length))+metric("Avg leakage",avg==null?"—":avg.toFixed(2)+"R",null,avg!=null&&avg>.15?"bad":"")+metric("Total leakage",rows.length?total.toFixed(2)+"R":"—")+metric("Avg latency",avgLat==null?"—":Math.round(avgLat)+" ms");var g=$("#opsExecRead");g.className="gate "+(avg!=null&&avg>.15?"warn":rows.length?"ok":"");g.textContent=!rows.length?"Add manual fill/spread/fee evidence to separate execution cost from strategy outcome.":"Estimated execution leakage is normalized by planned stop distance. It is approximate until broker fills and costs are captured automatically.";$("#opsExecRows").innerHTML=rows.length?rows.slice().reverse().map(function(r){var t=r.c.trade;return '<tr><td>'+esc(t.d+' '+t.t+' · '+(t.s||'—'))+'</td><td class="n">'+esc(r.x.fill==null?'—':r.x.fill)+'</td><td class="n '+(r.c.slippageR>.1?'bad':'')+'">'+r.c.slippageR.toFixed(2)+'R</td><td class="n">'+r.c.spreadR.toFixed(2)+'R</td><td class="n">'+r.c.feesR.toFixed(2)+'R</td><td class="n">'+esc(r.x.latencyMs==null?'—':r.x.latencyMs+' ms')+'</td><td class="n '+(r.c.leakageR>.15?'bad':'')+'">'+r.c.leakageR.toFixed(2)+'R</td></tr>';}).join(""):'<tr><td colspan="7">No execution evidence recorded.</td></tr>';}
 function saveExec(){var k=read("#opsExecTrade");if(!k)return;var fill=num(read("#opsExecFill"));OPS.execution[k]={fill:fill,spread:num(read("#opsExecSpread")),commissionR:num(read("#opsExecCommission")),latencyMs:num(read("#opsExecLatency")),note:read("#opsExecNote").slice(0,800),at:NOW()};var S=v7();if(S&&typeof S==="object"){S.actuals=S.actuals||{};var prev=S.actuals[k]||{};S.actuals[k]=Object.assign({},prev,{entry:fill,savedAt:NOW()});try{localStorage.setItem("mts.v3.v7static",JSON.stringify(S));}catch(e){}if(window.MTSBackupTouch)window.MTSBackupTouch();}save();audit("system","Execution evidence saved",k+" · synced to Journal actual-entry evidence");renderExecution();}
 
 /* Version comparison */
@@ -18148,7 +17869,7 @@ function init(){if(!$("#view-operations"))return;initOpsNav();loadMarketForm();r
   $("#opsMarketRefresh").addEventListener("click",renderMarket);$("#opsMarketSave").addEventListener("click",saveMarket);
   $("#opsOppCapture").addEventListener("click",function(){fillOppForm(currentFlowOpportunity());$("#opsOppName").focus();});$("#opsOppAdd").addEventListener("click",saveOpp);$("#opsOppClearForm").addEventListener("click",function(){fillOppForm(null);$("#opsOppAdd").dataset.edit="";$("#opsOppAdd").textContent="Add opportunity";});
   $("#opsRiskSave").addEventListener("click",saveRisk);$("#opsRiskEnforce").addEventListener("change",saveRisk);$("#opsRiskApply").addEventListener("click",function(){var r=riskMode();if(setInput("#risk",r.cap)){audit("risk","Risk governor applied",r.mode+" · "+r.cap.toFixed(2)+"%");toast("Risk set to "+r.cap.toFixed(2)+"%.");}else toast("The Flow risk field is unavailable.");});
-  $("#opsBriefBuild").addEventListener("click",function(){var b=renderBrief();try{localStorage.setItem(KEY+".lastBrief",JSON.stringify(b));}catch(e){}audit("system","Session brief generated",briefText(b).replace(/\n/g," · "));});$("#opsBriefCopy").addEventListener("click",function(){copyText(briefText(briefData())).then(function(){toast("Session brief copied.");},function(){toast("Copy failed. Select the brief text and copy it manually.");});});$("#opsBriefSave").addEventListener("click",function(){var b=briefData();OPS.briefs[DAY()]={at:NOW(),text:briefText(b)};save();audit("system","Session brief snapshot saved",DAY());toast("Brief snapshot saved.");});
+  $("#opsBriefBuild").addEventListener("click",function(){var b=renderBrief();try{localStorage.setItem(KEY+".lastBrief",JSON.stringify(b));}catch(e){}audit("system","Session brief generated",briefText(b).replace(/\n/g," · "));});$("#opsBriefCopy").addEventListener("click",function(){copyText(briefText(briefData())).then(function(){toast("Session brief copied.");});});$("#opsBriefSave").addEventListener("click",function(){var b=briefData();OPS.briefs[DAY()]={at:NOW(),text:briefText(b)};save();audit("system","Session brief snapshot saved",DAY());toast("Brief snapshot saved.");});
   $("#opsFlightFilter").addEventListener("change",renderFlight);$("#opsFlightAdd").addEventListener("click",function(){var n=read("#opsFlightNote");if(!n)return;flight("note","Manual note",n);$("#opsFlightNote").value="";audit("flight","Flight-recorder note added",n);});$("#opsFlightExport").addEventListener("click",function(){download("mts-flight-recorder-"+DAY()+".json",JSON.stringify(OPS.flight,null,2),"application/json");});
   $("#opsReplayStart").addEventListener("click",function(){replay.key=read("#opsReplayTrade");replay.steps=replay.key?replaySteps(replay.key):[];replay.index=0;renderReplay();audit("system","Trade replay started",replay.key);});$("#opsReplayPrev").addEventListener("click",function(){if(replay.index>0){replay.index--;renderReplay();}});$("#opsReplayNext").addEventListener("click",function(){if(replay.index<replay.steps.length-1){replay.index++;renderReplay();}});
   $("#opsExecTrade").addEventListener("change",loadExec);$("#opsExecSave").addEventListener("click",saveExec);
@@ -18157,7 +17878,7 @@ function init(){if(!$("#view-operations"))return;initOpsNav();loadMarketForm();r
   $("#opsImpFile").addEventListener("change",function(){loadImportFile(this.files&&this.files[0]);});$("#opsImpPreview").addEventListener("click",previewImport);$("#opsImpCommit").addEventListener("click",commitImport);$("#opsImpDateMode").addEventListener("change",previewImport);$("#opsImpRiskCash").addEventListener("input",function(){if(IMP.parsed)previewImport();});
   $("#opsOpenAlerts").addEventListener("click",function(){var b=$("#bellBtn");if(b)b.click();});$("#opsBriefTime").addEventListener("change",function(){OPS.notifications.briefTime=this.value||"09:30";save();audit("system","Brief reminder changed",OPS.notifications.briefTime);});$("#opsNotifPermission").addEventListener("click",function(){if(!window.Notification){toast("Desktop notifications are not supported here.");return;}Notification.requestPermission().then(function(){renderNotifications();});});$("#opsNotifTest").addEventListener("click",function(){notif("brief","Terminal Control test","Notification routing is working.","ops-test|"+Date.now());});
   $("#opsNativeBackup").addEventListener("click",function(){if(window.MTSBackupNow)window.MTSBackupNow().then(function(ok){toast(ok?"Browser snapshot saved.":"Browser snapshot failed.");});});$("#opsBackupExport").addEventListener("click",exportEncrypted);$("#opsBackupFile").addEventListener("change",function(){BACKUPFILE=this.files&&this.files[0];$("#opsBackupFileName").textContent=BACKUPFILE?BACKUPFILE.name:"No file selected";});$("#opsBackupRestore").addEventListener("click",restoreEncrypted);
-  $("#opsAuditType").addEventListener("change",renderAudit);$("#opsAuditSearch").addEventListener("input",renderAudit);$("#opsAuditExport").addEventListener("click",function(){download("mts-audit-"+DAY()+".json",JSON.stringify(OPS.audit,null,2),"application/json");});$("#opsAuditClear").addEventListener("click",function(){if(!window.confirm("Clear the local Terminal Control audit trail?"))return;OPS.audit=[];save();audit("system","Audit trail cleared","A new audit sequence started.");});$("#opsBacklogCopy").addEventListener("click",function(){copyText(backlogMarkdown()).then(function(){toast("Backlog copied.");},function(){toast("Copy failed. The browser blocked clipboard access.");});});
+  $("#opsAuditType").addEventListener("change",renderAudit);$("#opsAuditSearch").addEventListener("input",renderAudit);$("#opsAuditExport").addEventListener("click",function(){download("mts-audit-"+DAY()+".json",JSON.stringify(OPS.audit,null,2),"application/json");});$("#opsAuditClear").addEventListener("click",function(){if(!window.confirm("Clear the local Terminal Control audit trail?"))return;OPS.audit=[];save();audit("system","Audit trail cleared","A new audit sequence started.");});$("#opsBacklogCopy").addEventListener("click",function(){copyText(backlogMarkdown()).then(function(){toast("Backlog copied.");});});
   if(localStorage.getItem("mts.v3.ops.restoreAt")){localStorage.removeItem("mts.v3.ops.restoreAt");audit("backup","Encrypted backup restored","Terminal reloaded from a secure backup.");}
   window.MTSOps={state:OPS,evaluateGuardrails:evaluateGuardrails,riskMode:riskMode,marketSnapshot:marketSnapshot,flight:flight,audit:audit,backlog:BACKLOG};
   setInterval(sync,2500);sync();
@@ -18224,286 +17945,20 @@ var scenarios=[
  {id:'bo-short',name:'Valid bearish breakout',strategy:'pa-breakout',dir:'short',trigger:15,level:42,kind:'level',bars:[[46,48,43,45],[45,47,42,44],[44,48,43,46],[46,48,43,44],[44,47,42,45],[45,48,43,46],[46,48,43,44],[44,47,42,45],[45,48,43,46],[46,47,42,44],[44,47,42,45],[45,47,43,44],[44,46,42,43],[43,45,42,43],[43,44,38,39],[39,40,34,35],[35,37,30,32]],why:'The candle closes below established support by the required buffer; the prior close was not already beyond the level. That is a confirmed bearish breakout.'},
  {id:'rt-short',name:'Bearish breakout and retest',strategy:'pa-retest',dir:'short',trigger:19,level:42,kind:'level',bars:[[47,49,44,46],[46,48,43,45],[45,48,42,44],[44,47,42,45],[45,48,43,46],[46,48,42,44],[44,47,42,45],[45,48,43,46],[46,47,42,44],[44,47,42,45],[45,47,43,44],[44,46,42,43],[43,44,38,39],[39,40,34,35],[35,37,31,33],[33,39,32,37],[37,42,36,40],[40,43,39,42],[42,43,38,39],[39,40,34,35]],why:'Support breaks first. The later revisit tests the old support from below and the trigger candle closes bearish back under it. That confirmed rejection is the short entry.'}
 ];
-var PAS={i:-1,reveal:0,correct:0,attempts:0,answered:false,filter:'all',difficulty:'guided'};
-var NAMES={'pa-breakout':'PA Breakout','pa-double':'PA Double Top / Double Bottom','pa-retest':'PA Breakout & Retest','none':'No valid setup','all':'All setups','invalid':'Only invalids'};
+var PAS={i:-1,reveal:0,correct:0,attempts:0,answered:false};
 function scen(){return scenarios[PAS.i]||scenarios[0];}
-function filterPool(){
-  if(PAS.filter==='all')return scenarios.slice();
-  if(PAS.filter==='invalid')return scenarios.filter(function(s){return s.strategy==='none';});
-  return scenarios.filter(function(s){return s.strategy===PAS.filter;});
-}
-function resetAnswerVisuals(){
-  ['pasStrategy','pasDirection','pasAction'].forEach(function(id){var el=$('#'+id);if(el)el.value='';});
-  $$('.pa-answer-chip').forEach(function(b){b.classList.remove('is-active');b.setAttribute('aria-pressed','false');});
-}
-function pickScenarioFromPool(pool){
-  if(!pool.length)pool=scenarios;
-  var next=pool[Math.floor(Math.random()*pool.length)];
-  if(pool.length>1 && scen() && next.id===scen().id){ next=pool[(pool.findIndex(function(x){return x.id===next.id;})+1)%pool.length]; }
-  PAS.i=scenarios.findIndex(function(s){return s.id===next.id;});
-}
-function setFeedback(msg,cls){var fb=$('#pasFeedback');if(!fb)return;fb.className='gate mt-3'+(cls?' '+cls:'');fb.innerHTML=msg;}
-function newScenario(forceFilter){
-  if(forceFilter)PAS.filter=forceFilter;
-  pickScenarioFromPool(filterPool());
-  PAS.reveal=PAS.difficulty==='guided'?Math.min(Math.max(8,scen().trigger-2),scen().bars.length):(PAS.difficulty==='hard'?Math.min(5,scen().bars.length):Math.min(8,scen().bars.length));
-  PAS.answered=false;
-  resetAnswerVisuals();
-  setFeedback('Read only what is visible. Reveal more bars when the setup is not yet complete.','');
-  var rule=$('#pasRule'); if(rule) rule.hidden=true;
-  paintMistake(null);
-  render();
-}
-function y(v,min,max){return 370-(v-min)/(Math.max(1,max-min))*320;}
+function newScenario(){var n=Math.floor(Math.random()*scenarios.length);if(scenarios.length>1&&n===PAS.i)n=(n+1)%scenarios.length;PAS.i=n;PAS.reveal=Math.min(8,scen().bars.length);PAS.answered=false;$('#pasStrategy').value='';$('#pasDirection').value='';$('#pasAction').value='';$('#pasFeedback').className='gate mt-3';$('#pasFeedback').textContent='Read only what is visible. Reveal more bars when the setup is not yet complete.';$('#pasRule').hidden=true;render();}
+function y(v,min,max){return 370-(v-min)/(max-min)*320;}
+function render(){var s=scen(),bars=s.bars.slice(0,PAS.reveal),all=s.bars.flat(),min=Math.min.apply(null,all)-3,max=Math.max.apply(null,all)+3,svg=$('#pasChart');if(!svg)return;var W=900,left=42,right=20,top=24,bottom=30,cw=(W-left-right)/s.bars.length,parts=['<rect x="'+left+'" y="'+top+'" width="'+(W-left-right)+'" height="'+(420-top-bottom)+'" fill="none" stroke="var(--chart-grid)"/>'];for(var g=0;g<5;g++){var gy=top+g*(420-top-bottom)/4;parts.push('<line x1="'+left+'" y1="'+gy+'" x2="'+(W-right)+'" y2="'+gy+'" stroke="var(--chart-grid)"/>');}if(s.level!=null){var ly=y(s.level,min,max);parts.push('<line class="'+(s.kind==='neck'?'pas-neck':'pas-level')+'" x1="'+left+'" y1="'+ly+'" x2="'+(W-right)+'" y2="'+ly+'"/><text class="pas-label" x="'+(left+6)+'" y="'+(ly-7)+'">'+(s.kind==='neck'?'neckline':'structure level')+'</text>');}bars.forEach(function(b,i){var x=left+i*cw+cw*.5,yo=y(b[0],min,max),yh=y(b[1],min,max),yl=y(b[2],min,max),yc=y(b[3],min,max),up=b[3]>=b[0],cls=up?'pas-candle-up':'pas-candle-dn',bw=Math.max(5,cw*.5);parts.push('<line class="'+cls+'" x1="'+x+'" y1="'+yh+'" x2="'+x+'" y2="'+yl+'" stroke-width="1.4"/><rect class="'+cls+'" x="'+(x-bw/2)+'" y="'+Math.min(yo,yc)+'" width="'+bw+'" height="'+Math.max(2,Math.abs(yc-yo))+'" rx="1"/>');if(i+1===s.trigger&&PAS.reveal>=s.trigger){parts.push('<circle class="pas-entry" cx="'+x+'" cy="'+yc+'" r="5"/><text class="pas-label" x="'+(x+8)+'" y="'+(yc-8)+'">decision bar</text>');}});svg.innerHTML=parts.join('');$('#pasStage').textContent=PAS.reveal+' / '+s.bars.length+' bars';$('#pasPrev').disabled=PAS.reveal<=1;$('#pasNext').disabled=PAS.reveal>=s.bars.length;$('#pasBlind').textContent=PAS.answered?s.name:'answer hidden';$('#pasBlind').className='pill '+(PAS.answered?'go':'warn');$('#pasScore').textContent=PAS.correct+' correct · '+PAS.attempts+' attempts';}
 function expectedAction(s){if(PAS.reveal<s.trigger)return 'wait';return s.action||(s.strategy==='none'?'stand':'enter');}
-function updateFilters(){
-  $$('.pas-filter').forEach(function(b){var on=b.dataset.pasFilter===PAS.filter;b.classList.toggle('is-active',on);b.setAttribute('aria-pressed',String(on));});
-  $$('.strat-def').forEach(function(card){card.classList.toggle('is-focus', PAS.filter!=='all' && PAS.filter!=='invalid' && card.dataset.paDef===PAS.filter);});
-  var fl=$('#pasFocusLabel'); if(fl) fl.textContent=NAMES[PAS.filter]||'All setups';
-  var df=$('#pasDecisionFocus'); if(df) df.textContent=NAMES[PAS.filter]||'All setups';
-}
-function syncAnswerChips(){
-  $$('.pa-answer-group').forEach(function(group){
-    var target=group.dataset.target, val=$('#'+target).value;
-    $$('.pa-answer-chip',group).forEach(function(btn){var on=btn.dataset.value===val;btn.classList.toggle('is-active',on);btn.setAttribute('aria-pressed',String(on));});
-  });
-}
-function setChoice(target,value){ var el=$('#'+target); if(!el)return; el.value=value; syncAnswerChips(); }
-function updateScenarioState(){
-  var s=scen(), pill=$('#pasStatePill'), note=$('#pasStateExplain');
-  if(!pill || !note) return;
-  if(PAS.reveal < s.trigger){ pill.textContent='Setup not complete'; pill.className='pill warn'; note.textContent='The trigger bar has not yet appeared in the revealed candles. Correct discipline here is to wait, even if a setup seems to be forming.'; return; }
-  if(s.strategy==='none'){ pill.textContent='Invalid or failed setup'; pill.className='pill bad'; note.textContent='A pattern or breakout may appear to be forming, but the objective rule says it does not qualify. The correct action is to stand down or keep waiting depending on the chart state.'; return; }
-  pill.textContent='Trigger visible'; pill.className='pill go'; note.textContent='The objective trigger is visible. Your job is to identify the right setup, name the direction, and decide whether this specific bar is the entry bar.';
-}
-function difficultyCopy(){
-  var map={guided:'Guided shows the marked structure and starts close to the decision bar.',standard:'Standard shows the structure level but gives you more chart development to read.',hard:'Hard starts earlier and hides structural labels and the decision marker until you answer.'};
-  var el=$('#pasDifficultyWhy');if(el)el.textContent=map[PAS.difficulty];
-  $$('[data-pas-difficulty]').forEach(function(b){var on=b.dataset.pasDifficulty===PAS.difficulty;b.setAttribute('aria-pressed',String(on));});
-}
-function mistakeFor(s,st,di,ac,es,ed,ea){
-  if(PAS.reveal<s.trigger && ac!=='wait')return {t:'Anticipation / early entry',w:'You acted before the objective trigger existed. A forming setup is information, not permission.',r:'Before the trigger bar: WAIT. Never borrow confirmation from future candles.'};
-  if(es==='none' && st!=='none'){
-    if(s.id==='bo-wick')return {t:'Wick mistaken for confirmation',w:'Price traded beyond the level but did not close beyond it. You promoted rejection into a breakout.',r:'Structure breaks on a close; a wick alone is not a breakout.'};
-    if(s.id==='db-no-break')return {t:'Pattern named before confirmation',w:'The two lows exist, but the neckline has not broken. The geometry is present; the trade is not.',r:'Double top/bottom becomes tradable only after the neckline closes through.'};
-    if(s.id==='rt-fail')return {t:'Invalidation ignored',w:'The retest failed through the broken level. Treating that as confirmation reverses the role of the invalidation rule.',r:'A retest must hold the broken level from the other side; decisive failure cancels the setup.'};
-    return {t:'False positive',w:'You classified an invalid or incomplete structure as a completed setup.',r:'If every hard condition is not present, choose no valid setup.'};
-  }
-  if(es!=='none' && st!==es)return {t:'Setup misclassification',w:'The direction may look right, but the trigger sequence belongs to a different strategy.',r:'Name the trigger: escape = Breakout; neckline break = Double Top/Bottom; revisit + hold = Breakout & Retest.'};
-  if(ed!=='none' && di!==ed)return {t:'Direction mismatch',w:'You recognized the structure but selected the opposite trade direction.',r:'Direction follows the confirming close: above/hold = long; below/rejection = short.'};
-  if(ac!==ea)return {t:ea==='wait'?'Timing error':'Action error',w:'The setup classification is close, but the action does not match the current state of the setup.',r:ea==='enter'?'When the complete objective trigger prints, the baseline action is ENTER.':(ea==='stand'?'When the setup has objectively failed, STAND DOWN.':'Until confirmation exists, WAIT.')};
-  return {t:'Decision mismatch',w:'One part of the decision does not match the objective state.',r:'Re-check context, trigger, direction, then action in that order.'};
-}
-function paintMistake(m){var box=$('#pasMistake');if(!box)return;if(!m){box.hidden=true;return;}box.hidden=false;$('#pasMistakeType').textContent=m.t;$('#pasMistakeWhy').textContent=m.w;$('#pasMistakeRule').textContent=m.r;}
-function render(){
-  var s=scen(),bars=s.bars.slice(0,PAS.reveal),all=s.bars.flat(),min=Math.min.apply(null,all)-3,max=Math.max.apply(null,all)+3,svg=$('#pasChart');
-  if(!svg)return;
-  var W=900,left=42,right=20,top=24,bottom=30,cw=(W-left-right)/s.bars.length,parts=['<rect x="'+left+'" y="'+top+'" width="'+(W-left-right)+'" height="'+(420-top-bottom)+'" fill="none" stroke="var(--chart-grid)"/>'];
-  for(var g=0;g<5;g++){var gy=top+g*(420-top-bottom)/4;parts.push('<line x1="'+left+'" y1="'+gy+'" x2="'+(W-right)+'" y2="'+gy+'" stroke="var(--chart-grid)"/>');}
-  if(s.level!=null && (PAS.difficulty!=='hard'||PAS.answered)){var ly=y(s.level,min,max);parts.push('<line class="'+(s.kind==='neck'?'pas-neck':'pas-level')+'" x1="'+left+'" y1="'+ly+'" x2="'+(W-right)+'" y2="'+ly+'"/>'+(PAS.difficulty==='guided'||PAS.answered?'<text class="pas-label" x="'+(left+6)+'" y="'+(ly-7)+'">'+(s.kind==='neck'?'neckline':'structure level')+'</text>':''));}
-  bars.forEach(function(b,i){
-    var x=left+i*cw+cw*.5,yo=y(b[0],min,max),yh=y(b[1],min,max),yl=y(b[2],min,max),yc=y(b[3],min,max),up=b[3]>=b[0],cls=up?'pas-candle-up':'pas-candle-dn',bw=Math.max(5,cw*.5);
-    parts.push('<line class="'+cls+'" x1="'+x+'" y1="'+yh+'" x2="'+x+'" y2="'+yl+'" stroke-width="1.4"/><rect class="'+cls+'" x="'+(x-bw/2)+'" y="'+Math.min(yo,yc)+'" width="'+bw+'" height="'+Math.max(2,Math.abs(yc-yo))+'" rx="1"/>');
-    if(i+1===s.trigger&&PAS.reveal>=s.trigger&&(PAS.difficulty!=='hard'||PAS.answered)){parts.push('<circle class="pas-entry" cx="'+x+'" cy="'+yc+'" r="5"/>'+(PAS.difficulty==='guided'||PAS.answered?'<text class="pas-label" x="'+(x+8)+'" y="'+(yc-8)+'">decision bar</text>':''));}
-  });
-  svg.innerHTML=parts.join('');
-  $('#pasStage').textContent=PAS.reveal+' / '+s.bars.length+' bars';
-  $('#pasPrev').disabled=PAS.reveal<=1;
-  $('#pasNext').disabled=PAS.reveal>=s.bars.length;
-  $('#pasBlind').textContent=PAS.answered?s.name:'answer hidden';
-  $('#pasBlind').className='pill '+(PAS.answered?'go':'warn');
-  $('#pasScore').textContent=PAS.correct+' correct · '+PAS.attempts+' attempts';
-  var score = $('#pasDecisionScore'); if(score) score.textContent=PAS.correct+' / '+PAS.attempts+' correct';
-  var fill = $('#pasProgressFill'); if(fill) fill.style.width=Math.max(8, Math.round((PAS.reveal/s.bars.length)*100))+'%';
-  var txt = $('#pasProgressTxt'); if(txt) txt.textContent='Revealed '+PAS.reveal+' of '+s.bars.length+' bars';
-  var nm = $('#pasScenarioName'); if(nm) nm.textContent=PAS.answered?s.name:'Blind scenario';
-  updateScenarioState();
-  updateFilters();
-  syncAnswerChips();
-  difficultyCopy();
-}
-function check(){
-  var s=scen(),st=$('#pasStrategy').value,di=$('#pasDirection').value,ac=$('#pasAction').value;
-  if(!st||!di||!ac){setFeedback('Choose the setup, direction and action first.','warn');return;}
-  var ea=expectedAction(s),es=PAS.reveal<s.trigger?'none':s.strategy,ed=PAS.reveal<s.trigger?'none':s.dir;
-  var ok=(st===es&&di===ed&&ac===ea);
-  PAS.attempts++;
-  if(ok)PAS.correct++;
-  PAS.answered=true;
-  paintMistake(ok?null:mistakeFor(s,st,di,ac,es,ed,ea));
-  setFeedback((ok?'<b>Correct.</b> ':'<b>Not yet.</b> ')+(PAS.reveal<s.trigger?'The objective trigger has not appeared in the revealed bars. The correct decision is WAIT; do not name a completed setup from future structure.':s.why), ok?'ok':'bad');
-  var rule=$('#pasRule');
-  if(rule){
-    rule.hidden=false;
-    rule.innerHTML='<b>Objective answer:</b> '+(es==='none'?'No valid completed setup':NAMES[es])+' · '+(ed==='none'?'no direction':ed.toUpperCase())+' · '+ea.toUpperCase()+'.<br><b>Why:</b> '+s.why;
-  }
-  render();
-}
-function bindAnswerGroups(){
-  $$('.pa-answer-group').forEach(function(group){
-    group.addEventListener('click',function(e){
-      var btn=e.target.closest('.pa-answer-chip'); if(!btn)return;
-      setChoice(group.dataset.target, btn.dataset.value);
-    });
-  });
-}
-var SCR={step:1,max:20,timer:null};
-function repScenario(strategy,dir){
-  var map={
-    'pa-breakout':{long:'bo-long',short:'bo-short'},
-    'pa-double':{long:'db-long',short:'dt-short'},
-    'pa-retest':{long:'rt-long',short:'rt-short'}
-  },id=map[strategy][dir];
-  return scenarios.filter(function(s){return s.id===id;})[0];
-}
-function repName(strategy){return {'pa-breakout':'PA Breakout','pa-double':'Double Top / Bottom','pa-retest':'Breakout & Retest'}[strategy]||strategy;}
-function drawReplay(svg,s,reveal){
-  if(!svg||!s)return;var all=s.bars.flat(),min=Math.min.apply(null,all)-3,max=Math.max.apply(null,all)+3,W=620,H=300,l=28,r=14,t=18,b=20,cw=(W-l-r)/s.bars.length,parts=[];
-  for(var g=0;g<4;g++){var gy=t+g*(H-t-b)/3;parts.push('<line x1="'+l+'" y1="'+gy+'" x2="'+(W-r)+'" y2="'+gy+'" stroke="var(--chart-grid)"/>');}
-  function yy(v){return (H-b)-(v-min)/(max-min)*(H-t-b);}
-  if(s.level!=null){var ly=yy(s.level);parts.push('<line x1="'+l+'" y1="'+ly+'" x2="'+(W-r)+'" y2="'+ly+'" class="'+(s.kind==='neck'?'pas-neck':'pas-level')+'"/>');}
-  s.bars.slice(0,reveal).forEach(function(c,i){var x=l+i*cw+cw*.5,yo=yy(c[0]),yh=yy(c[1]),yl=yy(c[2]),yc=yy(c[3]),up=c[3]>=c[0],cl=up?'pas-candle-up':'pas-candle-dn',bw=Math.max(4,cw*.48);parts.push('<line class="'+cl+'" x1="'+x+'" y1="'+yh+'" x2="'+x+'" y2="'+yl+'"/><rect class="'+cl+'" x="'+(x-bw/2)+'" y="'+Math.min(yo,yc)+'" width="'+bw+'" height="'+Math.max(2,Math.abs(yc-yo))+'" rx="1"/>');if(i+1===s.trigger&&reveal>=s.trigger)parts.push('<circle class="pas-entry" cx="'+x+'" cy="'+yc+'" r="4.5"/>');});
-  svg.innerHTML=parts.join('');
-}
-function replayState(s,reveal){
-  if(reveal<s.trigger)return {state:'Context / forming',cls:'pill warn',read:'Trigger not complete yet. Observe structure; no entry permission.'};
-  return {state:'Trigger active',cls:'pill go',read:s.why};
-}
-function renderCompare(){
-  var ls=$('#scrLeft').value,rs=$('#scrRight').value,dir=$('#scrDir').value,L=repScenario(ls,dir),R=repScenario(rs,dir),lr=Math.max(1,Math.ceil(SCR.step/SCR.max*L.bars.length)),rr=Math.max(1,Math.ceil(SCR.step/SCR.max*R.bars.length));
-  drawReplay($('#scrLeftChart'),L,lr);drawReplay($('#scrRightChart'),R,rr);
-  $('#scrLeftPill').textContent=repName(ls);$('#scrRightPill').textContent=repName(rs);$('#scrLeftTitle').textContent=repName(ls);$('#scrRightTitle').textContent=repName(rs);
-  var a=replayState(L,lr),b=replayState(R,rr);$('#scrLeftState').textContent=a.state;$('#scrLeftState').className=a.cls;$('#scrRightState').textContent=b.state;$('#scrRightState').className=b.cls;$('#scrLeftRead').textContent=a.read;$('#scrRightRead').textContent=b.read;
-  $('#scrFill').style.width=Math.round(SCR.step/SCR.max*100)+'%';$('#scrStep').textContent='Replay '+SCR.step+' / '+SCR.max;
-  $('#scrLesson').textContent=(a.state!==b.state?'The two strategies currently have different permissions. Compare the trigger sequence, not only direction.':'Both are in the same broad state, but their exact triggers still differ.');
-}
-function stopCompare(){if(SCR.timer){clearInterval(SCR.timer);SCR.timer=null;}var p=$('#scrPlay');if(p)p.textContent='▶ Play comparison';}
-function playCompare(){if(SCR.timer){stopCompare();return;}var speed=parseInt($('#scrSpeed').value,10)||900;$('#scrPlay').textContent='■ Pause';SCR.timer=setInterval(function(){SCR.step++;if(SCR.step>SCR.max){stopCompare();return;}renderCompare();},speed);}
-function initCompare(){
-  if(!$('#scrLeftChart'))return;['scrLeft','scrRight','scrDir'].forEach(function(id){$('#'+id).addEventListener('change',function(){stopCompare();SCR.step=1;renderCompare();});});$('#scrSpeed').addEventListener('change',function(){if(SCR.timer){stopCompare();playCompare();}});$('#scrReset').addEventListener('click',function(){stopCompare();SCR.step=1;renderCompare();});$('#scrPlay').addEventListener('click',playCompare);renderCompare();
-}
-function animateStrategy(id){
-  var card=$('[data-pa-def="'+id+'"]');if(!card)return;$$('.pa-strategy-card').forEach(function(c){c.classList.remove('is-animating');});void card.offsetWidth;card.classList.add('is-animating');var status=$('[data-strat-status="'+id+'"] b');var seq={
-    'pa-breakout':['Mark structure','Price tests boundary','Confirmed close beyond level','Entry permission'],
-    'pa-double':['First extreme','Opposite pivot creates neckline','Second comparable extreme','Neckline closes through'],
-    'pa-retest':['Confirmed breakout','Price returns to old level','Level holds from other side','Retest entry permission']
-  }[id],i=0;if(status)status.textContent=seq[0];var timer=setInterval(function(){i++;if(i>=seq.length){clearInterval(timer);setTimeout(function(){card.classList.remove('is-animating');},700);return;}if(status)status.textContent=seq[i];},620);
-}
-function initAnimations(){$$('[data-strat-animate]').forEach(function(b){b.addEventListener('click',function(){animateStrategy(b.dataset.stratAnimate);});});}
-function initSandbox(){
-  if(!$('#pasChart'))return;
-  bindAnswerGroups();
-  $$('.pas-filter').forEach(function(btn){btn.addEventListener('click',function(){PAS.filter=btn.dataset.pasFilter; newScenario();});});
-  $$('[data-pas-difficulty]').forEach(function(btn){btn.addEventListener('click',function(){PAS.difficulty=btn.dataset.pasDifficulty;newScenario();});});
-  $$('[data-pas-focus]').forEach(function(btn){btn.addEventListener('click',function(){PAS.filter=btn.dataset.pasFocus; var t=$('#strat-sandbox'); if(t) t.scrollIntoView({behavior:'smooth',block:'start'}); newScenario();});});
-  $('#pasNew').addEventListener('click',function(){newScenario();});
-  $('#pasResetScore').addEventListener('click',function(){PAS.correct=0;PAS.attempts=0;render();});
-  $('#pasPrev').addEventListener('click',function(){PAS.reveal=Math.max(1,PAS.reveal-1);PAS.answered=false;$('#pasRule').hidden=true;paintMistake(null);render();});
-  $('#pasNext').addEventListener('click',function(){PAS.reveal=Math.min(scen().bars.length,PAS.reveal+1);PAS.answered=false;$('#pasRule').hidden=true;paintMistake(null);render();});
-  $('#pasAll').addEventListener('click',function(){PAS.reveal=scen().bars.length;PAS.answered=false;$('#pasRule').hidden=true;paintMistake(null);render();});
-  $('#pasCheck').addEventListener('click',check);
-  newScenario();
-}
-function redirectInsights(){
+function check(){var s=scen(),st=$('#pasStrategy').value,di=$('#pasDirection').value,ac=$('#pasAction').value;if(!st||!di||!ac){$('#pasFeedback').className='gate mt-3 warn';$('#pasFeedback').textContent='Choose the setup, direction and action first.';return;}var ea=expectedAction(s),es=PAS.reveal<s.trigger?'none':s.strategy,ed=PAS.reveal<s.trigger?'none':s.dir;/* Before trigger, setup may be forming but no objectively completed setup exists. */var ok=(st===es&&di===ed&&ac===ea);PAS.attempts++;if(ok)PAS.correct++;PAS.answered=true;$('#pasFeedback').className='gate mt-3 '+(ok?'ok':'bad');$('#pasFeedback').innerHTML=(ok?'<b>Correct.</b> ':'<b>Not yet.</b> ')+(PAS.reveal<s.trigger?'The objective trigger has not appeared in the revealed bars. The correct decision is WAIT; do not name a completed setup from future structure.':s.why);$('#pasRule').hidden=false;$('#pasRule').innerHTML='<b>Objective answer:</b> '+(es==='none'?'No valid completed setup':({'pa-breakout':'PA Breakout','pa-double':'PA Double Top / Double Bottom','pa-retest':'PA Breakout & Retest'})[es])+' · '+(ed==='none'?'no direction':ed.toUpperCase())+' · '+ea.toUpperCase()+'.<br><b>Why:</b> '+s.why;render();}
+function initSandbox(){if(!$('#pasChart'))return;$('#pasNew').addEventListener('click',newScenario);$('#pasResetScore').addEventListener('click',function(){PAS.correct=PAS.attempts=0;render();});$('#pasPrev').addEventListener('click',function(){PAS.reveal=Math.max(1,PAS.reveal-1);PAS.answered=false;$('#pasRule').hidden=true;render();});$('#pasNext').addEventListener('click',function(){PAS.reveal=Math.min(scen().bars.length,PAS.reveal+1);PAS.answered=false;$('#pasRule').hidden=true;render();});$('#pasAll').addEventListener('click',function(){PAS.reveal=scen().bars.length;PAS.answered=false;$('#pasRule').hidden=true;render();});$('#pasCheck').addEventListener('click',check);newScenario();}
+function redirectInsights(){/* Preserve old URLs/shortcuts while presenting one Review destination. */
   var oldSet=window.setView;if(typeof oldSet==='function'&&!oldSet.__merged){var wrapped=function(v,h){if(v==='insights'){v='journal';h='#journal-insights';}return oldSet(v,h);};wrapped.__merged=true;window.setView=wrapped;}
   document.addEventListener('click',function(e){var el=e.target.closest&&e.target.closest('[data-go^="insights|"]');if(el){e.preventDefault();var t=$('#journal-insights');var j=$('#tab-journal');if(j)j.click();setTimeout(function(){if(t)t.scrollIntoView({behavior:'smooth',block:'start'});},50);}},true);
 }
-function boot(){mergeReview();patchShell();redirectInsights();initAnimations();initCompare();initSandbox();}
+function boot(){mergeReview();patchShell();redirectInsights();initSandbox();}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
-})();
-</script>
-
-<style id="mts-v18-polish">
-/* =====================================================================
-   v18 — layout corrections + micro-interactions (answer user actions only)
-   ===================================================================== */
-:root{--m-fast:140ms;--m-med:220ms;--m-ease:cubic-bezier(.22,.8,.26,1);--m-spring:cubic-bezier(.34,1.45,.64,1)}
-
-/* ---------- layout ---------- */
-input[type="checkbox"],input[type="radio"]{flex:0 0 auto}
-label.check{align-items:flex-start}
-label.check>input[type="checkbox"]{margin-top:1px}
-.ops-side button{justify-content:flex-start}
-#opsMarketMetrics{grid-template-columns:repeat(4,minmax(0,1fr))}
-.v7-formgrid{align-items:start}
-.v7-formgrid>.field{display:flex;flex-direction:column;justify-content:flex-end;min-height:100%}
-#f1 .prep-quicknav{display:flex!important;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;scroll-snap-type:x proximity}
-#f1 .prep-quicknav button{flex:0 0 auto!important;width:auto!important;white-space:nowrap!important;scroll-snap-align:start}
-#f1 .prep-quicknav button:last-child:nth-child(odd){grid-column:auto}
-.v7-budget span{transition:width 450ms var(--m-ease),background-color 300ms ease}
-@media (max-width:767px){
-  .v7-command-h{flex-wrap:wrap;row-gap:12px}
-  .v7-command-h>div:first-child{flex:1 1 100%}
-  .v7-command-h>:last-child{margin-left:auto}
-  .v7-command-grid:not(.two):not(.three){grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px!important}
-  #opsMarketMetrics{grid-template-columns:repeat(2,minmax(0,1fr))}
-  input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),select,textarea{font-size:max(16px,1em)}
-}
-
-/* ---------- press + state transitions ---------- */
-:where(button,.btn,[role="button"],[role="tab"],[role="radio"],summary){
-  transition:background-color var(--m-fast) ease,color var(--m-fast) ease,border-color var(--m-fast) ease,box-shadow var(--m-fast) ease,transform var(--m-fast) var(--m-ease),opacity var(--m-fast) ease}
-:where(button,.btn,[role="button"],[role="tab"]):active:not(:disabled){transform:scale(.97)}
-:where(input,select,textarea){transition:border-color var(--m-fast) ease,box-shadow var(--m-fast) ease,background-color var(--m-fast) ease}
-input[type="checkbox"]{transition:background-color var(--m-fast) ease,box-shadow var(--m-fast) ease}
-:where(summary)::before{transition:transform var(--m-med) var(--m-ease)}
-:where(a,button,input,select,textarea,summary,[tabindex]):focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-
-/* selection pop (added by JS only on user action) */
-@keyframes mts-pop{0%{transform:scale(1)}45%{transform:scale(1.16)}100%{transform:scale(1)}}
-input.mts-pop,.mts-pop>.v8-reason-mark,[role="radio"].mts-pop:not(.v8-reason){animation:mts-pop 260ms var(--m-spring)}
-/* view switch */
-@keyframes mts-enter{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-.view.mts-enter{animation:mts-enter var(--m-med) var(--m-ease)}
-/* disclosure reveal */
-@keyframes mts-reveal{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
-details.mts-opening>:not(summary){animation:mts-reveal var(--m-med) var(--m-ease)}
-/* value changed */
-@keyframes mts-tick{0%{color:var(--accent);transform:translateY(-2px)}100%{transform:none}}
-.mts-tick{display:inline-block;animation:mts-tick 600ms var(--m-ease)}
-/* ARM refused */
-@keyframes mts-shake{0%,100%{transform:none}20%{transform:translateX(-6px)}40%{transform:translateX(5px)}60%{transform:translateX(-3px)}80%{transform:translateX(2px)}}
-#armBtn.mts-shake{animation:mts-shake 380ms ease}
-
-@media (prefers-reduced-motion:reduce){
-  .mts-pop,.mts-pop>.v8-reason-mark,.view.mts-enter,details.mts-opening>*,.mts-tick,#armBtn.mts-shake{animation:none!important}
-  :where(button,.btn,[role="button"],[role="tab"]):active:not(:disabled){transform:none}
-  .v7-budget span{transition:none}
-}
-</style>
-<script id="mts-v18-polish-js">
-(function(){
-"use strict";
-var reduce=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
-/* clipboard: every copy button falls back to execCommand, and says so if the browser refuses */
-(function(){var c=navigator.clipboard;if(!c||!c.writeText)return;var orig=c.writeText.bind(c);
-  function legacy(t){var ta=document.createElement("textarea");ta.value=t;ta.setAttribute("readonly","");ta.style.cssText="position:fixed;opacity:0;top:0;left:0";document.body.appendChild(ta);ta.select();var ok=false;try{ok=document.execCommand("copy");}catch(e){}ta.remove();return ok;}
-  try{c.writeText=function(t){return orig(t).catch(function(err){if(legacy(String(t)))return;if(window.MTSToast)window.MTSToast("Copy failed: the browser blocked clipboard access.");throw err;}).catch(function(e){return Promise.reject(e);});};}catch(e){}
-  window.addEventListener("unhandledrejection",function(e){if(e.reason&&/Clipboard|clipboard/.test(String(e.reason.message||e.reason)))e.preventDefault();});
-})();
-function flash(el,cls,ms){if(!el||reduce)return;el.classList.remove(cls);void el.offsetWidth;el.classList.add(cls);setTimeout(function(){el.classList.remove(cls);},ms);}
-function init(){
-  /* selection pops — only when the person acts */
-  document.addEventListener("change",function(e){var t=e.target;if(t&&t.matches&&t.matches('input[type="checkbox"],input[type="radio"]')&&t.checked)flash(t,"mts-pop",300);},true);
-  document.addEventListener("click",function(e){var t=e.target.closest&&e.target.closest('[role="radio"]');if(t)setTimeout(function(){if(t.getAttribute("aria-checked")==="true")flash(t,"mts-pop",300);},0);},true);
-  /* view switch fade */
-  Array.prototype.forEach.call(document.querySelectorAll(".view"),function(v){
-    var was=v.classList.contains("active");
-    new MutationObserver(function(){var now=v.classList.contains("active");if(now&&!was)flash(v,"mts-enter",260);was=now;}).observe(v,{attributes:true,attributeFilter:["class"]});
-  });
-  /* disclosure reveal (toggle does not bubble; capture catches it) */
-  document.addEventListener("toggle",function(e){var d=e.target;if(d&&d.tagName==="DETAILS"&&d.open)flash(d,"mts-opening",260);},true);
-  /* key numbers tick when their value changes */
-  ["v7Readiness","v7RiskLeft","v7TradesLeft","v7Scenario","opsGuardBadge","opsOppBadge"].forEach(function(id){
-    var el=document.getElementById(id);if(!el)return;var last=el.textContent;
-    new MutationObserver(function(){var t=el.textContent;if(t!==last){last=t;flash(el,"mts-tick",650);}}).observe(el,{childList:true,characterData:true,subtree:true});
-  });
-  /* textareas never clip their placeholder */
-  function fit(){Array.prototype.forEach.call(document.querySelectorAll("textarea[placeholder]"),function(t){if(t.value||!t.offsetParent||t.dataset.mtsFit)return;var h=t.clientHeight;t.value=t.placeholder;var need=t.scrollHeight;t.value="";if(need>h+2){var px=(need+(t.offsetHeight-t.clientHeight))+"px";t.style.setProperty("min-height",px,"important");}t.dataset.mtsFit="1";});}
-  fit();document.addEventListener("click",function(e){if(e.target.closest&&e.target.closest(".navbtn,[role=tab],summary"))setTimeout(fit,120);});
-  window.addEventListener("resize",function(){Array.prototype.forEach.call(document.querySelectorAll("textarea[data-mts-fit]"),function(t){delete t.dataset.mtsFit;t.style.removeProperty("min-height");t.style.removeProperty("height");});fit();});
-}
-if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init);else init();
 })();
 </script>
 
