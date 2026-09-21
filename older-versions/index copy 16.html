@@ -5370,7 +5370,7 @@ window.CFG=function(k){return isFinite(C[k])?C[k]:D[k];};
 <div class="view" id="view-journal" role="tabpanel" aria-labelledby="tab-journal" tabindex="-1">
   <div class="viewhead">
     <h2>Journal &amp; Insights</h2>
-    <p>The trades you log and the broker statements you import, measured in one place. Everything stays in this browser. After about fifty consistently recorded trades, your own numbers become the best guide to expectancy, execution and rule compliance.</p>
+    <p>Every trade you log is kept in this browser. After roughly fifty consistently recorded trades, your own distribution becomes the strongest calibration source for expectancy, execution, and rule compliance. Browser snapshots are kept automatically.</p>
   </div>
   <nav class="subnav" aria-label="Journal and insights sections">
     <button class="subchip" data-journal-go="#j-entries">Journal</button>
@@ -13083,7 +13083,8 @@ var MQ=window.matchMedia("(max-width:767px)");
 
 var GROUPS=[
   {k:"trading",label:"Trading",icon:"",views:[["flow","Trading","plan, qualify, execute, manage, review"],["operations","Terminal control","market state, guardrails, risk, evidence, lab and system backlog"]]},
-  {k:"journal",label:"Journal",icon:"",views:[["journal","Journal & Insights","trades, performance, broker history, weekly review"]]},
+  {k:"journal",label:"Journal",icon:"",views:[["journal","Journal","performance, trades, weekly, capabilities"]]},
+  {k:"insights",label:"Insights",icon:"",views:[["insights","Insights","import a statement and analyse it"]]},
   {k:"more",label:"More",icon:"",views:[
      ["price","Price action","the auction, the book, the read"],
      ["reference","Handbook","rules, playbooks, macro, glossary"],
@@ -18194,94 +18195,16 @@ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",
 var $=function(q,r){return (r||document).querySelector(q);}, $$=function(q,r){return Array.prototype.slice.call((r||document).querySelectorAll(q));};
 /* Merge Insights into Journal without changing any Insights element IDs/listeners. */
 function mergeReview(){
-  /* v19: Journal and Insights are one page. The whole Insights view (ids, classes, listeners,
-     its #view-insights CSS scope) is embedded inside Journal; one sidebar drives both tab systems. */
-  var j=$("#view-journal"),ins=$("#view-insights"),tab=$("#tab-insights");
-  if(!j||!ins||j.dataset.jxMerged)return;
-  j.dataset.jxMerged="1";
-  var wasActive=ins.classList.contains("active");
+  var j=$("#view-journal"),ins=$("#view-insights"),tab=$("#tab-insights"),wasActive=ins&&ins.classList.contains("active");
+  if(!j||!ins)return;
   if(tab)tab.remove();
-  var jTabs=$("#journalTabs"),iTabs=$("#insightsTabs");
-  var GROUPS=[
-    {label:"Journal",items:[["j","perf","Performance"],["j","trades","Trades"],["j","evidence","Evidence"],["j","decisions","Decisions"]]},
-    {label:"Analysis",items:[["j","edge","Edge"],["j","stats","Statistics"]]},
-    {label:"Broker history",broker:true,items:[["b","over","Overview"],["b","equity","Equity"],["b","timing","Timing"],["b","setups","Setups"],["b","behav","Behaviour"],["b","recs","Recommendations"]]},
-    {label:"Improve",items:[["j","weekly","Weekly review"],["j","caps","Capabilities"],["j","system","System"]]}
-  ];
-  var shell=document.createElement("div");shell.className="jx-shell";
-  var side=document.createElement("aside");side.className="jx-side";side.setAttribute("aria-label","Journal and insights sections");
-  side.innerHTML=GROUPS.map(function(g){
-    return '<div class="jx-g'+(g.broker?' jx-g-broker':'')+'" role="group" aria-label="'+g.label+'"><span class="jx-gl">'+g.label+'</span>'+
-      g.items.map(function(it){return '<button type="button" class="jx-i" data-src="'+it[0]+'" data-k="'+it[1]+'">'+it[2]+'</button>';}).join("")+'</div>';
-  }).join("");
-  var main=document.createElement("div");main.className="jx-main";
-  var panels=$$(".ppanel",j).filter(function(p){return p.parentElement===j;});
-  panels.forEach(function(p){main.appendChild(p);});
-  ins.classList.remove("view","active");ins.classList.add("jx-broker");
-  ins.removeAttribute("role");ins.removeAttribute("aria-labelledby");ins.removeAttribute("tabindex");ins.hidden=false;
-  var ih=$(".viewhead h2",ins);if(ih)ih.textContent="Broker history";
-  main.appendChild(ins);
-  shell.appendChild(side);shell.appendChild(main);
-  var anchor=$(".viewgrid",j)||$(".hintstrip",j);
-  if(anchor&&anchor.parentElement===j)j.insertBefore(shell,anchor.nextSibling);else j.appendChild(shell);
-  var old=$("#journal-insights");if(old&&!old.children.length)old.remove();
-
-  var KEY="mts.v19.journalSec",mode="j";
-  function ptab(bar,k){return bar?$('.ptab[data-t="'+k+'"]',bar):null;}
-  function hasBroker(){return !!(iTabs&&!iTabs.hidden);}
-  function select(src,k,opts){
-    opts=opts||{};
-    if(src==="b"){
-      mode="b";
-      panels.forEach(function(p){p.hidden=true;});
-      ins.classList.remove("jx-off");
-      var b=ptab(iTabs,k);if(b&&hasBroker())b.click();
-    }else{
-      mode="j";
-      ins.classList.add("jx-off");
-      var t=ptab(jTabs,k)||ptab(jTabs,"perf");if(t)t.click();
-    }
-    try{localStorage.setItem(KEY,src+":"+k);}catch(e){}
-    paint();
-    if(opts.scroll){var top=shell.getBoundingClientRect().top+window.scrollY-((parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--shell-h"))||60)+56);
-      if(window.scrollY>top)window.scrollTo({top:Math.max(0,top),behavior:"auto"});}
-  }
-  function current(){
-    var bar=mode==="b"?iTabs:jTabs,sel=bar?$('.ptab[aria-selected="true"]',bar):null;
-    return {src:mode,k:sel?sel.dataset.t:(mode==="b"?"over":"perf")};
-  }
-  function paint(){
-    var c=current(),data=hasBroker();
-    side.classList.toggle("jx-nodata",!data);
-    var ov=$('.jx-i[data-src="b"][data-k="over"]',side);if(ov)ov.textContent=data?"Overview":"Import statement";
-    $$(".jx-i",side).forEach(function(b){var on=b.dataset.src===c.src&&(b.dataset.k===c.k||(!data&&c.src==="b"&&b.dataset.k==="over"));
-      b.classList.toggle("on",on);if(on)b.setAttribute("aria-current","true");else b.removeAttribute("aria-current");});
-  }
-  $$(".jx-i",side).forEach(function(b){b.addEventListener("click",function(){select(b.dataset.src,b.dataset.k,{scroll:true});});});
-  [jTabs,iTabs].forEach(function(bar){if(bar)new MutationObserver(paint).observe(bar,{attributes:true,subtree:true,attributeFilter:["aria-selected","hidden"]});});
-  /* deep links: scrolling to anything inside a hidden section opens that section first */
-  var sIV=Element.prototype.scrollIntoView;
-  Element.prototype.scrollIntoView=function(){
-    var el=this,args=arguments;
-    if(j.contains(el)&&el!==j){
-      var inBroker=ins.contains(el)||el===ins,p=el.closest&&el.closest(".ppanel");
-      var needs=(inBroker&&(mode!=="b"))||(p&&p.hidden)||(!inBroker&&mode==="b"&&main.contains(el));
-      if(needs){
-        if(inBroker)select("b",p&&p.dataset.t?p.dataset.t:"over");
-        else if(p)select("j",p.dataset.t);
-        return setTimeout(function(){sIV.apply(el,args);},30);
-      }
-    }
-    return sIV.apply(this,args);
-  };
-  window.MTSJournal=window.MTSJournal||{};
-  window.MTSJournalGo=function(src,k){var jb=$("#tab-journal");if(jb&&!j.classList.contains("active"))jb.click();select(src,k,{scroll:true});};
-  var saved="";try{saved=localStorage.getItem(KEY)||"";}catch(e){}
-  var sp=saved.split(":");
-  if(wasActive){select("b","over");var jb=$("#tab-journal");if(jb)jb.click();}
-  else if(sp.length===2&&(sp[0]==="j"||sp[0]==="b"))select(sp[0],sp[1]);
-  else select("j","perf");
-  $$('[data-go^="insights|"]').forEach(function(el){el.dataset.go="journal|#view-insights";});
+  var host=$("#journal-insights");
+  if(!host){host=document.createElement("section");host.id="journal-insights";host.className="tool";host.innerHTML='<div class="eyebrow"><span class="tab blue">Insights</span><h2>Broker history insights</h2><span class="line"></span><span class="hint">import + analyse</span></div>';j.appendChild(host);}
+  while(ins.firstChild)host.appendChild(ins.firstChild);
+  ins.hidden=true;ins.classList.remove("active");
+  if(wasActive){j.classList.add("active");var jb=$("#tab-journal");if(jb)jb.setAttribute("aria-selected","true");try{localStorage.setItem("mts.v3.view","journal");}catch(e){}}
+  $$('[data-go^="insights|"]').forEach(function(el){el.dataset.go="journal|#journal-insights";});
+  $$('[data-journal-go]').forEach(function(b){b.addEventListener('click',function(){var t=$(b.dataset.journalGo);if(t)t.scrollIntoView({behavior:'smooth',block:'start'});});});
 }
 /* Make the shell/navigation describe the combined destinations even if the shell was built earlier. */
 function patchShell(){
@@ -18482,10 +18405,8 @@ function initSandbox(){
   newScenario();
 }
 function redirectInsights(){
-  var oldSet=window.setView;if(typeof oldSet==='function'&&!oldSet.__merged){var wrapped=function(v,h){if(v==='insights'){v='journal';h=h||'#view-insights';}return oldSet(v,h);};wrapped.__merged=true;window.setView=wrapped;}
-  document.addEventListener('click',function(e){var el=e.target.closest&&e.target.closest('[data-go^="insights|"]');if(el){e.preventDefault();e.stopPropagation();if(window.MTSJournalGo)window.MTSJournalGo('b','over');}},true);
-  /* a stored "insights" view from an older build would leave no page active */
-  if(!document.querySelector('.view.active')){var jb=$('#tab-journal');if(jb)jb.click();if(window.MTSJournalGo)window.MTSJournalGo('b','over');}
+  var oldSet=window.setView;if(typeof oldSet==='function'&&!oldSet.__merged){var wrapped=function(v,h){if(v==='insights'){v='journal';h='#journal-insights';}return oldSet(v,h);};wrapped.__merged=true;window.setView=wrapped;}
+  document.addEventListener('click',function(e){var el=e.target.closest&&e.target.closest('[data-go^="insights|"]');if(el){e.preventDefault();var t=$('#journal-insights');var j=$('#tab-journal');if(j)j.click();setTimeout(function(){if(t)t.scrollIntoView({behavior:'smooth',block:'start'});},50);}},true);
 }
 function boot(){mergeReview();patchShell();redirectInsights();initAnimations();initCompare();initSandbox();}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
@@ -18586,57 +18507,5 @@ if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",
 })();
 </script>
 
-
-<style id="mts-v19-journal-merge">
-/* =====================================================================
-   v19 — Journal & Insights as one page: one sidebar, two data sources
-   ===================================================================== */
-#view-journal>#journalTabs,#view-journal>.subnav,#view-insights .subnav{display:none!important}
-#view-insights .v16-ins-side{display:none!important}
-#view-insights .v16-ins-shell{display:block!important}
-#view-insights.jx-off{display:none!important}
-#view-insights.jx-broker{display:block}
-#view-insights.jx-broker>.viewhead{margin:0 0 20px;padding:0}
-#view-insights.jx-broker>.viewhead h2{font-size:clamp(22px,2.2vw,28px);letter-spacing:-.02em;margin:0 0 6px}
-#view-insights.jx-broker>.viewhead p{max-width:68ch;margin:0}
-
-.jx-shell{display:grid;grid-template-columns:208px minmax(0,1fr);gap:24px;align-items:start;min-width:0}
-.jx-main{min-width:0}
-.jx-side{position:sticky;top:calc(var(--shell-h,60px) + 58px);z-index:38;padding:8px;border:1px solid var(--line);border-radius:18px;
-  background:color-mix(in srgb,var(--surface) 90%,transparent);-webkit-backdrop-filter:blur(20px) saturate(1.15);backdrop-filter:blur(20px) saturate(1.15);
-  box-shadow:var(--shadow-2);max-height:calc(100vh - var(--shell-h,60px) - 76px);overflow:auto;overscroll-behavior:contain}
-.jx-g{display:flex;flex-direction:column;gap:2px}
-.jx-g+.jx-g{margin-top:8px;padding-top:8px;border-top:1px solid var(--line)}
-.jx-gl{padding:6px 12px 6px;font-size:12px;font-weight:600;color:var(--text-3)}
-.jx-i{position:relative;display:flex;align-items:center;width:100%;min-height:36px;padding:0 12px;border:0;border-radius:11px;background:transparent;
-  color:var(--text-2);font-size:13.5px;font-weight:560;text-align:left;white-space:nowrap;cursor:pointer}
-.jx-i:hover{background:var(--system-fill);color:var(--text)}
-.jx-i.on{background:var(--accent);color:#fff;box-shadow:0 6px 16px color-mix(in srgb,var(--accent) 22%,transparent)}
-.jx-i:focus-visible{outline:none;box-shadow:var(--focus)}
-.jx-nodata .jx-g-broker .jx-i:not([data-k="over"]){display:none}
-.jx-nodata .jx-g-broker .jx-i[data-k="over"]::after{content:"";margin-left:auto;width:6px;height:6px;border-radius:50%;background:var(--text-3);opacity:.5}
-@keyframes jx-in{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
-.jx-main>.ppanel:not([hidden]),#view-insights.jx-broker:not(.jx-off){animation:jx-in 200ms var(--m-ease,ease)}
-
-@media (max-width:1099px){
-  .jx-shell{display:block}
-  .jx-side{top:var(--shell-h,54px);display:flex;align-items:center;gap:4px;max-height:none;overflow-x:auto;overflow-y:hidden;margin:0 0 16px;padding:6px;border-radius:14px;
-    scrollbar-width:none;scroll-snap-type:x proximity}
-  .jx-side::-webkit-scrollbar{display:none}
-  .jx-g{flex-direction:row;gap:4px;flex:0 0 auto}
-  .jx-g+.jx-g{margin:0;padding:0 0 0 6px;border-top:0;border-left:1px solid var(--line)}
-  .jx-gl{display:none}
-  .jx-i{width:auto;min-height:36px;padding:0 12px;font-size:13px;scroll-snap-align:start}
-  .jx-side:not(.jx-nodata) .jx-g-broker .jx-i[data-k="over"]::before{content:"Broker\00a0"}
-}
-@media (max-width:767px){.jx-side{top:54px}}
-@media (prefers-reduced-motion:reduce){.jx-main>.ppanel,#view-insights.jx-broker{animation:none!important}}
-</style>
-<script id="mts-v19-journal-merge-js">
-/* keep the active sidebar item in view on the horizontal (narrow) layout */
-(function(){function init(){var side=document.querySelector(".jx-side");if(!side)return;
-  new MutationObserver(function(){var on=side.querySelector(".jx-i.on");if(on&&side.scrollWidth>side.clientWidth){var l=on.offsetLeft-side.clientWidth/2+on.offsetWidth/2;side.scrollTo({left:Math.max(0,l),behavior:"smooth"});}}).observe(side,{attributes:true,subtree:true,attributeFilter:["class"]});}
- if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init);else init();})();
-</script>
 </body>
 </html>
